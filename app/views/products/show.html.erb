@@ -1,0 +1,32 @@
+<h1>Products#show</h1>
+<p>Find me in app/views/products/show.html.erb</p>
+
+<h2>ユーザー名</h2>
+<%= @products.user.name %>
+<h2>商品タイトル</h2>
+<%= @products.title %>
+<h2>商品画像</h2>
+<%= attachment_image_tag @products, :image  %>
+<h2>商品説明</h2>
+<%= @products.product_detail %>
+<h2>商品値段</h2>
+<%= @products.price %>
+<h2>商品カテゴリー</h2>
+<%= @products.product_categories.categories.category_name %>
+<h2>商品登録日</h2>
+<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
+
+<!-- < if @products.user != current_user > -->
+<%= link_to "購入", root_path ,method: :post, class: "btn btn-danger" %>
+<!-- < end > -->
+<!-- product_product_carts(@products.id) -->
+
+
+<% if @products.user == current_user %>
+<p><%= link_to "Edit", edit_product_path(@products.id), class: "btn-sm btn-success" %>
+<% end %>
+
+<% if @products.user == current_user %>
+<!-- < if current_user.admin? > -->
+<%= link_to "Destroy", product_path(@products), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか?'} %>
+<% end %></p>

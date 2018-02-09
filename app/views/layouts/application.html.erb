@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code</title>
+        <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+<body class='<%= "#{controller.controller_name}" %>'>
+
+	<header class="navbar navbar-fixed-top navbar-inverse">
+			<nav class="nav navbar-nav navbar-left">
+			</nav>
+			<nav>
+				<ul class="nav navbar-nav navbar-right">
+					<% if user_signed_in? %>
+					<!--ログイン中のヘッダー-->
+
+					<li class="">
+					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+					</li>
+
+					<% else %>
+					<!--ログアウト中のヘッダー-->
+
+					<li class="">
+					<%= link_to "ログイン", new_user_session_path %>
+					</li>
+					<% end %>
+				</ul>
+			</nav>
+	</header>
+
+	  <p id="notice"></p>
+
+
+			<%= yield %>
+
+</body>
+</html>

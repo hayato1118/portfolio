@@ -1,0 +1,110 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+    @import "bootstrap-sprockets";
+    @import "bootstrap";
+
+
+
+/*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+
+
+
+
+
+    #notice {
+    	padding-top: 100px
+	}
+
+	.textnew{
+		word-break: normal;
+	}
+
+
+
+/*//ここまで全体に対してのスタイリングCSS
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+ここからproductsに対してのスタイリングCSS*/
+
+.products{
+ background-color: #FFF;
+
+		.haba{
+		     height: 600px
+		}
+
+		.haba_all{
+		     height: 33%;
+		}
+
+		.product_image{
+		     height: 100%;
+		     width: 100%;
+		}
+
+		.haba_image{
+		     margin: 0px -10px;
+		     height: 90%;
+		}
+
+		.haba_text{
+		     margin: 0px -10px;
+		     height: 10%;
+		}
+
+		.glyphicon{
+		     float: right;
+		     color: #000000;
+		}
+
+		/*商品画像hover用*/
+		.haba_image {
+		     position: relative;
+		}
+
+		.caption {
+		     font-size: 100%;
+		     text-align: center;
+		     padding-top: 15%;
+		     color: #fff;
+		     word-wrap: break-word;
+		}
+
+		.mask {
+		     width: 96%;
+		     height: 90%;
+		     position: absolute;
+		     top: 0%;
+		     left: 2%;
+		     opacity:0;
+		     background-color: rgba(0,0,0,0.4);
+		     transition:	all 0.2s ease;
+		}
+
+		.haba_all:hover .mask {
+		     opacity: 1;
+		}
+
+}
+
+/*//ここまでproductに対してのスタイリングCSS
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+ここから   に対してのスタイリングCSS*/
+
+

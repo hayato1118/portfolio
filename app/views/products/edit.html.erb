@@ -1,0 +1,15 @@
+<h1>Products#edit</h1>
+<p>Find me in app/views/products/edit.html.erb</p>
+
+
+<h2>Editing Product</h2>
+<%= form_for (@product) do |f| %>
+<h2>商品タイトル</h2>
+<%=f.text_field :title %>
+<h2>商品説明</h2>
+<%=f.text_area :product_detail %>
+<!-- ジャンルも追加 -->
+
+<p><%= f.submit 'Update Product' ,class: "btn btn-primary" %></p>
+<%=link_to "キャンセル", products_path%>
+<% end %>

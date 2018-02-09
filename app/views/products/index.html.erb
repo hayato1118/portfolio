@@ -1,0 +1,71 @@
+<!-- <h1>Products#index</h1>
+<p>Find me in app/views/products/index.html.erb</p>
+ -->
+<div class="container">
+    <div class="row">
+
+<!--上部分-->
+
+    <%=link_to "商品投稿", new_product_path ,class: "btn-sm btn-danger"%>
+
+<!--中央部分-->
+    	<div class="haba">
+			<% @products.each do |product| %>
+		        <div class="col-xs-6 col-sm-4 col-md-3 haba_all">
+		        	<div class="haba_image"><%= attachment_image_tag product, :image , class: "product_image" %>
+		        	</div>
+
+		        	 <div class="haba_text">
+		        	 	<%= product.updated_at.strftime("%Y-%m-%d") %>
+		        	 	<div class="glyphicon glyphicon-eye-open">220K</div>
+				 		<div class="glyphicon glyphicon-heart">100K&nbsp;</div>
+		        	 </div>
+
+		        	 <%= link_to product_path(product.id) do %>
+						 <div class="mask">
+							 <div class="caption"><%= product.title %></div>
+							 <div class="caption"><%= product.product_detail %></div>
+						</div>
+					<% end %>
+
+		        </div>
+			<% end %>
+	    </div>
+
+	 	<div class="col-sm-12 text-center">
+        	<%= paginate @products, class: "pagenate" %>
+      	</div>
+
+<!--下部分-->
+
+		<div class="col-sm-6  panel panel-primary">
+			<div class="panel-heading">
+				USERS RANKING
+			</div>
+		<div class="col-sm-12  user_image panel-body">
+		画像
+		</div>
+		<div class="col-sm-12 user_text panel-body">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		</div>
+		</div>
+
+
+
+		<div class="col-sm-6 panel panel-primary">
+			<div class="panel-heading">
+				PRODUCTS RANKING
+			</div>
+		<div class="col-sm-12 product_image panel-body">
+		画像
+		</div>
+		<div class="col-sm-12 product_text panel-body">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		</div>
+		</div>
+	</div>
+</div>

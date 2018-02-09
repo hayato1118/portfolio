@@ -1,0 +1,18 @@
+<h1>Carts#show</h1>
+<p>Find me in app/views/carts/show.html.erb</p>
+
+
+<% current_user.cart.product_carts.each do |product_cart| %>
+product_carts＝中間テーブル
+current_user.cart＝ログインユーザーのカート
+
+<%= attachment_image_tag product_cart.product, :image, :fill, 100, 100,  fallback: "default.jpg"%>
+<%= product_cart.product.title %>
+<%= product_cart.product.user.name %>
+<%= product_cart.product.price %>
+<% end %>
+<%= link_to "Destroy", product_product_carts_path(product_cart.product_id, product_cart.id), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか?'} %>
+<%=link_to "詳細", product_path(product_cart.product.id), class: "btn-sm btn-info"%>
+<%= @total_price %>
+<%=link_to "戻る", products_path %>
+<%=link_to "購入", new_order_path %>
