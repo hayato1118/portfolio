@@ -21,11 +21,16 @@
 /*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 
 
-
+html {height:100%;}
+body {
+	height:100%;
+	margin:0px;
+	padding:0px;
+	}
 
 
     #notice {
-    	padding-top: 100px
+    	padding-top: 41px
 	}
 
 	.textnew{
@@ -44,7 +49,8 @@
  background-color: #FFF;
 
 		.haba{
-		     height: 600px
+		     height: 600px;
+		     z-index: 1;
 		}
 
 		.haba_all{
@@ -98,7 +104,6 @@
 		.haba_all:hover .mask {
 		     opacity: 1;
 		}
-
 }
 
 /*//ここまでproductに対してのスタイリングCSS

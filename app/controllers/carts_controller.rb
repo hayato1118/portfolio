@@ -1,8 +1,13 @@
 class CartsController < ApplicationController
+
 def show
 end
 
 def create
+    # cart = Cart.new
+    # cart.user_id = current_user.id
+    # cart.save
+    # redirect_to products_path
 end
 
    private

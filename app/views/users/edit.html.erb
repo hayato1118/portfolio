@@ -1,2 +1,98 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+
+
+
+<h2>User info</h2>
+
+
+<div class="field  col-sm-12" style="display:inline-flex"><P>
+<label>苗字(ふりがな)</label>
+<%= f.text_field :last_name ,class: "col-sm-12"%><%= f.text_field :last_name_kana ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+下の名前　
+<label>名前(ふりがな)</label>
+<%= f.text_field :first_name ,class: "col-sm-12"%><%= f.text_field :first_name_kana ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>ユーザーネーム</label>
+<%= f.text_field :nickname ,class: "col-sm-12" %>
+</div>
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>郵便番号</label>
+<%= f.text_field :zip, id: "zip" ,class: "col-sm-12" %>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>都道府県</label>
+<%= f.text_field :state, id: "address" ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>市区町村</label>
+<%= f.text_field :city, id: "address2" ,class: "col-sm-12"%>
+</div>
+
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>町名以降</label>
+<%= f.text_field :street, id: "address3" ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>電話番号</label>
+<%= f.number_field :phone_number1, :placeholder => "市外局番" ,class: "col-sm-12"%>
+<%= f.number_field :phone_number2, :placeholder => "市外局番"  ,class: "col-sm-12"%>
+<%= f.number_field :phone_number3, :placeholder => "加入者番号"   ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>E-Mail</label>
+<%= f.email_field :email ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>Github ID</label>
+<%= f.text_field :github_id,class: "col-sm-12" %>
+</div>
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>Githubアカウント</label>
+<%= f.text_field :github_id,class: "col-sm-12" %>
+</div>
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>グーグルアカウント</label>
+<%= f.text_field :google_drive_id,class: "col-sm-12" %>
+</div>
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>introduction</label>
+<%= f.text_area :introduction ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex"><P>
+<label>プロフィール画像</label>
+<%= f.attachment_field :profile_image ,class: "col-sm-12"%>
+</div>
+
+
+<div class="field col-sm-12" style="display:inline-flex">
+<%= f.submit 'Update User' ,class: "col-sm-3 btn btn-primary" %>
+</div>
+<% end %>
+
+

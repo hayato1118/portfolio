@@ -1,2 +1,20 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+
+<h1>購入履歴</h1>
+<% @user.orders.each do |order| %>
+	<h5>注文番号：<%= order.id %></h5>
+		<% order.product_orders.each do |product_order| %>
+			<label>商品名</label>
+				<%= product_order.product.title %>
+			<label>商品画面</label>
+				<%= attachment_image_tag product_order.product, :image, :fill, 100, 100,  fallback: "default.jpg"%>
+			<label>商品購入日</label>
+				<%= product_order.created_at %>
+			<label>値段</label>
+				<%= product_order.product.price %>円
+			<label>商品URL</label>
+				<%= product_order.product.url %>
+		<% end %>
+<% end %>

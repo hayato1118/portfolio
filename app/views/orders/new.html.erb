@@ -1,2 +1,25 @@
 <h1>Orders#new</h1>
 <p>Find me in app/views/orders/new.html.erb</p>
+
+
+<h1>購入確認画面</h1>
+<%= form_for @order do |f| %>
+
+名前：
+<%= f.text_field :last_name, :value => current_user.last_name %>
+<%= f.text_field :last_name_kana, :value => current_user.last_name_kana %>
+
+
+苗字：
+<%= f.text_field :first_name, :value => current_user.first_name %>
+<%= f.text_field :first_name_kana, :value => current_user.first_name_kana %>
+
+メールアドレス：
+<%= f.text_field :email, :value => current_user.email %>
+
+合計：
+
+
+ <%= link_to "キャンセル", products_path ,class: "btn btn-primary" %>
+<%= f.submit "購入", class: "btn btn btn-primary" %>
+<% end %>
