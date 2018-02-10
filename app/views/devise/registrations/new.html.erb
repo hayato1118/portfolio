@@ -8,7 +8,7 @@
 
   <div class="field">
     <%= f.label :苗字 %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "苗字" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "苗字" ,placeholder: "必須" %>
   </div>
 
   <div class="field">
@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :名前 %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "名前" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "名前",placeholder: "必須" %>
   </div>
   
   <div class="field">
@@ -28,19 +28,19 @@
 
   <div class="field">
     <%= f.label :ユーザーネーム %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "ユーザーネーム" %>
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "ユーザーネーム",placeholder: "必須"  %>
   </div>
 
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :email, autofocus: true, autocomplete: "email",placeholder: "必須"  %>
   </div>
 
-<div class="field">
-    <%= f.label :Github_ID %><br />
-    <%= f.text_field :github_id, autofocus: true, autocomplete: "Github ID" %>
-  </div>
+<!-- <div class="field">
+    < f.label :Github_ID %><br />
+    < f.text_field :github_id, autofocus: true, autocomplete: "Github ID" >
+  </div> -->
 
   <div class="field">
     <%= f.label :市外局番 %><br />

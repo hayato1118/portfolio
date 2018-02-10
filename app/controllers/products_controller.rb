@@ -22,6 +22,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   def edit
       @product = Product.find(params[:id])
+      @products = Product.find(params[:id])
   end
 
   def update

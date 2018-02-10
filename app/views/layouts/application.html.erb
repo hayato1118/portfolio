@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Code</title>
         <meta charset="utf-8">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
 
 <body class='<%= "#{controller.controller_name}" %>'>
-
 	<header class="navbar navbar-fixed-top navbar-inverse">
 			<nav class="nav navbar-nav navbar-left">
 			</nav>
@@ -20,26 +16,40 @@
 				<ul class="nav navbar-nav navbar-right">
 					<% if user_signed_in? %>
 					<!--ログイン中のヘッダー-->
+						<li class="">
+							<%= link_to "商品一覧", products_path %>
+						</li>
 
-					<li class="">
-					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-					</li>
+						<li class="">
+							<% if user_signed_in? %>
+								<%=link_to "商品投稿", new_product_path %>
+							<% end %>
+						</li>
 
-					<% else %>
-					<!--ログアウト中のヘッダー-->
+						<li class="">
+							<% if user_signed_in? %>
+								<%=link_to "ユーザー詳細", user_path(current_user.id) %>
+							<% end %>
+						</li>
 
-					<li class="">
-					<%= link_to "ログイン", new_user_session_path %>
-					</li>
+						<li class="">
+							<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+						</li>
+
+						<% else %>
+						<!--ログアウト中のヘッダー-->
+						<li class="">
+							<%= link_to "ログイン", new_user_session_path %>
+						</li>
 					<% end %>
 				</ul>
 			</nav>
 	</header>
+<p id="notice"></p>
 
-	  <p id="notice"></p>
+<%= yield %>
 
 
-			<%= yield %>
 
 </body>
 </html>

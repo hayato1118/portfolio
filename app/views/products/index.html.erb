@@ -1,17 +1,11 @@
-<!-- <h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
- -->
 
 <div class="container">
     <div class="row">
-
-    	
-
 <!--上部分-->
+<h1>新着コンテンツ</h1>
 
-    <%=link_to "商品投稿", new_product_path ,class: "btn-sm btn-danger"%>
-  <%=link_to "ユーザー詳細", user_path(current_user.id) ,class: "btn-sm btn-danger"%>
 <!--中央部分-->
+<h1>コンテンツ一覧</h1>
     	<div class="haba">
 			<% @products.each do |product| %>
 		        <div class="col-xs-6 col-sm-4 col-md-3 haba_all">
@@ -41,7 +35,7 @@
 
 <!--下部分-->
 
-		<div class="col-sm-6  panel panel-primary">
+		<div class="col-sm-6  panel panel-default">
 			<div class="panel-heading">
 				USERS RANKING
 			</div>
@@ -57,7 +51,7 @@
 
 
 
-		<div class="col-sm-6 panel panel-primary">
+		<div class="col-sm-6 panel panel-default">
 			<div class="panel-heading">
 				PRODUCTS RANKING
 			</div>

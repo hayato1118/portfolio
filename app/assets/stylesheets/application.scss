@@ -21,7 +21,10 @@
 /*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 
 
-html {height:100%;}
+html {
+	height:100%;
+	}
+
 body {
 	height:100%;
 	margin:0px;
@@ -33,11 +36,10 @@ body {
     	padding-top: 41px
 	}
 
-	.textnew{
-		word-break: normal;
+
+	a {
+		text-decoration: none;
 	}
-
-
 
 /*//ここまで全体に対してのスタイリングCSS
 
@@ -104,12 +106,55 @@ body {
 		.haba_all:hover .mask {
 		     opacity: 1;
 		}
+
+
+		.product_show{
+
+		}
+
+		.show_images{
+	
+		}
+
+		.show_image{
+			width:100%;
+			height:700px;
+		}
+
+
+		.panel{
+			padding: 0px;
+		}
+
 }
 
 /*//ここまでproductに対してのスタイリングCSS
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
-ここから   に対してのスタイリングCSS*/
+ここからusersに対してのスタイリングCSS*/
+
+.users{
 
 
+.panel-body {
+    padding: 0px;
+}
+
+
+.history_image{
+	width:100%;
+	height:250px;
+}
+
+label{
+	display: inline;
+}
+
+.orders_history_title{
+	border-bottom:3px solid #000000;
+	margin-bottom:2%;
+	color:#000000;
+}
+
+}

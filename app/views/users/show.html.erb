@@ -1,20 +1,78 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <head>
+ <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+<h1>ユーザー情報</h1>
 
 
-<h1>購入履歴</h1>
-<% @user.orders.each do |order| %>
-	<h5>注文番号：<%= order.id %></h5>
-		<% order.product_orders.each do |product_order| %>
-			<label>商品名</label>
-				<%= product_order.product.title %>
-			<label>商品画面</label>
-				<%= attachment_image_tag product_order.product, :image, :fill, 100, 100,  fallback: "default.jpg"%>
-			<label>商品購入日</label>
-				<%= product_order.created_at %>
-			<label>値段</label>
-				<%= product_order.product.price %>円
-			<label>商品URL</label>
-				<%= product_order.product.url %>
+
+<h1>USER DATA </h1>
+<%= attachment_image_tag @user, :profile_image, :fill, 250, 250,  fallback: "no_image_top.jpg",class: "img-circle img-thumbnail img-responsive center-block" %>
+
+
+
+ユーザーネーム：
+<%= @user.name %>
+
+電話番号：
+<%= @user.phone_number1 %>
+<%= @user.phone_number2 %>
+<%= @user.phone_number3 %>
+
+
+メールアドレス：
+<%= @user.email %>
+
+郵便番号：
+<%= @user.zip %>
+
+住所：
+<%= @user.state %>
+<%= @user.city %>
+<%= @user.street %>
+
+
+
+<% if @users != current_user.id %>
+
+<div class="container">
+	<div class="orders_history_title">
+		<h1 style="display:inline;">購入履歴</h1>
+		<h3 style="display:inline;"><%= current_user.nickname %>様</h3>
+	</div>
+	<div class="row">
+		<% @user.orders.each do |order| %>
+			<% order.product_orders.each do |product_order| %>
+			<div class="col-lg-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">注文番号：<%= order.id %></h3>
+					</div>
+						<div class="panel-body">
+							<!--商品画像-->
+								<%= attachment_image_tag product_order.product, :image , class: "history_image" %>
+
+							<label style="display:inline;">商品名</label>
+							<h4 style="display:inline;" class="card-title">
+								<%= link_to product_path(product_order.product.id) do %>
+									<%= product_order.product.title %>
+								<% end %>
+							</h4>
+							<P><P><label>販売者</label>
+								<%= product_order.product.user.nickname %></P></P>
+
+							<P><label>商品購入日</label>
+								<%= product_order.created_at.strftime("%Y-%m-%d") %></P>
+
+							<P><label>値段</label>
+								<%= product_order.product.price %>円</P>
+
+							<P><label>商品URL</label>
+								<%= product_order.product.url %></P>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		<% end %>
+	</div>
+</div>
 <% end %>

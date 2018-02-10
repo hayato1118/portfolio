@@ -1,15 +1,31 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
-
-
-<h2>Editing Product</h2>
 <%= form_for (@product) do |f| %>
-<h2>商品タイトル</h2>
-<%=f.text_field :title %>
-<h2>商品説明</h2>
-<%=f.text_area :product_detail %>
-<!-- ジャンルも追加 -->
+<div class="row product_show">
+	<div class="col-md-8 text-center">
+		<%= attachment_image_tag @products, :image  %>
+	</div>
 
-<p><%= f.submit 'Update Product' ,class: "btn btn-primary" %></p>
-<%=link_to "キャンセル", products_path%>
-<% end %>
+	<div class="col-md-4 text-left">
+		<h3 class="my-3">商品タイトル</h3>
+		<ul>
+			<li><%=f.text_field :title %></li>
+		</ul>
+
+		<h3 class="my-3">商品詳細</h3>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+
+		<h3 class="my-3">商品説明</h3>
+		<ul>
+			<li><%=f.text_area :product_detail %></li>
+		</ul>
+
+
+		<%= f.submit 'Update Product' ,class: "btn btn-primary" %>
+		<%=link_to "キャンセル", product_path(@products) ,class: "btn btn-success" %>
+		<% end %>
+	</div>
+</div>

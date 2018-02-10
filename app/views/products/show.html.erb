@@ -1,35 +1,41 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
 
-<h1 class="my-4">商品タイトル
-<small><%= @products.title %></small>
-</h1>
 
-<div class="row">
-	<div class="col-md-8">
-		<%= attachment_image_tag @products, :image , :fill, 750, 500 %>
+<div class="row product_show">
+	<div class="col-md-8 text-center">
+		<%= attachment_image_tag @products, :image  %>
 	</div>
-	<div class="col-md-4">
-		<h3 class="my-3">商品説明</h3>
-		<p><%= @products.product_detail %></p>
+
+	<div class="col-md-4 text-left">
+		<h3 class="my-3">商品タイトル</h3>
+		<ul>
+			<li><%= @products.title %></li>
+		</ul>
+
 		<h3 class="my-3">商品詳細</h3>
 		<ul>
-		<li>販売者：<%= @products.user.name %></li>
-		<li>値段：<%= @products.price %></li>
-		<li>登録日<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
+			<li>販売者：<%= @products.user.nickname %></li>
+			<li>値段：<%= @products.price %></li>
+			<li>登録日<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
 		</ul>
-	</div>
-	<% if @products.user == current_user  %>
-		<%= link_to "Edit", edit_product_path(@products.id), class: "btn-sm btn-success" %>
-	<% end  %>
 
-	<% if @products.user == current_user %>
+
+		<h3 class="my-3">商品説明</h3>
+		<ul>
+			<li><%= @products.product_detail %></li>
+		</ul>
+
+
+		<% if @products.user != current_user  %>
+			<%= link_to "Edit", edit_product_path(@products.id), class: "btn btn-success" %>
+		<% end  %>
+
+		<% if @products.user != current_user %>
 		<!-- < if current_user.admin? > -->
-		<%= link_to "Destroy", product_path(@products), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか?'} %>
-	<% end %>
+			<%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
+		<% end %>
 
-	<% if @products.user != current_user  %>
-		<%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-danger" %>
-	<% end %>
-
+		<% if @products.user == current_user && user_signed_in?  %>
+			<%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
+		<% end %>
+	</div>
 </div>
