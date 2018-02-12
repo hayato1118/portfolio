@@ -1,7 +1,7 @@
 <% current_user.cart.product_carts.each do |product_cart| %>
 <!-- product_carts＝中間テーブル
 current_user.cart＝ログインユーザーのカート -->
-<%= attachment_image_tag product_cart.product, :image, :fill, 100, 100,  fallback: "default.jpg"%>
+<%= attachment_image_tag product_cart.product, :image %>
 <%= product_cart.product.title %>
 <%= product_cart.product.user.name %>
 <%= product_cart.product.price %>

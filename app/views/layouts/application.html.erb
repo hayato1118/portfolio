@@ -5,51 +5,68 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
   </head>
 
 
 <body class='<%= "#{controller.controller_name}" %>'>
-	<header class="navbar navbar-fixed-top navbar-inverse">
-			<nav class="nav navbar-nav navbar-left">
-			</nav>
-			<nav>
-				<ul class="nav navbar-nav navbar-right">
-					<% if user_signed_in? %>
-					<!--ログイン中のヘッダー-->
-						<li class="">
-							<%= link_to "商品一覧", products_path %>
-						</li>
+	<header>
 
-						<li class="">
-							<% if user_signed_in? %>
-								<%=link_to "商品投稿", new_product_path %>
-							<% end %>
-						</li>
 
-						<li class="">
-							<% if user_signed_in? %>
-								<%=link_to "ユーザー詳細", user_path(current_user.id) %>
-							<% end %>
-						</li>
+		<div class="col-xs-2 text_header">
+			<li class="">
+				
+			
+<div id="nav-drawer">
+    <input id="nav-input" type="checkbox" class="nav-unshown">
+    <label id="nav-open" for="nav-input"><span></span></label>
+    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+      <div id="nav-content">ここに中身を入れる</div>
+  </div>
+</li>
+		</div>
 
-						<li class="">
-							<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-						</li>
 
-						<% else %>
-						<!--ログアウト中のヘッダー-->
-						<li class="">
-							<%= link_to "ログイン", new_user_session_path %>
-						</li>
-					<% end %>
-				</ul>
-			</nav>
+		<div class="col-xs-10 text-right text_header">
+			<ul>
+			<% if user_signed_in? %>
+			<!--ログイン中のヘッダー-->
+				<li class="">
+					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+				</li>
+				
+				<li class="">
+				<% if user_signed_in? %>
+						<%=link_to "ユーザー詳細", user_path(current_user.id) %>
+				<% end %>
+				
+				<li class="">
+				<% if user_signed_in? %>
+						<%=link_to "商品投稿", new_product_path %>
+				<% end %>
+				</li>
+				
+				</li>
+				<li class="">
+					<%= link_to "商品一覧", products_path %>
+				</li>
+
+				<% else %>
+				<!--ログアウト中のヘッダー-->
+				<li class="">
+					<%= link_to "ログイン", new_user_session_path %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+			<!-- </nav> -->
 	</header>
+
 <p id="notice"></p>
 
 <%= yield %>
 
-
-
 </body>
 </html>
+

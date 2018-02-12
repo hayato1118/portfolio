@@ -85,13 +85,6 @@ ActiveRecord::Schema.define(version: 20180209071706) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_tags", force: :cascade do |t|
-    t.integer "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "product_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.integer "user_id"
     t.integer "price"
@@ -99,13 +92,6 @@ ActiveRecord::Schema.define(version: 20180209071706) do
     t.string "title"
     t.string "url"
     t.text "product_detail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.integer "product_id"
-    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

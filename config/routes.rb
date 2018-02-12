@@ -10,7 +10,9 @@ registrations: 'users/registrations'
   resources :carts
   resources :products do
     resource :product_carts, only: [:create,:destroy]
+    resource :product_comments, only: [:create, :destroy]
   end
+  
   resources :homes
   get 'homes/question'
   get 'homes/contact'

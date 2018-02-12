@@ -1,41 +1,96 @@
-
-
 <div class="row product_show">
-	<div class="col-md-8 text-center">
-		<%= attachment_image_tag @products, :image  %>
-	</div>
+    	<div class="col-md-8 text-center">
+    		<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
+    	</div>
 
-	<div class="col-md-4 text-left">
-		<h3 class="my-3">商品タイトル</h3>
-		<ul>
-			<li><%= @products.title %></li>
-		</ul>
+    	<div class="col-md-4 text-left">
+    		<h3 class="my-3">商品タイトル</h3>
+    		<ul>
+    			<li><%= @products.title %></li>
+    		</ul>
 
-		<h3 class="my-3">商品詳細</h3>
-		<ul>
-			<li>販売者：<%= @products.user.nickname %></li>
-			<li>値段：<%= @products.price %></li>
-			<li>登録日<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
-		</ul>
+    		<h3 class="my-3">商品詳細</h3>
+    		<ul>
+    			<li>販売者：<%= @products.user.nickname %></li>
+    			<li>値段：<%= @products.price %></li>
+    			<li>登録日<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
+    		</ul>
+
+      <h3 class="my-3">商品タグ</h3>
+        <ul>
+          <% @tags.each do |tag| %>
+          <li><%= tag.tag_name %></li>
+          <% end %>
+        </ul>
+
+    		<h3 class="my-3">商品説明</h3>
+    		<ul>
+    			<li><%= @products.product_detail %></li>
+    		</ul>
 
 
-		<h3 class="my-3">商品説明</h3>
-		<ul>
-			<li><%= @products.product_detail %></li>
-		</ul>
+    		<% if @products.user == current_user  %>
+    			<%= link_to "Edit", edit_product_path(@products.id), class: "btn btn-success" %>
+    		<% end  %>
+
+    		<% if @products.user == current_user %>
+    		<!-- < if current_user.admin? > -->
+    			<%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
+    		<% end %>
+
+    		<% if @products.user == current_user && user_signed_in?  %>
+    			<%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
+    		<% end %>
+    	</div>
+
+     <!--コメント機能-->
+    <div class="col-md-6">
+      <div class="comment-list bt style-2" id="comments">
+        <div class="float-wrapper">
+          <h5 class="comment-count">
+            <%= @products.product_comments.count %>件コメント
+          </h5>
+        </div>
+        <% @product_comments.each do |product_comment| %>
+          <%= attachment_image_tag product_comment.user,:profile_image, :fill, 100, 100, fallback: "no_image.jpg" , class: "img-circle" %>
+          <div class="text-left">名前：<%= product_comment.user.nickname %></div>
+          <div class="text-left">投稿日：<%= product_comment.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="text-left">コメント：<%= product_comment.comment %></div>
+        <% end %>
+        <!--ページング機能-->
+        <div class="text-center">
+          <%= paginate @product_comments, class: "pagenate" %>
+        </div>
+      <hr>
+      </div>
+    </div>
 
 
-		<% if @products.user != current_user  %>
-			<%= link_to "Edit", edit_product_path(@products.id), class: "btn btn-success" %>
-		<% end  %>
 
-		<% if @products.user != current_user %>
-		<!-- < if current_user.admin? > -->
-			<%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
-		<% end %>
-
-		<% if @products.user == current_user && user_signed_in?  %>
-			<%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
-		<% end %>
-	</div>
+    <div class="col-md-6">
+        <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+            <h3 class="section-title left">
+            <span>コメント</span>
+            </h3>
+        </div>
+      <%= form_for [@products, @product_comment] do |f| %>
+          <!--エラーメッセージ表示機能-->
+          <% if flash[:error].present? %>
+            <ul class="errors">
+            <% flash[:error].each do |e| %>
+              <li>
+                <%= e %>
+              </li>
+            <% end %>
+            </ul>
+          <% end %>
+        <div class="submit">
+            <!--コメント送信部分-->
+            <%= f.text_field :comment, class: "form-control",placeholder: "コメントをここに" %>
+            <%= f.submit "送信する", class: "btn btn-primary pull-right" %>
+        </div>
+      <% end %>
+    </div>
+<!--コメント機能-->
 </div>
+

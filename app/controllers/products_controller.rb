@@ -3,14 +3,20 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   def index
   	   @products = Product.page(params[:page]).reverse_order
+       @productc = Product.all
   end
 
   def show
-       @products = Product.find(params[:id])
+      @products = Product.find(params[:id])
+      # binding.pry
+
+      @tags = @products.tags
+      @product_comment = ProductComment.new
+      @product_comments = @products.product_comments.page(params[:page]).reverse_order
   end
 
   def new
-  	   @product=Product.new
+  	   @product = Product.new
   end
 
   def create
@@ -21,7 +27,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
   end
 
   def edit
-      @product = Product.find(params[:id])
       @products = Product.find(params[:id])
   end
 
@@ -39,6 +44,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   private
     def product_params
-      params.require(:product).permit(:user_id, :price, :image, :title, :url, :product_detail)
+      params.require(:product).permit(:user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy])
     end
 end

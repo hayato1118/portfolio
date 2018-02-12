@@ -1,7 +1,7 @@
-<%= form_for (@product) do |f| %>
+<%= form_for (@products) do |f| %>
 <div class="row product_show">
 	<div class="col-md-8 text-center">
-		<%= attachment_image_tag @products, :image  %>
+		<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
 	</div>
 
 	<div class="col-md-4 text-left">

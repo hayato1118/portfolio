@@ -1,8 +1,80 @@
 
+
+
+
 <div class="container">
     <div class="row">
 <!--上部分-->
 <h1>新着コンテンツ</h1>
+
+
+<section class="swiper-container loading">
+  <div class="swiper-wrapper">
+<% @productc.each do |product| %>
+    <div class="swiper-slide">
+    	<%= link_to product_path(@products) do %>
+       <%= attachment_image_tag product, :image , class: "product_image" %>
+		<% end %>
+      <div class="content">
+        <p class="title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7"><%=product.title%></p>
+        <span class="caption" data-swiper-parallax="-20%">カテゴリー</span>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="swiper-button-prev swiper-button-white"></div>
+  <div class="swiper-button-next swiper-button-white"></div>
+</section>
+
+<script>
+var sliderSelector = '.swiper-container',
+    options = {
+      init: false,
+      loop: true,
+      autoplay: true,
+      speed:1000,
+      slidesPerView: 3, // 表示枚数
+      // spaceBetween: 10,
+      centeredSlides : true,
+      effect: 'coverflow', // 'cube', 'fade', 'coverflow',
+      coverflowEffect: {
+        rotate: 50, // Slide rotate in degrees
+        stretch: 0, // Stretch space between slides (in px)
+        depth: 100, // Depth offset in px (slides translate in Z axis)
+        modifier: 1, // Effect multipler
+        slideShadows : true, // Enables slides shadows
+      },
+      grabCursor: true,
+      parallax: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        1023: {
+          slidesPerView: 1,
+          spaceBetween: 0
+        }
+      },
+      // Events
+      on: {
+        imagesReady: function(){
+          this.el.classList.remove('loading');
+        }
+      }
+    };
+var mySwiper = new Swiper(sliderSelector, options);
+
+// Initialize slider
+mySwiper.init();
+</script>
+
+
+
 
 <!--中央部分-->
 <h1>コンテンツ一覧</h1>
@@ -24,7 +96,6 @@
 							 <div class="caption"><%= product.product_detail %></div>
 						</div>
 					<% end %>
-
 		        </div>
 			<% end %>
 	    </div>
@@ -66,3 +137,10 @@
 		</div>
 	</div>
 </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js">
+</script>
+
+
