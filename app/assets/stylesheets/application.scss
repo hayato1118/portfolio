@@ -32,7 +32,6 @@ body {
 	}
 
 
-
     #notice {
     	padding-top: 50px
 	}
@@ -42,27 +41,46 @@ body {
 		text-decoration: none;
 	}
 
-.text_header{
+.text_header-right{
   background-color:#000000;
   height:60px;
 }
 
-  .text_header li{
+.text_header-left{
+  background-color:#000000;
+  height:60px;
+}
+
+  .icon-position{
+    line-height:60px;
+    list-style:none;
+  }
+
+    .text_header-right li{
     float:right;
     list-style:none;
     line-height:60px;
     padding:0px 10px;
-  
   }
 
-    .text_header a{
+    .text_header-left li{
+    list-style:none;
+  }
+
+    .text_header-right a{
     display:block;
     color: #fff;
     text-decoration: none;
   }
 
+  .text_header-left a{
+    color:000000;
+    text-decoration: none;
+  }
 
-/*ドロワーメニュー*/
+
+
+/*ここからがサイドメニュー*/
 #nav-drawer {
   position: relative;
 }
@@ -79,7 +97,6 @@ body {
     height: 22px;
     vertical-align: middle;
 }
-
 
 /*ハンバーガーアイコンをCSSだけで表現*/
 #nav-open span, #nav-open span:before, #nav-open span:after {
@@ -142,8 +159,34 @@ body {
     transform: translateX(0%);/*中身を表示*/
     box-shadow: 6px 0 25px rgba(0,0,0,.15);
 }
+/*ここまでがサイドメニュー*/
+
+/*ここからがサイドメニューの中身のエフェクト*/
+.cp_link {
+position: relative;
+display: inline-block;
+transition: .3s;
+}
+.cp_link::after {
+position: absolute;
+bottom: 0;
+left: 50%;
+content: '';
+width: 0;
+height: 1px;
+background-color: #000000;
+transition: .3s;
+transform: translateX(-50%);
+}
+.cp_link:hover::after {
+width: 90%;
+}
 
 
+.slide_icon{
+  display:block;
+}
+/*ここまでがサイドメニューの中身のエフェクト*/
 
 /*//ここまで全体に対してのスタイリングCSS
 
@@ -178,7 +221,7 @@ body {
 		     height: 10%;
 		}
 
-		.glyphicon{
+		.product_icon{
 		     float: right;
 		     color: #000000;
 		}

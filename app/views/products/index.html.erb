@@ -85,9 +85,13 @@ mySwiper.init();
 		        	</div>
 
 		        	 <div class="haba_text">
-		        	 	<%= product.updated_at.strftime("%Y-%m-%d") %>
-		        	 	<div class="glyphicon glyphicon-eye-open">220K</div>
-				 		<div class="glyphicon glyphicon-heart">100K&nbsp;</div>
+		        	 	   <%= product.updated_at.strftime("%Y-%m-%d") %>
+
+		        	  	<div class="glyphicon glyphicon-eye-open product_icon">
+                    <%= number_with_delimiter($page_views) %>
+                  </div>
+
+                  <div class="glyphicon glyphicon-heart product_icon">100K&nbsp;</div>
 		        	 </div>
 
 		        	 <%= link_to product_path(product.id) do %>
@@ -108,16 +112,20 @@ mySwiper.init();
 
 		<div class="col-sm-6  panel panel-default">
 			<div class="panel-heading">
-				USERS RANKING
+		    <h2>★PV数ランキング</h2>
 			</div>
 		<div class="col-sm-12  user_image panel-body">
 		画像
 		</div>
-		<div class="col-sm-12 user_text panel-body">
-		<p>1</p>
-		<p>2</p>
-		<p>3</p>
-		</div>
+	<!-- 	<div class="col-sm-12 user_text panel-body">
+          <ul>
+            <%# @ranks.each do |rank| %>
+                <li>
+                    <%#= link_to(rank.title, "/products/#{rank.id}") %>
+                </li>
+            <%# end %>
+          </ul>
+		</div> -->
 		</div>
 
 

@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+#カウンティング用
+is_impressionable
+
 has_many :product_carts, :dependent => :destroy
 has_many :product_orders
 has_many :product_comments, dependent: :destroy
@@ -14,4 +17,5 @@ has_many :categories, through: :product_categories
 
 belongs_to :user
 attachment :image
+
 end

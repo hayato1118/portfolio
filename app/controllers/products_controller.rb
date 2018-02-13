@@ -4,15 +4,27 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
   def index
   	   @products = Product.page(params[:page]).reverse_order
        @productc = Product.all
+
+       if $page_view = $page_views
+        $page_views = $page_views +1
+
   end
+end
 
   def show
+     # binding.pry
       @products = Product.find(params[:id])
-      # binding.pry
-
       @tags = @products.tags
       @product_comment = ProductComment.new
       @product_comments = @products.product_comments.page(params[:page]).reverse_order
+      #商品のPVカウンティング
+      # @products = Product.find(params[:id])
+      impressionist(@products, nil, :unique => [:session_hash])
+      $page_views = @products.impressionist_count
+      # #ランキング用
+      # REDIS.zincrby "products/daily/#{Date.today.to_s}", 1, "#{@products.id}"
+      # ids = REDIS.zrevrange "products/dayly/#{Date.today.to_s}", 0, 2
+      # @ranks = Product.where(id: ids)
   end
 
   def new

@@ -11,6 +11,11 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
 gem 'nested_form'
+gem 'impressionist'
+gem 'redis'
+
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record

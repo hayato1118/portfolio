@@ -6,6 +6,14 @@ registrations: 'users/registrations'
 }
 
   resources :users
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+
+
+  resources :relationships, only: [:create, :destroy]
   resources :orders
   resources :carts
   resources :products do
@@ -13,6 +21,7 @@ registrations: 'users/registrations'
     resource :product_comments, only: [:create, :destroy]
   end
   
+
   resources :homes
   get 'homes/question'
   get 'homes/contact'
