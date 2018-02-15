@@ -13,7 +13,7 @@ registrations: 'users/registrations'
   end
 
   get 'users/favorite/:id' => 'users#favorite', as: 'user_favorite'
-
+  get 'users/history/:id' => 'users#history', as: 'user_history'
   resources :relationships, only: [:create, :destroy]
   resources :orders
   resources :carts

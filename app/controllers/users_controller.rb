@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     @favorites = Favorite.where("user_id = ?", @user)
   end
 
+  def history
+    @user = User.find(params[:id])
+  end
+
   private
   def user_params
     params.require(:user).permit(:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)

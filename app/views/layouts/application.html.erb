@@ -70,6 +70,12 @@
 						</div>
 
 						<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
+							<%= link_to user_history_path(current_user.id),:method => :GET do %>
+								<i class="side_list glyphicon glyphicon-user"></i>購入履歴
+							<% end %>
+						</div>
+
+						<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
 							<%= link_to root_path,:method => :GET do %>
 								<i class="side_list glyphicon glyphicon-user"></i>販売中商品
 							<% end %>
