@@ -14,6 +14,10 @@ has_many :product_categories
 has_many :categories, through: :product_categories
 attachment :image
 
+has_many :favorites
+
+
+
   def is_new
     (3.days.ago..Time.current).cover?(Time.parse(self.created_at.to_s))
   end

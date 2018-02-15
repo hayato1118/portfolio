@@ -12,6 +12,7 @@ registrations: 'users/registrations'
     end
   end
 
+  get 'users/favorite/:id' => 'users#favorite', as: 'user_favorite'
 
   resources :relationships, only: [:create, :destroy]
   resources :orders
@@ -19,8 +20,12 @@ registrations: 'users/registrations'
   resources :products do
     resource :product_carts, only: [:create,:destroy]
     resource :product_comments, only: [:create, :destroy]
+    member do #本一覧画面からお気に入り登録をする
+      post "add", to: "favorites#create"
   end
-  
+  end
+  #個人ページからお気に入りを削除する
+  resources :favorites, only: [:destroy]
 
   resources :homes
   get 'homes/question'

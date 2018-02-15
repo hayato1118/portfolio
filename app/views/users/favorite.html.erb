@@ -1,0 +1,19 @@
+<h3>お気に入りの本</h3>
+    <table>
+      <thead>
+          <tr>
+            <th>削除</th>
+            <th>タイトル</th>
+            <th>価格</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @user.products.each_with_index do |product, i| %>
+          <tr>
+            <td><%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete %></td>
+            <td><%= product.title %></td>
+            <td><%= product.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

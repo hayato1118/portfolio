@@ -6,11 +6,12 @@ class User < ApplicationRecord
 
 
 has_many :product_comments, dependent: :destroy
-has_many :products
 has_many :product_goods
 has_many :orders
 has_one :cart
 
+has_many :favorites
+has_many :products, through: :favorites
 
 attachment :image
 attachment :profile_image

@@ -49,11 +49,15 @@
           <%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
         <% end %>
 
+        <% if @products.user != current_user %>
+        <%= link_to "登録", add_product_path(@products.id), method: :post , class: "btn btn-success" %>
+        <% end %>
+
         <% if @products.user != current_user && user_signed_in?  %>
           <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
         <% end %>
 
-        
+
     </div>
 <!--   Aタブ部分    -->
 
