@@ -20,6 +20,11 @@
           <li><%= @products.title %></li>
         </ul>
 
+         <h3 class="my-3">商品販売者</h3>
+        <ul>
+          <li><%= @products.user.nickname %></li>
+        </ul>
+
         <h3 class="my-3">商品詳細</h3>
         <ul>
           <li>販売者：<%= @products.user.nickname %></li>
@@ -32,15 +37,6 @@
           <% @tags.each do |tag| %>
           <li><%= tag.tag_name %></li>
           <% end %>
-        </ul>
-
-        <h3 class="my-3">ページPV数</h3>
-        <ul>
-          <li>
-            <div class="glyphicon glyphicon-eye-open product_icon">
-              <%= number_with_delimiter($page_views) %>
-            </div>
-          </li>
         </ul>
 
 
@@ -74,26 +70,22 @@
 <!--   Cタブ部分    -->
   <div class="tab-pane col-md-12" id="sampleContentC">
          <!--コメント機能-->
-    <div class="col-md-12">
-      <div class="comment-list bt style-2" id="comments">
-        <div class="float-wrapper">
           <h5 class="comment-count">
             <%= @products.product_comments.count %>件コメント
           </h5>
-        </div>
         <% @product_comments.each do |product_comment| %>
-          <%= attachment_image_tag product_comment.user,:profile_image, :fill, 100, 100, fallback: "no_image.jpg" , class: "img-circle" %>
-          <div class="text-left">名前：<%= product_comment.user.nickname %></div>
-          <div class="text-left">投稿日：<%= product_comment.created_at.strftime('%Y/%m/%d') %></div>
-          <div class="text-left">コメント：<%= product_comment.comment %></div>
+         <div>
+          名前：<%= product_comment.user.nickname %>
+          コメント：<%= product_comment.comment %>
+          <%= product_comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
         <% end %>
         <!--ページング機能-->
         <div class="text-center">
           <%= paginate @product_comments, class: "pagenate" %>
         </div>
       <hr>
-      </div>
-    </div>
+
 
 
     <div class="col-md-12">

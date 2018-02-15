@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213115559) do
+ActiveRecord::Schema.define(version: 20180215023558) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180213115559) do
     t.text "product_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "page_count"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -132,8 +133,12 @@ ActiveRecord::Schema.define(version: 20180213115559) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
-# Could not dump table "tags" because of following StandardError
-#   Unknown type 'string' for column 'tag_name'
+  create_table "tags", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "tag_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -156,7 +161,6 @@ ActiveRecord::Schema.define(version: 20180213115559) do
     t.string "first_name_kana"
     t.string "profile_image_id"
     t.string "introduction"
-    t.string "github_id"
     t.string "state"
     t.string "city"
     t.string "street"
@@ -164,6 +168,10 @@ ActiveRecord::Schema.define(version: 20180213115559) do
     t.string "phone_number1"
     t.string "phone_number2"
     t.string "phone_number3"
+    t.string "image_id"
+    t.string "twitter_id"
+    t.string "facebook_id"
+    t.string "instagram_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

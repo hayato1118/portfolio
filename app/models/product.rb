@@ -8,14 +8,14 @@ has_many :product_comments, dependent: :destroy
 has_many :product_goods
 has_many :tags
 accepts_nested_attributes_for :tags, allow_destroy: true
-
+belongs_to :user
 
 has_many :product_categories
 has_many :categories, through: :product_categories
-
-# has_many :categories, dependent: :destroy
-
-belongs_to :user
 attachment :image
+
+  def is_new
+    (3.days.ago..Time.current).cover?(Time.parse(self.created_at.to_s))
+  end
 
 end

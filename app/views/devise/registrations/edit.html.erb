@@ -1,43 +1,67 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+
+
+<div class="container">
+  <div class="row product_show">
+    <div class="orders_history_title">
+      <h1 style="display:inline;">ユーザー編集</h1>
+    </div>
+
+    <div class="col-md-3 text-center">
+      <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+
+        <%= render 'users/follow_form' %>
+        <%= render 'users/stats' ,class: "text-center" %>
+
+      <h3 class="my-3">登録情報</h3>
+      <ul>
+        <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
+        <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
+        <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
+        <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
+        <li class="text-left">メールアドレス:<%= current_user.email %></li>
+        <li class="text-left">郵便番号:<%= current_user.zip %></li>
+        <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
+      </ul>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.submit 'Update User' ,class: "btn btn-primary" %>
+      <%= link_to "Back", user_path(@user),class: "btn btn-success" %>
+      </div>
+
+
+    <div class="col-md-9">
+     <ul>
+         <%= devise_error_messages! %>
+      <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
+      <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
+      <li>ユーザーネーム:<%=f.text_field :nickname %></li>
+      <li>電話番号:<%=f.text_field :phone_number1 %>-<%=f.text_field :phone_number2 %>-<%=f.text_field :phone_number3 %></li>
+      <li>郵便番号:<%=f.text_field :zip %></li>
+      <li>都道府県:<%=f.text_field :state %></li>
+      <li>市町村<%=f.text_field :city %></li>
+      <li>町名以下:<%=f.text_field :street %></li>
+      <li>Twitter ID:<%=f.text_field :twitter_id %></li>
+      <li>Facebook ID:<%=f.text_field :facebook_id %></li>
+      <li>Instagram ID:<%=f.text_field :instagram_id %></li>
+      <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
+      <li>自己紹介:<%=f.text_area :introduction %></li>
+      <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <li>新しいパスワード:<%= f.password_field :password, autocomplete: "off" %> </li>
+      <% if @minimum_password_length %>
+      <% end %>
+      <li>新しいパスワード確認:<%= f.password_field :password_confirmation, autocomplete: "off" %></li>
+      <li>現在のパスワード:<%= f.password_field :current_password, autocomplete: "off" %></li>
+      </ul>
+      </div>
+      <% end %>
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

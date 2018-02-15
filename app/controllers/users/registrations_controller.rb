@@ -48,10 +48,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-      devise_parameter_sanitizer.permit(:sign_up, keys: [ :email, :profile_image_id, :mobile, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:nickname, :github_id,:phone_number1,:phone_number2,:phone_number3,:introduction])
-    end
+
+    # def configure_permitted_parameters
+    #   devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+    #   devise_parameter_sanitizer.permit(:sign_up, keys: [ :email, :profile_image_id, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:phone_number1,:phone_number2,:phone_number3,:introduction, :twitter_id, :facebook_id, :instagram_id])
+    #   devise_parameter_sanitizer.permit(:account_update, keys:[ :email, :profile_image_id, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:phone_number1,:phone_number2,:phone_number3,:introduction, :twitter_id, :facebook_id, :instagram_id])
+    # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -65,8 +67,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    new_user_path
+      new_user_path
   end
+
+   def after_update_path_for(resource)
+      user_path(resource)
+   end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
+
   def index
-     @user = User.find(params[:id])
   end
 
   def show
@@ -21,17 +21,8 @@ class UsersController < ApplicationController
 
 
   def update
-
         @user = User.find(params[:id])
         @user.update(user_params)
-        redirect_to products_path
-      # @user = User.find(params[:id])
-      # @user.attributes = user_params
-      # if @user.save
-      #   redirect_to user_path(@user.id)
-      # else
-      #   render :edit
-      # end
   end
 
 
@@ -47,16 +38,9 @@ class UsersController < ApplicationController
     render 'show_follower'
   end
 
-  
 
   private
   def user_params
-    params.require(:user).permit(:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:github_id,:google_drive_id,:state,:city,:street,:zip)
+    params.require(:user).permit(:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
   end
-
-  # def product_params
-  #         params.require(:product).permit.permit(:user_id, :price, :image, :title, :url, :product_detail,
-  #           categories_attributes: [:id, :product_id, :category_name, :_destroy]
-  #         )
-  # end
 end

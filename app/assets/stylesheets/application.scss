@@ -31,7 +31,9 @@ body {
 	padding:0px;
 	}
 
-
+.header_nav{
+  background-color:#000000;
+}
     #notice {
     	padding-top: 50px
 	}
@@ -43,31 +45,25 @@ body {
 
 .text_header-right{
   background-color:#000000;
-  height:60px;
+  height:200px;
 }
 
 .text_header-left{
   background-color:#000000;
-  height:60px;
+  height:200px;
 }
 
-  .icon-position{
-    line-height:60px;
-    list-style:none;
-  }
-
     .text_header-right li{
-    float:right;
     list-style:none;
-    line-height:60px;
-    padding:0px 10px;
+    line-height:200px;
   }
 
-    .text_header-left li{
+    .text_header-left{
     list-style:none;
+    line-height:200px;
   }
 
-    .text_header-right a{
+      .text_header-right a{
     display:block;
     color: #fff;
     text-decoration: none;
@@ -79,6 +75,12 @@ body {
   }
 
 
+
+  .icon-position{
+    line-height:60px;
+    padding-top:70px;
+    list-style:none;
+  }
 
 /*ここからがサイドメニュー*/
 #nav-drawer {
@@ -183,10 +185,10 @@ width: 90%;
 }
 
 
-.slide_icon{
-  display:block;
-}
 /*ここまでがサイドメニューの中身のエフェクト*/
+
+
+
 
 /*//ここまで全体に対してのスタイリングCSS
 
@@ -211,10 +213,22 @@ width: 90%;
 		     width: 100%;
 		}
 
+
+
 		.haba_image{
+         position: relative;
 		     margin: 0px -10px;
 		     height: 90%;
 		}
+
+    .new_image{
+        position: absolute;
+         left: 0px;
+         top: 10px;
+         width:30%;
+         height:15%;
+         transform: rotate( -45deg );
+    }
 
 		.haba_text{
 		     margin: 0px -10px;

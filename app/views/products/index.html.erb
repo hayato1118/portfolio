@@ -79,16 +79,28 @@ mySwiper.init();
 <!--中央部分-->
 <h1>コンテンツ一覧</h1>
     	<div class="haba">
+
 			<% @products.each do |product| %>
 		        <div class="col-xs-6 col-sm-4 col-md-3 haba_all">
-		        	<div class="haba_image"><%= attachment_image_tag product, :image , class: "product_image" %>
-		        	</div>
+
+
+		        	<div class="haba_image">
+              
+              <%= attachment_image_tag product, :image , class: "product_image" %>
+		        	
+              <% if product.is_new %>
+              <%= image_tag 'm_e_new_201.png',class: "col-xs-6 col-sm-4 col-md-3 new_image" %>
+              <% end %>
+              
+              </div>
+
+
 
 		        	 <div class="haba_text">
 		        	 	   <%= product.updated_at.strftime("%Y-%m-%d") %>
 
 		        	  	<div class="glyphicon glyphicon-eye-open product_icon">
-                    <%= number_with_delimiter($page_views) %>
+                    <%= product.page_count %>views
                   </div>
 
                   <div class="glyphicon glyphicon-heart product_icon">100K&nbsp;</div>
