@@ -1,0 +1,39 @@
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<div class="container">
+	<div class="row product_show">
+		<h1 style="display:inline;">管理者用/ユーザー情報</h1>
+
+		<div class="col-md-3 text-center">
+			<%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+		</div>
+
+		<div class="col-md-9">
+			<h3 class="my-3">登録情報</h3>
+			<ul>
+				<li class="text-left">名前：<%= @user.first_name %><%= @user.last_name %></li>
+				<li class="text-left">ふりがな：<%= @user.first_name_kana %><%= @user.last_name_kana %></li>
+				<li class="text-left">ユーザーネーム：<%= @user.nickname %></li>
+				<li class="text-left">電話番号：<%= @user.phone_number1 %><%= @user.phone_number2 %><%= @user.phone_number3 %></li>
+				<li class="text-left">メールアドレス：<%= @user.email %></li>
+				<li class="text-left">郵便番号：<%= @user.zip %></li>
+				<li class="text-left">住所：<%= @user.state %><%= @user.city %><%= @user.street %></li>
+				<li class="text-left">最終ログイン:<%= @user.current_sign_in_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
+			</ul>
+			<%= link_to "編集", edit_admins_user_path(@user), class: "btn btn-success" %>
+			<%= link_to "削除", admins_user_path(@user), method: :delete, class: "btn btn-danger", data: { confirm: '削除します。'} %>
+		</div>
+	</div>
+</div>
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->
+<!-- 管理者用show -->

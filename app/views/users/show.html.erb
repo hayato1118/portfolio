@@ -19,14 +19,14 @@
 	          <li class="text-left">住所：<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
 			  <li class="text-left">最終ログイン:<%= current_user.current_sign_in_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 	        </ul>
-			<% if @user == current_user %>
-			<%= link_to "編集", edit_user_registration_path, class: "btn btn-success" %>
-			<% end %>
+			<!-- <%# if @user == current_user %> -->
+			<%= link_to "編集", edit_user_path, class: "btn btn-success" %>
+			<!-- <%# end %> -->
 
-			<% if @user == current_user %>
+			<!-- <%# if @user == current_user %> -->
 			<!-- < if current_user.admin? > -->
 			<%= link_to "退会", user_path(@user), method: :delete, class: "btn btn-danger", data: { confirm: '退会時はユーザー情報は論理削除されて当サイトで1ヶ月の保管をさせていただいた後に完全削除をします。　承諾できますか?'} %>
-			<% end %>
+			<!-- <%# end %> -->
    		 </div>
 
 	   	<div class="col-md-9">

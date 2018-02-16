@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+<body class='<%= "#{controller.controller_name}" %>'>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <span class="glyphicon glyphicon-book">Bookers</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <!--ログイン中のヘッダー-->
+            <li>
+              <%= link_to admins_users_path, :method => :GET do %>
+              <i class="glyphicon glyphicon-user"></i>Users
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+
+            <li>
+              <%= link_to admins_products_path, :method => :GET do %>
+              <i class="glyphicon glyphicon-user"></i>Products
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+              <i class="glyphicon glyphicon-log-out"></i>Logout
+              <% end %>
+            </li>
+            <% else %>
+            <!--ログアウト中のヘッダー-->
+            <li>
+              <%= link_to new_user_session_path, :method => :GET do %>
+              <i class="glyphicon glyphicon-log-in"></i>Login
+              <% end %>
+            </li>
+
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+<p id="notice"></p>
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="footer text-center">
+            <p>管理者用</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

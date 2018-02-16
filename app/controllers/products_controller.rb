@@ -20,7 +20,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
       # showページで代入
       @products.update(page_count: @products.impressionist_count)
-      
+
 
          # #ランキング用
       # REDIS.zincrby "products/daily/#{Date.today.to_s}", 1, "#{@products.id}"
