@@ -11,6 +11,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
      # binding.pry
       @products = Product.find(params[:id])
       @tags = @products.tags
+      @categories = @products.categories
       @product_comment = ProductComment.new
       @product_comments = @products.product_comments.page(params[:page]).reverse_order
       #商品のPVカウンティング
@@ -60,6 +61,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   private
     def product_params
-      params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy])
+      params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
     end
 end

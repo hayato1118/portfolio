@@ -12,10 +12,11 @@ belongs_to :user
 
 has_many :product_categories
 has_many :categories, through: :product_categories
+
+
 attachment :image
 
-has_many :favorites
-
+has_many :product_operatingsystems
 
 
   def is_new

@@ -1,0 +1,2 @@
+class ProductOperatingsystemsController < ApplicationController
+end

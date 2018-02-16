@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215040947) do
+ActiveRecord::Schema.define(version: 20180216031957) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
@@ -67,6 +67,19 @@ ActiveRecord::Schema.define(version: 20180215040947) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "operatingsystem_versions", force: :cascade do |t|
+    t.integer "operatingsystem_id"
+    t.integer "os_version_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "operatingsystems", force: :cascade do |t|
+    t.string "operatingsystem_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.string "phone_number1"
@@ -77,6 +90,12 @@ ActiveRecord::Schema.define(version: 20180215040947) do
     t.string "first_name"
     t.string "first_name_kana"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "os_versions", force: :cascade do |t|
+    t.string "version_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -110,6 +129,13 @@ ActiveRecord::Schema.define(version: 20180215040947) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_operatingsystems", force: :cascade do |t|
+    t.integer "operatingsystem_version_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_orders", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
@@ -129,7 +155,7 @@ ActiveRecord::Schema.define(version: 20180215040947) do
     t.text "product_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "page_count"
+    t.integer "page_count"
   end
 
   create_table "relationships", force: :cascade do |t|

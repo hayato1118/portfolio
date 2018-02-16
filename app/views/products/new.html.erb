@@ -27,6 +27,14 @@
     <%= f.link_to_add "フォーム追加", :tags , class: "btn btn btn-primary" %>
       </div>
 
+
+      <div class="field row">
+    <%= f.label :category %><br />
+    <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>
+
     <div class="field row">
       <label>商品説明</label>
       <%= f.text_area :product_detail, class: " col-sm-12" %>
