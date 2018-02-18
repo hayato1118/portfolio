@@ -1,43 +1,7 @@
 <head>
 
   <style type="text/css">
-/*    .slider {
-        width: 100%;
-        height:250px;
-        margin: 100px auto;
-    }*/
 
-    .slick-slide {
-      margin: 0px 5px;
-    }
-
-    .slick-slide img {
-      width: 100%;
-      height: 250px;
-    }
-/*
-    .top-image{
-        width: 100%;
-      height: 200px;
-    }*/
-    .slick-prev:before,
-    .slick-next:before {
-      color: black;
-    }
-
-
-    .slick-slide {
-      transition: all ease-in-out .3s;
-      opacity: .2;
-    }
-    
-    .slick-active {
-      opacity: .5;
-    }
-
-    .slick-current {
-      opacity: 1;
-    }
   </style>
 
 </head>
@@ -63,7 +27,6 @@
   <script type="text/javascript">
     $(document).on('ready', function() {
       $(".center").slick({
-        dots: true,
         infinite: true,
         centerMode: true,
         slidesToScroll: 1,
@@ -3113,7 +3076,7 @@
             </div>
 
             <div class="haba_text">
-                <div class="col-xs12 text-center">
+                <div class="col-xs12">
                     タイトル：<%= product.title %>
                 </div>
                 <div class="col-xs12">

@@ -12,7 +12,7 @@ has_one :cart
 
 has_many :favorites
 has_many :products, through: :favorites
-
+# has_many :products
 attachment :image
 attachment :profile_image
 

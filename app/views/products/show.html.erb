@@ -1,3 +1,11 @@
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4">Product Name :
+        <small><%= @products.title %></small>
+      </h1>
+<hr>
 <div class="row product_show">
     	<div class="col-md-8 text-center">
     		<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
@@ -14,12 +22,7 @@
 <!-- 内容 -->
 <div class="tab-content ">
 <!--   Aタブ部分    -->
-  <div class="tab-pane  active col-md-12" id="sampleContentA">
-         <h3 class="my-3">商品タイトル</h3>
-        <ul>
-          <li><%= @products.title %></li>
-        </ul>
-
+  <div class="tab-pane  active col-md-12 box_scrollbar" id="sampleContentA">
          <h3 class="my-3">商品販売者</h3>
         <ul>
           <li><%= @products.user.nickname %></li>
@@ -46,32 +49,12 @@
           <li><%= tag.tag_name %></li>
           <% end %>
         </ul>
-
-
-        <% if @products.user == current_user  %>
-          <%= link_to "Edit", edit_product_path(@products.id), class: "btn btn-success" %>
-        <% end  %>
-
-        <% if @products.user == current_user %>
-        <!-- < if current_user.admin? > -->
-          <%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
-        <% end %>
-
-        <% if @products.user == current_user %>
-        <%= link_to "登録", add_product_path(@products.id), method: :post , class: "btn btn-success" %>
-        <% end %>
-
-        <% if @products.user == current_user && user_signed_in?  %>
-          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
-        <% end %>
-
-
     </div>
 <!--   Aタブ部分    -->
 
 
 <!--   Bタブ部分    -->
-  <div class="tab-pane col-md-12" id="sampleContentB">
+  <div class="tab-pane col-md-12 box_scrollbar" id="sampleContentB">
        <h3 class="my-3">商品説明</h3>
         <ul>
           <li><%= @products.product_detail %></li>
@@ -80,7 +63,7 @@
 <!--   Bタブ部分    -->
 
 <!--   Cタブ部分    -->
-  <div class="tab-pane col-md-12" id="sampleContentC">
+  <div class="tab-pane col-md-12 box_scrollbar" id="sampleContentC">
          <!--コメント機能-->
           <hr>
         <% @product_comments.each do |product_comment| %>
@@ -94,7 +77,6 @@
         <div class="text-center">
           <%= paginate @product_comments, class: "pagenate" %>
         </div>
-      <hr>
     <div class="col-md-12">
         <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
         </div>
@@ -109,6 +91,8 @@
             <% end %>
             </ul>
           <% end %>
+
+
         <div class="submit">
             <!--コメント送信部分-->
             <%= f.text_field :comment, class: "form-control",placeholder: "コメントをここに" %>
@@ -122,6 +106,24 @@
 <!--コメント機能-->
   </div>
 <!--   Cタブ部分    -->
+        <% if @products.user == current_user  %>
+          <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-success" %>
+        <% end  %>
+
+        <% if @products.user == current_user %>
+        <!-- < if current_user.admin? > -->
+          <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
+        <% end %>
+
+        <% if @products.user == current_user %>
+        <%= link_to "お気に入り", add_product_path(@products.id), method: :post , class: "btn btn-success" %>
+        <% end %>
+
+        <% if @products.user == current_user && user_signed_in?  %>
+          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
+        <% end %>
+
+
 </div>
 </div>
 </div>

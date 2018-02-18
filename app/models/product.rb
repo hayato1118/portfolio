@@ -9,13 +9,9 @@ has_many :product_goods
 has_many :tags
 accepts_nested_attributes_for :tags, allow_destroy: true
 belongs_to :user
-
 has_many :product_categories
 has_many :categories, through: :product_categories
-
-
 attachment :image
-
 has_many :product_operatingsystems
 
 

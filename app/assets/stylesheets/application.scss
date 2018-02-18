@@ -201,29 +201,30 @@ width: 90%;
 
 .products{
 
- background-color: #FFF;
+    background-color: #FFF;
 
 
-    .box_srcollbar {
+    .box_scrollbar {
         overflow:auto;
-        height:200px;
-        
+        height:450px;
     }
 
-
-
-    .admin_box_srcollbar {
+    .admin_box_scrollbar {
         overflow:auto;
         height:400px;
-        
+      }
+
+    .tag_box_scrollbar {
+        overflow:auto;
+        height:200px;
+      }
+
+    .edit_comment_scrollbar{
+       overflow:auto;
+       height:300px;
     }
 
 
-    .product_text{
-      width:120%;
-      height:400px;
-
-    }
 		.haba{
 		     height: 700px;
 		     z-index: 1;
@@ -306,144 +307,48 @@ width: 90%;
 		}
 
 
-		/*カルーセル用*/
-		%transition_all_03s {
-  transition:all .3s ease;
-}
 
+/*スライダー*/
+/*
+ .slider {
+        width: 100%;
+        height:250px;
+        margin: 100px auto;
+    }*/
 
-%backface_visibility_hidden{
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-}
-
-
-
-.swiper-container {
-  width: 100%;
-  height: 28vw;
-  transition:opacity .6s ease;
-  &.swiper-container-coverflow{
-    padding-top:2%;
-  }
-
-  &.loading{
-    opacity:0;
-    visibility:hidden;
-  }
-
-  &:hover{
-    .swiper-button-prev,
-    .swiper-button-next{
-      transform:translateX(0);
-      opacity:1;
-      visibility:visible;
+    .slick-slide {
+      margin: 0px 5px;
     }
-  }
-}
 
-.swiper-wrapper{
-
-}
-.swiper-slide{
-  background-position:center;
-  background-size:cover;
-  .slide-inner{
-
-  }
-  .entity-img{
-    display:none;
-  }
-  .content{
-    position:absolute;
-    top:40%;
-    left:0;
-    width:50%;
-    padding-left:5%;
-    color:#fff;
-    .title{
-      font-size:2.6em;
-      font-weight:bold;
-      margin-bottom:30px;
+    .slick-slide img {
+      width: 100%;
+      height: 250px;
     }
-    .caption{
-      display:block;
-      font-size:13px;
-      line-height:1.4;
+/*
+    .top-image{
+        width: 100%;
+      height: 200px;
+    }*/
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
     }
-  }
-}
-[class^="swiper-button-"]{
-  width:44px;
-  opacity:0;
-  visibility:hidden;
-  @extend %transition_all_03s;
-}
-.swiper-button-prev{
-  transform:translateX(50px);
-}
-.swiper-button-next{
-  transform:translateX(-50px);
-}
-.swiper-container-horizontal{
-  >.swiper-pagination-bullets{
-    .swiper-pagination-bullet{
-      margin:0 9px;
-      position:relative;
-      width:12px;
-      height:12px;
-      background-color:#fff;
-      opacity:.4;
-      @extend %transition_all_03s;
-      &::before{
-        content:'';
-        position:absolute;
-        top:50%;
-        left:50%;
-        width:18px;
-        height:18px;
-        transform:translate(-50%, -50%);
-        border:0px solid #fff;
-        border-radius:50%;
-        @extend %transition_all_03s;
-      }
-      &:hover,
-      &.swiper-pagination-bullet-active{
-        opacity:1;
-      }
-      &.swiper-pagination-bullet-active{
-        &::before{
-          border-width:1px;
-        }
-      }
-    }
-  }
-}
 
-// Mediaqueries
-@media(max-width:1180px){
-  .swiper-slide{
-    .content{
-      .title{
-        font-size:25px;
-      }
-      .caption{
-        font-size:12px;
-      }
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
     }
-  }
-}
-@media(max-width:1023px){
-  .swiper-container {
-    height:40vw;
-    &.swiper-container-coverflow{
-      padding-top:0;
+    
+    .slick-active {
+      opacity: .5;
     }
-  }
-}
+
+    .slick-current {
+      opacity: 1;
+    }
 
 }
-
 /*//ここまでproductに対してのスタイリングCSS
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

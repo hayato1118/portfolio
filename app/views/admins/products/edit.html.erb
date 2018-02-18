@@ -7,12 +7,15 @@
 <!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
 <!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
 
-<div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
-<div class="col-md-12"> 
-    <h1 style="display:inline;">管理者用/商品編集</h1>
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4">管理者用/商品編集
+        <small>Secondary Text</small>
+      </h1>
     <hr>
-</div>
+
     <%= nested_form_for @products , url: admins_product_path , html: {method: "get"} do |f| %>
         <div class="row product_show">
            
@@ -53,15 +56,18 @@
                     <div class="tab-pane col-md-12" id="sampleContentB">
                         <hr>
                         <h3 class="my-3">商品説明</h3>
-                        <div class="admin_box_srcollbar panel panel-default">
+                        <div class="admin_box_scrollbar panel panel-default">
                             <%=f.text_area :product_detail ,class: "product_text col-md-12" %>
                     </div>
                 </div>
                     <!--   Bタブ部分    -->
+
+
+                    <!--   Cタブ部分    -->
                     <div class="tab-pane col-md-12" id="sampleContentC">
                      <hr>
                         <h3 class="my-3">商品タグ</h3>
-                        <div class="admin_box_srcollbar panel panel-default">
+                        <div class="admin_box_scrollbar panel panel-default">
                             <%= f.fields_for :tags do |tag_form| %>
                                 <%= tag_form.text_field :tag_name %>
                                 <%= tag_form.link_to_remove "フォーム削除" , class: "btn btn btn-danger" %>
@@ -69,6 +75,8 @@
                             <%= f.link_to_add "フォーム追加", :tags , class: "btn btn btn-primary" %>
                         </div>
                     </div>
+                     <!--   Cタブ部分    -->
+                     
                 </div>
                  <%= f.submit 'Update Product' ,class: "btn btn-primary" %>
                 <%= link_to "Back", admins_product_path(@products),class: "btn btn-success" %>

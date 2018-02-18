@@ -23,6 +23,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       impressionist(@products, nil, :unique => [:session_hash])
       # showページで代入
       @products.update(page_count: @products.impressionist_count)
+       render :layout => 'user.show.application'
   end
 
 
@@ -56,6 +57,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   private
     def product_params
-      params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
+      params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail,
+        :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
     end
 end

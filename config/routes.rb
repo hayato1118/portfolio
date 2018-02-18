@@ -27,6 +27,8 @@ end
 
   get 'users/favorite/:id' => 'users#favorite', as: 'user_favorite'
   get 'users/history/:id' => 'users#history', as: 'user_history'
+  get 'users/sale/:id' => 'users#sale', as: 'user_sale'
+
   resources :relationships, only: [:create, :destroy]
   resources :orders
   resources :carts

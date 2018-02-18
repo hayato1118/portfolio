@@ -8,17 +8,17 @@ def create
     if @favorite.save
       #保存に成功した場合、本一覧画面に戻る
       redirect_to products_path
-    else
+    # else
     	# logger.info(@favorite.errors.full_messages)
     end
   end
 
   #お気に入り削除用アクション
   def destroy
-    @favorite = Favorite.find(params[:id])
-    if @favorite.destroy
-      #削除に成功した場合、ログインしているユーザの詳細画面に戻る
-      redirect_to user_path(current_user.id)
+      @favorite = Favorite.find(params[:id])
+      if @favorite.destroy
+        #削除に成功した場合、ログインしているユーザの詳細画面に戻る
+        redirect_to user_path(current_user.id)
+    end
   end
-end
 end

@@ -6,9 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Category.create(category_name: 'Ruby on Rails 4.1')
+Category.create(category_name: 'Ruby on Rails 4.2')
+Category.create(category_name: 'Ruby on Rails 5.0')
+Category.create(category_name: 'Ruby on Rails 5.1')
+Category.create(category_name: 'PHP 7.0')
+Category.create(category_name: 'PHP 7.1')
+Category.create(category_name: 'PHP 7.2')
+Category.create(category_name: 'Python 2')
+Category.create(category_name: 'Python 3')
+Category.create(category_name: 'HTML&CSS')
+Category.create(category_name: 'jQuery')
+Category.create(category_name: 'Java')
+Category.create(category_name: 'JavaScript')
 
-Operatingsystem.create(operatingsystem_name: 'Windows')
-Operatingsystem.create(operatingsystem_name: 'Mac')
 
 OsVersion.create(version_number: 'XP')
 OsVersion.create(version_number: 'Vista')
