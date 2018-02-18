@@ -2,9 +2,13 @@ class ProductsController < ApplicationController
 before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   def index
-  	   @products = Product.page(params[:page]).reverse_order
-       @productc = Product.all
-       
+       #検索機能で定義済み
+       # @products = Product.all.reverse_order
+       #検索機能
+       @products = Product.search(params[:search]).reverse_order
+       @product_paginate = Product.page(params[:page]).reverse_order
+       # binding.pry
+
   end
 
   def show
@@ -17,15 +21,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       #商品のPVカウンティング
       # @products = Product.find(params[:id])
       impressionist(@products, nil, :unique => [:session_hash])
-
       # showページで代入
       @products.update(page_count: @products.impressionist_count)
-
-
-         # #ランキング用
-      # REDIS.zincrby "products/daily/#{Date.today.to_s}", 1, "#{@products.id}"
-      # ids = REDIS.zrevrange "products/dayly/#{Date.today.to_s}", 0, 2
-      # @ranks = Product.where(id: ids)
   end
 
 
@@ -55,8 +52,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
         @product.destroy
         redirect_to products_path
   end
-
-
 
 
   private

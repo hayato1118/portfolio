@@ -1,10 +1,11 @@
 <div class="container">
-	<div class="row product_show">
-		<div class="orders_history_title">
+   <div class="col-md-12"> 
 		<h1 style="display:inline;">ユーザー情報</h1>
-		</div>
-
-    	<div class="col-md-3 text-center">
+	    <hr>
+    </div>
+	
+	<div class="row product_show">
+		<div class="col-md-3 text-center">
 	    	<%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
 	    	<%= render 'follow_form' %>
 	　　　   <%= render 'stats' ,class: "text-center" %>

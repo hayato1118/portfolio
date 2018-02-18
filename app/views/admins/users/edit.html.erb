@@ -1,58 +1,65 @@
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+
 <div class="container">
-  <div class="row product_show">
-    <div class="orders_history_title">
-      <h1 style="display:inline;">管理者用/ユーザー編集</h1>
+        <div class="col-md-12"> 
+　    <h1 style="display:inline;">管理者用/ユーザー編集</h1>
+    <hr>
     </div>
+    <div class="row product_show">
+        <div class="col-md-3 text-center">
+            <%= attachment_image_tag @users, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
 
-    <div class="col-md-3 text-center">
-      <%= attachment_image_tag @users, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+            <h3 class="my-3">登録情報</h3>
+            <ul>
+                <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
+                <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
+                <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
+                <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
+                <li class="text-left">メールアドレス:<%= current_user.email %></li>
+                <li class="text-left">郵便番号:<%= current_user.zip %></li>
+                <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
+            </ul>
+        </div>
 
-      <h3 class="my-3">登録情報</h3>
-      <ul>
-        <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
-        <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
-        <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
-        <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
-        <li class="text-left">メールアドレス:<%= current_user.email %></li>
-        <li class="text-left">郵便番号:<%= current_user.zip %></li>
-        <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
-      </ul>
+
+        <div class="col-md-9">
+            <ul>
+                <%= form_for @users, url: admins_user_path , html: {method: "get"} do |f| %>
+                    <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
+                    <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
+                    <li>ユーザーネーム:<%=f.text_field :nickname %></li>
+                    <li>電話番号:<%=f.text_field :phone_number1 %>-<%=f.text_field :phone_number2 %>-<%=f.text_field :phone_number3 %></li>
+                    <li>郵便番号:<%=f.text_field :zip %></li>
+                    <li>都道府県:<%=f.text_field :state %></li>
+                    <li>市町村<%=f.text_field :city %></li>
+                    <li>町名以下:<%=f.text_field :street %></li>
+                    <li>Twitter ID:<%=f.text_field :twitter_id %></li>
+                    <li>Facebook ID:<%=f.text_field :facebook_id %></li>
+                    <li>Instagram ID:<%=f.text_field :instagram_id %></li>
+                    <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
+                    <li>自己紹介:<%=f.text_area :introduction %></li>
+                    <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
+                    <%= f.submit 'Update User' ,class: "btn btn-primary" %>
+                    <%= link_to "Back", admins_user_path(@users),class: "btn btn-success" %>
+                <% end %>
+            </ul>
+        </div>
     </div>
-
-
-    <div class="col-md-9">
-     <ul>
-      <%= form_for @users, url: admins_user_path , html: {method: "put"} do |f| %>
-      <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
-      <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
-      <li>ユーザーネーム:<%=f.text_field :nickname %></li>
-      <li>電話番号:<%=f.text_field :phone_number1 %>-<%=f.text_field :phone_number2 %>-<%=f.text_field :phone_number3 %></li>
-      <li>郵便番号:<%=f.text_field :zip %></li>
-      <li>都道府県:<%=f.text_field :state %></li>
-      <li>市町村<%=f.text_field :city %></li>
-      <li>町名以下:<%=f.text_field :street %></li>
-      <li>Twitter ID:<%=f.text_field :twitter_id %></li>
-      <li>Facebook ID:<%=f.text_field :facebook_id %></li>
-      <li>Instagram ID:<%=f.text_field :instagram_id %></li>
-      <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
-      <li>自己紹介:<%=f.text_area :introduction %></li>
-      <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
-        <%= f.submit 'Update User' ,class: "btn btn-primary" %>
-        <%= link_to "Back", admins_user_path(@users),class: "btn btn-success" %>
-      <% end %>
-    </ul>
-    </div>
-  </div>
 </div>
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
-<!-- 管理者用edit -->
+
+
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->

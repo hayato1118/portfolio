@@ -12,7 +12,26 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <span class="glyphicon glyphicon-book">Bookers</span>
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <%= link_to admins_users_path do %>
+              <i class="glyphicon glyphicon-home"></i>管理ページ
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+            <li>
+              <%= link_to users_path do %>
+              <i class="glyphicon glyphicon-user"></i>Users
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+            <li>
+              <%= link_to products_path do %>
+              <i class="glyphicon glyphicon-folder-open"></i>Products
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+          </ul>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -20,14 +39,14 @@
             <!--ログイン中のヘッダー-->
             <li>
               <%= link_to admins_users_path, :method => :GET do %>
-              <i class="glyphicon glyphicon-user"></i>Users
+              <i class="glyphicon glyphicon-user"></i>admin/Users
               <% end %>
               <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
 
             <li>
               <%= link_to admins_products_path, :method => :GET do %>
-              <i class="glyphicon glyphicon-user"></i>Products
+              <i class="glyphicon glyphicon-folder-open"></i>admin/Products
               <% end %>
               <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>

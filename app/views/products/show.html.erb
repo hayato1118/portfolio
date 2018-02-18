@@ -48,20 +48,20 @@
         </ul>
 
 
-        <% if @products.user != current_user  %>
+        <% if @products.user == current_user  %>
           <%= link_to "Edit", edit_product_path(@products.id), class: "btn btn-success" %>
         <% end  %>
 
-        <% if @products.user != current_user %>
+        <% if @products.user == current_user %>
         <!-- < if current_user.admin? > -->
           <%= link_to "Destroy", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
         <% end %>
 
-        <% if @products.user != current_user %>
+        <% if @products.user == current_user %>
         <%= link_to "登録", add_product_path(@products.id), method: :post , class: "btn btn-success" %>
         <% end %>
 
-        <% if @products.user != current_user && user_signed_in?  %>
+        <% if @products.user == current_user && user_signed_in?  %>
           <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
         <% end %>
 
@@ -82,9 +82,7 @@
 <!--   Cタブ部分    -->
   <div class="tab-pane col-md-12" id="sampleContentC">
          <!--コメント機能-->
-          <h5 class="comment-count">
-            <%= @products.product_comments.count %>件コメント
-          </h5>
+          <hr>
         <% @product_comments.each do |product_comment| %>
          <div>
           名前：<%= product_comment.user.nickname %>
@@ -97,14 +95,8 @@
           <%= paginate @product_comments, class: "pagenate" %>
         </div>
       <hr>
-
-
-
     <div class="col-md-12">
         <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-            <h3 class="section-title left">
-            <span>コメント</span>
-            </h3>
         </div>
       <%= form_for [@products, @product_comment] do |f| %>
           <!--エラーメッセージ表示機能-->
@@ -121,6 +113,9 @@
             <!--コメント送信部分-->
             <%= f.text_field :comment, class: "form-control",placeholder: "コメントをここに" %>
             <%= f.submit "送信する", class: "btn btn-primary pull-right" %>
+                    <h5 class="comment-count">
+            <%= @products.product_comments.count %>件コメント
+          </h5>
         </div>
       <% end %>
     </div>

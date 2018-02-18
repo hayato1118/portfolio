@@ -1,0 +1,49 @@
+
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+
+<div class="container">
+	<div class="row">
+		<h1>管理者用/商品一覧</h1>
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<td>販売者</td>
+					<td>ユーザー名</td>
+					<td>商品名</td>
+					<td>値段</td>
+					<td>URL</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<% @products.each do |product| %>
+					<tr>
+						<td><%= product.user.last_name %><%= product.user.first_name %></td>
+						<td><%= product.user.nickname %></td>
+						<td><%= product.title %></td>
+						<td><%= product.price %></td>
+						<td><%= product.url %></td>
+						<td><%= link_to "詳細", admins_product_path(product.id), class: "btn btn-success" %></td>
+						<td><%= link_to "削除", admins_product_path(product.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-sm-12 text-center">
+		<%= paginate @product_paginate, class: "pagenate" %>
+	</div>
+</div>
+
+
+
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
+<!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->

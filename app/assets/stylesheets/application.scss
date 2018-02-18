@@ -43,24 +43,27 @@ body {
 		text-decoration: none;
 	}
 
+ul {
+  list-style:none;
+}
+
 .text_header-right{
   background-color:#000000;
-  height:200px;
+  height:150px;
 }
 
 .text_header-left{
   background-color:#000000;
-  height:200px;
+  height:150px;
 }
 
     .text_header-right li{
     list-style:none;
-    line-height:200px;
+    line-height:150px;
   }
 
     .text_header-left{
     list-style:none;
-    line-height:200px;
   }
 
       .text_header-right a{
@@ -78,7 +81,7 @@ body {
 
   .icon-position{
     line-height:60px;
-    padding-top:70px;
+    padding-top:45px;
     list-style:none;
   }
 
@@ -197,15 +200,38 @@ width: 90%;
 ここからproductsに対してのスタイリングCSS*/
 
 .products{
+
  background-color: #FFF;
 
+
+    .box_srcollbar {
+        overflow:auto;
+        height:200px;
+        
+    }
+
+
+
+    .admin_box_srcollbar {
+        overflow:auto;
+        height:400px;
+        
+    }
+
+
+    .product_text{
+      width:120%;
+      height:400px;
+
+    }
 		.haba{
-		     height: 600px;
+		     height: 700px;
 		     z-index: 1;
 		}
 
 		.haba_all{
-		     height: 33%;
+		      height: 30%;
+    margin-bottom: 20px;
 		}
 
 		.product_image{
@@ -232,7 +258,7 @@ width: 90%;
 
 		.haba_text{
 		     margin: 0px -10px;
-		     height: 10%;
+		     height: 20%;
 		}
 
 		.product_icon{
@@ -439,12 +465,6 @@ width: 90%;
 
 label{
 	display: inline;
-}
-
-.orders_history_title{
-	border-bottom:3px solid #000000;
-	margin-bottom:2%;
-	color:#000000;
 }
 
 }

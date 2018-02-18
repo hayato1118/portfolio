@@ -1,0 +1,90 @@
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+
+<div class="container">
+
+<div class="col-md-12"> 
+    <h1 style="display:inline;">管理者用/商品編集</h1>
+    <hr>
+</div>
+    <%= nested_form_for @products , url: admins_product_path , html: {method: "get"} do |f| %>
+        <div class="row product_show">
+           
+
+            <div class="col-md-8 text-center">
+                <%= attachment_image_tag @products, :image ,class: "product_show_image" %>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#sampleContentA" data-toggle="tab">商品詳細</a></li>
+                    <li><a href="#sampleContentB" data-toggle="tab">商品説明</a></li>
+                    <li><a href="#sampleContentC" data-toggle="tab">商品タグ</a></li>
+                </ul>
+
+                <!-- 内容 -->
+                <div class="tab-content ">
+                    <!--   Aタブ部分    -->
+                    <div class="tab-pane  active col-md-12" id="sampleContentA">
+                        <ul>
+                             <hr>
+                            <li>商品名:<%=f.text_field :title %></li>
+                            <li>値段:<%=f.text_field :price %></li>
+                            <li>商品URL:<%=f.text_field :url %></li>
+                            <li>ページ訪問数:<%=f.text_field :page_count %></li>
+                            <li>商品画像:<%=f.file_field :image %></li>
+                            <hr>
+                            <h3 class="my-3">商品カテゴリー</h3>
+                            <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name) do |b| %>
+                                <%= b.label { b.check_box + b.text } %>
+                            <% end %>
+                            <hr>
+                        </ul>
+                  </div>
+                    <!--   Aタブ部分    -->
+
+
+                    <!--   Bタブ部分    -->
+                    <div class="tab-pane col-md-12" id="sampleContentB">
+                        <hr>
+                        <h3 class="my-3">商品説明</h3>
+                        <div class="admin_box_srcollbar panel panel-default">
+                            <%=f.text_area :product_detail ,class: "product_text col-md-12" %>
+                    </div>
+                </div>
+                    <!--   Bタブ部分    -->
+                    <div class="tab-pane col-md-12" id="sampleContentC">
+                     <hr>
+                        <h3 class="my-3">商品タグ</h3>
+                        <div class="admin_box_srcollbar panel panel-default">
+                            <%= f.fields_for :tags do |tag_form| %>
+                                <%= tag_form.text_field :tag_name %>
+                                <%= tag_form.link_to_remove "フォーム削除" , class: "btn btn btn-danger" %>
+                            <% end %>
+                            <%= f.link_to_add "フォーム追加", :tags , class: "btn btn btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+                 <%= f.submit 'Update Product' ,class: "btn btn-primary" %>
+                <%= link_to "Back", admins_product_path(@products),class: "btn btn-success" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+ <hr>
+
+
+
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
+<!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->

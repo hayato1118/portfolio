@@ -1,0 +1,43 @@
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+
+<div class="container">
+	<div class="col-md-12"> 
+	    <h1 style="display:inline;">管理者用/商品情報</h1>
+	    <hr>
+	</div>
+	<div class="row product_show">
+		<div class="col-md-8 text-center">
+			<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
+		</div>
+
+		<div class="col-md-4">
+			<h3 class="my-3">商品情報</h3>
+			<ul>
+				<li class="text-left">販売者：<%= @products.user.last_name %><%= @products.user.first_name %></li>
+				<li class="text-left">ユーザーネーム：<%= @products.user.nickname %></li>
+				<li class="text-left">商品名：<%= @products.title %></li>
+				<li class="text-left">値段：<%= @products.price %></li>
+				<li class="text-left">商品URL：<%= @products.url %></li>
+				<li class="text-left">商品登録日:<%= @products.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
+				<li class="text-left">商品説明：<%= @products.product_detail %></li>
+			</ul>
+			<%= link_to "編集", edit_admins_product_path(@products), class: "btn btn-success" %>
+			<%= link_to "削除", admins_product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '削除します。'} %>
+		</div>
+	</div>
+</div>
+    <hr>
+
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
+<!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->

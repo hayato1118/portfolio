@@ -1,106 +1,20 @@
-<head>
-
-  <style type="text/css">
-/*    .slider {
-        width: 100%;
-        height:250px;
-        margin: 100px auto;
-    }*/
-
-    .slick-slide {
-      margin: 0px 5px;
-    }
-
-    .slick-slide img {
-      width: 100%;
-      height: 250px;
-    }
 /*
-    .top-image{
-        width: 100%;
-      height: 200px;
-    }*/
-    .slick-prev:before,
-    .slick-next:before {
-      color: black;
-    }
+     _ _      _       _
+ ___| (_) ___| | __  (_)___
+/ __| | |/ __| |/ /  | / __|
+\__ \ | | (__|   < _ | \__ \
+|___/_|_|\___|_|\_(_)/ |___/
+                   |__/
 
+ Version: 1.8.0
+  Author: Ken Wheeler
+ Website: http://kenwheeler.github.io
+    Docs: http://kenwheeler.github.io/slick
+    Repo: http://github.com/kenwheeler/slick
+  Issues: http://github.com/kenwheeler/slick/issues
 
-    .slick-slide {
-      transition: all ease-in-out .3s;
-      opacity: .2;
-    }
-    
-    .slick-active {
-      opacity: .5;
-    }
-
-    .slick-current {
-      opacity: 1;
-    }
-  </style>
-
-</head>
-
-<div class="container">
-<div class="row">
-<!--上部分-->
-<h1>新着コンテンツ</h1>
-<section class="center slider">
-    <% @products.each do |product| %>
-        <div>
-            <%= link_to product_path(product.id) do %>
-                <%= attachment_image_tag product, :image , class: "top-image" %>
-            <% end %>
-        </div>
-    <% end %>
-</section>
-
-
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
-
-  <script type="text/javascript">
-    $(document).on('ready', function() {
-      $(".center").slick({
-        dots: true,
-        infinite: true,
-        centerMode: true,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 500,
-        autoplaySpeed:1300,
-        adaptiveHeight: true,
-        pauseOnHover:true,
-        draggable:true,
-        slidesToShow: 3,
-         responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1
-              }
-            }
-          ]
-
-      });
-    });
-
-
-
-
-
-
-
-
-
-
+ */
+/* global window, document, define, jQuery, setInterval, clearInterval */
 ;(function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
@@ -3088,98 +3002,3 @@
     };
 
 }));
-
-
-</script>
-
-<div class="col-xs12">
-    <%= form_tag(products_path) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
-<% end %>
-</div>
-
-
-<!--中央部分-->
-<h1>コンテンツ一覧</h1>
-<div class="haba">
-    <% @products.each do |product| %>
-        <div class="col-xs-6 col-sm-4 col-md-3 haba_all">
-            <div class="haba_image">
-                <%= attachment_image_tag product, :image , class: "product_image" %>
-                <% if product.is_new %>
-                    <%= image_tag 'm_e_new_201.png',class: "col-xs-6 col-sm-4 col-md-3 new_image" %>
-                <% end %>
-            </div>
-
-            <div class="haba_text">
-                <div class="col-xs12 text-center">
-                    タイトル：<%= product.title %>
-                </div>
-                <div class="col-xs12">
-                    <%= product.updated_at.strftime("%Y-%m-%d") %>
-                    <div class="glyphicon glyphicon-eye-open product_icon">
-                        <%= product.page_count %>views
-                    </div>
-                    <div class="glyphicon glyphicon-heart product_icon">
-                        100K&nbsp;
-                    </div>
-                </div>
-            </div>
-
-            <%= link_to product_path(product.id) do %>
-                <div class="mask">
-                    <div class="caption">
-                        <%= product.title %>
-                    </div>
-                    <div class="caption">
-                        <%= product.product_detail %>
-                    </div>
-                </div>
-            <% end %>
-         </div>
-    <% end %>
-</div>
-<div class="col-sm-12 text-center">
-    <%=paginate @product_paginate, class: "pagenate" %>
-</div>
-
-<!--下部分-->
-
-<div class="col-sm-12">
-    <div class="col-sm-6  panel panel-default">
-        <div class="panel-heading">
-            PV数ランキング
-        </div>
-        <div class="col-sm-12  panel-body">
-            画像
-        </div>
-        <div class="col-sm-12  panel-body">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6 panel panel-default">
-        <div class="panel-heading">
-            PRODUCTS RANKING
-        </div>
-        <div class="col-sm-12  panel-body">
-            画像
-        </div>
-        <div class="col-sm-12  panel-body">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-    </div>
-</div>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js">
-</script>
-
-

@@ -23,4 +23,13 @@ has_many :product_operatingsystems
     (3.days.ago..Time.current).cover?(Time.parse(self.created_at.to_s))
   end
 
+
+ def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Product.where(['price LIKE ?', "%#{search}%"])
+    else
+      Product.all #全て表示。
+    end
+  end
+
 end
