@@ -1,13 +1,14 @@
+  <div class="container">
   <div class="orders_history_title">
-    <h1 style="display:inline;">お気に入りの商品</h1>
-     <hr>
+　   <h1 style="display:inline;">お気に入りの商品</h1>
+    <hr>
   </div>
   <div class="row">
 <% @user.products.each_with_index do |product, i| %>
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">注文番号：<%= product.id %></h3>
+            <h3 class="panel-title">商品ID：<%= product.id %></h3>
           </div>
             <div class="panel-body">
               <!--商品画像-->
@@ -22,17 +23,12 @@
               <P><P><label>販売者</label>
                 <%= product.user.nickname %></P></P>
 
-              <P><label>商品購入日</label>
-                <%= product.created_at.strftime("%Y-%m-%d") %></P>
 
               <P><label>値段</label>
                 <%= product.price %>円</P>
 
-              <P><label>商品URL</label>
-                <%= product.url %></P>
 
-              <P><label>削除ボタン</label>
-                <%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete %>
+                <%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete ,class: "btn btn-danger col-xs-12" , data: { confirm: '本当に消しますか?'} %>
             </div>
           </div>
         </div>

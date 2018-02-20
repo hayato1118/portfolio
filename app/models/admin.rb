@@ -7,3 +7,4 @@ class Admin < ApplicationRecord
          attachment :image
 attachment :profile_image
 end
+

@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<!-- turbolinks を無効にする中 -->
+    
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
@@ -47,6 +50,12 @@
             <li>
               <%= link_to admins_products_path, :method => :GET do %>
               <i class="glyphicon glyphicon-folder-open"></i>admin/Products
+              <% end %>
+              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
+            </li>
+            <li>
+              <%= link_to admins_orders_path, :method => :GET do %>
+              <i class="glyphicon glyphicon-shopping-cart"></i>admin/Orders
               <% end %>
               <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>

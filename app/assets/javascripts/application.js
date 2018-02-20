@@ -11,8 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery_nested_form
+
+
+
+
+// turbolinks を無効にする中
+// turbolinks を無効にする中
+// turbolinks を無効にする中

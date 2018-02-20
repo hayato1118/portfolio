@@ -1,30 +1,8 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-
-<!--この段階では住所の個人情報は登録させない-->
-
-  <div class="field">
-    <%= f.label :苗字 %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "苗字" ,placeholder: "必須" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ふりがな %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "ふりがな" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "名前",placeholder: "必須" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :ふりがな %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ふりがな" %>
-  </div>
 
   <div class="field">
     <%= f.label :ユーザーネーム %><br />
@@ -37,31 +15,6 @@
     <%= f.text_field :email, autofocus: true, autocomplete: "email",placeholder: "必須"  %>
   </div>
 
-<!-- <div class="field">
-    < f.label :Github_ID %><br />
-    < f.text_field :github_id, autofocus: true, autocomplete: "Github ID" >
-  </div> -->
-
-  <div class="field">
-    <%= f.label :市外局番 %><br />
-    <%= f.text_field :phone_number1, autofocus: true, autocomplete: "市外局番" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :市内局番 %><br />
-    <%= f.text_field :phone_number2, autofocus: true, autocomplete: "市内局番" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :加入者番号 %><br />
-    <%= f.text_field :phone_number3, autofocus: true, autocomplete: "加入者番号" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :自己紹介 %><br />
-    <%= f.text_field :introduction, autofocus: true, autocomplete: "自己紹介" %>
-  </div>
-  <!-- ここまで登録情報 -->
 
   <div class="field">
     <%= f.label :password %>
@@ -77,7 +30,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 

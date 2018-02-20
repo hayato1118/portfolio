@@ -106,22 +106,22 @@
 <!--コメント機能-->
   </div>
 <!--   Cタブ部分    -->
-        <% if @products.user == current_user  %>
+        <%# if @products.user == current_user  %>
           <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-success" %>
-        <% end  %>
+        <%# end  %>
 
-        <% if @products.user == current_user %>
+        <%# if @products.user == current_user %>
         <!-- < if current_user.admin? > -->
           <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
-        <% end %>
+        <%# end %>
 
-        <% if @products.user == current_user %>
+        <%# if @products.user == current_user %>
         <%= link_to "お気に入り", add_product_path(@products.id), method: :post , class: "btn btn-success" %>
-        <% end %>
+        <%# end %>
 
-        <% if @products.user == current_user && user_signed_in?  %>
+        <%# if @products.user == current_user && user_signed_in?  %>
           <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
-        <% end %>
+        <%# end %>
 
 
 </div>

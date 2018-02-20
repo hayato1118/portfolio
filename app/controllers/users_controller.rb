@@ -27,6 +27,19 @@ class UsersController < ApplicationController
         end
   end
 
+  def destroy
+        # 論理削除
+      @user = User.find(params[:id])
+      @user.soft_delete
+      sign_out(@user)
+      redirect_to root_path
+
+        # @product = Product.find(params[:id])
+        # @product.destroy
+        # redirect_to products_path
+
+  end
+
 
   def following
       @user  = User.find(params[:id])
@@ -53,6 +66,7 @@ class UsersController < ApplicationController
       #kaminari用
       # binding.pry
       @products = @user.products.page(params[:page]).reverse_order
+      # @products = Product.where("user_id = ?",@user.id)
   end
 
   def history

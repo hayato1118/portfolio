@@ -11,8 +11,17 @@ has_many :orders
 has_one :cart
 
 has_many :favorites
+
+
+has_many :products
+
+
+# ここはどうする？お気に入りが機能しなくなった。！
 has_many :products, through: :favorites
-# has_many :products
+# has_many :products, through: :favorites, :class_name => 'Product_favorites'
+
+
+
 attachment :image
 attachment :profile_image
 
@@ -35,9 +44,44 @@ def unfollow!(other_user)
 following_relationships.find_by(following_id: other_user.id).destroy
 end
 
+
+def soft_delete
+    update(deleted_at: Time.now)
+end
+
+def active_for_authentication?
+  !deleted_at
+end
+
+def inactive_message
+  !deleted_at ? super : :deleted_account
+end
+
+ def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      User.where(['first_name LIKE ?', "%#{search}%"])
+      .or User.where(['first_name_kana LIKE ?', "%#{search}%"])
+      .or User.where(['last_name LIKE ?', "%#{search}%"])
+      .or User.where(['last_name_kana LIKE ?', "%#{search}%"])
+      .or User.where(['phone_number1 LIKE ?', "%#{search}%"])
+      .or User.where(['phone_number2 LIKE ?', "%#{search}%"])
+      .or User.where(['phone_number3 LIKE ?', "%#{search}%"])
+      .or User.where(['state LIKE ?', "%#{search}%"])
+      .or User.where(['city LIKE ?', "%#{search}%"])
+      .or User.where(['street LIKE ?', "%#{search}%"])
+      .or User.where(['zip LIKE ?', "%#{search}%"])
+      .or User.where(['email LIKE ?', "%#{search}%"])
+      .or User.where(['nickname LIKE ?', "%#{search}%"])
+    else
+      User.all #全て表示。
+    end
+  end
+
+end
+
 # 多対多の実装時
 #ユーザーにいいね
 #has_many :user_goods
 #ユーザーにコメント
 #has_many :mypage_comments
-end
+

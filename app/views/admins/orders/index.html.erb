@@ -6,52 +6,41 @@
 <!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
 <!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
 
-<div class="container">
-	<div class="col-xs-12">
-		<h1 class="my-4">管理者用/商品一覧</h1>
-		<%= form_tag admins_products_path, :method => 'get' do %>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag 'Search', :name => nil %>
-		<% end %>
-	</div>
+    <!-- Page Content -->
+    <div class="container">
 
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4">管理者用/オーダー一覧情報
+      </h1>
     <hr>
 	<div class="row product_show">
 		<table class="table table-hover">
 			<tbody>
 				<tr>
-					<td>商品ID</td>
-					<td>販売者</td>
-					<td>ユーザー名</td>
-					<td>商品名</td>
-					<td>値段</td>
-					<td>URL</td>
-					<td>ステータス</td>
+					<td>オーダーID</td>
+					<td>購入者</td>
+					<th>購入日時</th>
 					<td></td>
 					<td></td>
 				</tr>
-				<% @products.each do |product| %>
+
+					<% @orders.each do |order| %>
 					<tr>
-						<td><%= product.id %></td>
-						<td><%= product.user.last_name %><%= product.user.first_name %></td>
-						<td><%= product.user.nickname %></td>
-						<td><%= product.title %></td>
-						<td><%= product.price %></td>
-						<td><%= product.url %></td>
-						<td><%= product.deleted_at %></td>
-						<td><%= link_to "詳細", admins_product_path(product.id), class: "btn btn-success" %></td>
-						<td><%= link_to "削除", admins_product_path(product.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>
+						<td><%= order.id %></td>
+						<td><%= order.user.last_name %><%= order.user.first_name %></td>
+						<td><%= order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></td>
+						<td><%= link_to "詳細", admins_order_path(order.id), class: "btn btn-success" %></td>
+						<td><%= link_to "削除", admins_order_path(order.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
-	<div class="col-sm-12 text-center">
-		<%= paginate @product_paginate, class: "pagenate" %>
-	</div>
 </div>
 
-
+						
+					
+					
 
 <!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->
 <!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->

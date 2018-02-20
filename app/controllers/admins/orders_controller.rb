@@ -1,5 +1,7 @@
-class Admins::ProductsController < ApplicationController
+class Admins::OrdersController < ApplicationController
+
 layout 'admin.application'
+
 
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
@@ -9,36 +11,33 @@ layout 'admin.application'
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
 	def index
-		@products = Product.search(params[:search]).reverse_order
-		@product_paginate = Product.page(params[:page]).reverse_order
+		@orders = Order.all.reverse_order
+		# @order = @orders.user
+		 # binding.pry
 	end
 
 	def show
-		@products = Product.find(params[:id])
-		# @tags = @product.tags
-		# @categories = @product.categories
+		@orders = Order.all
+		@order = Order.find(params[:id])
+		
 	end
 
 	def edit
-		@products = Product.find(params[:id])
+		@orders = Order.find(params[:id])
 	end
 
-	def update
-		@product = Product.find(params[:id])
-		@product.update(product_params)
-		redirect_to admins_products_path
-	end
+	  def destroy
+        @order = Order.find(params[:id])
+        @order.destroy
+        redirect_to admins_orders_path
+  	end
 
-	def destroy
-		@product = Product.find(params[:id])
-		@product.destroy
-		redirect_to admins_products_path
-	end
 
 	private
-		def product_params
-			params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
-		end
+
+	    def order_params
+	    params.require(:order).permit(:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
+	    end
 end
 
 

@@ -34,6 +34,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
   def create
 	    @product = Product.new(product_params)
       @product.user_id = current_user.id
+      # binding.pry
       @product.save
       redirect_to products_path
   end
@@ -50,7 +51,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   def destroy
         @product = Product.find(params[:id])
-        @product.destroy
+        @product.soft_delete
         redirect_to products_path
   end
 

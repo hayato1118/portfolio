@@ -33,7 +33,7 @@
                 <!-- 内容 -->
                 <div class="tab-content ">
                     <!--   Aタブ部分    -->
-                    <div class="tab-pane  active col-md-12" id="sampleContentA">
+                    <div class="tab-pane  active col-xs-12 box_scrollbar" id="sampleContentA">
                         <ul>
                              <hr>
                             <li>商品名:<%=f.text_field :title %></li>
@@ -53,21 +53,21 @@
 
 
                     <!--   Bタブ部分    -->
-                    <div class="tab-pane col-md-12" id="sampleContentB">
+                    <div class="tab-pane col-xs-12 box_scrollbar" id="sampleContentB">
                         <hr>
                         <h3 class="my-3">商品説明</h3>
-                        <div class="admin_box_scrollbar panel panel-default">
-                            <%=f.text_area :product_detail ,class: "product_text col-md-12" %>
+                        <div class="panel panel-default">
+                            <%=f.text_area :product_detail ,class: "col-xs-12  edit_comment_scrollbar" %>
                     </div>
                 </div>
                     <!--   Bタブ部分    -->
 
 
                     <!--   Cタブ部分    -->
-                    <div class="tab-pane col-md-12" id="sampleContentC">
+                    <div class="tab-pane col-xs-12 box_scrollbar" id="sampleContentC">
                      <hr>
                         <h3 class="my-3">商品タグ</h3>
-                        <div class="admin_box_scrollbar panel panel-default">
+                        <div class="edit_comment_scrollbar panel panel-default">
                             <%= f.fields_for :tags do |tag_form| %>
                                 <%= tag_form.text_field :tag_name %>
                                 <%= tag_form.link_to_remove "フォーム削除" , class: "btn btn btn-danger" %>
