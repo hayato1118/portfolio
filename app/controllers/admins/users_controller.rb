@@ -1,5 +1,7 @@
 class Admins::UsersController < ApplicationController
+before_action :authenticate_admin!
 layout 'admin.application'
+
 
 
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
@@ -27,7 +29,7 @@ layout 'admin.application'
 	def update
 		@user = User.find(params[:id])
 		@user.update(user_params)
-		redirect_to admins_users_path
+		redirect_to admins_user_path(@user)
 	end
 
 	def destroy

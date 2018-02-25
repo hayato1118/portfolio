@@ -1,17 +1,17 @@
 <div class="container">
   <div class="orders_history_title">
-　   <h1 style="display:inline;">購入履歴</h1>
+　   <h1 style="display:inline;">注文履歴</h1>
 		<h3 style="display:inline;"><%= current_user.nickname %>様</h3>
     <hr>
   </div>
   
     <div class="row">
-		<% @user.orders.each do |order| %>
+		<% current_user.orders.each do |order| %>
 			<% order.product_orders.each do |product_order| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading">
-			<h3 class="panel-title">注文番号：<%= product_order.id %></h3>
+			<h3 class="panel-title">注文番号：<%= order.id %></h3>
             </div>
               <div class="panel-body">
 								<!--商品画像-->
@@ -20,7 +20,9 @@
 				<label style="display:inline;">商品名</label>
 				<h4 style="display:inline;" class="card-title">
 					<%= link_to product_path(product_order.product.id) do %>
+					<%order.product_orders.each do |product_order| %>
 						<%= product_order.product.title %>
+						<% end %>
 					<% end %>
 				</h4>
 				<P><P><label>販売者</label>
@@ -34,7 +36,7 @@
 
 				<P><label>商品URL</label>
 					<%= product_order.product.url %></P>
-				 <%= link_to "詳細画面",order_path(product_order.id), class: "btn btn-danger col-xs-12"  %>
+				 <%= link_to "詳細画面",root_path, method: :delete ,class: "btn btn-danger col-xs-12"  %>
               </div>
             </div>
           </div>

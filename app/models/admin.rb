@@ -4,7 +4,15 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         attachment :image
+attachment :image
 attachment :profile_image
+
+has_many :orders
+has_many :products
+
+
+
+
+
 end
 

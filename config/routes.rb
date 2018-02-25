@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :products do
         resource :product_carts, only: [:create,:destroy]
         resource :product_comments, only: [:create, :destroy]
+        resources :product_goods, only: [:create, :destroy]
             member do #本一覧画面からお気に入り登録をする
                 post "add", to: "favorites#create"
         end

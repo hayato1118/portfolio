@@ -1,4 +1,5 @@
 class Admins::ProductsController < ApplicationController
+before_action :authenticate_admin!
 layout 'admin.application'
 
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
@@ -26,7 +27,7 @@ layout 'admin.application'
 	def update
 		@product = Product.find(params[:id])
 		@product.update(product_params)
-		redirect_to admins_products_path
+		redirect_to admins_product_path(@product)
 	end
 
 	def destroy
@@ -37,7 +38,7 @@ layout 'admin.application'
 
 	private
 		def product_params
-			params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
+			params.require(:product).permit(:admin_id,:buyer_id,:page_count, :user_id, :price, :image, :title, :url, :product_detail, :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
 		end
 end
 

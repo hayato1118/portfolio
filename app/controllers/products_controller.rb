@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
 before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
+# <% if user_signed_in? then %>
+# layout 'application'
+# <% elsif admin_signed_in? then %>
+# layout 'admin.application'
+# <% end %>
+
   def index
        #検索機能で定義済み
        # @products = Product.all.reverse_order
@@ -14,6 +20,9 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
   def show
      # binding.pry
       @products = Product.find(params[:id])
+      # いいね機能
+      @product_good = ProductGood.new()
+
       @tags = @products.tags
       @categories = @products.categories
       @product_comment = ProductComment.new
@@ -23,7 +32,10 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       impressionist(@products, nil, :unique => [:session_hash])
       # showページで代入
       @products.update(page_count: @products.impressionist_count)
-       render :layout => 'user.show.application'
+
+      # ユーザーの販売商品を表示するため
+      render :layout => 'product.show.application'
+
   end
 
 
@@ -51,14 +63,18 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
 
   def destroy
         @product = Product.find(params[:id])
-        @product.soft_delete
+        @product.delete
         redirect_to products_path
+
+        # 論理削除用
+        # モデルでsoft_deleteを定義してflagを追加してそのフラグで表示、非表示をできるようにする。
+        # @product.soft_delete
   end
 
 
   private
     def product_params
-      params.require(:product).permit(:page_count, :user_id, :price, :image, :title, :url, :product_detail,
+      params.require(:product).permit(:admin_id,:buyer_id,:page_count, :user_id, :price, :image, :title, :url, :product_detail,
         :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [],)
     end
 end

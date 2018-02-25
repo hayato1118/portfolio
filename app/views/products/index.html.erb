@@ -9,7 +9,8 @@
 <div class="container">
 <div class="row">
 <!--上部分-->
-<h1>新着コンテンツ</h1>
+<h3>新着コンテンツ</h3>
+<hr>
 <section class="center slider">
     <% @products.each do |product| %>
         <div>
@@ -39,13 +40,13 @@
         slidesToShow: 3,
          responsive: [
             {
-              breakpoint: 992,
+              breakpoint: 1200,
               settings: {
                 slidesToShow: 2
               }
             },
             {
-              breakpoint: 768,
+              breakpoint: 650,
               settings: {
                 slidesToShow: 1
               }
@@ -3046,7 +3047,7 @@
 
 
 
-<div class="col-xs12">
+<div class="col-xs-12">
     <%= form_tag products_path, :method => 'get' do %>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag 'Search', :name => nil %>
@@ -3055,10 +3056,11 @@
 
 
 <!--中央部分-->
-<h1>コンテンツ一覧</h1>
+<h3 class="col-xs-12">コンテンツ一覧</h3>
+<hr>
 <div class="haba">
     <% @products.each do |product| %>
-        <div class="col-xs-6 col-sm-4 col-md-3 haba_all elements">
+        <div class="col-xs-6 col-md-4 col-lg-3 haba_all elements">
             <div class="haba_image">
                 <%= attachment_image_tag product, :image , class: "product_image" %>
                 <% if product.is_new %>
@@ -3068,7 +3070,7 @@
 
             <div class="haba_text">
                 <div class="col-xs12">
-                    タイトル：<%= product.title %>
+                    <%= product.title %>
                 </div>
                 <div class="col-xs12">
                     <%= product.updated_at.strftime("%Y-%m-%d") %>

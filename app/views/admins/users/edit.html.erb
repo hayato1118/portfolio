@@ -18,20 +18,20 @@
 
             <h3 class="my-3">登録情報</h3>
             <ul>
-                <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
-                <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
-                <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
-                <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
-                <li class="text-left">メールアドレス:<%= current_user.email %></li>
-                <li class="text-left">郵便番号:<%= current_user.zip %></li>
-                <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
+                <li class="text-left">名前:<%= @users.last_name %><%= @users.first_name %></li>
+                <li class="text-left">ふりがな:<%= @users.first_name_kana %><%= @users.last_name_kana %></li>
+                <li class="text-left">ユーザーネーム:<%= @users.nickname %></li>
+                <li class="text-left">電話番号:<%= @users.phone_number1 %><%= @users.phone_number2 %><%= @users.phone_number3 %></li>
+                <li class="text-left">メールアドレス:<%= @users.email %></li>
+                <li class="text-left">郵便番号:<%= @users.zip %></li>
+                <li class="text-left">住所:<%= @users.state %><%= @users.city %><%= @users.street %></li>
             </ul>
         </div>
 
 
         <div class="col-md-9">
             <ul>
-                <%= form_for @users, url: admins_user_path , html: {method: "get"} do |f| %>
+                <%= form_for @users, url: admins_user_path , html: {method: "PATCH"} do |f| %>
                     <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
                     <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
                     <li>ユーザーネーム:<%=f.text_field :nickname %></li>

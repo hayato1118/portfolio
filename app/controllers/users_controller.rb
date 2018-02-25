@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+
   def show
       @user = User.find(params[:id])
+      render :layout => 'user.show.application'
   end
 
   def new
@@ -33,11 +35,6 @@ class UsersController < ApplicationController
       @user.soft_delete
       sign_out(@user)
       redirect_to root_path
-
-        # @product = Product.find(params[:id])
-        # @product.destroy
-        # redirect_to products_path
-
   end
 
 
@@ -67,6 +64,7 @@ class UsersController < ApplicationController
       # binding.pry
       @products = @user.products.page(params[:page]).reverse_order
       # @products = Product.where("user_id = ?",@user.id)
+      render :layout => 'user.show.application'
   end
 
   def history
@@ -78,7 +76,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:faceproduct_id ,:instagram_id)
+    params.require(:user).permit(:last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
   end
 
 

@@ -1,5 +1,5 @@
 class Admins::OrdersController < ApplicationController
-
+before_action :authenticate_admin!
 layout 'admin.application'
 
 
@@ -36,7 +36,7 @@ layout 'admin.application'
 	private
 
 	    def order_params
-	    params.require(:order).permit(:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
+	    params.require(:order).permit(:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
 	    end
 end
 

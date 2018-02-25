@@ -21,13 +21,12 @@
 			<div class="col-md-5">
 				<h3 class="my-3">商品情報</h3>
 				<ul>
-					<li class="text-left">商品名:<%= product_order.product.title %></li>	
-					<li class="text-left">購入者:<%= @order.user.last_name %><%= @order.user.first_name %></li>				
+					<li class="text-left">商品名:<%= product_order.product.title %></li>
+					<li class="text-left">購入者:<%= @order.user.last_name %><%= @order.user.first_name %></li>
 					<li class="text-left">値段:<%= product_order.product.price %></li>
 					<li class="text-left">商品URL:<%= product_order.product.url%></li>
 					<li class="text-left">商品登録日:<%= product_order.product.created_at.strftime("%m#{"月"}%d#{"日"}%R")%></li>
 					<li class="text-left">購入日時:<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
-				
 				</ul>
 				<%= link_to "編集", edit_admins_order_path(product_order), class: "btn btn-success" %>
 				<%= link_to "削除", admins_order_path(product_order), method: :delete, class: "btn btn-danger", data: { confirm: '削除します。'} %>
