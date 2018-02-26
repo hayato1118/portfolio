@@ -1,0 +1,44 @@
+  <div class="main">
+  <!--モーダルのコンテンツ-->
+  <div id="modal-content" class="container">
+    <div id="modal-content-innar">
+      <!-- モーダルウィンドウのコンテンツ開始 -->
+      <div class="row">
+        <div class="col-sm-6">
+          <h3 class="login-h3">ログイン</h3>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="field">
+			<%= f.label :email %><br />
+			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+			</div>
+          <div class="field">
+            <%= f.label :password %>
+            <br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Log in", class:"btn btn btn-primary" %>
+          </div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" class="close batu" id="modal-close">&times;</button>
+            <h3 class="sign_up-h3">新規登録</h3>
+            <%= link_to "新規登録", "/users/sign_up", {:class => "btn btn-success btn-sign_up col-sm-12 btn-p"} %>
+            <%= link_to "Facebookで登録", '#', {:class => "btn btn-facebook col-sm-12 btn-p"} %>
+            <%= link_to "Twitterで登録", '#', {:class => "btn btn-twitter col-sm-12 btn-p"} %>
+            <%= link_to "Googleで登録", '#', {:class => "btn btn-google col-sm-12 btn-p"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

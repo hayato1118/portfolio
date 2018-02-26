@@ -27,7 +27,7 @@
 
     	<div class="col-md-4">
 
-        <ul class="nav nav-pills">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#sampleContentA" data-toggle="tab">商品詳細</a></li>
           <li><a href="#sampleContentB" data-toggle="tab">商品説明</a></li>
           <% if user_signed_in? %>
@@ -48,7 +48,7 @@
         <h5 class="my-3">商品詳細</h5>
         <ul>
           <li>販売者：<%= @products.user.nickname %></li>
-          <li>値段：<%= @products.price %></li>
+          <li>値段：<%= @products.price %>円(税込)</li>
           <li>登録日<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
         </ul>
 
@@ -133,12 +133,11 @@
           <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
         <% end %>
 
-
-
-
+<%= render "modal" %>
 </div>
+
+<% if @products.user != current_user && user_signed_in?  %>
 <!-- いいね機能 -->
-<% if user_signed_in?  %>
 <h5>いいね件数: <%= @products.product_goods.count %></h5>
 <% if current_user.already_liked?(@products) %>
   <%= button_to 'いいねを取り消す', product_product_good_path(@products), method: :delete %>
@@ -152,7 +151,6 @@
   <%= f.submit 'いいね！' %>
 <% end %>
 <% end %>
-
 <!-- <h2>この記事にいいねしたユーザー</h2> -->
 <%# @products.product_good_users.each do |user| %>
   <!-- <li><%#= user.email %></li> -->

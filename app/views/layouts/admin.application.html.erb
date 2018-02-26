@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
 
 <!-- turbolinks を無効にする中 -->
-    
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,50 +13,39 @@
 <body class='<%= "#{controller.controller_name}" %>'>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
+        <% if admin_signed_in? %>
         <nav class="nav navbar-nav navbar-left">
           <ul class="nav navbar-nav navbar-left">
             <li>
               <%= link_to admins_users_path do %>
               <i class="glyphicon glyphicon-home"></i>管理ページ
               <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
-            </li>
-            <li>
-              <%= link_to users_path do %>
-              <i class="glyphicon glyphicon-user"></i>Users
-              <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
             <li>
               <%= link_to products_path do %>
               <i class="glyphicon glyphicon-folder-open"></i>Products
               <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
           </ul>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <% if admin_signed_in? %>
             <!--ログイン中のヘッダー-->
             <li>
               <%= link_to admins_users_path, :method => :GET do %>
               <i class="glyphicon glyphicon-user"></i>admin/Users
               <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
 
             <li>
               <%= link_to admins_products_path, :method => :GET do %>
               <i class="glyphicon glyphicon-folder-open"></i>admin/Products
               <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
             <li>
               <%= link_to admins_orders_path, :method => :GET do %>
               <i class="glyphicon glyphicon-shopping-cart"></i>admin/Orders
               <% end %>
-              <!--<a class="glyphicon glyphicon-user" href="/users"> Users</a>-->
             </li>
 
             <li>
@@ -65,13 +53,33 @@
               <i class="glyphicon glyphicon-log-out"></i>Logout
               <% end %>
             </li>
+
+
             <% else %>
             <!--ログアウト中のヘッダー-->
+             <nav class="nav navbar-nav navbar-left">
+          <ul class="nav navbar-nav navbar-left">
             <li>
-              <%= link_to new_user_session_path, :method => :GET do %>
+              <%= link_to homes_path do %>
+              <i class="glyphicon glyphicon-home"></i>トップページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to products_path do %>
+              <i class="glyphicon glyphicon-folder-open"></i>Products
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+             <li>
+              <%= link_to new_admin_session_path, :method => :GET do %>
               <i class="glyphicon glyphicon-log-in"></i>Login
               <% end %>
             </li>
+          </ul>
+        </nav>
 
             <% end %>
           </ul>
@@ -79,14 +87,14 @@
       </div>
     </header>
 
-<p id="notice"></p>
+<p id="admin_notice"></p>
     <%= yield %>
 
     <footer>
       <div class="container">
         <div class="row">
           <div class="footer text-center">
-            <p>管理者用</p>
+            <p>管理者</p>
           </div>
         </div>
       </div>

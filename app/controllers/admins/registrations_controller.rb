@@ -6,7 +6,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
 
   before_action :guard_signup!, only: %i[cancel new destroy create]
-    
+    layout 'admin.application'
   private
 
   def guard_signup!

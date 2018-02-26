@@ -13,8 +13,6 @@
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag 'Search', :name => nil %>
 		<% end %>
-	</div>
-
     <hr>
 	<div class="row product_show">
 		<table class="table table-hover">
@@ -36,7 +34,7 @@
 						<td><%= product.user.last_name %><%= product.user.first_name %></td>
 						<td><%= product.user.nickname %></td>
 						<td><%= product.title %></td>
-						<td><%= product.price %></td>
+						<td><%= product.price %>円</td>
 						<td><%= product.url %></td>
 						<td><%= product.deleted_at %></td>
 						<td><%= link_to "詳細", admins_product_path(product.id), class: "btn btn-success" %></td>
@@ -49,6 +47,7 @@
 	<div class="col-sm-12 text-center">
 		<%= paginate @product_paginate, class: "pagenate" %>
 	</div>
+</div>
 </div>
 
 

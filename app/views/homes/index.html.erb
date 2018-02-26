@@ -30,7 +30,7 @@ h2 {
 
 .header {
   background-image: url("https://createkt.com/wp-content/uploads/2017/04/lifezakk_space_1-1200x630.png");
-
+background-attachment: fixed;
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
@@ -39,6 +39,7 @@ h2 {
 }
 
 .header h1 {
+
   margin: 0;
   text-align: center;
   color: #fff;
@@ -68,96 +69,7 @@ h2 {
 /* BLOCK2 */
 .block2 {
   position: relative;
-  height: 1500px;
-}
-
-.block2 h2 {
-  position: absolute;
-  top: 45%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.header2 {
-  background-image: url("https://createkt.com/wp-content/uploads/2017/04/lifezakk_space_1-1200x630.png");
-
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-  overflow: hidden;
-  position: relative;
-}
-
-.header2 h1  {
-  margin: 0;
-  text-align: center;
-  color: red;
-  font-size: 100px;
-  font-family: impact;
-  text-shadow: 0 0 50px #000;
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left:20%;
-}
-
-
-.header2 h2 {
-  margin: 0;
-  text-align: center;
-  color: blue;
-  font-size: 100px;
-  font-family: impact;
-  text-shadow: 0 0 50px #000;
-  position: absolute;
-  width: 100%;
-  top: 60%;
-  left:20%;
-}
-
-
-.header2 h3{
-  margin: 0;
-  text-align: center;
-  color: orange;
-  font-size: 100px;
-  font-family: impact;
-  text-shadow: 0 0 50px #000;
-  position: absolute;
-  width: 100%;
-  top: 70%;
-  left:20%;
-}
-
-.header2:before {
-  content: "";
-  position: absolute;
-  height:300px;
-  width: 300%;
-  background: #fff;
-  bottom: -300px;
-  left: -100%;
-  -webkit-transform: rotate(-20deg);
-  -ms-transform: rotate(-20deg);
-  -o-transform: rotate(-20deg);
-  transform: rotate(-20deg);
-}
-
-
-/* BLOCK2 */
-.block2 {
-  position: relative;
-  height: 1500px;
+  height: 100%;
 }
 
 .block2 h2 {
@@ -173,18 +85,10 @@ h2 {
     <h1>MY PAGE</h1>
   </div>
   <div class="block2">
+<%= render "modal" %>
+
+
     <h2><%=link_to "product/indexへGO", products_path %></h2>
   </div>
 
-
-
-
-	<div class="header2">
-    <h1>MY PAGE</h1><br>
-    <h2>MY PAGE</h2><br>
-    <h3>MY PAGE</h3>
-  </div>
-  <div class="block2">
-    <h2><%=link_to "product/indexへGO", products_path %></h2>
-  </div>
 

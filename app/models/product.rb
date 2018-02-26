@@ -8,27 +8,36 @@ has_many :product_orders
 has_many :product_comments, dependent: :destroy
 
 
+# ユーザー　1:N 商品の関係
+belongs_to :user
+# belongs_to :buyer, class_name: "User", optional: true
+# 管理者　1:N 商品の関係
+belongs_to :admin
+
+#=====================================お気に入り機能==================================================
+
+has_many :favorites
+has_many :users, through: :favorites
+
+#=====================================お気に入り機能==================================================
+
+#=====================================いいね機能==================================================
 
 has_many :product_goods
 has_many :product_good_users, through: :product_goods, source: :user
 
-# ユーザー　1:N 商品の関係
-belongs_to :user
-# belongs_to :buyer, class_name: "User", optional: true
-
-# 管理者　1:N 商品の関係
-belongs_to :admin
-
-
-
-
+#=====================================いいね機能==================================================
+#=====================================無限タグ機能==================================================
 
 has_many :tags
 accepts_nested_attributes_for :tags, allow_destroy: true
 
+#=====================================無限タグ機能==================================================
 
 has_many :product_categories
 has_many :categories, through: :product_categories
+
+
 has_many :product_operatingsystems
 # has_many :orders, through: :product_orders
 

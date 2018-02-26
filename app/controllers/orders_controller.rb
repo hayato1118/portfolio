@@ -25,13 +25,14 @@ class OrdersController < ApplicationController
   			product_cart.destroy
   		end
   	end
+    # binding.pry
   	redirect_to root_path
   end
 
 
   private
     def order_params
-    params.require(:order).permit(:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
+    params.require(:order).permit(:zip, :state, :city, :street,:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
     end
 
   def product_order_params

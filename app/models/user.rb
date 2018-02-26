@@ -11,29 +11,27 @@ has_many :orders
 has_one :cart
 
 
-# =============================お気に入り機能==========ユーザー１:N商品の関係==========================
 
-# ここはどうする？お気に入りが機能しなくなった。！
-has_many :products, through: :favorites
-# has_many :products, through: :favorites, :class_name => 'Product_favorites'
-has_many :favorites
 # ユーザー　1:N 商品の関係
 has_many :products
 # has_many :buying_products, class_name: "Product", foreign_key: "buyer_id"
 
+# =============================お気に入り機能==========ユーザー１:N商品の関係==========================
+
+has_many :favorites
+# ここはどうする？お気に入りが機能しなくなった。！
+has_many :products, through: :favorites
+# has_many :products, through: :favorites, :class_name => 'Product_favorites'
+
+
 # =============================お気に入り機能==========ユーザー１:N商品の関係=========================
-
-
-
 #=====================================いいね機能==================================================
 
 has_many :products, dependent: :destroy
 has_many :product_goods, dependent: :destroy
-has_many :product_good_posts, through: :product_goods, source: :post
+has_many :product_good_posts, through: :product_goods, source: :product
 
 #=====================================いいね機能==================================================
-
-
 #=====================================フォロー機能==================================================
 
 has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
