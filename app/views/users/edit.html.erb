@@ -29,6 +29,7 @@
       <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
       <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
       <li>ユーザーネーム:<%=f.text_field :nickname %></li>
+      <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
       <li>電話番号:<%=f.text_field :phone_number1 %>-<%=f.text_field :phone_number2 %>-<%=f.text_field :phone_number3 %></li>
       <li>郵便番号:<%=f.text_field :zip %></li>
       <li>都道府県:<%=f.text_field :state %></li>
@@ -39,7 +40,6 @@
       <li>Instagram ID:<%=f.text_field :instagram_id %></li>
       <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
       <li>自己紹介:<%=f.text_area :introduction %></li>
-      <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
         <%= f.submit 'Update User' ,class: "btn btn-primary" %>
         <%= link_to "Back", user_path(@user),class: "btn btn-success" %>
       <% end %>

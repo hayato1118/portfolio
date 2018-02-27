@@ -13,20 +13,18 @@ class OrdersController < ApplicationController
   def create
   	@order = Order.new(order_params)
   	@order.user_id = current_user.id
-    # binding.pry
   	if @order.save
   		product_carts = current_user.cart.product_carts
   		product_carts.each do |product_cart|
   			product_order = ProductOrder.new
-  			# binding.pry
   			product_order.product_id = product_cart.product_id
   			product_order.order_id = @order.id
+        product_order.quantity = product_cart.quantity
   			product_order.save
   			product_cart.destroy
   		end
   	end
-    # binding.pry
-  	redirect_to root_path
+  	redirect_to order_path(@order)
   end
 
 

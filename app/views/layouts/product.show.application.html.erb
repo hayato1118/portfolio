@@ -26,8 +26,10 @@
 					<label id="nav-open" for="nav-input">マイページ</label>
 					<label class="nav-unshown" id="nav-close" for="nav-input"></label>
 					<div id="nav-content">
+						<p id="side_notice"></p>
 						<!--サイドメニュー-->
 						<% if user_signed_in? %>
+
 							<!--ログイン中のヘッダー-->
 							<div>
 								<%= attachment_image_tag @products.user, :profile_image,fallback: "no_image_top.jpg",class: "img-circle img-thumbnail slide_icon_image" %>

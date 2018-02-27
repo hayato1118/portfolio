@@ -14,7 +14,7 @@
 			<h3 class="panel-title">注文番号：<%= product_order.id %></h3>
             </div>
               <div class="panel-body">
-								<!--商品画像-->
+				<!--商品画像-->
 					<%= attachment_image_tag product_order.product, :image , class: "history_image" %>
 
 				<label style="display:inline;">商品名</label>
@@ -34,7 +34,6 @@
 
 				<P><label>商品URL</label>
 					<%= product_order.product.url %></P>
-				 <%= link_to "詳細画面",order_path(product_order.id), class: "btn btn-danger col-xs-12"  %>
               </div>
             </div>
           </div>

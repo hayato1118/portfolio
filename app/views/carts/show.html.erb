@@ -8,16 +8,16 @@
 		<hr>
 		<div class="col-xs-12">
 				<% sum =0 %>
+				<% total_count = 0 %>
 				<% current_user.cart.product_carts.each do |product_cart| %>
 				<% sum += product_cart.product.price %>
-				<!-- product_carts＝中間テーブル
-				current_user.cart＝ログインユーザーのカート -->
+				<% total_count += product_cart.quantity %>
 			<div class="col-xs-12">
 				<table>
 					<tbody>
 					<tr>
 						<td class="col-xs-4">商品ID:<%=product_cart.product.id %></td>
-						<td class="col-xs-3"></td>
+						<td class="col-xs-3">商品情報</td>
 						<td class="col-xs-1">販売者</td>
 						<td class="col-xs-2">価格</td>
 						<td class="col-xs-2"></td>
@@ -28,13 +28,13 @@
 								<table>
 									<tbody>
 										<tr>
-											<td class=""><%= product_cart.product.title %></td>
+											<td class="">商品名:<%= product_cart.product.title %></td>
 										</tr>
 										<tr>
-											<td class="カテゴリー"></td>
+											<td class="">カテゴリー:</td>
 										</tr>
 										<tr>
-											<td class=""><%= product_cart.product.created_at.strftime("%Y-%m-%d") %></td>
+											<td class="">商品登録日:<%= product_cart.product.created_at.strftime("%Y-%m-%d") %></td>
 										</tr>
 									</tbody>
 								</table>
@@ -69,15 +69,15 @@
 											<td>送付先：<%= current_user.email %></td>
 										</tr>
 										<tr>
-											<td>数量：</td>
+											<td>数量：<%= total_count %></td>
 										</tr>
 										<tr>
-											<td>商品合計：</td>
+											<td>商品合計：<%= sum %>円（税込）</td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
-							<td class="col-xs-2">合計金額：<%= sum %>円（税込み）</td>
+							<td class="col-xs-2">合計金額：<%= sum %>円（税込）</td>
 							<td class="col-xs-2"></td>
 						</tr>
 					</tbody>
@@ -95,5 +95,3 @@
 		</div>
 	</div>
 </div>
-
-<%= @total_price  %>
