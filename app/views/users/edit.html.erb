@@ -1,52 +1,120 @@
+<script>
+$(function () {
+  $('#zip').jpostal({
+    postcode : [
+      '#zip'
+    ],
+    address : {
+      '#address' :'%3',
+      '#address2'  :'%4',
+      '#address3'  :'%5',
+    }
+  });
+});
+</script>
+
+
 <div class="container">
-     <div class="col-md-12"> 
-　    <h1 style="display:inline;">ユーザー編集</h1>
-    <hr>
+    <div class="col-md-12"> 
+        <h1 style="display:inline;">ユーザー編集</h1>
+        <hr>
     </div>
-  <div class="row product_show">
-    <div class="col-md-3 text-center">
-      <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+    <div class="row product_show">
+        <div class="col-md-3 text-center">
+            <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
 
-        <%= render 'users/follow_form' %>
-        <%= render 'users/stats' ,class: "text-center" %>
+            <%= render 'users/follow_form' %>
+            <%= render 'users/stats' ,class: "text-center" %>
 
-      <h3 class="my-3">登録情報</h3>
-      <ul>
-        <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
-        <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
-        <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
-        <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
-        <li class="text-left">メールアドレス:<%= current_user.email %></li>
-        <li class="text-left">郵便番号:<%= current_user.zip %></li>
-        <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
-      </ul>
+            <h3 class="my-3">登録情報</h3>
+            <ul>
+                <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
+                <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
+                <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
+                <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
+                <li class="text-left">email:<%= current_user.email %></li>
+                <li class="text-left">郵便番号:<%= current_user.zip %></li>
+                <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-9">
+        <ul class="nav nav-tabs">
+        <li class="active"><a href="#sampleContentA" data-toggle="tab">ユーザー情報</a></li>
+        <li><a href="#sampleContentB" data-toggle="tab">自己紹介</a></li>
+        </ul>
+
+            <div class="tab-content ">
+                <!--   Aタブ部分    -->
+                <div class="tab-pane  active col-md-12" id="sampleContentA">
+                  <%= form_for(@user) do |f| %>
+                      <span class="form_design">
+                      <%=f.text_field :last_name , class: "balloon"%><label>苗字</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :first_name , class: "balloon"%><label>名前</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :last_name_kana , class: "balloon"%><label>みょうじ</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :first_name_kana , class: "balloon"%><label>なまえ</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :nickname , class: "balloon"%><label>ユーザーID</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.email_field :email, class: "balloon"%><label>email</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.number_field :phone_number1 , class: "balloon"%><label>電話番号</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.number_field :phone_number2 , class: "balloon"%><label>電話番号</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.number_field :phone_number3 , class: "balloon"%><label>電話番号</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.number_field :zip, id: "zip"  , class: "balloon"%><label>郵便番号</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :state , id: "address" ,class: "balloon"%><label>都道府県</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :city , id: "address2" , class: "balloon"%><label>市町村</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :street , id: "address3" , class: "balloon"%><label>町名以下</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :twitter_id , class: "balloon"%><label>Twitter ID</label>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :facebook_id , class: "balloon"%><label>Facebook ID</label>
+                      </span>
+                      </span>
+                      <span class="form_design">
+                      <%=f.text_field :instagram_id , class: "balloon"%><label>Instagram ID</label>
+                      </span>
+                      <li class="edit_position_image">プロフィール画像:<%= f.attachment_field :profile_image %></li>
+                       <%= link_to "Back", user_path(@user),class: "btn btn-default" %>
+                       <%= f.submit 'Update User' ,class: "btn btn-success" %>
+                  </div>
+                    <!--   Aタブ部分    -->
+
+                    <!--   Bタブ部分    -->
+                  <div class="tab-pane col-md-12" id="sampleContentB">
+                      <%=f.text_area :introduction , class: "introduction_form" %></li>
+                  </div>
+                    <!--   Bタブ部分    -->
+            </div>
+        <% end %>
     </div>
-
-
-    <div class="col-md-9">
-     <ul>
-      <%= form_for(@user) do |f| %>
-      <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
-      <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
-      <li>ユーザーネーム:<%=f.text_field :nickname %></li>
-      <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
-      <li>電話番号:<%=f.text_field :phone_number1 %>-<%=f.text_field :phone_number2 %>-<%=f.text_field :phone_number3 %></li>
-      <li>郵便番号:<%=f.text_field :zip %></li>
-      <li>都道府県:<%=f.text_field :state %></li>
-      <li>市町村<%=f.text_field :city %></li>
-      <li>町名以下:<%=f.text_field :street %></li>
-      <li>Twitter ID:<%=f.text_field :twitter_id %></li>
-      <li>Facebook ID:<%=f.text_field :facebook_id %></li>
-      <li>Instagram ID:<%=f.text_field :instagram_id %></li>
-      <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
-      <li>自己紹介:<%=f.text_area :introduction %></li>
-        <%= f.submit 'Update User' ,class: "btn btn-primary" %>
-        <%= link_to "Back", user_path(@user),class: "btn btn-success" %>
-      <% end %>
-    </ul>
-    </div>
-  </div>
 </div>
+
+
 
 
 

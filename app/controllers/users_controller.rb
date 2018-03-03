@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       # binding.pry
       @products = @user.products.page(params[:page]).reverse_order
       # @products = Product.where("user_id = ?",@user.id)
-      render :layout => 'user.show.application'
+      # render :layout => 'user.show.application'
   end
 
   def history

@@ -89,6 +89,7 @@ end
       .or User.where(['zip LIKE ?', "%#{search}%"])
       .or User.where(['email LIKE ?', "%#{search}%"])
       .or User.where(['nickname LIKE ?', "%#{search}%"])
+      .or User.where(['id LIKE ?', "%#{search}%"])
     else
       User.all #全て表示。
     end

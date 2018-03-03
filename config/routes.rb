@@ -31,8 +31,11 @@ Rails.application.routes.draw do
     get 'users/:id/sale' => 'users#sale', as: 'user_sale'
 
 
+
     resources :relationships, only: [:create, :destroy]
     resources :orders
+    get 'orders/:id/complete' => 'orders#complete', as: 'order_complete'
+
     resources :carts
 
     resources :products do

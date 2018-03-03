@@ -3052,7 +3052,7 @@
 <h3 class="col-xs-12">商品一覧<hr></h3>
 <hr>
 <div class="haba">
-    <% @products.each do |product| %>
+    <% @product_paginate.each do |product| %>
         <div class="col-xs-6 col-md-4 col-lg-3 haba_all elements">
             <div class="haba_image">
                 <%= attachment_image_tag product, :image , class: "product_image" %>
@@ -3071,7 +3071,7 @@
                         <%= product.page_count %>views
                     </div>
                     <div class="glyphicon glyphicon-heart product_icon">
-                        100K&nbsp;
+                        <%= product.like_count %>likes
                     </div>
                 </div>
             </div>
@@ -3090,43 +3090,39 @@
     <% end %>
 </div>
 <div class="col-sm-12 text-center">
-    <%=paginate @product_paginate, class: "pagenate" %>
+    <%= paginate @product_paginate, class: "pagenate" %>
 </div>
 
 <%= render "modal" %>
 
 <!--下部分-->
 
-<div class="col-sm-12">
-    <div class="col-sm-6  panel panel-default">
-        <div class="panel-heading">
-            PV数ランキング
-        </div>
-        <div class="col-sm-12  panel-body">
-            画像
-        </div>
-        <div class="col-sm-12  panel-body">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-    </div>
+
+<h3 class="col-xs-12">いいねランキング</h3>
+<table class="table">
+    <tbody>
+        <tr>
+            <% @good_rank.each.with_index(1) do |good_rank, i| %>
+            <td><%= "第#{i}位" %></td>
+            <% end %>
+        </tr>
+        <tr>
+            <% @good_rank.each.with_index(1) do |good_rank, i| %>
+            <td><%= good_rank.like_count %>いいね</td>
+             <% end %>
+        </tr>
+        <tr>
+            <% @good_rank.each.with_index(1) do |good_rank, i| %>
+            <td>商品名：<%=link_to "#{good_rank.title}", product_path(good_rank) %></td>
+             <% end %>
+        </tr>
+    </tbody>
+</table>
 
 
-    <div class="col-sm-6 panel panel-default">
-        <div class="panel-heading">
-            PRODUCTS RANKING
-        </div>
-        <div class="col-sm-12  panel-body">
-            画像
-        </div>
-        <div class="col-sm-12  panel-body">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-        </div>
-    </div>
+
 </div>
+
 
 
 

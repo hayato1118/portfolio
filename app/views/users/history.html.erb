@@ -1,43 +1,54 @@
 <div class="container">
-  <div class="orders_history_title">
-　   <h1 style="display:inline;">購入履歴</h1>
-		<h3 style="display:inline;"><%= current_user.nickname %>様</h3>
-    <hr>
-  </div>
-  
-    <div class="row">
+	<h1 class="my-4">購入履歴
+	</h1>
+	<div class="row product_show">
 		<% @user.orders.each do |order| %>
 			<% order.product_orders.each do |product_order| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-			<h3 class="panel-title">注文番号：<%= product_order.id %></h3>
-            </div>
-              <div class="panel-body">
-				<!--商品画像-->
-					<%= attachment_image_tag product_order.product, :image , class: "history_image" %>
-
-				<label style="display:inline;">商品名</label>
-				<h4 style="display:inline;" class="card-title">
-					<%= link_to product_path(product_order.product.id) do %>
-						<%= product_order.product.title %>
-					<% end %>
-				</h4>
-				<P><P><label>販売者</label>
-					<%= product_order.product.user.nickname %></P></P>
-
-				<P><label>商品購入日</label>
-					<%= product_order.created_at.strftime("%Y-%m-%d") %></P>
-
-				<P><label>値段</label>
-					<%= product_order.product.price %>円</P>
-
-				<P><label>商品URL</label>
-					<%= product_order.product.url %></P>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+		<hr>
+			<div class="col-xs-12">
+				<table>
+					<tbody>
+					<tr>
+						<td class="col-xs-4">注文番号：<%= order.id %></td>
+						<td class="col-xs-3">商品情報</td>
+						<td class="col-xs-1">価格</td>
+						<td class="col-xs-2"></td>
+					</tr>
+					<tr>
+						<td class="col-xs-4"><%= attachment_image_tag product_order.product, :image ,class: "order_history_image" %></td>
+						<td class="col-xs-3">
+								<table>
+									<tbody>
+										<tr>
+											<td class=""><strong>商品名：</strong><%= product_order.product.title %></td>
+										</tr>
+										<tr>
+											<td class=""><strong>販売者：</strong><%= product_order.product.user.nickname %></td>
+										</tr>
+										<tr>
+											<td class=""><strong>商品URL：</strong><%= product_order.product.url %></td>
+										</tr>
+										<tr>
+											<td class=""><strong>送付先：</strong><%= product_order.order.email %></td>
+										</tr>
+										<tr>
+											<td class=""><strong>商品購入日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></td>
+										</tr>
+									</tbody>
+								</table>
+						</td>
+						<td class="col-xs-1"価格><%= product_order.product.price %>円(税込)</td>
+						<td class="col-xs-2">
+							<%=link_to "商品詳細", product_path(product_order), class: "btn btn-sm btn-default col-xs-12 text-center" %>
+							<%= link_to "領収証", order_path(order) ,class: "btn btn-sm btn-default col-xs-12 text-center" %>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<hr>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>

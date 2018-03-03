@@ -1,36 +1,47 @@
-  <div class="container">
-  <div class="orders_history_title">
-　   <h1 style="display:inline;">お気に入りの商品</h1>
-    <hr>
-  </div>
-  <div class="row">
-<% @user.products.each_with_index do |product, i| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">商品ID：<%= product.id %></h3>
-          </div>
-            <div class="panel-body">
-              <!--商品画像-->
-                <%= attachment_image_tag product, :image , class: "history_image" %>
-
-              <label style="display:inline;">商品名</label>
-              <h4 style="display:inline;" class="card-title">
-                <%= link_to product_path(product.id) do %>
-                  <%= product.title %>
-                <% end %>
-              </h4>
-              <P><P><label>販売者</label>
-                <%= product.user.nickname %></P></P>
-
-
-              <P><label>値段</label>
-                <%= product.price %>円</P>
-
-
-                <%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete ,class: "btn btn-danger col-xs-12" , data: { confirm: '本当に消しますか?'} %>
+<div class="container">
+    <h1 class="my-4">お気に入り</h1>
+    <div class="row product_show">
+        <% @user.products.each_with_index do |product, i| %>
+        <hr>
+            <div class="col-xs-12">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="col-xs-4">商品ID：<%= product.id %></td>
+                            <td class="col-xs-3">商品情報</td>
+                            <td class="col-xs-1">価格</td>
+                            <td class="col-xs-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4"><%= attachment_image_tag product, :image , class: "favorite_image" %></td>
+                            <td class="col-xs-3">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class=""><strong>商品名：</strong><%= product.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""><strong>販売者：</strong><%= product.user.nickname %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""><strong>商品登録日：</strong><%= product.created_at.strftime("%Y-%m-%d") %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="col-xs-1"価格><%= product.price %>円(税込)</td>
+                            <td class="col-xs-2">
+                                <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>
+                                <%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete ,class: "btn btn-danger col-xs-12" , data: { confirm: '本当に消しますか?'} %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
             </div>
-          </div>
-        </div>
-      <% end %>
-  </div>
+        <% end %>
+    </div>
+</div>
+
+
+

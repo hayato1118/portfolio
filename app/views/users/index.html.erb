@@ -3,3 +3,91 @@
 
 
 
+<div class="container">
+	<h1 class="my-4">購入履歴
+		<small><%= @user.nickname %>様</small>
+	</h1>
+	<p>購入履歴は以下の商品です。</p>
+	<div class="row product_show">
+		<% @user.orders.each do |order| %>
+			<% order.product_orders.each do |product_order| %>
+		<%= attachment_image_tag product_order.product, :image ,class: "product_show_image" %>
+		<hr>
+
+			<div class="col-xs-12">
+				<table>
+					<tbody>
+					<tr>
+						<td class="col-xs-4">注文番号：<%= product_order.id %></td>
+						<td class="col-xs-3">商品情報</td>
+						<td class="col-xs-1">販売者</td>
+						<td class="col-xs-2">価格</td>
+					</tr>
+					<tr>
+						<td class="col-xs-4"><%= attachment_image_tag product_cart.product, :image ,class: "col-xs-12" %></td>
+						<td class="col-xs-3">
+								<table>
+									<tbody>
+										<tr>
+											<td class="">商品名:<%= product_order.product.title %></td>
+										</tr>
+										<tr>
+											<td class="">商品URL:<%= product_order.product.url %></td>
+										</tr>
+										<tr>
+											<td class="">送付先:
+										<%= product_order.order.email %></td>
+										</tr>
+
+										<tr>
+											<td class="">商品購入日:<%= order.created_at.strftime("%Y-%m-%d") %></td>
+										</tr>
+									</tbody>
+								</table>
+						</td>
+						<td class="col-xs-1"販売者><%= product_order.product.user.nickname %></td>
+						<td class="col-xs-2"価格><%= product_order.product.price %>円(税込)</td>
+					</tr>
+					</tbody>
+				</table>
+				<hr>
+			</div>
+			<% end %>
+
+			<div class="col-xs-12 cart_info">
+				<hr>
+				<table>
+					<tbody>
+						<tr>
+							<td class="col-xs-4"></td>
+							<td class="col-xs-3"></td>
+							<td class="col-xs-1">
+								<table>
+									<tbody>
+										<tr>
+											<td>数量：<h3 class="cart_price"><%= total_count %></h3></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="col-xs-2">合計金額：<h3 class="cart_price"><%= sum %></h3>円（税込）</td>
+							<td class="col-xs-2"></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+			</div>
+
+			<div class="col-xs-12">
+				<hr>
+				<%=link_to "買い物を続ける", products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
+				<%=link_to "レジに進む", new_order_path, class: "btn btn-success col-xs-3 col-xs-offset-2" %>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+

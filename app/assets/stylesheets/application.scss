@@ -18,6 +18,7 @@
 
 
 
+
 /*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 
 
@@ -43,7 +44,7 @@ body {
 		text-decoration: none;
 	}
 
-ul {
+ul ,li  {
   list-style:none;
 }
 
@@ -320,6 +321,69 @@ width: 90%;
       padding-top:50px;
     }
 
+/*ここからヘッダーエフェクト*/
+
+.snip1226 * {
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1226 li {
+  display: inline-block;
+  list-style: outside none none;
+  /*margin: 0 1.5em;*/
+  overflow: hidden;
+}
+.snip1226 a {
+  /*padding: 0.3em 0;*/
+  position: relative;
+  display: inline-block;
+  /*letter-spacing: 1px;*/
+  /*margin: 0;*/
+  text-decoration: none;
+}
+.snip1226 a:before,
+.snip1226 a:after {
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+.snip1226 a:before {
+  bottom: 100%;
+  display: block;
+  height: 2px;
+  width: 100%;
+  content: "";
+  background-color: #000000;
+}
+.snip1226 a:after {
+  /*padding: 0.3em 0;*/
+  position: absolute;
+  bottom: 60%;
+  left: 0;
+  content: attr(data-hover);
+  color:  #000000;
+  white-space: nowrap;
+}
+.snip1226 li:hover a,
+.snip1226  {
+  transform: translateY(60%);
+}
+
+
+
+/*ここまでヘッダーエフェクト*/
+
+
+
+
+
+
+
+
+
+
 
 /*//ここまで全体に対してのスタイリングCSS*/
 
@@ -546,17 +610,129 @@ width: 90%;
 }
 
 
-.history_image{
+/*.history_image {
 	width:100%;
 	height:250px;
-}
+}*/
+
 
 label{
 	display: inline;
 }
 
+.history_image , .order_history_image , .favorite_image{
+    height: 180px;
+    width: 320px;
 }
 
+}
+
+.sns_image{
+    height:80px;
+    width:80px;
+}
+
+.td_vertical_align_middle.td_vertical_align_middle {
+  vertical-align: middle;
+}
+
+
+
+
+/*フォームデザイン*/
+
+
+  .form_design {
+    position: relative;
+    display: inline-block;
+    margin: 5px 5px;
+  }
+
+.balloon {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #000000;
+  background: #FFF;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 60px;
+  transition: all .3s ease-in-out;
+  
+  &::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
+  }
+
+  + label {
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    bottom: 8px;
+    padding: 5px 15px;
+    color: #032429;
+    font-size: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(19,74,70,0);
+    transition: all .3s ease-in-out;
+    border-radius: 3px;
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      top: 100%;
+      left: 10%;
+      margin-left: -3px;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-top: 3px solid rgba(122,184,147,0);
+      transition: all .3s ease-in-out;
+    }
+  }
+}
+.balloon:focus,
+.balloon:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #efefef;
+
+  + label {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    background: rgba(122,184,147,1);
+    transform: translateY(-40px);
+    &:after {
+      border-top: 4px solid rgba(122,184,147,1);
+    }
+  }
+}
+
+/*フォームデザイン*/
+
+
+.edit_position_image{
+  display: inline-block;
+}
+
+
+.introduction_form{
+  margin-top:5px;
+  width: 100%;
+  height:400px;
+  color: #000000;
+  background: #FFF;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+  resize: none;
+}
 
 /*ここまでUsersに対してのスタイリングCSS*/
 
@@ -571,7 +747,8 @@ label{
 .carts{
     img {
   vertical-align: middle;
-  height:200px;
+    height: 180px;
+    width: 320px;
 }
 
 .cart_info{
@@ -580,6 +757,12 @@ label{
 /*    #notice {
         padding-top: 200px
     }*/
+
+
+
+    .cart_price{
+    display:inline;
+    }
 }
 
 
@@ -617,6 +800,15 @@ label{
 .profile_text{
     padding-top:30px;
 }
+
+
+    .order_price{
+    display:inline;
+    }
+        .cart_price{
+    display:inline;
+    }
+
 }
 
 

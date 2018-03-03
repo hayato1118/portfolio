@@ -1,37 +1,46 @@
 <div class="container">
-  <div class="orders_history_title">
-    <h1 style="display:inline;">販売中の商品</h1>
-    <hr>
-  </div>
-    <div class="row">
-      <% @products.each do |product| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">注文番号：<%= product.id %></h3>
+    <h1 class="my-4">販売中商品</h1>
+    <div class="row product_show">
+        <% @products.each do |product| %>
+            <hr>
+            <div class="col-xs-12">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="col-xs-4">商品ID：<%= product.id %></td>
+                            <td class="col-xs-3">商品情報</td>
+                            <td class="col-xs-1">価格</td>
+                            <td class="col-xs-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4"><%= attachment_image_tag product, :image , class: "history_image" %></td>
+                            <td class="col-xs-3">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class=""><strong>商品名：</strong><%= product.title %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""><strong>商品URL：</strong><%= product.url %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""><strong>商品登録日：</strong><%= product.created_at.strftime("%Y-%m-%d") %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="col-xs-1"価格><%= product.price %>円(税込)</td>
+                            <td class="col-xs-2">
+                                <% if product.user == current_user || admin_signed_in? %>
+                                <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>
+                                <%= link_to "削除", product_path(product.id), method: :delete, class: "btn btn-sm btn-danger col-xs-12 text-center", data: { confirm: '本当に消しますか?'} %>
+                                 <% end %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
             </div>
-              <div class="panel-body">
-                <!--商品画像-->
-                  <%= attachment_image_tag product, :image , class: "history_image" %>
-
-                <label style="display:inline;">商品名</label>
-                <h4 style="display:inline;" class="card-title">
-
-                    <%= product.title %>
-                </h4>
-
-                <P><label>値段</label>
-                  <%= product.price %>円</P>
-
-                <% if product.user == current_user || admin_signed_in? %>
-                <P><label>商品URL</label>
-                  <%= product.url %></P>
-                 <%= link_to "削除", product_path(product.id), method: :delete, class: "btn btn-danger col-xs-12", data: { confirm: '本当に消しますか?'} %>
-                 <% end %>
-                 <%= link_to "詳細", product_path(product.id), class: "btn btn-success col-xs-12 text-center" %>
-              </div>
-            </div>
-          </div>
         <% end %>
     </div>
 </div>

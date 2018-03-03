@@ -12,7 +12,7 @@ has_many :product_comments, dependent: :destroy
 belongs_to :user
 # belongs_to :buyer, class_name: "User", optional: true
 # 管理者　1:N 商品の関係
-belongs_to :admin
+belongs_to :admin, optional: true
 
 #=====================================お気に入り機能==================================================
 
@@ -41,6 +41,7 @@ has_many :categories, through: :product_categories
 has_many :product_operatingsystems
 # has_many :orders, through: :product_orders
 
+
   def soft_delete
     update(deleted_at: Time.now)
   end
@@ -52,7 +53,7 @@ has_many :product_operatingsystems
 
  def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      Product.where(['price LIKE ?', "%#{search}%"]).or Product.where(['title LIKE ?', "%#{search}%"])
+      Product.where(['price LIKE ?', "%#{search}%"]).or Product.where(['title LIKE ?', "%#{search}%"]).or Product.where(['id LIKE ?', "%#{search}%"])
     else
       Product.all #全て表示。
     end

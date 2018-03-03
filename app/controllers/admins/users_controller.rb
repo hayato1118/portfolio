@@ -14,8 +14,7 @@ layout 'admin.application'
 
 
 	def index
-		@users = User.search(params[:search]).reverse_order
-		@user_paginate = User.page(params[:page]).reverse_order
+		@users = User.page(params[:page]).search(params[:search]).reverse_order
 	end
 
 	def show

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+
+<!-- turbolinks を無効にする中 -->
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+<body class='<%= "#{controller.controller_name}" %>'>
+
+<%= yield %>
+
+
+  </body>
+</html>

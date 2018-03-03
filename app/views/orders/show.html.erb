@@ -1,16 +1,66 @@
-<META http-equiv="Refresh" content="5;URL=http://localhost:3000/products">
-
 <div class="container">
-	  <div class="row">
-	  	名前をここにいれたい
-	  	<hr>
-	  	<div class="col-xs-12 text-center well well-lg">
-	  		<h2 class="text-danger">ご注文ありがとうございました。</h2>
-	  		<h6><p>ご登録メールアドレスにご注文商品のURLを送付いたします。</p>
-	  		<p>メールが届かない場合は、迷惑メールフォルダーに振り分けられている場合があります。</p>
-	  		<p>メールを確認できない場合は購入履歴の方にもURLがございますのでご確認ください。</p></h6>
-	  		<p>5秒後にページが移動します</p>
-	  	</div>
-	  </div>
+	<h1 class="my-4">領収証</h1>
+	<div class="row">
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>注文ID</td>
+					<td>販売者</td>
+					<td>購入者</td>
+					<td>商品名</td>
+					<td>値段</td>
+					<td>購入日時</td>
+				</tr>
+					<% sum =0 %>
+					<% total_count = 0 %>
+					<% @order.product_orders.each do |product_order| %>
+
+					<% sum += product_order.product.price %>
+
+					<% @order.product_orders.each_with_index do |product_order,i| %>
+					<% total_count = i + 1 %>
+					<% end %>
+
+					<tr>
+						<td><%= @order.id %></td>
+						<td><%= product_order.product.user.nickname%></td>
+						<td><%= @order.user.last_name %><%= @order.user.first_name %></td>
+						<td><%= product_order.product.title %></td>
+						<td><%= product_order.product.price %>円(税込)</td>
+						<td><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></td>
+					</tr>
+						<% end %>
+			</tbody>
+		</table>
 	</div>
+</div>
+
+
+<div class="col-xs-12">
+	<hr>
+	<table>
+		<tbody>
+			<tr>
+				<td class="col-xs-4"></td>
+				<td class="col-xs-3"></td>
+				<td class="col-xs-1">
+					<table>
+						<tbody>
+							<tr>
+								<td>送付先：<span id="output"></span></td>
+							</tr>
+							<tr>
+								<td>数量：<%= total_count %></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td class="col-xs-2">合計金額：<h3 class="order_price"><%= sum %></h3>円（税込）</td>
+				<td class="col-xs-2"></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+</div>
+
 

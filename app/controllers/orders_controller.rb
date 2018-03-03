@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
+     render :layout => 'order.show.application'
   end
 
 
@@ -24,13 +25,13 @@ class OrdersController < ApplicationController
   			product_cart.destroy
   		end
   	end
-  	redirect_to order_path(@order)
+  	redirect_to order_complete_path(@order)
   end
 
 
   private
     def order_params
-    params.require(:order).permit(:zip, :state, :city, :street,:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
+    params.require(:order).permit(:total_price, :zip, :state, :city, :street,:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
     end
 
   def product_order_params
