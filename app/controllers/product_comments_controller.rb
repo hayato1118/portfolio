@@ -6,12 +6,20 @@ def create
     if comment.save
       redirect_to product_path(product)
     else
-      redirect_to product_path(product), flash: { error: comment.errors.full_messages }
-    end
+      redirect_to product_path(product)
+	end
 end
 
-private
-def product_comment_params
-  params.require(:product_comment).permit(:user_id,:product_id,:comment)
+def destroy
+	@product = Product.find(params[:product_id])
+	@product_comment = @product.product_comments.find(params[:id])
+	@product_comment.destroy
+	redirect_to product_path(@product)
 end
+
+
+private
+	def product_comment_params
+	  params.require(:product_comment).permit(:user_id,:product_id,:comment)
+	end
 end

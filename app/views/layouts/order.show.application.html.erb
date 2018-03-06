@@ -12,7 +12,17 @@
 
 <body class='<%= "#{controller.controller_name}" %>'>
 
+<header>
+<% if admin_signed_in? %>
+<div clas="col-xs-12 text-center">
+	<label>管理者がログイン中です。</label>
+</div>
+<% end %>
+</header>
+
 <%= yield %>
+
+
 
 
   </body>

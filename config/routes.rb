@@ -39,13 +39,17 @@ Rails.application.routes.draw do
     resources :carts
 
     resources :products do
+        collection do
+            post 'confirm'
+        end
         resource :product_carts, only: [:create,:destroy]
-        resource :product_comments, only: [:create, :destroy]
+        resources :product_comments, only: [:create, :destroy]
         resources :product_goods, only: [:create, :destroy]
             member do #本一覧画面からお気に入り登録をする
                 post "add", to: "favorites#create"
         end
     end
+    get 'products/:id/complete' => 'products#complete', as: 'product_complete'
 
     #個人ページからお気に入りを削除する
     resources :favorites, only: [:destroy]

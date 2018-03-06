@@ -17,6 +17,13 @@
 <body class='<%= "#{controller.controller_name}" %>'>
 
 <header>
+
+	
+<% if admin_signed_in? %>
+<div clas="col-xs-12">
+	<label>管理者がログイン中です。</label>
+</div>
+<% end %>
 	<div class="col-xs-12 header_nav">
 		<div class="col-xs-2 text_header-left text-center">
 			<% if user_signed_in? %>
@@ -102,52 +109,51 @@
 
 		<!--ログイン中のヘッダー-->
 		<% if user_signed_in? %>
-				<ul>
-					<div class="col-xs-2 text-center text_header-right">
-						<li class="">
-							<%= link_to "商品一覧", products_path ,class: "text-center"%>
-						</li>
-					</div>
-
-					<div class="col-xs-4 text-center text_header-right">
-						<li class="">
-							<%=link_to "ロゴ", root_path ,class: "text-center"%>
-						</li>
-					</div>
-
-					<div class="col-xs-2 text-center text_header-right">
-						<li class="">
-							<%=link_to "カート", cart_path(current_user.cart.id) ,class: "text-center"%>
-						</li>
-					</div>
-
-
-					<div class="col-xs-2 text-center text_header-right">
-						<li class="">
-							<%= link_to "ログアウト", destroy_user_session_path, :method => :delete ,class: "text-center" %>
-						</li>
-					</div>
-				</ul>
-
-		<% else %>
-
-				<!--ログアウト中のヘッダー-->
-			<ul>
+										<ul class="snip1226">
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<%= link_to "商品一覧", products_path ,class: "text-center"%>
+									<%= link_to "商品一覧", products_path ,class: "text-center css_change"%>
 								</li>
 							</div>
 
 							<div class="col-xs-4 text-center text_header-right">
 								<li class="">
-									<%=link_to "ロゴ", root_path ,class: "text-center"%>
+									<%=link_to "ロゴ", root_path ,class: "text-center css_change" %>
 								</li>
 							</div>
 
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<button class="btn btn-link button-link" id="modal-open" type="button">Signup|Login</button>
+									<%=link_to "カート", cart_path(current_user.cart.id) ,class: "text-center css_change"%>
+								</li>
+							</div>
+
+
+							<div class="col-xs-2 text-center text_header-right">
+								<li class="">
+									<%= link_to "ログアウト", destroy_user_session_path, :method => :delete ,class: "text-center css_change" %>
+								</li>
+							</div>
+						</ul>
+
+		<% else %>
+		<!--ログアウト中のヘッダー-->
+						<ul class="snip1226">
+							<div class="col-xs-2 text-center text_header-right">
+								<li class="">
+									<%= link_to "商品一覧", products_path ,class: "text-center css_change" %>
+								</li>
+							</div>
+
+							<div class="col-xs-4 text-center text_header-right">
+								<li class="">
+									<%=link_to "ロゴ", root_path ,class: "text-center css_change" %>
+								</li>
+							</div>
+
+							<div class="col-xs-2 text-center text_header-right">
+								<li class="">
+									<button class="btn btn-link button-link css_change" id="modal-open" type="button">Signup|Login</button>
 								</li>
 							</div>
 						</ul>

@@ -13,8 +13,9 @@ gem 'kaminari'
 gem 'nested_form'
 gem 'impressionist'
 gem 'redis'
-
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+# gem 'omniauth-facebook'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

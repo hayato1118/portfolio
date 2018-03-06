@@ -29,7 +29,7 @@
 											<td class=""><strong>商品URL：</strong><%= product_order.product.url %></td>
 										</tr>
 										<tr>
-											<td class=""><strong>送付先：</strong><%= product_order.order.email %></td>
+											<td class="user_td_cancer"><strong>送付先：</strong><%= product_order.order.email %></td>
 										</tr>
 										<tr>
 											<td class=""><strong>商品購入日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></td>
@@ -37,9 +37,9 @@
 									</tbody>
 								</table>
 						</td>
-						<td class="col-xs-1"価格><%= product_order.product.price %>円(税込)</td>
+						<td class="col-xs-1 user_td"価格><%= product_order.product.price %>円(税込)</td>
 						<td class="col-xs-2">
-							<%=link_to "商品詳細", product_path(product_order), class: "btn btn-sm btn-default col-xs-12 text-center" %>
+							<%=link_to "商品詳細", product_path(product_order.product.id), class: "btn btn-sm btn-default col-xs-12 text-center" %>
 							<%= link_to "領収証", order_path(order) ,class: "btn btn-sm btn-default col-xs-12 text-center" %>
 						</td>
 					</tr>

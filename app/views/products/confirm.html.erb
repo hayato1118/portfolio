@@ -1,30 +1,22 @@
 <div class="container">
     <ol class="stepBar">
 <li class="visited"><span>1</span><br>商品入力</li>
-<li><span>2</span><br>商品確認</li>
+<li class="visited"><span>2</span><br>商品確認</li>
 <li><span>3</span><br>登録完了</li>
 </ol>
     <div class="row">
         <div class="col-xs-12">
-            <h1 class="my-4">新規商品登録</h1>
+            <h1 class="my-4">商品登録確認</h1>
             <hr>
-    <div class="col-xs-12 text-center well well-lg">
-      <h6>
-      <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-      <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-      <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-      <p>サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
-      </h6>
-    </div>
-
-            <%#= nested_form_for(@product) do |f| %>
-            <%= nested_form_for @product, url: {action: 'confirm'} do |f|  %>
+            <%= nested_form_for(@product) do |f| %>
                 <div class="col-xs-12">
                     <div class="col-md-2 col-xs-12">
                         <label>商品イメージ</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.attachment_field :image %>
+                       <%= attachment_image_tag @product, :image ,class: "product_show_image" %>
+                       <!-- <%#= hidden_field_tag :"cache[image]", @product.image.cache_name %>   この書き方はCarrierWave！！！ -->
+                       <%= f.hidden_field :image, value: f.object.image_attacher.data.to_json %>
                     </div>
                 </div>
 
@@ -34,7 +26,8 @@
                         <label>商品名</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.text_field :title, class: "col-md-8 col-xs-12 product_new"%>
+                        <%= @product.title %>
+                         <%= f.hidden_field :title %>
                     </div>
                 </div>
 
@@ -44,7 +37,8 @@
                         <label>値段</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.number_field :price,min: 0,step: 100, class: "col-md-2 col-xs-3 product_new"%>円
+                       <%= @product.price %>円
+                        <%= f.hidden_field :price %>
                     </div>
                 </div>
 
@@ -55,7 +49,8 @@
                         <label>Google drive URL</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.text_field :url, value: "https://drive.google.com/drive_or_file/〇〇〇〇/〇〇〇〇", class: "col-md-8 col-xs-12 product_new"%>
+                        <%= @product.url %>
+                         <%= f.hidden_field :price %>
                     </div>
                 </div>
 
@@ -65,11 +60,9 @@
                         <label>商品タグ</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.fields_for :tags do |tag_form| %>
-                            <%= tag_form.text_field :tag_name ,class: "col-md-2 product_new" %>
-                            <%= tag_form.link_to_remove "削除" , class: "btn btn-default" %>
-                        <% end %>
-                        <%= f.link_to_add "追加", :tags , class: "btn btn-default" %>
+                     <%= f.fields_for  :tags do |tag_form| %>
+                            <%= tag_form.text_field :tag_name , :readonly => true , style: "border: none",class: "col-md-2 product_new" %>
+                         <% end %>
                     </div>
                 </div>
 
@@ -79,9 +72,17 @@
                         <label>商品カテゴリー</label>
                     </div>
                     <div class="col-md-10">
-                        <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name) do |b| %>
-                            <%= b.label { b.check_box + b.text } %>
+                         <% @product.categories.each do |category| %>
+                        <%= category.category_name %>
+                         <% end %>
+    
+                        <div class="hidden_form">
+                         <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name ) do |b| %>
+                            <%= b.label { b.check_box + b.text }  %>
                         <% end %>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -92,21 +93,17 @@
                         <label>商品説明</label>
                     </div>
                     <div class="col-md-10">
-                        <%= f.text_area :product_detail, class: "col-xs-12 product_new_form" %>
+                        <%= @product.product_detail %>
+                         <%= f.hidden_field :product_detail %>
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <hr>
-                    <%= link_to "キャンセル" ,products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
+                    <%= link_to "内容変更" ,new_product_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
                     <%= f.submit "商品登録", class: "btn btn-primary col-xs-3 col-xs-offset-2" %>
                 </div>
             <% end %>
         </div>
     </div>
 </div>
-
-
-
-
-

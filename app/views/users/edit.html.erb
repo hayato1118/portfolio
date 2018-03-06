@@ -1,3 +1,4 @@
+<!-- 住所自動入力 -->
 <script>
 $(function () {
   $('#zip').jpostal({
@@ -12,6 +13,23 @@ $(function () {
   });
 });
 </script>
+
+<!-- カナ自動入力 -->
+<script type="text/javascript">
+    $(document).ready(
+        function() {
+            $.fn.autoKana('#last_name', '#last_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+        $(document).ready(
+        function() {
+            $.fn.autoKana('#first_name', '#first_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+</script>
+
 
 
 <div class="container">
@@ -50,16 +68,16 @@ $(function () {
                 <div class="tab-pane  active col-md-12" id="sampleContentA">
                   <%= form_for(@user) do |f| %>
                       <span class="form_design">
-                      <%=f.text_field :last_name , class: "balloon"%><label>苗字</label>
+                      <%=f.text_field :last_name, id: "last_name" , class: "balloon"%><label>苗字</label>
                       </span>
                       <span class="form_design">
-                      <%=f.text_field :first_name , class: "balloon"%><label>名前</label>
+                      <%=f.text_field :first_name ,id: "first_name", class: "balloon"%><label>名前</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.text_field :last_name_kana , class: "balloon"%><label>みょうじ</label>
+                      <%=f.text_field :last_name_kana, id: "last_name_kana" , class: "balloon"%><label>みょうじ</label>
                       </span>
                       <span class="form_design">
-                      <%=f.text_field :first_name_kana , class: "balloon"%><label>なまえ</label>
+                      <%=f.text_field :first_name_kana, id: "first_name_kana" , class: "balloon"%><label>なまえ</label>
                       </span><br>
                       <span class="form_design">
                       <%=f.text_field :nickname , class: "balloon"%><label>ユーザーID</label>
@@ -68,13 +86,13 @@ $(function () {
                       <%=f.email_field :email, class: "balloon"%><label>email</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.number_field :phone_number1 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number1 ,maxlength: 4, class: "balloon"%><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.number_field :phone_number2 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number2 ,maxlength: 4 , class: "balloon"%><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.number_field :phone_number3 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number3 ,maxlength: 4, class: "balloon"%><label>電話番号</label>
                       </span><br>
                       <span class="form_design">
                       <%=f.number_field :zip, id: "zip"  , class: "balloon"%><label>郵便番号</label>
@@ -100,7 +118,7 @@ $(function () {
                       </span>
                       <li class="edit_position_image">プロフィール画像:<%= f.attachment_field :profile_image %></li>
                        <%= link_to "Back", user_path(@user),class: "btn btn-default" %>
-                       <%= f.submit 'Update User' ,class: "btn btn-success" %>
+                       <%= f.submit 'Update User' ,class: "btn btn-primary" %>
                   </div>
                     <!--   Aタブ部分    -->
 
@@ -113,9 +131,5 @@ $(function () {
         <% end %>
     </div>
 </div>
-
-
-
-
 
 

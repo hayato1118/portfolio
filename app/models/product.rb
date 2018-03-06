@@ -5,7 +5,7 @@ attachment :image
 
 has_many :product_carts, :dependent => :destroy
 has_many :product_orders
-has_many :product_comments, dependent: :destroy
+has_many :product_comments, :dependent => :destroy
 
 
 # ユーザー　1:N 商品の関係

@@ -3099,21 +3099,21 @@
 
 
 <h3 class="col-xs-12">いいねランキング</h3>
-<table class="table">
+<table class="table text-center col-sm-12">
     <tbody>
         <tr>
             <% @good_rank.each.with_index(1) do |good_rank, i| %>
-            <td><%= "第#{i}位" %></td>
+            <td class="col-xs-2"><%= "第#{i}位" %></td>
             <% end %>
         </tr>
         <tr>
             <% @good_rank.each.with_index(1) do |good_rank, i| %>
-            <td><%= good_rank.like_count %>いいね</td>
+            <td class="col-xs-2">いいね数：<%= good_rank.like_count %></td>
              <% end %>
         </tr>
         <tr>
             <% @good_rank.each.with_index(1) do |good_rank, i| %>
-            <td>商品名：<%=link_to "#{good_rank.title}", product_path(good_rank) %></td>
+            <td class="col-xs-2">商品名：<%=link_to "#{good_rank.title}", product_path(good_rank) %></td>
              <% end %>
         </tr>
     </tbody>

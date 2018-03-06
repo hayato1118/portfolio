@@ -1,18 +1,41 @@
 <div class="container">
 
 <div class="col-xs-12">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <h1>商品名<br>
         <small><%= @products.title %></small>
         </h1>
     </div>
 
 
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <h3>カテゴリー</h3>
         <% @categories.each do |category| %>
         <%= link_to "#{category.category_name}", class: "btn btn-primary"  %>
         <% end %>
+    </div>
+        <div class="col-sm-2">
+        <h3>いいね件数: <%= @products.product_goods.count %></h3>
+        <% if @products.user != current_user && user_signed_in?  %>
+<!-- いいね機能 -->
+<% if current_user.already_liked?(@products) %>
+  <%= button_to 'いいねを取り消す', product_product_good_path(@products), method: :delete, class: "btn btn-default" %>
+<% else %>
+<%= form_for [@products, @product_good] do |f| %>
+ <% if @product_good.errors.any? %>
+    <% @product_good.errors.full_messages.each do |msg| %>
+      <li style="color: red;"><%= msg %></li>
+    <% end %>
+  <% end %>
+  <%= f.submit 'いいね！', class: "btn btn-default" %>
+<% end %>
+<% end %>
+
+<!-- <h2>この記事にいいねしたユーザー</h2> -->
+<%# @products.product_good_users.each do |user| %>
+  <!-- <li><%#= user.email %></li> -->
+<%# end %>
+<% end %>
     </div>
 </div>
 <div class="col-xs-12">
@@ -43,7 +66,6 @@
         <ul>
           <li>商品ID：<%= @products.id %></li>
           <li>販売者：<%= @products.user.nickname %></li>
-          <li>値段：<%= @products.price %>円(税込)</li>
           <li>登録日：<%= @products.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></li>
         </ul>
       <h5 class="my-3">商品タグ</h5>
@@ -77,6 +99,13 @@
           コメント：<%= product_comment.comment %>
           <%= product_comment.created_at.strftime('%Y/%m/%d') %>
         </div>
+
+        
+
+          <%= link_to 'Destroy', product_product_comment_path(@products, product_comment),:confirm => 'Are you sure?',:method => :delete %>
+        
+
+
         <% end %>
         <!--ページング機能-->
         <div class="text-center">
@@ -111,45 +140,37 @@
 <!--コメント機能-->
   </div>
 <!--   Cタブ部分    -->
+</div>
+<h2>値段：<%= @products.price %>円(税込)</h2>
+<div class="col-xs-12">
+<div class="col-xs-6">
+         <% if @products.user != current_user && user_signed_in? %>
+        <%= link_to "お気に入りに登録", add_product_path(@products.id), method: :post , class: "btn btn-default col-xs-12" %>
+        <% end %>
+
+
          <% if @products.user == current_user || admin_signed_in? %>
-          <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-default" %>
+          <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-default col-xs-12" %>
+        <% end %>
+</div>
+<div class="col-xs-6">
+        <% if @products.user != current_user && user_signed_in?  %>
+          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-default col-xs-12" %>
         <% end %>
 
         <% if @products.user == current_user || admin_signed_in? %>
-          <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %>
+          <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-default col-xs-12", data: { confirm: '本当に消しますか?'} %>
         <% end %>
-
-         <% if @products.user != current_user && user_signed_in? %>
-        <%= link_to "お気に入り", add_product_path(@products.id), method: :post , class: "btn btn-default" %>
-        <% end %>
-
-        <% if @products.user != current_user && user_signed_in?  %>
-          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary" %>
-        <% end %>
+</div>
+</div>
+</div>
 
 <%= render "modal" %>
+
+
+
+</div>
 </div>
 
-<% if @products.user != current_user && user_signed_in?  %>
-<!-- いいね機能 -->
-<h5>いいね件数: <%= @products.product_goods.count %></h5>
-<% if current_user.already_liked?(@products) %>
-  <%= button_to 'いいねを取り消す', product_product_good_path(@products), method: :delete, class: "btn btn-default" %>
-<% else %>
-<%= form_for [@products, @product_good] do |f| %>
- <% if @product_good.errors.any? %>
-    <% @product_good.errors.full_messages.each do |msg| %>
-      <li style="color: red;"><%= msg %></li>
-    <% end %>
-  <% end %>
-  <%= f.submit 'いいね！', class: "btn btn-default" %>
-<% end %>
-<% end %>
-<!-- <h2>この記事にいいねしたユーザー</h2> -->
-<%# @products.product_good_users.each do |user| %>
-  <!-- <li><%#= user.email %></li> -->
-<%# end %>
-<% end %>
-</div>
-</div>
+
 

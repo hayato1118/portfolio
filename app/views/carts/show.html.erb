@@ -1,10 +1,13 @@
 <div class="container">
+<ol class="stepBar">
+<li class="visited"><span>1</span><br>カート</li>
+<li><span>2</span><br>注文内容</li>
+<li><span>3</span><br>注文完了</li>
+</ol>
 	<h1 class="my-4">ショッピングカート
 		<small><%=current_user.nickname %>様</small>
 	</h1>
 	<p>現在ショッピングカートには以下の商品が入っています。</p>
-	<div class="row product_show">
-		<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
 		<hr>
 		<div class="col-xs-12">
 				<% sum =0 %>
@@ -23,12 +26,12 @@
 						<td class="col-xs-2"></td>
 					</tr>
 					<tr>
-						<td class="col-xs-4"><%= attachment_image_tag product_cart.product, :image ,class: "col-xs-12" %></td>
+						<td class="col-xs-4"><%= attachment_image_tag product_cart.product, :image ,class: "cart_item col-xs-12" %></td>
 						<td class="col-xs-3">
 								<table>
 									<tbody>
 										<tr>
-											<td class="">商品名:<%= product_cart.product.title %></td>
+											<td class="cart_product_title">商品名:<%= product_cart.product.title %></td>
 										</tr>
 										<tr>
 											<td class="">カテゴリー:</td>
@@ -71,7 +74,7 @@
 									</tbody>
 								</table>
 							</td>
-							<td class="col-xs-2">合計金額：<h3 class="cart_price"><%= sum %></h3>円（税込）</td>
+							<td class="col-xs-2 total_cart_price">合計金額：<h3 class="cart_price"><%= sum %></h3>円（税込）</td>
 							<td class="col-xs-2"></td>
 						</tr>
 					</tbody>
@@ -91,8 +94,6 @@
 
 
 			</div>
-
-
 		</div>
 	</div>
 </div>
