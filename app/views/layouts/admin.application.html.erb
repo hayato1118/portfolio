@@ -49,6 +49,11 @@
             </li>
 
             <li>
+              <%= link_to admins_contacts_path, :method => :GET do %>
+              <i class="glyphicon glyphicon-envelope"></i>admin/Contact
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, :method => :delete do %>
               <i class="glyphicon glyphicon-log-out"></i>Logout
               <% end %>

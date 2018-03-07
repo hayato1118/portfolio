@@ -37,26 +37,25 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       @product = Product.new(product_params) # <=POSTされたパラメータを取得
       @product.user_id = current_user.id
       @product.image_id = @product.image.id
-      @product.save
+      session[:product] = @product
+      session[:product].save
+      # @product.save
       render :new if @product.invalid? # <=バリデーションチェックNGなら戻す
+      # セッションバージョン
 
-      # セッションバージョン
-      # session[:product] = @product
-      # session[:product].save
-      # セッションバージョン
   end
 
   def create
     # セッションバージョン
-    # @product = Product.new(session[:product])
+      @product = Product.new(session[:product])
     # セッションバージョン
-
-	    @product = Product.new(product_params)
+	    # @product = Product.new(product_params)
       @product.user_id = current_user.id
       # @product.image.retrieve_from_cache! params[:cache][:image] この書き方はCarrierWave！！！
       if params[:back]
       render :new
       elsif @product.save
+      session[:product] = nil
       redirect_to product_complete_path(@product)
       else
       render :new

@@ -84,12 +84,32 @@ background-attachment: fixed;
 	<div class="header">
     <h1>MY PAGE</h1>
   </div>
-  <div class="block2">
+
+<div class="block2">
+ <h2><%=link_to "product/indexへGO", products_path %></h2>
+</div>
+
+<div class="col-xs-8 col-xs-offset-2 contact_form">
+    <div class="col-xs-12">
+        <h1>お問い合わせ</h1>
+        <hr>
+    </div>
+<%= form_for @contact, url: {action: 'confirm'} do |f|  %>
+<div class="col-xs-6">
+<span class="form_design"><%= f.text_field :name, id: "name" , class: "balloon"%><label>名前</label></span>
+<span class="form_design"><%=f.text_field :nick_name , id: "nick_name" , class: "balloon"%><label>ユーザー名</label></span>
+<span class="form_design"><%=f.email_field :email , id: "email" , class: "balloon"%><label>メールアドレス</label></span>
+<span class="form_design"><%=f.telephone_field :phone,maxlength: 11 , id: "phone" , class: "balloon"%><label>電話番号</label></span>
+<span class="form_design">画像：<%=f.file_field :contact_image %></span>
+</div>
+
+<div class="col-xs-6">
+<%=f.text_field :message, class: "index_contact_form" %>
+<%= f.submit "送信" ,class: "btn btn-default pull-right" %>
+</div>
+<% end %>
+</div>
+
+
+
 <%= render "modal" %>
-
-
-
-    <h2><%=link_to "product/indexへGO", products_path %></h2>
-  </div>
-
-

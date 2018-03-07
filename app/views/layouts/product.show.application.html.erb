@@ -24,13 +24,12 @@
 	<label>管理者がログイン中です。</label>
 </div>
 <% end %>
-	<div class="col-xs-12 header_nav">
+<div class="col-xs-12 header_nav">
 		<div class="col-xs-2 text_header-left text-center">
 			<% if user_signed_in? %>
-			<li class="icon-position">
 				<div id="nav-drawer">
 					<input id="nav-input" type="checkbox" class="nav-unshown">
-					<label id="nav-open" for="nav-input">マイページ</label>
+					<label id="nav-open" for="nav-input" class="position_header">マイページ</label>
 					<label class="nav-unshown" id="nav-close" for="nav-input"></label>
 					<div id="nav-content">
 						<p id="side_notice"></p>
@@ -42,46 +41,21 @@
 								<%= attachment_image_tag @products.user, :profile_image,fallback: "no_image_top.jpg",class: "img-circle img-thumbnail slide_icon_image" %>
 							</div>
 
-							<div class="col-xs-12 text-center">
+							<div class="col-xs-12 text-center side_user_name">
 								<%= @products.user.nickname %>
 							</div>
 
 							<!-- 登録のユーザー名 -->
-							<div class="col-xs-12 text-center">
-								<div class="container-icon col-xs-2 col-xs-offset-3 text-center">
-									<%= link_to "https://www.facebook.com/#{@products.user.facebook_id}" do %>
-										<i class="facebook fa fa-facebook-square target" style="font-size:30px"></i>
-									<% end %>
-								</div>
-
-								<!-- 登録のユーザー名 -->
-								<div class="container-icon col-xs-2 text-center">
-									<%= link_to "https://twitter.com/#{@products.user.twitter_id}" do %>
-										<i class="twitter fa fa-twitter-square target" style="font-size:30px"></i>
-									<% end %>
-								</div>
-
-								<!-- 登録のユーザー名 -->
-								<div class="container-icon col-xs-2 text-center ">
-									<%= link_to "https://www.instagram.com/#{@products.user.instagram_id}" do %>
-										<i class="instagram fa fa-instagram target" style="font-size:30px"></i>
-									<% end %>
-								</div>
-							</div>
-
-							<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
-								<%= link_to user_path(@products.user.id),:method => :GET do %>
-									<i class="side_list glyphicon glyphicon-user"></i>ユーザーページ
-								<% end %>
+							<div class="col-xs-12 list-hover-slide">
+							      <div><%= link_to "Facebook", "https://www.facebook.com/#{@products.user.facebook_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Twitter", "https://twitter.com/#{@products.user.twitter_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Instagram", "https://www.instagram.com/#{@products.user.instagram_id}", class: "side_menu_sns" %></div>
 							</div>
 
 
-							<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
-								<%= link_to user_sale_path(@products.user.id),:method => :GET do %>
-									<i class="side_list glyphicon glyphicon-user"></i>販売中商品
-								<% end %>
-							</div>
+<div><%= link_to "ユーザーページ" , user_path(@products.user.id) , class: "side_menu_list" %></div>
 
+							<div><%= link_to "販売中商品" , user_sale_path(@products.user.id) , class: "side_menu_list" %></div>
 
 						<% else %>
 							<!--ログアウト中のヘッダー-->
@@ -89,21 +63,13 @@
 								<%= attachment_image_tag @user, :profile_image,fallback: "no_image_top.jpg",class: "img-circle img-thumbnail" %>
 							</div>
 
-							<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
-								<%= link_to new_user_session_path, :method => :GET do %>
-									<i class="glyphicon glyphicon-log-in"></i>ログイン
-								<% end %>
-							</div>
+							<div><%= link_to "ログイン". new_user_session_path , class: "side_menu_list" %></div>
 
-							<div class="col-xs-8 col-xs-offset-2 text-left cp_link slide_icon">
-								<%= link_to new_user_registration_path, :method => :GET do %>
-									<i class="glyphicon glyphicon-edit"></i>新規登録
+							<div><%= link_to "新規登録", new_user_registration_path , class: "side_menu_list" %></div>
+
 								<% end %>
 							</div>
-						<% end %>
 					</div>
-				</div>
-			</li>
 			<% end %>
 		</div>
 

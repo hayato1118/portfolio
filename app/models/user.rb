@@ -20,8 +20,8 @@ has_many :products
 
 has_many :favorites
 # ここはどうする？お気に入りが機能しなくなった。！
-has_many :products, through: :favorites
-# has_many :products, through: :favorites, :class_name => 'Product_favorites'
+has_many :favorite_products, through: :favorites, source: :product
+# has_many :favorite_products, through: :favorites, :class_name => 'Product'
 
 
 # =============================お気に入り機能==========ユーザー１:N商品の関係=========================

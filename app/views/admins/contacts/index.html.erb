@@ -8,48 +8,43 @@
 
 <div class="container">
 	<div class="col-xs-12">
-		<h1 class="my-4">管理者用/商品一覧</h1>
-		<%= form_tag admins_products_path, :method => 'get' do %>
+		<h1 class="my-4">問い合わせ一覧</h1>
+		<%= form_tag admins_contacts_path do %>
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag 'Search', :name => nil %>
 		<% end %>
-    <hr>
-	<div class="row product_show">
-		<table class="table table-hover">
-			<tbody>
-				<tr>
-					<td class="admin_td">商品ID</td>
-					<td class="admin_td">販売者</td>
-					<td class="admin_td">ユーザー名</td>
-					<td class="admin_td">商品名</td>
-					<td class="admin_td">値段</td>
-					<td class="admin_td">URL</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<% @products.each do |product| %>
+		<hr>
+		<div class="row product_show">
+			<table class="table table-hover">
+				<tbody>
 					<tr>
-						<td><%= product.id %></td>
-						<td><%= product.user.last_name %><%= product.user.first_name %></td>
-						<td><%= product.user.nickname %></td>
-						<td><%= product.title %></td>
-						<td><%= product.price %>円</td>
-						<td><%= product.url %></td>
-						<td><%= product.deleted_at %></td>
-						<td><%= link_to "詳細", admins_product_path(product.id), class: "btn btn-success" %></td>
-						<td><%= link_to "削除", admins_product_path(product.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>
+						<td>問い合わせID</td>
+						<td>名前</td>
+						<td>ユーザー名</td>
+						<td>問い合わせ内容</td>
+						<td>ステータス</td>
+						<td></td>
+						<td></td>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-	<div class="col-sm-12 text-center">
-		<%= paginate @products, class: "pagenate" %>
+					<% @contacts.each do |contact| %>
+						<tr>
+							<td><%= contact.id %></td>
+							<td><%= contact.name %></td>
+							<td><%= contact.nick_name %></td>
+							<td><%= contact.message  %></td>
+							<td><%= contact.status %></td>
+							<td><%= link_to "詳細", edit_admins_contact_path(contact.id), class: "btn btn-success" %></td>
+							<td><%= link_to "削除", admins_contact_path(contact.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-12 text-center">
+			<%= paginate @contacts, class: "pagenate" %>
+		</div>
 	</div>
 </div>
-</div>
-
 
 
 <!-- 管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index  管理者用index -->

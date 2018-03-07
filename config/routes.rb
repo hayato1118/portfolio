@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :users
         resources :products
         resources :orders
+        resources :contacts
     end
 
     resources :users
@@ -55,9 +56,12 @@ Rails.application.routes.draw do
     resources :favorites, only: [:destroy]
 
 
-    resources :homes
-    get 'homes/question'
-    get 'homes/contact'
+    resources :homes do
+        collection do
+                post 'confirm'
+            end
+        end
+
     root 'homes#index'
 
 end

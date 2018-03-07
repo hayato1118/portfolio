@@ -15,7 +15,6 @@
                     </div>
                     <div class="col-md-10">
                        <%= attachment_image_tag @product, :image ,class: "product_show_image" %>
-                       <!-- <%#= hidden_field_tag :"cache[image]", @product.image.cache_name %>   この書き方はCarrierWave！！！ -->
                        <%= f.hidden_field :image, value: f.object.image_attacher.data.to_json %>
                     </div>
                 </div>
@@ -27,7 +26,6 @@
                     </div>
                     <div class="col-md-10">
                         <%= @product.title %>
-                         <%= f.hidden_field :title %>
                     </div>
                 </div>
 
@@ -38,7 +36,6 @@
                     </div>
                     <div class="col-md-10">
                        <%= @product.price %>円
-                        <%= f.hidden_field :price %>
                     </div>
                 </div>
 
@@ -50,7 +47,6 @@
                     </div>
                     <div class="col-md-10">
                         <%= @product.url %>
-                         <%= f.hidden_field :price %>
                     </div>
                 </div>
 
@@ -60,8 +56,8 @@
                         <label>商品タグ</label>
                     </div>
                     <div class="col-md-10">
-                     <%= f.fields_for  :tags do |tag_form| %>
-                            <%= tag_form.text_field :tag_name , :readonly => true , style: "border: none",class: "col-md-2 product_new" %>
+                    <% @product.tags.each do |tag| %>
+                    <%= tag.tag_name %>
                          <% end %>
                     </div>
                 </div>
@@ -75,14 +71,6 @@
                          <% @product.categories.each do |category| %>
                         <%= category.category_name %>
                          <% end %>
-    
-                        <div class="hidden_form">
-                         <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name ) do |b| %>
-                            <%= b.label { b.check_box + b.text }  %>
-                        <% end %>
-                        </div>
-
-
                     </div>
                 </div>
 
@@ -94,7 +82,6 @@
                     </div>
                     <div class="col-md-10">
                         <%= @product.product_detail %>
-                         <%= f.hidden_field :product_detail %>
                     </div>
                 </div>
 

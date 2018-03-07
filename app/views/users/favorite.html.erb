@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="my-4">お気に入り</h1>
     <div class="row product_show">
-        <% @user.products.each_with_index do |product, i| %>
+        <% @user.favorite_products.each_with_index do |product, i| %>
         <hr>
             <div class="col-xs-12">
                 <table>
@@ -31,6 +31,7 @@
                             </td>
                             <td class="col-xs-1"価格><%= product.price %>円(税込)</td>
                             <td class="col-xs-2">
+                                <%# binding.pry %>
                                 <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>
                                 <%= link_to "削除",favorite_path(@favorites[i][:id]), method: :delete ,class: "btn btn-danger col-xs-12" , data: { confirm: '本当に消しますか?'} %>
                             </td>

@@ -17,7 +17,6 @@
       </h6>
     </div>
 
-            <%#= nested_form_for(@product) do |f| %>
             <%= nested_form_for @product, url: {action: 'confirm'} do |f|  %>
                 <div class="col-xs-12">
                     <div class="col-md-2 col-xs-12">

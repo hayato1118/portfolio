@@ -1,5 +1,5 @@
 
-	<%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+	<%= attachment_image_tag @user, :profile_image, fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block profile_image_layout" %>
 	<%= render 'follow_form' %>
 　　　   <%= render 'stats' ,class: "text-center" %>
     <h3 class="my-3">登録情報</h3>
