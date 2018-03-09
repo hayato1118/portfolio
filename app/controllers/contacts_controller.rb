@@ -9,25 +9,19 @@ class ContactsController < ApplicationController
   	end
 
 	def create
-	# @contact = Contact.new(contact_params)
-	# @contact.save
-	# redirect_to root_path
-	  @contact = Contact.new(session[:contact])
-	  # if params[:back]
-	  # render :index
-	  # elsif
-	  # 	binding pry
-	  @contact.save
-	  redirect_to contact_complete_path
-	  # else
-	  # render :index
-	  # end
+	@contact = Contact.new(session[:contact])
+
+	 @contact.id = nil
+	 @contact.save
+	 session[:contact] = nil
+	  redirect_to contact_complete_path(@contact)
+	
 	end
 
 
 	private
 		def contact_params
-			params.require(:contact).permit(:message,:name,:nick_name,:email,:phone,:status)
+			params.require(:contact).permit(:id,:message,:name,:nick_name,:email,:phone,:status)
 		end
 
 end

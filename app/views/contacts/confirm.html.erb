@@ -69,3 +69,48 @@
         </div>
     </div>
 </div>
+
+
+  <div class="main">
+  <!--モーダルのコンテンツ-->
+  <div id="modal-content" class="container">
+    <div id="modal-content-innar">
+      <!-- モーダルウィンドウのコンテンツ開始 -->
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="button" class="close batu" id="modal-close">&times;</button>
+          <h3 class="login-h3">ログイン</h3>
+        </div>
+          <div class="col-sm-6">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+          <div class="field">
+            <%= f.label :password %>
+            <br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Log in", class:"btn btn btn-primary" %>
+          </div>
+          <% end %>
+
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+             <%= link_to "Sign up",  new_user_registration_path ,class: "btn_Sign_up btn btn-default col-sm-12" %>
+             <%= link_to "reset password",  new_user_registration_path ,class: "btn_reset_password btn btn-default col-sm-12" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

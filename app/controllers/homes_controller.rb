@@ -2,6 +2,7 @@ class HomesController < ApplicationController
 layout 'top.application'
 
 	def index
+		session[:contact] = nil
 		@contact = Contact.new
 	end
 

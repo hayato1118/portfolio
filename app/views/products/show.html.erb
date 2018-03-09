@@ -141,7 +141,7 @@
   </div>
 <!--   Cタブ部分    -->
 </div>
-<h2>値段：<%= @products.price %>円(税込)</h2>
+<div class="pull-right position_price">値段：<h3 class="product_price"><%= @products.price %></h3>円（税込）</div>
 <div class="col-xs-12">
 <div class="col-xs-6">
          <% if @products.user != current_user && user_signed_in? %>

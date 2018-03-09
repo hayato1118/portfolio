@@ -94,6 +94,24 @@ footer{
   margin-top: 100px;
 }
 
+
+.btn_Sign_up{
+  margin-top:20px;
+}
+
+
+
+.btn_reset_password{
+  margin-top:10px;
+}
+
+
+.login_logo_text{
+  color: #F6F7FB;
+   white-space: nowrap;
+}
+
+
 .header_nav_top{
   background-color:#201B21;
 }
@@ -134,7 +152,7 @@ footer{
   }
 
   .text_header-left a{
-    color:201B21;
+    color: #F6F7FB;
     text-decoration: none;
   }
 
@@ -535,6 +553,11 @@ background-color:#F6F7FB;
     }
 
 
+.search_product{
+  margin-top:20px;
+   white-space: nowrap;
+}
+
 		.haba{
 		     height: 700px;
 		     z-index: 1;
@@ -707,13 +730,15 @@ input[type="file"] {
   margin-bottom:-3px;
   color: #201B21;
 }
+
+.product_price{
+  display:inline;
 }
 
-
-
-
-
-
+.position_price{
+  margin-bottom: 20px; 
+}
+}
 
 /*ここまでproductに対してのスタイリングCSS*/
 

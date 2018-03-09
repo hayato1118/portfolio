@@ -29,21 +29,45 @@
 				<!--   Bタブ部分    -->
 				<div class="tab-pane col-md-12" id="sampleContentB">
 					<h3 class="my-3">コメント</h3>
+					<table class="table table-hover">
+						<tbody>
+							<tr>
+								<td>FROMイメージ</td>
+								<td>TOイメージ</td>
+								<td>コメント者</td>
+								<td>コメント</td>
+								<td>投稿日</td>
+								<td>ボタン系</td>
+							</tr>
+							<%# binding pry %>
+							<% @mypage_comments.each do |message| %>
+							<tr>
+								<td><% @user.from_users.each do |user| %>
+								<%= attachment_image_tag user, :profile_image ,size: '100x100'%>
+								<%#= user.nickname %>
+								<% end %></td>
+
+									<td><% @user.to_users.each do |user| %>
+								<%= attachment_image_tag user, :profile_image ,size: '100x100'%>
+								<%= user.nickname %>
+								<% end %></td>
 
 
-			<% @mypage_comments.each do |message| %>
-			<%#= @user.message do |user_message| %>
-			<%#= user_message.comment %>
-			<%= message.comment %>
-			<% end %>
-
-
-
-			<%= form_for @mypage_comment, url:  mypage_comments_path , html: {method: "POST"} do |f| %>
-            <%=f.text_field :comment, class: "index_contact_form" %>
-            <%= f.hidden_field :from_user_id , value: @user.id , id: "TEST"%>
-            <%= f.submit "送信" ,class: "btn btn-default pull-right" %>
-			<% end %>
+								<td>メッセージID:<%= message.id %></td>
+								<td><%= message.comment %></td>
+								<td><%= message.created_at %></td>
+								<td></td>
+							</tr>
+							<% end %>
+							<%= form_for @mypage_comment, url:  mypage_comments_path , html: {method: "POST"} do |f| %>
+							<tr>
+								<td colspan="4"><%=f.text_field :comment, class: "index_contact_form col-xs-10" %>
+					            <%= f.hidden_field :from_user_id , value: @user.id , id: "TEST"%></td>
+								<td><%= f.submit "送信" ,class: "btn btn-default col-xs-12" %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
 				</div>
 				<!--   Bタブ部分    -->
 			  </div>

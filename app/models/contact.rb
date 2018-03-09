@@ -1,5 +1,13 @@
 class Contact < ApplicationRecord
 
+  validates :email, uniqueness: false # 値がユニークであれば検証成功
+validates :name, uniqueness: false
+validates :nick_name, uniqueness: false
+validates :phone, uniqueness: false
+validates :status, uniqueness: false
+validates :first_name, uniqueness: false
+validates :message, uniqueness: false
+validates :id, uniqueness: false
  def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       Contact.where(['first_name LIKE ?', "%#{search}%"])
