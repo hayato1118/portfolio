@@ -36,8 +36,13 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     resources :orders
     get 'orders/:id/complete' => 'orders#complete', as: 'order_complete'
-
+   
+    #個人ページからお気に入りを削除する
+    resources :mypage_comments, only: [:create, :destroy]
+    resources :favorites, only: [:destroy]
     resources :carts
+
+
 
     resources :products do
         collection do
@@ -52,14 +57,17 @@ Rails.application.routes.draw do
     end
     get 'products/:id/complete' => 'products#complete', as: 'product_complete'
 
-    #個人ページからお気に入りを削除する
-    resources :favorites, only: [:destroy]
-
+    resources :contacts do
+            collection do
+            post 'confirm'
+        end
+    end
+    get 'contacts/:id/complete' => 'contacts#complete', as: 'contact_complete'
 
     resources :homes do
-        collection do
-                post 'confirm'
-            end
+        # collection do
+        #         post 'confirm'
+        #     end
         end
 
     root 'homes#index'

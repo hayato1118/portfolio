@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def show
       @user = User.find(params[:id])
+      @mypage_comment = MypageComment.new
+      # @mypage_comments = MypageComment.all
+      # @mypage_comments = @products.mypage_comments.all
+      @mypage_comments = MypageComment.where(from_user_id: @user.id)
       render :layout => 'user.show.application'
   end
 
@@ -20,8 +24,9 @@ class UsersController < ApplicationController
 
 
   def update
-    # binding.pry
         @user = User.find(params[:id])
+         # session[:user] = @user
+         # session[:user].update
         if @user.update(user_params)
            redirect_to user_path(@user.id)
         else

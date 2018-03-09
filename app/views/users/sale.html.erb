@@ -20,16 +20,20 @@
                                         <tr>
                                             <td class="user_td_cancer"><strong>商品名：</strong><%= product.title %></td>
                                         </tr>
+
+                                        <% if product.user == current_user || admin_signed_in? %>
                                         <tr>
                                             <td class="user_td_cancer"><strong>商品URL：</strong><%= product.url %></td>
                                         </tr>
+                                        <% end %>
+
                                         <tr>
                                             <td class=""><strong>商品登録日：</strong><%= product.created_at.strftime("%Y-%m-%d") %></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </td>
-                            <td class="col-xs-1 user_td"価格><%= product.price %>円(税込)</td>
+                            <td class="col-xs-1 user_td"><%= product.price %>円(税込)</td>
                             <td class="col-xs-2">
                                 <% if product.user == current_user || admin_signed_in? %>
                                 <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>

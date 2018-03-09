@@ -19,21 +19,6 @@ layout 'admin.application'
 		@contact = Contact.find(params[:id])
 	end
 
-	def create
-		# @contact = Contact.new(contact_params)
-		# @contact.save
-		# redirect_to root_path
-	      @contact = Contact.new(session[:contact])
-	      if params[:back]
-	      render :index
-	      elsif @contact.save
-	      session[:contact] = nil
-	      redirect_to contact_complete_path(@contact)
-	      else
-	      render :new
-	      end
-	end
-
 	def update
 		@contact = Contact.find(params[:id])
 		@contact.update(contact_params)
@@ -45,8 +30,6 @@ layout 'admin.application'
 		@contact.destroy
 		redirect_to admins_contacts_path
 	end
-
-
 
 	private
 		def contact_params

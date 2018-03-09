@@ -2,6 +2,19 @@
 <p>Find me in app/views/homes/index.html.erb</p>
  -->
 
+<!--「aos」CSSの読込-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+<!--「aos」JSの読込-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+<script>
+AOS.init({
+offset: 200,
+duration: 600,
+easing: 'ease-in-sine',
+delay: 100,
+});
+</script>
 
 
 <head>
@@ -63,20 +76,85 @@ background-attachment: fixed;
   -ms-transform: rotate(-8deg);
   -o-transform: rotate(-8deg);
   transform: rotate(-8deg);
+  background-color: #F6F7FB;
 }
 
 
 /* BLOCK2 */
-.block2 {
+#how_to_use {
+  padding-top: 200px;
+}
+
+ .use_image {
+    border-radius: 10%;
+}
+
+.use_container{
+  padding-top:50px;
+  }
+
+#q_and_a{
+  padding-top: 150px;
+}
+
+
+
+/*アコーディオン部分*/
+
+
+ul {
+  list-style: none;
+}
+
+.accordion-item {
   position: relative;
-  height: 100%;
+  cursor: pointer;
+  margin-top: 50px;
 }
 
-.block2 h2 {
+.accordion-item-left{
+  margin-bottom: 100px;
+}
+
+.accordion-item-right{
+  margin-top: 100px;
+}
+
+.accordion-item:hover {
+}
+
+.question {
+  font-size: 15px;
+  font-weight: 700;
+  color: #201B21;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  width: 90%;
+}
+
+.accordion-item span {
   position: absolute;
-  top: 45%;
+  top: -25px;
+  right: 5px;
+  color: #201B21;
+  font-size: 40px;
 }
 
+.answer {
+  display: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding-top: 30px;
+  border-bottom: 1px solid #201B21;
+}
+
+.answer p {
+    color: #201B21;
+     word-wrap: break-word;
+  }
+
+/*アコーディオン部分*/
 
 	</style>
 </head>
@@ -85,31 +163,320 @@ background-attachment: fixed;
     <h1>MY PAGE</h1>
   </div>
 
-<div class="block2">
- <h2><%=link_to "product/indexへGO", products_path %></h2>
-</div>
-
-<div class="col-xs-8 col-xs-offset-2 contact_form">
-    <div class="col-xs-12">
-        <h1>お問い合わせ</h1>
-        <hr>
-    </div>
-<%= form_for @contact, url: {action: 'confirm'} do |f|  %>
-<div class="col-xs-6">
-<span class="form_design"><%= f.text_field :name, id: "name" , class: "balloon"%><label>名前</label></span>
-<span class="form_design"><%=f.text_field :nick_name , id: "nick_name" , class: "balloon"%><label>ユーザー名</label></span>
-<span class="form_design"><%=f.email_field :email , id: "email" , class: "balloon"%><label>メールアドレス</label></span>
-<span class="form_design"><%=f.telephone_field :phone,maxlength: 11 , id: "phone" , class: "balloon"%><label>電話番号</label></span>
-<span class="form_design">画像：<%=f.file_field :contact_image %></span>
-</div>
-
-<div class="col-xs-6">
-<%=f.text_field :message, class: "index_contact_form" %>
-<%= f.submit "送信" ,class: "btn btn-default pull-right" %>
-</div>
-<% end %>
-</div>
 
 
+<!--============================================= 使い方機能 =============================================-->
+<div class="how_to_use" id="how_to_use">
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <h3 class="textleft">HOW TO USE</h3>
+              <hr>
+              <br>
+
+<!-- =====================step1===================-->
+              <div class="use_container_top">
+                <div class="row">
+                  <div class="col-xs-5" data-aos="fade-up">
+                    <div class="">
+<%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                    </div>
+                  </div>
+                  <div class="col-xs-7" data-aos="fade-left"  data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+                                    <div class="">
+                                        <h6 class="">1st step</h6>
+                        <h3 class="">
+                          <label>Create</label>
+                        </h3>
+                        <h5 class="">
+                         オリジナルのコンテンツをRuby,Ruby on Rails,PHP,Python,HTML,CSS,jQuery,Java,JavaScriptの中から制作をしてください。
+                        </h5></div>
+                  </div>
+                </div>
+              </div>
+
+<!-- =====================step1===================-->
+
+<!-- =====================step2===================-->
+              <div class="use_container">
+                <div class="row">
+                  <div class="col-xs-7"  data-aos="fade-right" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+                                    <div class="">
+                        <h6 class="">2nd step</h6>
+                        <h3 class="">
+                          <label>photograph</label>
+                        </h3>
+                        <p class="">
+                          コンテンツが作成完了したらコンテンツをGIFファイルで画面録画できるソフトで撮影しましょう。
+                        </p></div>
+                  </div>
+                  <div class="col-xs-5" data-aos="fade-up">
+                    <div class="">
+ <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+<!-- =====================step2===================-->
+
+<!-- =====================step3===================-->
+            <div class="use_container">
+                <div class="row">
+                  <div class="col-xs-5" data-aos="fade-up">
+                    <div class="">
+ <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                    </div>
+                  </div>
+                  <div class="col-xs-7" data-aos="fade-left" data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+                                    <div class="">
+                                        <h6 class="">3rd step</h6>
+                        <h3 class="">
+                          <label>Storage</label>
+                        </h3>
+                        <p class="">
+                        作成したコンテンツをGoogle Driveにアップロードしましょう。
+                        Googleドライブのマイドライブの中の共有したいファイルやフォルダを選択して右クリック
+                        共有可能なリンクを取得をクリック
+                        共有のためのURLが作成されるので後ほど商品登録時に必要です
+                        リンクを知っている全員が閲覧可に変更
+                        完了をクリック
+                        </p></div>
+
+                  </div>
+                </div>
+              </div>
+<!-- =====================step3===================-->
+
+
+<!-- =====================step4===================-->
+
+
+              <div class="use_container">
+                <div class="row">
+                  <div class="col-xs-7"  data-aos="fade-right"
+     data-aos-easing="ease-in-sine">
+                    <div class="">
+                        <h6 class="">4th step</h6>
+                        <h3 class=""> <label>Registration</label></h3>
+                        <p class="">
+                         step2で撮影したGIFファイルを添付して必要項目を入力してください。
+                         商品URLは先ほどGoogleドライブで生成されたURLです。
+                        </p>
+                   </div>
+                   </div>
+                   <div class="col-xs-5" data-aos="fade-up">
+                   <div class=""><%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %></div>
+                  </div>
+                </div>
+              </div>
+
+<!-- =====================step4===================-->
+
+            </div>
+          </div>
+          <hr>
+        </div>
+<!--============================================= 使い方機能 =============================================-->
 
 <%= render "modal" %>
+
+
+
+<!--============================================= Q&A機能 =============================================-->
+
+
+<div class="q_and_a" id="q_and_a">
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h3 class="textleft">よくある質問</h3>
+    <hr>
+    <br>
+<ul id="accordion mdl-list">
+
+  <div class="col-md-6">
+  <li class="accordion-item mdl-list__item accordion-item-left" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom"  data-aos-offset="200">
+     <h3 class="question">手数料はどれくらいかかりますか？</h3>
+     <span>+</span>
+     <div class="answer">
+        <p>購入価格から５％をいただいています。</p>
+     </div>
+  </li>
+
+<li class="accordion-item mdl-list__item accordion-item-left" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom"  data-aos-offset="200">
+     <h3 class="question">売れた商品はいつどのように入金されるのでしょうか？</h3>
+     <span>+</span>
+     <div class="answer">
+        <p>登録の銀行口座に前月分が入金されます</p>
+     </div>
+  </li>
+
+  <li class="accordion-item mdl-list__item accordion-item-left" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom"  data-aos-offset="200">
+     <h3 class="question mdl-list__item">GIFファイルを作成する時の推奨ソフトはありますか？</h3>
+     <span>+</span>
+     <div class="answer">
+  <p>今探し中</p>
+     </div>
+  </li>
+
+</div>
+
+<div class="col-md-6">
+
+  <li class="accordion-item mdl-list__item accordion-item-right"  data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" data-aos-offset="200">
+     <h3 class="question">購入後リンク切れが起きていた場合の保証はありますか？</h3>
+     <span>+</span>
+     <div class="answer">
+        <p>リンクを確認後、リンク切れがありましたら全額返金いたします。</p>
+     </div>
+  </li>
+
+
+    <li class="accordion-item mdl-list__item accordion-item-right" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" data-aos-offset="200">
+     <h3 class="question">リンク切れの商品でも欲しい場合はどうしたら良いでしょうか？</h3>
+     <span>+</span>
+     <div class="answer">
+        <p>販売者の方に連絡をしてリンクを有効にできるか確認いたします。</p>
+     </div>
+  </li>
+
+    <li class="accordion-item mdl-list__item accordion-item-right" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" data-aos-offset="200">
+     <h3 class="question">コーディング代行が購入することができません？</h3>
+     <span>+</span>
+     <div class="answer">
+        <p>エンジニアを確保でき次第サービス開始します。</p>
+     </div>
+  </li>
+</div>
+</ul>
+</div>
+</div>
+<div class="col-md-12">
+    <hr>
+</div>
+
+<script>
+  $(function() {
+  $('.accordion-item').click(function(){
+
+    var $answer = $(this).children('.answer');
+
+    if ($answer.hasClass('open')) {
+
+      $answer.removeClass('open');
+
+      $answer.slideUp();
+
+      $(this).children('span').text('+');
+
+    } else {
+
+      $answer.addClass('open');
+
+      $answer.slideDown();
+
+      $(this).children('span').text('-');
+    }
+  });
+});
+</script>
+
+
+
+<!--============================================= Q&A機能 =============================================-->
+
+
+<!--============================================= 問い合わせ機能 =============================================-->
+
+
+<!-- PCバージョン -->
+<div id="contact" class="contact">
+    <div class="col-xs-8 col-xs-offset-2 contact_form">
+        <div class="col-xs-12">
+            <h1>お問い合わせ</h1>
+            <hr>
+        </div>
+        <%= form_for @contact, url:  confirm_contacts_path , html: {method: "POST"} do |f| %>
+        <div class="col-xs-6">
+            <span class="form_design"><%= f.text_field :name, id: "name" , class: "balloon col-xs-12"%><label>名前</label></span>
+            <span class="form_design"><%=f.text_field :nick_name , id: "nick_name" , class: "balloon col-xs-12"%><label>ユーザー名</label></span>
+            <span class="form_design"><%=f.email_field :email , id: "email" , class: "balloon col-xs-12"%><label>メールアドレス</label></span>
+            <span class="form_design"><%=f.telephone_field :phone , id: "phone" , class: "balloon col-xs-12"%><label>電話番号</label></span>
+        </div>
+        <div class="col-xs-6">
+            <%=f.text_field :message, class: "index_contact_form" %>
+            <%= f.submit "送信" ,class: "btn btn-default pull-right" %>
+        </div>
+        <% end %>
+    </div>
+</div>
+<!-- PCバージョン -->
+
+
+<!-- スマホバージョン -->
+ <%= form_for @contact, url:  confirm_contacts_path , html: {method: "POST"} do |f| %>
+          <div class="row res_contact_form contact">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="card card-contact no-transition">
+                            <h3 class="card-title text-center">お問い合わせ</h3>
+                            <div class="row">
+                                <div class="col-md-12 mr-auto">
+                                    <form role="form" id="contact-form" method="post">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">名前</label>
+                                                       <%= f.text_field :name,  class: "col-xs-12"%>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">ユーザー名</label>
+                                                        <%=f.text_field :nick_name , class: "col-xs-12"%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">メールアドレス</label>
+                                                        <%=f.email_field :email , class: "col-xs-12"%>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">電話番号</label>
+                                                       <%=f.telephone_field :phone , class: "col-xs-12"%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">お問い合わせ</label>
+                                                <%=f.text_field :message, class: "index_contact_form" %>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                   <%= f.submit "送信" ,class: "btn btn-default pull-right col-md-12" %></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+          </div>
+   <% end %>
+   <!-- スマホバージョン -->
+<!--============================================= 問い合わせ機能 =============================================-->
+
+

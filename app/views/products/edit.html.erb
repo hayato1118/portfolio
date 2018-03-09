@@ -3,9 +3,7 @@
     <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-      </h1>
+      <h1 class="my-4">商品編集</h1>
 <hr>
 <div class="row product_show">
 	<%= nested_form_for(@products) do |f| %>
@@ -15,7 +13,7 @@
 
 
 		<div class="col-md-4">
-			<ul class="nav nav-pills">
+			<ul class="nav nav-tabs">
 				<li class="active"><a href="#sampleContentA" data-toggle="tab">商品詳細</a></li>
 				<li><a href="#sampleContentB" data-toggle="tab">商品説明</a></li>
 				<li><a href="#sampleContentC" data-toggle="tab">商品タグ</a></li>
@@ -55,16 +53,16 @@
                         <div class=" panel panel-default edit_comment_scrollbar">
                             <%= f.fields_for :tags do |tag_form| %>
                                 <%= tag_form.text_field :tag_name %>
-                                <%= tag_form.link_to_remove "フォーム削除" , class: "btn btn btn-danger" %>
+                                <%= tag_form.link_to_remove "フォーム削除" , class: "btn btn btn-sm btn-danger" %>
                             <% end %>
-                            <%= f.link_to_add "フォーム追加", :tags , class: "btn btn btn-primary" %>
+                            <%= f.link_to_add "フォーム追加", :tags , class: "btn btn btn-sm btn-primary" %>
                         </div>
                     </div>
                     <!--   Cタブ部分    -->
 
                 </div>
-                 <%= f.submit 'Update Product' ,class: "btn btn-primary" %>
-                <%= link_to "Back", product_path(@products),class: "btn btn-success" %>
+                 <%= f.submit '商品更新' ,class: "btn btn-primary" %>
+                <%= link_to "キャンセル", product_path(@products),class: "btn btn-default" %>
             </div>
         </div>
     <% end %>

@@ -39,7 +39,7 @@ $(function () {
     </div>
     <div class="row product_show">
         <div class="col-md-3 text-center">
-            <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block" %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 200, 200,  fallback: "no_image_top.jpg",class: "img-thumbnail img-responsive center-block profile_image_layout" %>
 
             <%= render 'users/follow_form' %>
             <%= render 'users/stats' ,class: "text-center" %>

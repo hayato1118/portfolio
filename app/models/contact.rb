@@ -1,9 +1,5 @@
 class Contact < ApplicationRecord
 
-attachment :contact_image
-
-
-
  def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       Contact.where(['first_name LIKE ?', "%#{search}%"])

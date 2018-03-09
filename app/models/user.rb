@@ -42,6 +42,18 @@ has_many :followers, through: :follower_relationships
 
 #=====================================フォロー機能==================================================
 
+#=====================================ユーザーに対してコメント機能==================================================
+
+has_many :from_user_mypagecomments, foreign_key: "to_user_id", class_name: "MypageComment", dependent: :destroy
+has_many :from_users, through: :from_user_mypagecomments
+
+has_many :to_user_mypagecomments, foreign_key: "from_user_id", class_name: "MypageComment", dependent: :destroy
+has_many :to_users, through: :to_user_mypagecomments
+
+#=====================================ユーザーに対してコメント機能==================================================
+
+
+
 
 #user.rbにフォローする関数、フォローしているか調べるための関数、フォローを外す関数を作成
 def following?(other_user)

@@ -18,7 +18,7 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td class=""><strong>商品名：</strong><%= product.title %></td>
+                                            <td class="user_td_cancer"><strong>商品名：</strong><%= product.title %></td>
                                         </tr>
                                         <tr>
                                             <td class=""><strong>販売者：</strong><%= product.user.nickname %></td>
@@ -29,7 +29,7 @@
                                     </tbody>
                                 </table>
                             </td>
-                            <td class="col-xs-1"価格><%= product.price %>円(税込)</td>
+                            <td class="col-xs-1 user_td"><%= product.price %>円(税込)</td>
                             <td class="col-xs-2">
                                 <%# binding.pry %>
                                 <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>

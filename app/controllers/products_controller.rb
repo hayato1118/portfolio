@@ -40,7 +40,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       session[:product] = @product
       session[:product].save
       # @product.save
-      render :new if @product.invalid? # <=バリデーションチェックNGなら戻す
+      binding.pry
+      render :new if session[:user] == nil || @product.invalid? # <=バリデーションチェックNGなら戻す
       # セッションバージョン
 
   end

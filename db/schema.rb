@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307034157) do
+ActiveRecord::Schema.define(version: 20180308061806) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20180307034157) do
   create_table "contacts", force: :cascade do |t|
     t.text "message"
     t.string "name"
-    t.string "contact_image_id"
     t.string "nick_name"
     t.string "email"
     t.string "phone"
@@ -90,10 +89,11 @@ ActiveRecord::Schema.define(version: 20180307034157) do
   end
 
   create_table "mypage_comments", force: :cascade do |t|
-    t.integer "user_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "to_user_id"
+    t.integer "from_user_id"
   end
 
   create_table "operatingsystem_versions", force: :cascade do |t|

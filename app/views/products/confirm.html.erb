@@ -24,7 +24,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>商品名</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                         <%= @product.title %>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>値段</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                        <%= @product.price %>円
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>Google drive URL</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                         <%= @product.url %>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>商品タグ</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                     <% @product.tags.each do |tag| %>
                     <%= tag.tag_name %>
                          <% end %>
@@ -67,7 +67,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>商品カテゴリー</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                          <% @product.categories.each do |category| %>
                         <%= category.category_name %>
                          <% end %>
@@ -80,7 +80,7 @@
                     <div class="col-md-2 col-xs-12">
                         <label>商品説明</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10 confirm_text">
                         <%= @product.product_detail %>
                     </div>
                 </div>

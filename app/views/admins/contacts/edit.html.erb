@@ -1,32 +1,34 @@
 <div class="container">
-	<div class="col-md-12">
-		<h1 class="my-4">問い合わせ詳細</h1>
-	</div>
-
-		<div class="row product_show">
-			<div class="col-md-7 text-center product_show_image">
-				<%= attachment_image_tag @contact, :contact_image ,class: "col-md-12 edit_contact_image"  %>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<h1>問い合わせ詳細</h1>
 			</div>
-
-			<div class="col-md-5">
-				<h3 class="my-3">問い合わせ情報</h3>
-				<ul>
-					<li class="text-left">名前：<%= @contact.name %></li>
-					<li class="text-left">ユーザー名：<%= @contact.nick_name %></li>
-					<li class="text-left">メールアドレス：<%= @contact.email %></li>
-					<li class="text-left">電話番号：<%= @contact.phone %></li>
-					<li class="text-left">問い合わせ日時：<%= @contact.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
-					<li class="text-left">問い合わせ内容：<%= @contact.message %></li>
-				</ul>
-				<div class="col-md-12">
-					<%= form_for @contact , url: admins_contact_path, html: {method: "PATCH"} do |f| %>
-						<%= f.select :status, [["未確認", "未確認"], ["確認済み", "確認済み"], ["返信完了", "返信完了"]]  %>
-						<%= f.submit '変更' ,class: "btn btn-primary" %>
-						<%=link_to "戻る", admins_contacts_path, class: "btn btn-default" %>
-					<% end %>
-				</div>
+			<div class="col-md-6">
+				<%= form_for @contact , url: admins_contact_path, html: {method: "PATCH"} do |f| %>
+				<%= f.select :status, [["未確認", "未確認"], ["確認済み", "確認済み"], ["返信完了", "返信完了"]]  %>
+				<%= f.submit '変更' ,class: "btn btn-primary" %>
+				<%=link_to "戻る", admins_contacts_path, class: "btn btn-default" %>
+				<% end %>
 			</div>
 		</div>
+
+<div class="col-md-12">
+		<hr>
+		<div class="col-md-5 col-md-offset-2">
+			<h3 class="my-3">ユーザー情報</h3>
+			<li class="text-left">名前：<%= @contact.name %></li>
+			<li class="text-left">ユーザー名：<%= @contact.nick_name %></li>
+			<li class="text-left">メールアドレス：<%= @contact.email %></li>
+			<li class="text-left">電話番号：<%= @contact.phone %></li>
+			<li class="text-left">問い合わせ日時：<%= @contact.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
+		</div>
+
+		<div class="col-md-4">
+			<h3 class="my-3">問い合わせ内容</h3>
+			<li class="text-left"><%= @contact.message %></li>
+		</div>
+		</div>
+	</div>
 	<hr>
 </div>
-

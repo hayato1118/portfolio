@@ -22,7 +22,62 @@
 /*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 
 
+h1, h2, h3, h4, h5, h6{
+  color: #201B21;
+}
 
+.h1, .h2, .h3, .h4, .h5, .h6{
+  color: #201B21;
+}
+
+div#sampleContentA {
+  color: #201B21;
+}
+
+div#sampleContentB {
+    color: #201B21;
+}
+
+a{
+  text-decoration: none;
+   color: #201B21;
+}
+
+a:hover{
+  text-decoration: none;
+   color: #515151;
+}
+
+/* * {
+    color: #201B21;
+} */
+
+
+
+
+ ul, li {
+  list-style:none;
+    color: #201B21;
+}
+
+.products .not_padding {
+    color: #201B21;
+}
+
+
+.table > thead > tr > th, 
+.table > thead > tr > td, 
+.table > tbody > tr > th, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > th, 
+.table > tfoot > tr > td {
+    color: #201B21;
+}
+
+
+td, th {
+    color: #201B21;
+}
 
 
 html {
@@ -35,31 +90,25 @@ body {
 	padding:0px;
 	}
 
-/*.header_nav{*/
-  /*background-image: url("backimages.jpg");*/
-  /*background-size:cover;*/
-/*}*/
-
-
-	a {
-		text-decoration: none;
-	}
-
-ul ,li  {
-  list-style:none;
+footer{
+  margin-top: 100px;
 }
+
+.header_nav_top{
+  background-color:#201B21;
+}
+
+.header_nav{
+  background-color:#201B21;
+  margin-bottom: 100px;
+}
+
 
 
   .admin_td{
      white-space: nowrap;
   }
-/*th{
-    white-space: nowrap;
-}*/
 
-/*td{
-    white-space: nowrap;
-}*/
 
 .text_header-right{
   height:150px;
@@ -80,12 +129,12 @@ ul ,li  {
 
       .text_header-right a{
     display:block;
-    color: #000000;
+    color: #F6F7FB;
     text-decoration: none;
   }
 
   .text_header-left a{
-    color:000000;
+    color:201B21;
     text-decoration: none;
   }
 
@@ -110,10 +159,17 @@ ul ,li  {
 /*マイページボタンのスタイル*/
 #nav-open {
     display: inline-block;
-    color:#000000;
-/*    width: 70px;
-    height: 100%;*/
+    color: #F6F7FB;
     vertical-align: middle;
+    text-decoration: underline;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    transition: .3s;
+    font-weight:700;
+    text-decoration: none;
+    list-style:none;
 }
 
 /*閉じる用の薄黒カバー*/
@@ -130,6 +186,10 @@ ul ,li  {
     transition: .3s ease-in-out;
 }
 
+#nav-open:hover{
+  color: #00B4FF;
+}
+
 /*中身*/
 
 /*マイページアイコン部分*/
@@ -142,7 +202,7 @@ ul ,li  {
 
 .side_icon{
   display: inline-block;
-  color:#FFF;
+  color:#F6F7FB;
 }
 
 
@@ -151,11 +211,11 @@ ul ,li  {
   display: inline-block;
   width:100%;
   padding:20px 0px;
-  color:#FFF;
+  color:#F6F7FB;
 }
 .side_menu_list:hover{
- border-left: solid 5px #55acee;
-   color:#55acee;
+ border-left: solid 5px #00B4FF;
+   color:#00B4FF;
 }
 
 
@@ -166,12 +226,12 @@ ul ,li  {
   display: inline-block;
   width:33%;
   padding:20px 10px;
-  color:#FFF;
+  color:#F6F7FB;
 }
 
 .side_menu_sns:hover{
- border-bottom: solid 2px #55acee;
-  color:#55acee;
+ border-bottom: solid 2px #00B4FF;
+  color:#00B4FF;
 }
 
 
@@ -179,11 +239,11 @@ ul ,li  {
    font-weight: 400;
   font-size:30px;
   margin:20px 0px;
-  color:#FFF;
+  color:#F6F7FB;
 }
     #side_notice{
       padding-top:50px;
-      border-top: 10px solid #55acee;
+      border-top: 10px solid #00B4FF;
     }
 
 /*サイドメニュー内*/
@@ -236,7 +296,7 @@ ul ,li  {
         margin: 0 ;
         padding: 10px 20px ;
         border: 2px solid #aaa ;
-        background: #fff ;
+        background: #F6F7FB ;
         position: fixed ;
         display: none ;
         z-index: 2 ;
@@ -256,13 +316,13 @@ ul ,li  {
         background-color: rgba( 0,0,0, 0.75 ) ;
     }
     .button-link {
-        color: #000000 ;
+        color: #201B21 ;
         text-decoration: underline ;
         text-decoration: none;
     }
     .button-link:hover {
         cursor: pointer ;
-        color: #000000 ;
+        color: #201B21 ;
         text-decoration: none;
     }
 
@@ -288,7 +348,7 @@ ul ,li  {
     }
 
     .btn-sign_up{
-        color: #fff;
+        color: #F6F7FB;
     }
 
     .btn-sign_up:hover{
@@ -297,7 +357,7 @@ ul ,li  {
 
     .btn-facebook{
         background:#315096;
-        color: #fff;
+        color: #F6F7FB;
     }
 
     .btn-facebook:hover{
@@ -305,8 +365,8 @@ ul ,li  {
     }
 
     .btn-twitter{
-        background:#55acee;
-        color: #fff;
+        background:#00B4FF;
+        color: #F6F7FB;
     }
 
     .btn-twitter:hover{
@@ -315,7 +375,7 @@ ul ,li  {
 
     .btn-google{
         background:#dd4b39;
-        color: #fff;
+        color: #F6F7FB;
     }
 
     .btn-google:hover{
@@ -324,7 +384,7 @@ ul ,li  {
 
     .batu{
         font-size:50px;
-        color:#000000;
+        color:#201B21;
     }
 
 /*モーダル用*/
@@ -348,10 +408,13 @@ ul ,li  {
     -ms-transition: .8s;
     transition: .8s;
     font-weight:700;
+    color: #F6F7FB;
+    text-decoration: none;
+    list-style:none;
 }
 
 .css_change:hover {
-     color: #55acee;
+     color: #00B4FF;
 }
 
 
@@ -386,7 +449,7 @@ ul ,li  {
 }
 .stepBar li span {
   background: #D0E1F9;
-  color: #ffffff;
+  color: #F6F7FB;
   display: inline-block;
   height: 24px;
   margin-bottom: 5px;
@@ -403,6 +466,11 @@ ul ,li  {
   background: #4D648D;
 }
 
+.footer_main{
+  background-color:#EEEEEE;
+  margin:0px 0px;
+}
+
 
 /*ここまでショッピングステップ*/
 
@@ -417,8 +485,13 @@ ul ,li  {
 
 .homes{
 
+
+background-color:#F6F7FB;
+
+
     p {
     margin: 0 0 0px;
+    color: #201B21;
     }
 
 
@@ -434,7 +507,8 @@ ul ,li  {
 
 .products{
 
-    background-color: #FFF;
+
+   background-color:#F6F7FB;
 
 /*    #notice {
         padding-top: 170px
@@ -504,7 +578,6 @@ ul ,li  {
 
 		.product_icon{
 		     float: right;
-		     color: #000000;
 		}
 
 		/*商品画像hover用*/
@@ -515,8 +588,8 @@ ul ,li  {
 		.caption {
 		     font-size: 100%;
 		     text-align: center;
-		     padding-top: 15%;
-		     color: #fff;
+		     padding-top: 30%;
+		     color: #F6F7FB;
 		     word-wrap: break-word;
 		}
 
@@ -594,7 +667,7 @@ ul ,li  {
 
 .product_new_form{
   height:300px;
-    color: #000000;
+    color: #201B21;
     background: #FFF;
     border: 1px solid #eeeeee;
     border-radius: 3px;
@@ -603,7 +676,7 @@ ul ,li  {
 
 
 .product_new{
-    color: #000000;
+    color: #201B21;
     background: #FFF;
     border: 1px solid #eeeeee;
     border-radius: 3px;
@@ -612,8 +685,28 @@ ul ,li  {
 
 
 /*商品新規登録フォーム*/
+label{
+  color:#201B21;
+}
+
+input[type="file"] {
+    color: #201B21;
+}
+
+.confirm_text{
+     color: #201B21;
+}
+
+.product_icon {
+    color: #201B21;
+}
 
 
+
+.index_price{
+  margin-bottom:-3px;
+  color: #201B21;
+}
 }
 
 
@@ -634,6 +727,7 @@ ul ,li  {
 
 .users{
 
+background-color:#F6F7FB;
 
 /*    #notice {
         padding-top: 200px
@@ -684,7 +778,7 @@ label{
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
-  color: #000000;
+  color: #201B21;
   background: #FFF;
   border: 1px solid #eeeeee;
   border-radius: 3px;
@@ -705,7 +799,7 @@ label{
     left: 0;
     bottom: 8px;
     padding: 5px 15px;
-    color: #032429;
+    color: #201B21;
     font-size: 5px;
     font-weight: 700;
     text-transform: uppercase;
@@ -730,17 +824,17 @@ label{
 }
 .balloon:focus,
 .balloon:active {
-  color: #000000;
+  color: #201B21;
   text-indent: 0;
   background: #efefef;
 
   + label {
-    color: #fff;
+    color: #201B21;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    background: #55acee;
+    background: #00B4FF;
     transform: translateY(-40px);
     &:after {
-      border-top: 4px solid #55acee;
+      border-top: 4px solid #00B4FF;
     }
   }
 }
@@ -757,10 +851,10 @@ label{
   margin-top:5px;
   width: 100%;
   height:400px;
-  color: #000000;
+  color: #201B21;
   background: #FFF;
   border: 1px solid #eeeeee;
-  border-radius: 3px;
+  border-radius: 5px;
   resize: none;
 }
 
@@ -778,6 +872,11 @@ label{
     margin-bottom: 20px;
 }
 
+.stats {
+  color:#201B21;
+}
+
+
 }
 
 /*ここまでUsersに対してのスタイリングCSS*/
@@ -792,6 +891,11 @@ label{
 
 .carts{
 
+background-color:#F6F7FB;
+
+p {
+    color: #201B21;
+}
 
     .cart_item {
   vertical-align: middle;
@@ -835,6 +939,13 @@ label{
 
 
 .orders{
+
+background-color:#F6F7FB;
+
+p {
+    color: #201B21;
+}
+
     .order_image {
   vertical-align: middle;
   width:200px;
@@ -879,6 +990,8 @@ label{
 ここからcontactsに対してのスタイリングCSS*/
 
 .contacts{
+
+  background-color:#F6F7FB;
   
 .edit_contact_image{
     width: 100%;
@@ -887,6 +1000,11 @@ label{
 
  .contact_td{
      white-space: nowrap;
+     color:#201B21;
+  }
+
+  .contact_confirm{
+      color:#201B21;
   }
 
 }
@@ -909,6 +1027,7 @@ label{
 
 /*フォームデザイン*/
 
+background-color:#F6F7FB;
 
   .form_design {
     position: relative;
@@ -918,11 +1037,10 @@ label{
 
 .balloon {
   display: inline-block;
-  width: 215px;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
-  color: #000000;
+  color: #201B21;
   background: #FFF;
   border: 1px solid #eeeeee;
   border-radius: 3px;
@@ -943,7 +1061,7 @@ label{
     left: 0;
     bottom: 8px;
     padding: 5px 15px;
-    color: #032429;
+    color: #201B21;
     font-size: 5px;
     font-weight: 700;
     text-transform: uppercase;
@@ -968,34 +1086,78 @@ label{
 }
 .balloon:focus,
 .balloon:active {
-  color: #000000;
+  color: #201B21;
   text-indent: 0;
   background: #efefef;
 
   + label {
-    color: #fff;
+    color: #201B21;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    background: #55acee;
+    background: #00B4FF;
     transform: translateY(-40px);
     &:after {
-      border-top: 4px solid #55acee;
+      border-top: 4px solid #00B4FF;
     }
   }
 }
-
 /*フォームデザイン*/
+
+.contact_for{
+  border: 1px solid #eeeeee;
+  padding : 30px;
+  height:100%;
+  background: #FFF;
+  margin-top:100px;
+}
+
+/*お問い合わせフォーム*/
 .contact_form{
   border: 1px solid #eeeeee;
-  border-radius: 30px;
   padding : 30px;
   height:400px;
+  background: #FFF;
+  margin-top:100px;
+  margin-bottom: 200px;
+}
+
+.contact_form
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.contact_form:before, .contact_form:after
+{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.contact_form:after
+{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
 }
 
 .index_contact_form{
   margin-top:5px;
   width: 100%;
   height:200px;
-  color: #000000;
+  color: #201B21;
   background: #FFF;
   border: 1px solid #eeeeee;
   border-radius: 3px;
@@ -1003,6 +1165,86 @@ label{
    word-wrap: break-word;
 }
 
+ .contact_td{
+     white-space: nowrap;
+  }
+
+/*お問い合わせフォーム*/
+
+.res_contact_form{
+border: 1px solid #eeeeee;
+display:none;
 }
+}
+
+
+/*ここまでhomesに対してのスタイリングCSS*/
+
+
+/*//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+ここからcontactsに対してのスタイリングCSS*/
+
+.contacts{
+
+background-color:#F6F7FB;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*レスポンシブ用*/
+
+/* タブレット向けレイアウト */
+@media screen  and (max-width: 1000px) {
+
+
+}
+
+
+/* スマホ向けレイアウト */
+@media all and (max-width: 670px) {
+
+#contact{
+  display:none;
+}
+
+.res_contact_form{
+  display: block;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

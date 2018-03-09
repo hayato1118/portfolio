@@ -14,7 +14,7 @@
 	   	<div class="col-md-9">
 	        <ul class="nav nav-tabs">
 	          <li class="active"><a href="#sampleContentA" data-toggle="tab">ユーザー情報</a></li>
-	          <li><a href="#sampleContentB" data-toggle="tab">！！！コメント未完成！！！</a></li>
+	          <li><a href="#sampleContentB" data-toggle="tab">コメント</a></li>
 	        </ul>
 
 				<!-- 内容 -->
@@ -28,7 +28,22 @@
 				
 				<!--   Bタブ部分    -->
 				<div class="tab-pane col-md-12" id="sampleContentB">
-					<h3 class="my-3">コメントまだ未完成！</h3>
+					<h3 class="my-3">コメント</h3>
+
+
+			<% @mypage_comments.each do |message| %>
+			<%#= @user.message do |user_message| %>
+			<%#= user_message.comment %>
+			<%= message.comment %>
+			<% end %>
+
+
+
+			<%= form_for @mypage_comment, url:  mypage_comments_path , html: {method: "POST"} do |f| %>
+            <%=f.text_field :comment, class: "index_contact_form" %>
+            <%= f.hidden_field :from_user_id , value: @user.id , id: "TEST"%>
+            <%= f.submit "送信" ,class: "btn btn-default pull-right" %>
+			<% end %>
 				</div>
 				<!--   Bタブ部分    -->
 			  </div>
