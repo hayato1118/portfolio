@@ -1,7 +1,7 @@
 <div class="container">
-<div class="row">
+<div class="row"></div>
 <!--上部分-->
-<h3>新着商品</h3>
+<h3 class="product_title">新着商品</h3>
 <hr>
 <section class="center slider">
     <% @products.each do |product| %>
@@ -19,19 +19,22 @@
 
 
 <!--中央部分-->
+<div class="row">
 <div class="col-xs-12">
-    <h3 class="col-xs-6 col-md-8 col-lg-9">商品一覧</h3>
+    <h3 class="col-xs-6 col-md-8 col-lg-9 product_title">商品一覧</h3>
         <% if user_signed_in? || admin_signed_in? %>
             <div class="col-xs-6 col-md-4 col-lg-3 search_product">
                 <%= form_tag products_path, :method => 'get' do %>
                   <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag 'Search', :name => nil %>
+                  <%= submit_tag 'Search', :name => nil , class: "btn btn-default" %>
+
                 <% end %>
             </div>
         <% end %>
 </div>
 <div class="col-xs-12">
 <hr>
+</div>
 </div>
 
 <div class="haba">
@@ -46,15 +49,16 @@
 
             <div class="haba_text">
                     <div class="col-xs-12 not_padding">
-                    
-                    <div class="glyphicon glyphicon-eye-open product_icon">
-                        <%= product.page_count %>Views
-                    </div>
-                    <div class="glyphicon glyphicon-heart product_icon">
-                        <%= product.like_count %>Likes
-                    </div>
+                    <i class="fa fa-eye pull-right" aria-hidden="true">
+                    <!-- <div class="glyphicon glyphicon-eye-open product_icon"> -->
+                        <%= product.page_count %>Views</i>
+                        <i class="fa fa-heart pull-right" aria-hidden="true">
+                    <!-- </div> -->
+                    <!-- <div class="glyphicon glyphicon-heart product_icon"> -->
+                        <%= product.like_count %>Likes</i>
+                    <!-- </div> -->
                 </div>
-                <div class="col-xs-12 not_padding">
+                <div class="col-xs-12 not_padding pull-right">
                     <%= product.updated_at.strftime("%Y-%m-%d") %>
                     <div class="pull-right"><%= product.price %>円</div>
                 </div>
@@ -77,7 +81,7 @@
 <!--下部分-->
 
 <% if user_signed_in? || admin_signed_in? %>
-<h3 class="col-xs-12">いいねランキング</h3>
+<h3 class="col-xs-12 product_title">いいねランキング</h3>
 <table class="table text-center col-sm-12">
     <tbody>
         <tr>
@@ -87,7 +91,7 @@
         </tr>
         <tr>
             <% @good_rank.each.with_index(1) do |good_rank, i| %>
-            <td class="col-xs-2">いいね数：<%= good_rank.like_count %></td>
+            <td class="col-xs-2">いいね数：<i class="icon fa fa-thumbs-o-up"></i><%= good_rank.like_count %></td>
              <% end %>
         </tr>
         <tr>
@@ -97,10 +101,9 @@
         </tr>
     </tbody>
 </table>
-</div>
-</div>
 <% end %>
-
+</div>
+</div>
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>

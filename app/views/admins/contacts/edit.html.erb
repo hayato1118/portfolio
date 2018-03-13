@@ -19,7 +19,7 @@
 			<h3 class="my-3">ユーザー情報</h3>
 			<li class="text-left">名前：<%= @contact.name %></li>
 			<li class="text-left">ユーザー名：<%= @contact.nick_name %></li>
-			<li class="text-left">メールアドレス：<%= @contact.email %></li>
+			<li class="text-left">メールアドレス：<%= link_to "#{@contact.email}" %></li>
 			<li class="text-left">電話番号：<%= @contact.phone %></li>
 			<li class="text-left">問い合わせ日時：<%= @contact.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 		</div>

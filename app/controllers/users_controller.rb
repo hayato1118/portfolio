@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:following ,:followers ,:favorite ,:sale ,:history]}
 
 
   def show
@@ -6,7 +7,7 @@ class UsersController < ApplicationController
       @mypage_comment = MypageComment.new
       # @mypage_comments = MypageComment.all
       # @mypage_comments = @products.mypage_comments.all
-      @mypage_comments = MypageComment.where(from_user_id: @user.id)
+      @mypage_comments = MypageComment.where(from_user_id: @user.id).reverse_order
       render :layout => 'user.show.application'
   end
 
@@ -69,7 +70,7 @@ class UsersController < ApplicationController
       # binding.pry
       @products = @user.products.page(params[:page]).reverse_order
       # @products = Product.where("user_id = ?",@user.id)
-      # render :layout => 'user.show.application'
+      render :layout => 'user.show.application'
   end
 
   def history
@@ -81,7 +82,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
+    params.require(:user).permit(:point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
   end
 
 

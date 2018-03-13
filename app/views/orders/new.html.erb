@@ -1,34 +1,3 @@
-<!-- 住所自動入力 -->
-<script>
-$(function () {
-  $('#zip').jpostal({
-    postcode : [
-      '#zip'
-    ],
-    address : {
-      '#address' :'%3',
-      '#address2'  :'%4',
-      '#address3'  :'%5',
-    }
-  });
-});
-</script>
-
-<!-- カナ自動入力 -->
-<script type="text/javascript">
-    $(document).ready(
-        function() {
-            $.fn.autoKana('#last_name', '#last_name_kana', {
-                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
-        });
-    });
-        $(document).ready(
-        function() {
-            $.fn.autoKana('#first_name', '#first_name_kana', {
-                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
-        });
-    });
-</script>
 
 
 
@@ -92,7 +61,7 @@ $(function () {
 						</tr>
 						<tr>
 							<td>email:</td>
-							<td class="col-xs-12">
+							<td class="col-xs-12 must_email">
 								<%=f.text_field :email, id: "input" ,type: "text" ,:placeholder => "必須"%>
 							</td>
 						</tr>
@@ -124,11 +93,6 @@ $(function () {
 		</div>
 		</div>
 	</div>
-
-
-
-
-
 
 
 	<div class="tab-pane" id="sampleContentB">
@@ -198,7 +162,8 @@ $(function () {
 			<% sum =0 %>
 			<% total_count = 0 %>
 			<% current_user.cart.product_carts.each do |product_cart| %>
-			<% sum += product_cart.product.price %>
+			<%# binding.pry %>
+			<% sum = sum + product_cart.product.price %>
 			<% total_count += product_cart.quantity %>
 			<tr>
 				<td>商品ID:<%= product_cart.product.id   %></td>
@@ -218,22 +183,24 @@ $(function () {
 	<table>
 		<tbody>
 			<tr>
-				<td class="col-xs-4"></td>
+				
 				<td class="col-xs-3"></td>
+				<td class="col-xs-1"></td>
+				<td class="col-xs-3 order_td">合計金額：<h3 class="order_price"><%= sum - current_user.cart.order_point%></h3>円（税込）</td>
 				<td class="col-xs-1">
 					<table>
 						<tbody>
 							<tr>
-								<td class="order_td">送付先：<span id="output"></span></td>
+
+								<td clas="order_td">使用ポイント：<%= f.number_field :used_point, :value => current_user.cart.order_point,:readonly =>true ,  class: "point_form" %>ポイント</td>
 							</tr>
 							<tr>
-								<td>数量：<%= total_count %></td>
+								<td class="order_td">獲得ポイント：<%= f.number_field :get_point, :value => (sum - current_user.cart.order_point)*0.01 ,:readonly =>true , class: "point_form"%>ポイント</td>
 							</tr>
 						</tbody>
 					</table>
 				</td>
-				<td class="col-xs-2 order_td">合計金額：<h3 class="order_price"><%= sum %></h3>円（税込）</td>
-				<td class="col-xs-2"></td>
+				<td class="col-xs-4"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -251,13 +218,46 @@ $(function () {
 
 
 
-							<script>
-							$(function() {
-							  var $input = $('#input');
-							  var $output = $('#output');
-							  $input.on('input', function(event) {
-							    var value = $input.val();
-							    $output.text(value);
-							  });
-							});
-							</script>
+<script>
+$(function() {
+  var $input = $('#input');
+  var $output = $('#output');
+  $input.on('input', function(event) {
+    var value = $input.val();
+    $output.text(value);
+  });
+});
+</script>
+
+
+<!-- 住所自動入力 -->
+<script>
+$(function () {
+  $('#zip').jpostal({
+    postcode : [
+      '#zip'
+    ],
+    address : {
+      '#address' :'%3',
+      '#address2'  :'%4',
+      '#address3'  :'%5',
+    }
+  });
+});
+</script>
+
+<!-- カナ自動入力 -->
+<script type="text/javascript">
+    $(document).ready(
+        function() {
+            $.fn.autoKana('#last_name', '#last_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+        $(document).ready(
+        function() {
+            $.fn.autoKana('#first_name', '#first_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+</script>

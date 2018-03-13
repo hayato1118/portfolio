@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 	 @contact.id = nil
 	 @contact.save
 	 session[:contact] = nil
-	  redirect_to contact_complete_path(@contact)
+	 redirect_to contact_complete_path(@contact)
 	
 	end
 

@@ -1,99 +1,98 @@
 <div class="container">
-<ol class="stepBar">
-<li class="visited"><span>1</span><br>カート</li>
-<li><span>2</span><br>注文内容</li>
-<li><span>3</span><br>注文完了</li>
-</ol>
+	<ol class="stepBar">
+		<li class="visited"><span>1</span><br>カート</li>
+		<li><span>2</span><br>注文内容</li>
+		<li><span>3</span><br>注文完了</li>
+	</ol>
 	<h1 class="my-4">ショッピングカート
 		<small><%=current_user.nickname %>様</small>
 	</h1>
 	<p>現在ショッピングカートには以下の商品が入っています。</p>
-		<hr>
-		<div class="col-xs-12">
-				<% sum =0 %>
-				<% total_count = 0 %>
-				<% current_user.cart.product_carts.each do |product_cart| %>
-				<% sum += product_cart.product.price %>
+	<hr>
+	<div class="col-xs-12">
+		<% teika =0 %>
+		<% total_count = 0 %>
+			<% @cart.product_carts.each do |product_cart| %>
+				<% teika += product_cart.product.price %>
 				<% total_count += product_cart.quantity %>
-			<div class="col-xs-12">
-				<table>
-					<tbody>
-					<tr>
-						<td class="col-xs-4">商品ID:<%=product_cart.product.id %></td>
-						<td class="col-xs-3">商品情報</td>
-						<td class="col-xs-1">販売者</td>
-						<td class="col-xs-2">価格</td>
-						<td class="col-xs-2"></td>
-					</tr>
-					<tr>
-						<td class="col-xs-4"><%= attachment_image_tag product_cart.product, :image ,class: "cart_item col-xs-12" %></td>
-						<td class="col-xs-3">
-								<table>
-									<tbody>
-										<tr>
-											<td class="cart_product_title">商品名:<%= product_cart.product.title %></td>
-										</tr>
-										<tr>
-											<td class="">カテゴリー:</td>
-										</tr>
-										<tr>
-											<td class="">商品登録日:<%= product_cart.product.created_at.strftime("%Y-%m-%d") %></td>
-										</tr>
-									</tbody>
-								</table>
-						</td>
-						<td class="col-xs-1"><%= product_cart.product.user.nickname %></td>
-						<td class="col-xs-2"><%= product_cart.product.price %>円(税込)</td>
-						<td class="col-xs-2">
-							<%=link_to "詳細", product_path(product_cart.product.id), class: "btn-sm btn btn-default col-xs-12 text-center"%>
-							<%= link_to "削除", product_product_carts_path(product_cart.product_id, product_cart.id), method: :delete, class: "btn-sm btn-danger col-xs-12 text-center", data: { confirm: '本当に消しますか?'} %>
-						</td>
-					</tr>
-					</tbody>
-				</table>
-				<hr>
-			</div>
-
-
-			
+				<div class="col-xs-12">
+					<table>
+						<tbody>
+							<tr>
+								<td class="col-xs-4 total_cart_price">商品ID:<%=product_cart.product.id %></td>
+								<td class="col-xs-3 total_cart_price">商品情報</td>
+								<td class="col-xs-1 total_cart_price">販売者</td>
+								<td class="col-xs-2 total_cart_price">価格</td>
+								<td class="col-xs-2"></td>
+							</tr>
+							<tr>
+								<td class="col-xs-4"><%= attachment_image_tag product_cart.product, :image ,class: "cart_item col-xs-12" %></td>
+								<td class="col-xs-3">
+									<table>
+										<tbody>
+											<tr>
+												<td class="cart_product_title">商品名:<%= product_cart.product.title %></td>
+												</tr><tr>
+												<td class="">商品登録日:<%= product_cart.product.created_at.strftime("%Y-%m-%d") %></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td class="col-xs-1 total_cart_price"><%= product_cart.product.user.nickname %></td>
+								<td class="col-xs-2 total_cart_price"><%= product_cart.product.price %>円(税込)</td>
+								<td class="col-xs-2">
+									<%=link_to "詳細", product_path(product_cart.product.id), class: "btn-sm btn btn-default col-xs-12 text-center"%>
+									<%= link_to "削除", product_product_carts_path(product_cart.product_id, product_cart.id), method: :delete, class: "btn-sm btn-danger col-xs-12 text-center", data: { confirm: '本当に消しますか?'} %>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<hr>
+				</div>
 			<% end %>
 
-			<div class="col-xs-12 cart_info">
-				<hr>
-				<table>
-					<tbody>
-						<tr>
-							<td class="col-xs-4"></td>
-							<td class="col-xs-3"></td>
-							<td class="col-xs-1">
-								<table>
-									<tbody>
-										<tr>
-											<td>数量：<h3 class="cart_price"><%= total_count %></h3></td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-							<td class="col-xs-2 total_cart_price">合計金額：<h3 class="cart_price"><%= sum %></h3>円（税込）</td>
-							<td class="col-xs-2"></td>
-						</tr>
-					</tbody>
-				</table>
-				<hr>
-			</div>
+
+
+		<div class="col-xs-12 cart_info">
+			<hr>
+			<table>
+				<tbody>
+					<tr>
+						<td class="col-xs-4"></td>
+						<td class="col-xs-3"></td>
+						<td class="col-xs-1">
+							<table>
+								<tbody>
+									<tr>
+										<td class="total_cart_price">数量：<h3 class="cart_price"><%= total_count %></h3></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<%= form_for @cart, url: cart_path, html: {method: "PATCH"}  do |f| %>
+						<td class="col-xs-2 total_cart_price">
+							保有ポイント<%= @cart.user.point %><br>
+							利用ポイント<%= f.number_field :order_point , :value => 0 ,min:0 ,step: 100   %></td>
+						<td class="col-xs-2 total_cart_price">合計金額：<h3 class="cart_price"><%= teika %></h3>円（税込）</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+		</div>
 
 			<div class="col-xs-12">
 				<hr>
 				<%=link_to "買い物を続ける", products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
-
-				 <% current_user.cart.product_carts.first(1).each do |product_cart| %>
-			        <% if product_cart.product_id > 0 %>
-				        <%=link_to "レジに進む", new_order_path, class: "btn btn-success col-xs-3 col-xs-offset-2" %>
-			        <% end %>
-			    <% end %>
-
-
+				<% current_user.cart.product_carts.first(1).each do |product_cart| %>
+					<% if product_cart.product_id > 0 %>
+						<%= f.submit "レジに進む", class: "btn btn-success col-xs-3 col-xs-offset-2" %>
+					<% end %>
+				<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+

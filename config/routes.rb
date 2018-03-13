@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get 'users/:id/favorite' => 'users#favorite', as: 'user_favorite'
     get 'users/:id/history' => 'users#history', as: 'user_history'
     get 'users/:id/sale' => 'users#sale', as: 'user_sale'
-
+    get 'orders/:id/sold' => 'orders#sold', as: 'order_sold'
 
 
     resources :relationships, only: [:create, :destroy]
@@ -41,14 +41,14 @@ Rails.application.routes.draw do
     resources :mypage_comments, only: [:create, :destroy]
     resources :favorites, only: [:destroy]
     resources :carts
-
+    resources :tags
 
 
     resources :products do
         collection do
             post 'confirm'
         end
-        resource :product_carts, only: [:create,:destroy]
+        resource :product_carts, only: [:create,:destroy,:update]
         resources :product_comments, only: [:create, :destroy]
         resources :product_goods, only: [:create, :destroy]
             member do #本一覧画面からお気に入り登録をする

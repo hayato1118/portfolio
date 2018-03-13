@@ -35,7 +35,8 @@
                     <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
                     <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
                     <li>ユーザーネーム:<%=f.text_field :nickname %></li>
-                    <li>電話番号:<%=f.telphone_field :phone_number1 ,maxlength: 4 %>-<%=f.telphone_field :phone_number2 ,maxlength: 4 %>-<%=f.telphone_field :phone_number3 ,maxlength: 4 %></li>
+                    <li>ポイント:<%=f.text_field :point %></li>
+                    <li>電話番号:<%=f.telephone_field :phone_number1 ,maxlength: 4 %>-<%=f.telephone_field :phone_number2 ,maxlength: 4 %>-<%=f.telephone_field :phone_number3 ,maxlength: 4 %></li>
                     <li>郵便番号:<%=f.text_field :zip %></li>
                     <li>都道府県:<%=f.text_field :state %></li>
                     <li>市町村<%=f.text_field :city %></li>

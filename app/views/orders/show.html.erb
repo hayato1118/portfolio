@@ -1,67 +1,72 @@
-
 <div class="container">
-	<h1 class="my-4">領収証</h1>
 	<div class="row">
-		<table class="table">
-			<tbody>
-				<tr>
-					<td>注文ID</td>
-					<td>販売者</td>
-					<td>購入者</td>
-					<td>商品名</td>
-					<td>値段</td>
-					<td>購入日時</td>
-				</tr>
-					<% sum =0 %>
+		<div class="col-xs-8 col-xs-offset-2">
+			<div class="row">
+				<table class="table">
+					<tbody>
+						<tr>
+							<div class="box">
+								<td colspan="3">
+									<h1 class="text-center text_receipt">領収証</h1>
+								</td>
+								<td colspan="3">
+									<div class="col-xs-6 pull-right text-center">
+										<hr>
+										<li><%= image_tag 'logo_black.png',class: "col-xs-12" %></li>
+										<li>code cellar seller社</li>
+										<li>代表取締役：中村隼</li>
+										<li>所在地：336-0931</li>
+										<li>埼玉県さいたま市</li>
+										<li>緑区原山2-11-6</li>
+										<hr>
+									</div>
+								</td>
+							</div>
+						</tr>
+						<tr>
+							<td>注文ID</td>
+							<td>商品ID</td>
+							<td>商品名</td>
+							<td>販売者</td>
+							<td>購入金額</td>
+							<td>購入日時</td>
+						</tr>
+							<% sum =0 %>
 					<% total_count = 0 %>
 					<% @order.product_orders.each do |product_order| %>
-
 					<% sum += product_order.product.price %>
-
-					<% @order.product_orders.each_with_index do |product_order,i| %>
-					<% total_count = i + 1 %>
-					<% end %>
-
-					<tr>
-						<td><%= @order.id %></td>
-						<td><%= product_order.product.user.nickname%></td>
-						<td><%= @order.user.last_name %><%= @order.user.first_name %></td>
-						<td><%= product_order.product.title %></td>
-						<td><%= product_order.product.price %>円(税込)</td>
-						<td><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></td>
-					</tr>
+							<tr>
+								<td><%= @order.id %></td>
+								<td><%= product_order.product.id %></td>
+								<td><%= product_order.product.title %></td>
+								<td><%= @order.user.last_name %><%= @order.user.first_name %></td>
+								<td><%= product_order.product.price %>円(税込)</td>
+								<td><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></td>
+							</tr>
 						<% end %>
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+		<div class="col-xs-8 col-xs-offset-2">
+			<hr>
+			<table>
+				<tbody>
+					<tr>
+						<td class="col-xs-4"></td>
+						<td class="col-xs-3"></td>
+						<td class="col-xs-1 order_td"><label class="order_price order_td">宛名：</label><%= current_user.last_name %><%= current_user.first_name %></label>様<br><label class="order_price order_td">件名：</label>コード購入代金として<br><label class="order_price order_td">合計金額：</label><h3 style="display: inline;"><%= sum %></h3></label>円（税込）</td>
+						
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+		</div>
 	</div>
 </div>
 
 
-<div class="col-xs-12">
-	<hr>
-	<table>
-		<tbody>
-			<tr>
-				<td class="col-xs-4"></td>
-				<td class="col-xs-3"></td>
-				<td class="col-xs-1">
-					<table>
-						<tbody>
-							<tr>
-								<td>送付先：<span id="output"></span></td>
-							</tr>
-							<tr>
-								<td>数量：<%= total_count %></td>
-							</tr>
-						</tbody>
-					</table>
-				</td>
-				<td class="col-xs-2">合計金額：<h3 class="order_price"><%= sum %></h3>円（税込）</td>
-				<td class="col-xs-2"></td>
-			</tr>
-		</tbody>
-	</table>
-	<hr>
-</div>
 
 

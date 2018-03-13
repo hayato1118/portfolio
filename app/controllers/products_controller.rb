@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
+before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:confirm]}
 
   def index
        #検索機能
@@ -38,13 +38,14 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       @product.user_id = current_user.id
       @product.image_id = @product.image.id
       session[:product] = @product
-      session[:product].save
       # @product.save
-      binding.pry
-      render :new if @product.invalid? # <=バリデーションチェックNGなら戻す
-      # セッションバージョン
-
+      if  @product.invalid? # <=バリデーションチェックNGなら戻す
+      render :new
+      else
+      session[:product].save
+      end
   end
+
 
   def create
     # セッションバージョン
@@ -63,6 +64,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy]}
       end
   end
       # redirect_to products_path
+
+
 
   def edit
       @products = Product.find(params[:id])

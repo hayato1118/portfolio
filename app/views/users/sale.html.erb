@@ -35,8 +35,8 @@
                             </td>
                             <td class="col-xs-1 user_td"><%= product.price %>円(税込)</td>
                             <td class="col-xs-2">
-                                <% if product.user == current_user || admin_signed_in? %>
                                 <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>
+                                 <% if product.user == current_user || admin_signed_in? %>
                                 <%= link_to "削除", product_path(product.id), method: :delete, class: "btn btn-sm btn-danger col-xs-12 text-center", data: { confirm: '本当に消しますか?'} %>
                                  <% end %>
                             </td>

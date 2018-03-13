@@ -1,0 +1,82 @@
+<div class="container">
+    <h1 class="my-4">売上履歴</h1>
+    <div class="row">
+	<% sum =0 %>
+	<% total_count = 0 %>
+	<% @orders.each do |order| %>
+	<% order.product_orders.each do |product_order| %>
+	<% if product_order.product.user_id == current_user.id || admin_signed_in? %>
+			<% sum += product_order.product.price %>
+			<% total_count += product_order.quantity %>
+			<hr>
+            <div class="col-xs-12">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="col-xs-4">注文ID：<%= order.id %></td>
+                            <td class="col-xs-5">商品情報</td>
+                            <td class="col-xs-3">価格</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4"><%= attachment_image_tag product_order.product, :image ,class: "sold_image" %></td>
+                            <td class="col-xs-3">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="sold_td"><strong>商品名：</strong><%= product_order.product.title %></td>
+                                        </tr>
+                                         <tr>
+                                            <td class="sold_td"><strong>注文者：</strong>
+                                                <%= link_to user_path(order.user.id) do %>
+                                                <%= order.user.nickname %>
+                                                <% end %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""><strong>販売日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="col-xs-1 order_td">
+                                商品金額<%= product_order.product.price %>円(税込)<br>
+                                売上額<%= product_order.product.price*0.95 %>円(税込)<br>
+                                手数料<%= product_order.product.price*0.05 %>円(税込)
+                            </td>
+                            <td class="col-xs-2">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+		<% end %>
+        <% end %>
+        <% end %>
+       </div>
+			<div class="col-xs-12 order_info">
+				<hr>
+				<table>
+					<tbody>
+						<tr>
+							<td class="col-xs-4"></td>
+							<td class="col-xs-3"><strong><h3>売上金額</h3></strong></td>
+							<td class="col-xs-2">
+								<table>
+									<tbody>
+										<tr>
+											<td class="order_td">数量：<h3><%= total_count %></h3></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="col-xs-2 order_td">
+                                合計売上額：<h3 class="order_price"><%= sum*0.95 %></h3>円（税込）
+                            </td>
+							<td class="col-xs-2"></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+			</div>
+</div>

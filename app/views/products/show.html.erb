@@ -1,43 +1,30 @@
 <div class="container">
 
-<div class="col-xs-12">
-    <div class="col-sm-4">
-        <h1>商品名<br>
-        <small><%= @products.title %></small>
-        </h1>
-    </div>
+<div class="col-md-12">
+<h1 style="display: inline">商品名<small><%= @products.title %></small></h1>
 
-
-    <div class="col-sm-5">
-        <h3>カテゴリー</h3>
-        <% @categories.each do |category| %>
-        <%= link_to "#{category.category_name}", class: "btn btn-primary"  %>
-        <% end %>
-    </div>
-        <div class="col-sm-2">
-        <h3>いいね件数: <%= @products.product_goods.count %></h3>
-        <% if @products.user != current_user && user_signed_in?  %>
 <!-- いいね機能 -->
+<% if @products.user != current_user && user_signed_in?  %>
 <% if current_user.already_liked?(@products) %>
-  <%= button_to 'いいねを取り消す', product_product_good_path(@products), method: :delete, class: "btn btn-default" %>
+<%= button_to '取り消し', product_product_good_path(@products), method: :delete, class: "not_hoshi" %>
 <% else %>
 <%= form_for [@products, @product_good] do |f| %>
- <% if @product_good.errors.any? %>
-    <% @product_good.errors.full_messages.each do |msg| %>
-      <li style="color: red;"><%= msg %></li>
-    <% end %>
-  <% end %>
-  <%= f.submit 'いいね！', class: "btn btn-default" %>
-<% end %>
-<% end %>
-
-<!-- <h2>この記事にいいねしたユーザー</h2> -->
-<%# @products.product_good_users.each do |user| %>
-  <!-- <li><%#= user.email %></li> -->
+<%# if @product_good.errors.any? %>
+<%# @product_good.errors.full_messages.each do |msg| %>
+<!-- <li style="color: red;"><%#= msg %></li> -->
 <%# end %>
+<%# end %>
+<%= f.submit 'いいね！', class: "hoshi" %>
 <% end %>
-    </div>
+<% end %>
+<% end %>
+<!-- いいね機能 -->
+
+
 </div>
+
+
+
 <div class="col-xs-12">
   <hr>
 </div>
@@ -55,7 +42,8 @@
           <li><a href="#sampleContentB" data-toggle="tab">商品説明</a></li>
           <% if user_signed_in? %>
           <li><a href="#sampleContentC" data-toggle="tab">コメント</a></li>
-          <% end %>
+          <li><a href="#sampleContentD" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i><%= @products.product_goods.count %></a></li>
+           <% end %>
         </ul>
 
 <!-- 内容 -->
@@ -92,21 +80,36 @@
 <!--   Cタブ部分    -->
   <div class="tab-pane col-md-12 box_scrollbar" id="sampleContentC">
          <!--コメント機能-->
-          <hr>
-        <% @product_comments.each do |product_comment| %>
-         <div>
-          名前：<%= product_comment.user.nickname %>
-          コメント：<%= product_comment.comment %>
-          <%= product_comment.created_at.strftime('%Y/%m/%d') %>
-        </div>
-
+<table class="table text-left col-md-12">
+  <tbody>
+    <tr>
+      <td class="comment_td_not col-md-3">投稿者</td>
+      <td class="comment_td_not col-md-6">コメント</td>
+      <td class="col-md-3"></td>
+    </tr>
+ <% @product_comments.each do |product_comment| %>
+    <tr>
+      <td class="comment_td_not"><%= product_comment.user.nickname %></td>
+      <td>
         
+<table>
+  <tbody>
+    <tr>
+      <td class="comment_td"><%= product_comment.comment %></td>
+      <td class="comment_td"><%= product_comment.created_at.strftime('%m/%d') %></td>
+    </tr>
+  </tbody>
+</table>
+      </td>
+       <% if product_comment.user == current_user || current_admin %>
+      <td><%= link_to '削除', product_product_comment_path(@products, product_comment),:confirm => 'コメントを削除しますか?',:method => :delete  %></td>
+      <% end %>
+    </tr>
 
-          <%= link_to 'Destroy', product_product_comment_path(@products, product_comment),:confirm => 'Are you sure?',:method => :delete %>
-        
-
-
-        <% end %>
+     <% end %>
+  </tbody>
+</table>
+       
         <!--ページング機能-->
         <div class="text-center">
           <%= paginate @product_comments, class: "pagenate" %>
@@ -125,51 +128,86 @@
             <% end %>
             </ul>
           <% end %>
-
-
-        <div class="submit">
-            <!--コメント送信部分-->
-            <%= f.text_field :comment, class: "form-control",placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", class: "btn btn-default pull-right" %>
                     <h5 class="comment-count">
             <%= @products.product_comments.count %>件コメント
           </h5>
-        </div>
-      <% end %>
+      
     </div>
 <!--コメント機能-->
   </div>
 <!--   Cタブ部分    -->
+
+<!--   Dタブ部分    -->
+  <div class="tab-pane col-md-12 box_scrollbar" id="sampleContentD">
+        <h5 class="my-3">いいねユーザー</h5>
+<table class="table">
+  <tbody>
+    <% @products.product_good_users.each do |user| %>
+    <tr>
+      <td class="like_td"><%= attachment_image_tag user, :profile_image, fallback: "no_image_top.jpg",class: "img-circle like_image"  %></td>
+      <td class="like_td"><%= user.nickname %></td>
+      <td class="like_td"><%= link_to "詳細", user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    
+
 </div>
+<!--   Dタブ部分    -->
+
+
+</div>
+<% if user_signed_in? %>
+         <div class="submit">
+            <!--コメント送信部分-->
+            <%= f.text_field :comment, class: "form-control",placeholder: "コメント" %>
+            <%= f.submit "送信する", class: "btn btn-default pull-right" %>
+              </div>
+              <% end %>
+      <% end %>
+
+</div>
+
+</div>
+
+    <div class="col-md-8 tag">
+        <ul class="ul">
+          <% @categories.each do |category| %>
+        <li class="li">
+        <%= link_to "#{category.category_name}", class: "btn btn-primary"  %>
+        </li>
+        <% end %>
+        </ul>
+        
+    </div>
+
+        <div class="col-md-4">
 <div class="pull-right position_price">値段：<h3 class="product_price"><%= @products.price %></h3>円（税込）</div>
 <div class="col-xs-12">
 <div class="col-xs-6">
          <% if @products.user != current_user && user_signed_in? %>
-        <%= link_to "お気に入りに登録", add_product_path(@products.id), method: :post , class: "btn btn-default col-xs-12" %>
+        <%= link_to "お気に入りに登録", add_product_path(@products.id), method: :post , class: "btn btn-default  text-center" %>
         <% end %>
 
 
          <% if @products.user == current_user || admin_signed_in? %>
-          <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-default col-xs-12" %>
+          <%= link_to "商品編集", edit_product_path(@products.id), class: "btn btn-default  text-center" %>
         <% end %>
 </div>
 <div class="col-xs-6">
         <% if @products.user != current_user && user_signed_in?  %>
-          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-default col-xs-12" %>
+          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-default  text-center" %>
         <% end %>
 
         <% if @products.user == current_user || admin_signed_in? %>
-          <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-default col-xs-12", data: { confirm: '本当に消しますか?'} %>
+          <%= link_to "商品削除", product_path(@products), method: :delete, class: "btn btn-default  text-center", data: { confirm: '本当に消しますか?'} %>
         <% end %>
 </div>
 </div>
-</div>
-
-<%= render "modal" %>
-
-
-
-</div>
+        <%= render "modal" %>
+    </div>
 </div>
 
 
