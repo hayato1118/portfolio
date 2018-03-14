@@ -6,14 +6,9 @@
 <!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
 <!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
 
-	    <!-- Page Content -->
     <div class="container">
-
-      <!-- Portfolio Item Heading -->
-      <h1 class="my-4">管理者用/商品編集
-        <small>Secondary Text</small>
-      </h1>
-    <hr>
+      <h2 class="my-4 title-h3">管理者用/商品編集
+      </h2>
 	<div class="row product_show">
 		<div class="col-md-8 text-center">
 			<%= attachment_image_tag @products, :image ,class: "product_show_image" %>
@@ -23,7 +18,7 @@
 			<h3 class="my-3">商品情報</h3>
 			<ul>
 				<li class="text-left">販売者：<%= @products.user.last_name %><%= @products.user.first_name %></li>
-				<li class="text-left">ユーザーネーム：<%= @products.user.nickname %></li>
+				<li class="text-left">ユーザー名：<%= @products.user.nickname %></li>
 				<li class="text-left">商品名：<%= @products.title %></li>
 				<li class="text-left">値段：<%= @products.price %></li>
 				<li class="text-left">商品URL：<%= @products.url %></li>

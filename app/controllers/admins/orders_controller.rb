@@ -12,7 +12,6 @@ layout 'admin.application'
 # 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー# 管理者用コントローラー
 	def index
 		@orders = Order.page(params[:page]).search(params[:search]).reverse_order
-		 # binding.pry
 	end
 
 	def show

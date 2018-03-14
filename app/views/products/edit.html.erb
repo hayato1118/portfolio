@@ -1,9 +1,8 @@
 
-    <!-- Page Content -->
     <div class="container">
-
-      <!-- Portfolio Item Heading -->
-      <h1 class="my-4">商品編集</h1>
+        <div class="col-md-12"> 
+      <h2 class="my-4 title-h3">商品編集</h2>
+  </div>
 <hr>
 <div class="row product_show">
 	<%= nested_form_for(@products) do |f| %>
@@ -25,7 +24,7 @@
 				<div class="tab-pane  active col-xs-12 box_scrollbar" id="sampleContentA">
 						<hr>
 						<h3 class="my-3">商品タイトル</h3>
-						<%=f.text_field :title ,class: "col-xs-12" %>
+						<%=f.text_field :title ,class: "col-xs-12", maxlength:30  %>
                         <hr>
 						<h3 class="my-3">商品カテゴリー</h3>
 						<%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name) do |b| %>
@@ -40,7 +39,7 @@
                         <hr>
                         <h3 class="my-3">商品説明</h3>
                         <div class="panel panel-default">
-                            <%=f.text_area :product_detail ,class: "col-xs-12  edit_comment_scrollbar" %>
+                            <%=f.text_area :product_detail ,class: "col-xs-12  edit_comment_scrollbar" , maxlength:300  %>
                     </div>
                 </div>
                     <!--   Bタブ部分    -->

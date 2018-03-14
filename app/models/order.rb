@@ -6,6 +6,22 @@ class Order < ApplicationRecord
 
 
 
+validates :first_name, presence: true
+validates :first_name_kana, presence: true
+validates :last_name, presence: true
+validates :last_name_kana, presence: true
+validates :phone_number1, presence: true, numericality: { only_integer: true }
+validates :phone_number2, presence: true, numericality: { only_integer: true }
+validates :phone_number3, presence: true, numericality: { only_integer: true }
+validates :state, presence: true
+validates :city, presence: true
+validates :street, presence: true
+validates :zip, presence: true, length: { is: 7 } , numericality: { only_integer: true }
+validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+
+
+
  def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       Order.where(['first_name LIKE ?', "%#{search}%"])

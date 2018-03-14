@@ -7,6 +7,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
        @product_paginate = Product.page(params[:page]).search(params[:search])
        @good_rank = Product.find(ProductGood.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
         # @page_rank = Product.find(Impressionist.group(:product_id).order('count(product_id) desc').limit(3).pluck(:product_id))
+        # binding.pry
   end
 
 
@@ -48,22 +49,21 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
 
   def create
-    # セッションバージョン
       @product = Product.new(session[:product])
-    # セッションバージョン
-	    # @product = Product.new(product_params)
       @product.user_id = current_user.id
-      # @product.image.retrieve_from_cache! params[:cache][:image] この書き方はCarrierWave！！！
-      if params[:back]
-      render :new
-      elsif @product.save
-      session[:product] = nil
-      redirect_to product_complete_path(@product)
-      else
-      render :new
-      end
+      # if ユーザー情報があれば
+                if params[:back]
+                render :new
+                elsif @product.save
+                session[:product] = nil
+                redirect_to product_complete_path(@product)
+                else
+                render :new
+                end
+      # else
+        # render :index
+      # end
   end
-      # redirect_to products_path
 
 
 
@@ -80,11 +80,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
   def destroy
         @product = Product.find(params[:id])
         @product.delete
-        redirect_to user_sale_path(current_user.id)
-
-        # 論理削除用
-        # モデルでsoft_deleteを定義してflagを追加してそのフラグで表示、非表示をできるようにする。
-        # @product.soft_delete
+        redirect_to products_path
   end
 
 

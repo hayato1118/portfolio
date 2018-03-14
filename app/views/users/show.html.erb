@@ -1,7 +1,6 @@
 <div class="container">
-   <div class="col-md-12"> 
-		<h1 style="display:inline;">ユーザー情報</h1>
-	    <hr>
+<div class="col-xs-12"> 
+		<h2 class="title-h3">ユーザー情報</h2>
     </div>
 	
 
@@ -13,21 +12,21 @@
 
 	   	<div class="col-md-9">
 	        <ul class="nav nav-tabs">
-	          <li class="active"><a href="#sampleContentA" data-toggle="tab">ユーザー情報</a></li>
-	          <li><a href="#sampleContentB" data-toggle="tab">コメント</a></li>
+	          <li><a href="#sampleContentA" data-toggle="tab">ユーザー情報</a></li>
+	          <li class="active"><a href="#sampleContentB" data-toggle="tab">コメント</a></li>
 	        </ul>
 
 				<!-- 内容 -->
 			<div class="tab-content ">
 				<!--   Aタブ部分    -->
-				<div class="tab-pane active col-md-12" id="sampleContentA">
+				<div class="tab-pane col-md-12" id="sampleContentA">
 					<h3 class="my-3">ユーザー紹介</h3>
 					<%= @user.introduction %>
 				 </div>
 				<!--   Aタブ部分    -->
 				
 				<!--   Bタブ部分    -->
-				<div class="tab-pane col-md-12" id="sampleContentB">
+				<div class="tab-pane active col-md-12" id="sampleContentB">
 					<table class="table table-hover">
 						<tbody>
 							<% @mypage_comments.each do |message| %>
@@ -42,13 +41,20 @@
 								<!-- メッセージを送った人の情報もらった -->
 								<td class="comment_td col-xs-2"><%= message.to_user.nickname %></td>
 								<td class="comment_td col-xs-2"><%= message.created_at.strftime("%m#{"月"}%d#{"日"}%R")  %></td>
-								<td class="comment_td col-xs-1"><%#= link_to "削除", mypage_comment_path(message), method: :delete,  data: { confirm: '本当に消しますか?'} %></td>
+								<td class="comment_td col-xs-1">
+									<% if message.to_user_id == current_user.id %>
+									<%= link_to "削除", mypage_comment_path(message), method: :delete,  data: { confirm: '本当に消しますか?'} %>
+									<% end %>
+								</td>
 							</tr>
 							<% end %>
+									<div class="col-sm-12 text-center">
+							<%= paginate @mypage_comments, class: "pagenate" %>
+						</div>
 							<%= form_for @mypage_comment, url:  mypage_comments_path , html: {method: "POST"} do |f| %>
 							<tr>
-								<td colspan="4"><%=f.text_field :comment, class: "index_contact_form col-xs-10" %>
-					            <%= f.hidden_field :from_user_id , value: @user.id , id: "TEST"%></td>
+								<td colspan="4"><%=f.text_field :comment, class: "index_contact_form col-xs-10" , maxlength:140 %>
+					            <%= f.hidden_field :from_user_id , value: @user.id %></td>
 								<td><%= f.submit "送信" ,class: "btn btn-default col-xs-12" %></td>
 							</tr>
 							<% end %>

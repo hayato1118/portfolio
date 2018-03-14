@@ -6,7 +6,7 @@
     <ul>
       <li class="text-left">名前：<%= @user.last_name %><%= @user.first_name %></li>
       <li class="text-left">ふりがな：<%= @user.last_name_kana %><%= @user.first_name_kana %></li>
-      <li class="text-left">ユーザーネーム：<%= @user.nickname %></li>
+      <li class="text-left">ユーザー名：<%= @user.nickname %></li>
       <li class="text-left">電話番号：<%= @user.phone_number1 %><%= @user.phone_number2 %><%= @user.phone_number3 %></li>
       <li class="text-left">メールアドレス：<%= @user.email %></li>
       <li class="text-left">郵便番号：<%= @user.zip %></li>
@@ -15,6 +15,6 @@
     </ul>
 
 	<% if @user == current_user || admin_signed_in? %>
-	<%= link_to "編集", edit_user_path, class: "btn btn-success" %>
-	<%= link_to "退会", user_path(@user), method: :delete, class: "btn btn-danger", data: { confirm: '退会時はユーザー情報は論理削除されて当サイトで1ヶ月の保管をさせていただいた後に完全削除をします。　承諾できますか?'} %>
+	<%= link_to "編集", edit_user_path, class: "btn btn-default col-xs-4 col-xs-offset-1" %>
+	<%= link_to "退会", user_path(@user), method: :delete, class: "btn btn-danger col-xs-4 col-xs-offset-1", data: { confirm: '退会時はユーザー情報は論理削除されて当サイトで1ヶ月の保管をさせていただいた後に完全削除をします。　承諾できますか?'} %>
 	<% end %>

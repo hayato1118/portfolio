@@ -4,9 +4,9 @@
 		<li><span>2</span><br>注文内容</li>
 		<li><span>3</span><br>注文完了</li>
 	</ol>
-	<h1 class="my-4">ショッピングカート
+	<h2 class="my-4 title-h3">ショッピングカート
 		<small><%=current_user.nickname %>様</small>
-	</h1>
+	</h2>
 	<p>現在ショッピングカートには以下の商品が入っています。</p>
 	<hr>
 	<div class="col-xs-12">
@@ -85,7 +85,7 @@
 				<%=link_to "買い物を続ける", products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
 				<% current_user.cart.product_carts.first(1).each do |product_cart| %>
 					<% if product_cart.product_id > 0 %>
-						<%= f.submit "レジに進む", class: "btn btn-success col-xs-3 col-xs-offset-2" %>
+						<%= f.submit "レジに進む", class: "btn btn-primary col-xs-3 col-xs-offset-2" %>
 					<% end %>
 				<% end %>
 				<% end %>

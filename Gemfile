@@ -16,6 +16,7 @@ gem 'redis'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # gem 'omniauth-facebook'
+gem 'payjp'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

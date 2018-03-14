@@ -141,6 +141,8 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    payjp (0.0.6)
+      rest-client (~> 2.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   nested_form
+  payjp
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)

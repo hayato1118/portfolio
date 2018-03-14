@@ -1,7 +1,6 @@
 <div class="container">
-
-<div class="col-md-12">
-<h1 style="display: inline">商品名<small><%= @products.title %></small></h1>
+<div class="col-xs-12">
+<h2 class="title-h3 title-h3">商品名<small><%= @products.title %></small></h2>
 
 <!-- いいね機能 -->
 <% if @products.user != current_user && user_signed_in?  %>
@@ -19,15 +18,10 @@
 <% end %>
 <% end %>
 <!-- いいね機能 -->
-
-
 </div>
 
 
 
-<div class="col-xs-12">
-  <hr>
-</div>
 
 
 <div class="row product_show">
@@ -162,7 +156,7 @@
 <% if user_signed_in? %>
          <div class="submit">
             <!--コメント送信部分-->
-            <%= f.text_field :comment, class: "form-control",placeholder: "コメント" %>
+            <%= f.text_field :comment, class: "form-control",placeholder: "コメント" , maxlength:140%>
             <%= f.submit "送信する", class: "btn btn-default pull-right" %>
               </div>
               <% end %>
@@ -198,7 +192,7 @@
 </div>
 <div class="col-xs-6">
         <% if @products.user != current_user && user_signed_in?  %>
-          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-default  text-center" %>
+          <%= link_to "カートに入れる", product_product_carts_path(@products.id) ,method: :post, class: "btn btn-primary  text-center" %>
         <% end %>
 
         <% if @products.user == current_user || admin_signed_in? %>
@@ -209,6 +203,8 @@
         <%= render "modal" %>
     </div>
 </div>
+
+
 
 
 

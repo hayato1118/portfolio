@@ -7,7 +7,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
       @mypage_comment = MypageComment.new
       # @mypage_comments = MypageComment.all
       # @mypage_comments = @products.mypage_comments.all
-      @mypage_comments = MypageComment.where(from_user_id: @user.id).reverse_order
+      @mypage_comments = MypageComment.where(from_user_id: @user.id).page(params[:page]).reverse_order
       render :layout => 'user.show.application'
   end
 
@@ -29,10 +29,12 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
          # session[:user] = @user
          # session[:user].update
         if @user.update(user_params)
+           # SampleMailer.send_when_update(current_user).deliver
            redirect_to user_path(@user.id)
         else
            render :edit
         end
+
   end
 
   def destroy
@@ -58,7 +60,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
 
   def favorite
     @user = User.find(params[:id])
-    #特定のユーザーが登録したお気に入りを全て取得する
     @favorites = Favorite.where("user_id = ?", @user)
   end
 
@@ -66,10 +67,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
   def sale
       @user = User.find(params[:id])
       @product = Product.new
-      #kaminari用
-      # binding.pry
       @products = @user.products.page(params[:page]).reverse_order
-      # @products = Product.where("user_id = ?",@user.id)
       render :layout => 'user.show.application'
   end
 

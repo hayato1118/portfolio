@@ -53,7 +53,7 @@ has_many :to_user_mypagecomments, foreign_key: "from_user_id", class_name: "Mypa
 
 #=====================================ユーザーに対してコメント機能==================================================
 
-
+validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
 
 #user.rbにフォローする関数、フォローしているか調べるための関数、フォローを外す関数を作成

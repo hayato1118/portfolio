@@ -7,15 +7,9 @@
 <!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
 <!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit --><!-- 管理者用edit -->
 
-    <!-- Page Content -->
     <div class="container">
-
-      <!-- Portfolio Item Heading -->
-      <h1 class="my-4">管理者用/商品編集
-        <small>Secondary Text</small>
-      </h1>
-    <hr>
-
+      <h2 class="my-4 title-h3">管理者用/商品編集
+      </h2>
     <%= nested_form_for @products , url: admins_product_path , html: {method: "PATCH"} do |f| %>
         <div class="row product_show">
            
@@ -79,8 +73,8 @@
                      <!--   Cタブ部分    -->
                      
                 </div>
-                 <%= f.submit 'Update Product' ,class: "btn btn-primary" %>
-                <%= link_to "Back", admins_product_path(@products),class: "btn btn-success" %>
+                 <%= f.submit '更新' ,class: "btn btn-primary" %>
+                <%= link_to "キャンセル", admins_product_path(@products),class: "btn btn-default" %>
             </div>
         </div>
     <% end %>

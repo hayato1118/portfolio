@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
       @contact = Contact.new(contact_params)
       session[:contact] = @contact
       session[:contact].save
-      render :index if @contact.invalid?
+      redirect_to homes_path if @contact.invalid?
   	end
 
 	def create
@@ -13,15 +13,15 @@ class ContactsController < ApplicationController
 
 	 @contact.id = nil
 	 @contact.save
+	  SampleMailer.send_when_contact(@contact).deliver
 	 session[:contact] = nil
 	 redirect_to contact_complete_path(@contact)
-	
 	end
 
 
 	private
 		def contact_params
-			params.require(:contact).permit(:id,:message,:name,:nick_name,:email,:phone,:status)
+			params.require(:contact).permit(:message,:name,:nick_name,:email,:phone,:status)
 		end
 
 end

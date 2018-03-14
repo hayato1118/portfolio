@@ -12,12 +12,16 @@ class MypageCommentsController < ApplicationController
 
 
 
-		# def destroy
-		# 	@user = User.find(params[:to_user_id])
-		# 	@mypage_comment = @user.mypage_comments.find(params[:id])
-		# 	@mypage_comment.destroy
-		# 	redirect_to user_path(@user)
-		# end
+		def destroy
+			@comment = MypageComment.find(params[:id])
+			@user = current_user.id
+			# @user = User.find(params[:to_user_id])
+			# binding.pry
+			@comment.destroy
+			# @mypage_comment = @user.mypage_comments.find(params[:id])
+			# @mypage_comment.destroy
+			redirect_to user_path(@comment.from_user_id)
+		end
 
 
  private

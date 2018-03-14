@@ -1,40 +1,9 @@
-<!-- 住所自動入力 -->
-<script>
-$(function () {
-  $('#zip').jpostal({
-    postcode : [
-      '#zip'
-    ],
-    address : {
-      '#address' :'%3',
-      '#address2'  :'%4',
-      '#address3'  :'%5',
-    }
-  });
-});
-</script>
-
-<!-- カナ自動入力 -->
-<script type="text/javascript">
-    $(document).ready(
-        function() {
-            $.fn.autoKana('#last_name', '#last_name_kana', {
-                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
-        });
-    });
-        $(document).ready(
-        function() {
-            $.fn.autoKana('#first_name', '#first_name_kana', {
-                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
-        });
-    });
-</script>
 
 
 
 <div class="container">
     <div class="col-md-12"> 
-        <h1 style="display:inline;">ユーザー編集</h1>
+        <h2 class="title-h3">ユーザー編集</h2>
         <hr>
     </div>
     <div class="row product_show">
@@ -48,7 +17,7 @@ $(function () {
             <ul>
                 <li class="text-left">名前:<%= current_user.last_name %><%= current_user.first_name %></li>
                 <li class="text-left">ふりがな:<%= current_user.first_name_kana %><%= current_user.last_name_kana %></li>
-                <li class="text-left">ユーザーネーム:<%= current_user.nickname %></li>
+                <li class="text-left">ユーザー名:<%= current_user.nickname %></li>
                 <li class="text-left">電話番号:<%= current_user.phone_number1 %><%= current_user.phone_number2 %><%= current_user.phone_number3 %></li>
                 <li class="text-left">email:<%= current_user.email %></li>
                 <li class="text-left">郵便番号:<%= current_user.zip %></li>
@@ -80,22 +49,22 @@ $(function () {
                       <%=f.text_field :first_name_kana, id: "first_name_kana" , class: "balloon"%><label>なまえ</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.text_field :nickname , class: "balloon"%><label>ユーザーID</label>
+                      <%=f.text_field :nickname , class: "balloon"%><label>ユーザー名</label>
                       </span>
                       <span class="form_design">
                       <%=f.email_field :email, class: "balloon"%><label>email</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number1 ,maxlength: 4, class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number1 , class: "balloon"%><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number2 ,maxlength: 4 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number2 , class: "balloon"%><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number3 ,maxlength: 4, class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number3 , class: "balloon"%><label>電話番号</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.number_field :zip, id: "zip"  , class: "balloon"%><label>郵便番号</label>
+                      <%=f.number_field :zip, id: "zip" , class: "balloon"%><label>郵便番号</label>
                       </span><br>
                       <span class="form_design">
                       <%=f.text_field :state , id: "address" ,class: "balloon"%><label>都道府県</label>
@@ -116,15 +85,15 @@ $(function () {
                       <span class="form_design">
                       <%=f.text_field :instagram_id , class: "balloon"%><label>Instagram ID</label>
                       </span>
-                      <li class="edit_position_image">プロフィール画像:<%= f.attachment_field :profile_image %></li>
-                       <%= link_to "Back", user_path(@user),class: "btn btn-default" %>
-                       <%= f.submit 'Update User' ,class: "btn btn-primary" %>
+                      <li class="edit_position_image">プロフィール画像:<%= f.attachment_field :profile_image %></li><br>
+                       <%= link_to "キャンセル", user_path(@user),class: "btn btn-default col-sm-4" %>
+                       <%= f.submit '更新' ,class: "btn btn-primary col-sm-4 col-sm-offset-2" %>
                   </div>
                     <!--   Aタブ部分    -->
 
                     <!--   Bタブ部分    -->
                   <div class="tab-pane col-md-12" id="sampleContentB">
-                      <%=f.text_area :introduction , class: "introduction_form" %>
+                      <%=f.text_area :introduction , class: "introduction_form" , maxlength:300 %>
                   </div>
                     <!--   Bタブ部分    -->
             </div>
@@ -133,4 +102,35 @@ $(function () {
 </div>
 </div>
 
+<!-- 住所自動入力 -->
+<script>
+$(function () {
+  $('#zip').jpostal({
+    postcode : [
+      '#zip'
+    ],
+    address : {
+      '#address' :'%3',
+      '#address2'  :'%4',
+      '#address3'  :'%5',
+    }
+  });
+});
+</script>
+
+<!-- カナ自動入力 -->
+<script type="text/javascript">
+    $(document).ready(
+        function() {
+            $.fn.autoKana('#last_name', '#last_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+        $(document).ready(
+        function() {
+            $.fn.autoKana('#first_name', '#first_name_kana', {
+                katakana : false  //true：カタカナ、false：ひらがな（デフォルト）
+        });
+    });
+</script>
 

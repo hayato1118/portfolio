@@ -35,8 +35,11 @@ Rails.application.routes.draw do
 
     resources :relationships, only: [:create, :destroy]
     resources :orders
+
+    post 'orders/pay' => 'orders#pay'
+
     get 'orders/:id/complete' => 'orders#complete', as: 'order_complete'
-   
+
     #個人ページからお気に入りを削除する
     resources :mypage_comments, only: [:create, :destroy]
     resources :favorites, only: [:destroy]

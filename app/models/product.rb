@@ -42,6 +42,17 @@ has_many :product_operatingsystems
 # has_many :orders, through: :product_orders
 
 
+
+
+validates :price, presence: true
+validates :image_id, presence: true
+validates :title, presence: true
+validates :url, presence: true
+validates :product_detail, presence: true
+
+
+
+
   def soft_delete
     update(deleted_at: Time.now)
   end

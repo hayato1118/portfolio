@@ -7,8 +7,7 @@
 <!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show --><!-- 管理者用show -->
 
 <div class="container">
-	<h1 class="my-4">管理者用/注文詳細</h1>
-	<hr>
+	<h2 class="my-4 title-h3">管理者用/注文詳細</h2>
 		<div class="row">
 			<table class="table table-hover">
 				<tbody>
@@ -60,15 +59,15 @@
 								<table>
 									<tbody>
 										<tr>
-											<td>数量：<h3 class="cart_price"><%= total_count %></h3></td>
+											<td>数量：<h3 class="order_td"><%= total_count %></h3></td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
-							<td class="col-xs-2">合計金額：<h3 class="cart_price"><%= sum %></h3>円（税込）</td>
+							<td class="col-xs-2 order_td">合計金額：<h3 class="order_td"><%= sum %></h3>円（税込）</td>
 							<td class="col-xs-2">
 								<%= link_to "戻る", admins_orders_path, class: "btn btn-link btn-xs" %>
-								<%= link_to "編集",  edit_admins_order_path(@order.id), class: "btn btn-link btn-xs" %>
+								<%#= link_to "編集",  edit_admins_order_path(@order.id), class: "btn btn-link btn-xs" %>
 							</td>
 						</tr>
 					</tbody>

@@ -9,7 +9,7 @@
 
 <div class="container">
         <div class="col-md-12"> 
-　    <h1 style="display:inline;">管理者用/会員編集</h1>
+　    <h2 class="title-h3">管理者用/会員編集</h2>
     <hr>
     </div>
     <div class="row product_show">
@@ -20,7 +20,7 @@
             <ul>
                 <li class="text-left">名前:<%= @users.last_name %><%= @users.first_name %></li>
                 <li class="text-left">ふりがな:<%= @users.first_name_kana %><%= @users.last_name_kana %></li>
-                <li class="text-left">ユーザーネーム:<%= @users.nickname %></li>
+                <li class="text-left">ユーザー名:<%= @users.nickname %></li>
                 <li class="text-left">電話番号:<%= @users.phone_number1 %><%= @users.phone_number2 %><%= @users.phone_number3 %></li>
                 <li class="text-left">メールアドレス:<%= @users.email %></li>
                 <li class="text-left">郵便番号:<%= @users.zip %></li>
@@ -34,7 +34,7 @@
                 <%= form_for @users, url: admins_user_path , html: {method: "PATCH"} do |f| %>
                     <li>名前:<%=f.text_field :last_name ,:placeholder => "苗字" %>名前:<%=f.text_field :first_name  ,:placeholder => "名前"  %></li>
                     <li>ふりがな:<%=f.text_field :last_name_kana ,:placeholder => "みょうじ"  %><%=f.text_field :first_name_kana  ,:placeholder => "なまえ" %></li>
-                    <li>ユーザーネーム:<%=f.text_field :nickname %></li>
+                    <li>ユーザー名:<%=f.text_field :nickname %></li>
                     <li>ポイント:<%=f.text_field :point %></li>
                     <li>電話番号:<%=f.telephone_field :phone_number1 ,maxlength: 4 %>-<%=f.telephone_field :phone_number2 ,maxlength: 4 %>-<%=f.telephone_field :phone_number3 ,maxlength: 4 %></li>
                     <li>郵便番号:<%=f.text_field :zip %></li>
@@ -47,8 +47,8 @@
                     <li>プロフィール画像:<%= f.attachment_field :profile_image %></li>
                     <li>自己紹介:<%=f.text_area :introduction %></li>
                     <li>メールアドレス:<%= f.email_field :email, autofocus: true, autocomplete: "email" %></li>
-                    <%= f.submit 'Update User' ,class: "btn btn-primary" %>
-                    <%= link_to "Back", admins_user_path(@users),class: "btn btn-success" %>
+                    <%= f.submit '更新' ,class: "btn btn-primary" %>
+                    <%= link_to "削除", admins_user_path(@users),class: "btn btn-default" %>
                 <% end %>
             </ul>
         </div>
