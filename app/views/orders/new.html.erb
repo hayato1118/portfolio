@@ -38,7 +38,6 @@
 			<div class="col-xs-6 profile_text">
 				<div class="col-xs-12">
 					<%= form_tag(action: :pay, method: :post) do %>
-					
 					<%= text_field_tag :last_name,  '', id: "last_name" , :value => current_user.last_name ,:placeholder => "名前" %>
 					<%= text_field_tag :first_name, '', id: "first_name" , :value => current_user.first_name ,:placeholder => "苗字" %>
 
@@ -46,16 +45,10 @@
 					<%= text_field_tag :first_name_kana, '', id: "first_name_kana" , :value => current_user.first_name_kana ,:placeholder => "みょうじ" %></li>
 					
 					<li><%= text_field_tag :email, '', id: "input" ,type: "text" ,:placeholder => "メールアドレス" %></li>
-
-
-
 					<li><%= telephone_field_tag :phone_number1, '', :value => current_user.phone_number1 ,maxlength: 4  ,:placeholder => "電話番号" %>-
 					<%= telephone_field_tag :phone_number2, '', :value => current_user.phone_number2 ,maxlength: 4 ,:placeholder => "電話番号" %>-
 					<%= telephone_field_tag :phone_number3, '', :value => current_user.phone_number3 ,maxlength: 4 ,:placeholder => "電話番号" %></li>
-
 					<li><%= text_field_tag :zip, '', id: "zip" ,:value => current_user.zip, maxlength: 7 ,:placeholder => "郵便番号" %></li>
-
-
 					<li><%= text_field_tag :state, '', id: "address" , :value => current_user.state,:placeholder => "都道府県名" %>
 					<%= text_field_tag :city, '', id: "address2" , :value => current_user.city,:placeholder => "市町村名" %>
 					<%= text_field_tag :street, '', id: "address3" , :value => current_user.street,:placeholder => "町名以下"  %></li>
@@ -74,7 +67,13 @@
 					<li>獲得ポイント：<%= number_field_tag :get_point, '', :value => (sum - current_user.cart.order_point)*0.01 ,:readonly =>true , class: "point_form_submit text-right" %>ポイント</li>
 
 					<hr>
+
+					<% current_user.cart.product_carts.each do |product_cart| %>
+					<% if product_cart.product.id != nil %>
 					<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_4fc1375fd8bbe84bfc6cefa2"></script>
+					<% end %>
+					<% end %>
+
 				</div>
 			</div>
 		</div>

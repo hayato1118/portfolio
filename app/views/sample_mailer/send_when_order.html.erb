@@ -13,13 +13,13 @@
 <body>
 
 <h4><%= @order.last_name %><%= @order.first_name %>様</h4>
-この度はCODE CELLAR SELLERを利用頂きましてありがとうございます。
-<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %>
+<li>この度はCODE CELLAR SELLERを利用頂きましてありがとうございます。</li>
+<li><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 <% @product_order.each do |product_order| %>
-商品ID<%= product_order.product.id %>
-商品名<%= product_order.product.title %>
-商品値段<%= product_order.product.price %>
-商品URL<%= product_order.product.url %>
+<li>商品ID<%= product_order.product.id %></li>
+<li>商品名<%= product_order.product.title %></li>
+<li>商品値段<%= product_order.product.price %></li>
+<li>商品URL<%= product_order.product.url %></li>
 <% end %>
 
 

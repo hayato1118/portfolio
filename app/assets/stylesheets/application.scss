@@ -212,6 +212,21 @@ body {
     list-style:none;
 }
 
+#nav-open2 {
+    display: inline-block;
+    color: #F6F7FB;
+    vertical-align: middle;
+    text-decoration: underline;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    transition: .3s;
+    font-weight:700;
+    text-decoration: none;
+    list-style:none;
+}
+
 /*閉じる用の薄黒カバー*/
 #nav-close {
     display: none;/*はじめは隠しておく*/
@@ -230,7 +245,38 @@ body {
   color: #2E7CD4;
 }
 
+#nav-open2:hover{
+  color: #2E7CD4;
+}
+
 /*中身*/
+
+
+#nav-open2 {
+    /*display: inline-block;*/
+    display: none;
+    color: #F6F7FB;
+    vertical-align: middle;
+    text-decoration: underline;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    transition: .3s;
+    font-weight:700;
+    text-decoration: none;
+    list-style:none;
+}
+
+#nav-open2:hover{
+  color: #2E7CD4;
+}
+
+
+
+
+
+
 
 /*マイページアイコン部分*/
 .position_header{
@@ -515,6 +561,23 @@ body {
 }
 
 
+.css_change_responsive {
+    text-decoration: underline;
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -o-transition: .8s;
+    -ms-transition: .8s;
+    transition: .8s;
+    font-weight:700;
+    color: #F6F7FB;
+    text-decoration: none;
+    list-style:none;
+}
+
+.css_change_responsive:hover {
+     color: #2E7CD4;
+}
+
 /*ここまでヘッダーエフェクト*/
 
 /*ここからショッピングステップ*/
@@ -569,9 +632,49 @@ body {
   margin:100px 0px 0px 0px;
 }
 
-
 /*ここまでショッピングステップ*/
 
+
+span.must {
+    background-color: red;
+    color: #FFF;
+    padding: 2px;
+    margin-left: 10px;
+}
+
+
+
+
+.col-xs-7.text-center.text_header-right.responsive {
+    display: none;
+}
+
+
+.col-xs-5.text_header-left.text-center.responsive {
+    display: none;
+}
+
+
+a.side_menu_list.responsive_up {
+    display: none;
+}
+
+.text-center.text_header-right.responsive {
+    display: none;
+}
+
+.sign_up_responsive{
+  display:none;
+}
+
+.sign_in_responsive{
+  display:none;
+}
+
+
+.password_responsive{
+  display:none;
+}
 
 /*//ここまで全体に対してのスタイリングCSS*/
 
@@ -584,6 +687,8 @@ body {
 
 .products{
 
+
+ background-color: #F6F7FB;
 
 .product_title {
   position: relative;
@@ -952,6 +1057,10 @@ width:100%;
 
 .users{
 
+.container.responsive {
+    display: none;
+}
+
 background-color:#F6F7FB;
 
 /*    #notice {
@@ -1312,6 +1421,10 @@ background-color:#F6F7FB;
      margin-right: 0px; 
 }
 
+span.responsive{
+  display:none;
+}
+
 /*フォームデザイン*/
 
 p {
@@ -1531,6 +1644,8 @@ padding-bottom:100px;
 
  .use_image {
     border-radius: 10%;
+    height:200px;
+    width:100%;
 }
 
 .use_container{
@@ -1788,15 +1903,175 @@ background-color:#F6F7FB;
 
 
 /* スマホ向けレイアウト */
-@media all and (max-width: 670px) {
+@media all and (max-width: 768px) {
+
+.text_header-right .responsive {
+  display:none;
+}
 
 
+.text_header-left .responsive{
+  display:none;
+}
 
+
+.container.pc{
+   display:none;
+}
+
+
+.users .container.responsive {
+    display: block;
+}
+
+a.btn.btn-sm.btn-default.col-xs-12.text-center.responsive{
+  display:none;
+}
+
+
+/*img.attachment.product.image.product_show_image {
+        height: 40vh;
+    width: 100%;
+}*/
+
+img.attachment.product.image.product_show_image {
+    height: 300px;
+    width: 100%;
+}
+
+.col-xs-5.aos-init.aos-animate {
+    width: 100%;
+}
+
+
+.homes .accordion-item span {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    color: #201B21;
+    font-size: 20px;
+}
+
+.homes .question {
+    font-size: 10px;
+    }
+
+.homes .q_and_a_grid {
+  background:#F6F7FB;
+  }
+
+.homes .balloon + label {
+    display: none;
+}
+
+.homes span.responsive {
+    display: block;
+}
+
+img.attachment.product.image.favorite_image {
+    height: 40vh;
+    width: 100%;
+}
+
+a.btn.btn-primary.text-center {
+    display: none;
+}
+
+#nav-content {
+    max-width: 200px;
+}
+
+.col-xs-12.list-hover-slide{
+  padding:0px;
+}
+
+a.side_menu_sns {
+    padding: 0px;
+}
+
+.col-xs-2.text-center.text_header-right{
+  display:none;
+}
+
+.text-center{
+  margin-left:0px;
 }
 
 
 
 
+.col-xs-4.text-center.text_header-right {
+    display: none;
+}
+
+
+.col-xs-7.text-center.text_header-right.responsive {
+    display: block;
+}
+
+#nav-open2 {
+    display: inline-block;
+    }
+#nav-open {
+    display: none;
+    }
+
+a.side_menu_list.responsive_up {
+    display: block;
+}
+
+
+.text-center.text_header-right.responsive {
+    display: block;
+}
+
+/*ここ要注意*/
+/*.text_header-left.text-center {
+    display: none;
+}*/
+
+
+a.text-center.css_change_responsive {
+    margin-left: -100px;
+}
+
+
+.top_logo_responsive {
+    margin-top: 50px;
+    height: 50px;
+    width: 150px;
+    margin-left: -80px;
+}
+
+.top_logo_responsive_login{
+      margin-top: 50px;
+    height: 50px;
+    width: 150px;
+}
+
+
+center {
+    display: none;
+}
+
+.sign_up_responsive{
+  margin-top: 100px;
+  display:block;
+}
+
+.sign_in_responsive{
+    margin-top: 100px;
+  display:block;
+}
+
+.password_responsive{
+    margin-top: 100px;
+    /*margin-left:-20px;*/
+  display:block;
+}
+
+
+}
 
 
 

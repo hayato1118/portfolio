@@ -186,9 +186,8 @@ body > div {
                     </div>
 
                     <div class="col-xs-5" data-aos="fade-up">
-                        <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                        <%= image_tag 'photograph.jpg',class: "col-xs-12 use_image" %>
                     </div>
-
                 </div>
             </div>
 
@@ -199,7 +198,7 @@ body > div {
                 <div class="row">
 
                     <div class="col-xs-5" data-aos="fade-up">
-                        <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                        <%= image_tag 'Storage.jpg',class: "col-xs-12 use_image" %>
                     </div>
 
                     <div class="col-xs-7" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -232,7 +231,7 @@ body > div {
                     </div>
 
                     <div class="col-xs-5" data-aos="fade-up">
-                        <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
+                        <%= image_tag 'registration.jpg',class: "col-xs-12 use_image" %>
                     </div>
 
                 </div>
@@ -275,7 +274,7 @@ body > div {
      <h3 class="question">売れた商品はいつどのように入金されるのでしょうか？</h3>
      <span>+</span>
      <div class="answer">
-        <p>・登録の銀行口座に前月分が入金されます</p>
+        <p>・登録の銀行口座に前月分の売上が入金されます</p>
      </div>
   </li>
 
@@ -284,7 +283,7 @@ body > div {
      <h3 class="question mdl-list__item">GIFファイルを作成する時の推奨ソフトはありますか？</h3>
      <span>+</span>
      <div class="answer">
-  <p>・今探し中</p>
+  <p>・GIPHY Capture. The GIF Makerを推奨しています。</p>
      </div>
   </li>
 
@@ -304,10 +303,11 @@ body > div {
 
     <li class="accordion-item mdl-list__item accordion-item-right" data-aos="fade-up"
      data-aos-anchor-placement="top-bottom" data-aos-offset="200">
-     <h3 class="question">リンク切れの商品でも欲しい場合はどうしたら良いでしょうか？</h3>
+     <h3 class="question">スマホ・携帯での購入するボタンがありません。</h3>
      <span>+</span>
      <div class="answer">
-        <p>・販売者の方に連絡をしてリンクを有効にできるか確認いたします。</p>
+        <p>・スマホ・携帯では当サイトは購入することはできません。</p>
+        <p>・コメント及びお問い合わせ機能としてお使いください。</p>
      </div>
   </li>
 
@@ -335,7 +335,6 @@ body > div {
 <!--============================================= 問い合わせ機能 =============================================-->
 
 
-
 <div class="contact" id="contact">
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 textleft_contact">
@@ -351,24 +350,24 @@ body > div {
                                 <div class="row">
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <%= f.text_field :name,  class: "col-xs-12 balloon"%><label>名前</label>
+                                            <span class="responsive">名前(非会員様用)：</span><%= f.text_field :name,  class: "col-xs-12 balloon"%><label class="responsive">名前(非会員様用)</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <%=f.text_field :nick_name , class: "col-xs-12 balloon" , :value => current_user.nickname %><label>ユーザー名</label>
+                                            <span class="responsive">ユーザー名(会員様用)：</span><%=f.text_field :nick_name , class: "col-xs-12 balloon" %><label class="responsive">ユーザー名(会員様用)</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <%=f.email_field :email , class: "col-xs-12 balloon"%><label>メールアドレス</label>
+                                            <span class="responsive">メールアドレス：</span><%=f.email_field :email , class: "col-xs-12 balloon"%><label class="responsive">メールアドレス</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <%=f.telephone_field :phone , class: "col-xs-12 balloon" , maxlength:11%><label>電話番号</label>
+                                            <span class="responsive">電話番号：</span><%=f.telephone_field :phone , class: "col-xs-12 balloon" , maxlength:11%><label class="responsive">電話番号</label>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pc">
 	<div class="col-xs-12"> 
 	<h2 class="my-4 title-h3">購入履歴</h2>
 </div>
@@ -53,3 +53,52 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+<!--===========================================responsive用===================================================================== -->
+
+
+<div class="container responsive">
+    <div class="col-xs-12"> 
+    <h2 class="my-4 title-h3">購入履歴</h2>
+    </div>
+    <div class="row product_show">
+ 		<% @user.orders.each do |order| %>
+			<% order.product_orders.each do |product_order| %>
+            <div class="col-xs-12">
+                <hr>
+                <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12">注文番号：<%= order.id %></div>
+                    <div class="col-sm-12"><%= attachment_image_tag product_order.product, :image ,class: "order_history_image" %></div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="col-sm-12">商品情報</div>
+					<div class="col-sm-12"><strong>商品名：</strong><%= product_order.product.title %></div>
+					<div class="col-sm-12"><strong>販売者：</strong><%= product_order.product.user.nickname %></div>
+					<div class="col-sm-12"><strong>商品URL：</strong><%= product_order.product.url %></div>
+					<div class="col-sm-12"><strong>送付先：</strong><%= product_order.order.email %></div>
+					<div class="col-sm-12"><strong>商品購入日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="col-sm-12">価格</div>
+                    <div class="col-sm-12"><%= product_order.product.price %>円(税込)</div>
+                </div>
+
+
+                <div class="col-md-3">
+                     <%=link_to "商品詳細", product_path(product_order.product.id), class: "btn btn-sm btn-default col-xs-12 text-center" %>
+							<%= link_to "領収証", order_path(order) ,class: "btn btn-sm btn-default col-xs-12 text-center responsive" %>
+                </div>
+                 </div>
+       	<% end %>
+		<% end %>
+    </div>
+</div>
+

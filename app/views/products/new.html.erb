@@ -8,6 +8,18 @@
         <div class="col-xs-12">
             <h2 class="my-4 title-h3">新規商品登録</h2>
             <hr>
+
+<% if current_user.email.blank?  || current_user.last_name.blank? || current_user.last_name_kana.blank? || current_user.first_name.blank? || current_user.first_name_kana.blank? || current_user.state.blank? || current_user.city.blank? || current_user.street.blank? || current_user.zip.blank? || current_user.phone_number1.blank? || current_user.phone_number2.blank? || current_user.phone_number3.blank? %>
+
+    <div class="col-xs-12 text-center well well-lg">
+      <h6>
+      <p>ユーザー情報の登録が完了していない場合、商品の登録をすることができません。</p>
+      <p>登録を完了させてから商品の登録をしてください。</p>
+      </h6>
+    </div>
+
+<% else %>
+
     <div class="col-xs-12 text-center well well-lg">
       <h6>
       <p>ユーザー情報の登録が完了していない場合、商品の登録をすることができません。</p>
@@ -18,51 +30,51 @@
 
             <%= nested_form_for @product, url: {action: 'confirm'} do |f|  %>
                 <div class="col-xs-12">
-                    <div class="col-md-2 col-xs-12">
-                        <label>商品イメージ</label>
+                    <div class="col-md-3 col-xs-12">
+                        <label>商品イメージ</label><span class="must">必須</span>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= f.attachment_field :image %>
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
-                        <label>商品名</label>
+                    <div class="col-md-3 col-xs-12">
+                        <label>商品名</label><span class="must">必須</span>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= f.text_field :title, class: "col-md-8 col-xs-12 product_new", maxlength:30 %>
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
-                        <label>値段</label>
+                    <div class="col-md-3 col-xs-12">
+                        <label>値段</label><span class="must">必須</span>
                     </div>
-                    <div class="col-md-10">
-                        <%= f.number_field :price,min: 0,step: 100, class: "col-md-2 col-xs-3 product_new"%>円
+                    <div class="col-md-9">
+                        <%= f.number_field :price,min: 100,step: 100, class: "col-md-2 col-xs-3 product_new"%>円
                     </div>
                 </div>
 
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
-                        <label>Google drive URL</label>
+                    <div class="col-md-3 col-xs-12">
+                        <label>Google drive URL</label><span class="must">必須</span>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= f.url_field :url, :placeholder => "https://drive.google.com/drive_or_file/....", class: "col-md-8 col-xs-12 product_new" , maxlength:100%>
                     </div>
                 </div>
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
+                    <div class="col-md-3 col-xs-12">
                         <label>商品タグ</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= f.fields_for :tags do |tag_form| %>
                             <%= tag_form.text_field :tag_name ,class: "col-md-2 product_new" %>
                             <%= tag_form.link_to_remove "削除" , class: "btn btn-default" %>
@@ -73,10 +85,10 @@
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
+                    <div class="col-md-3 col-xs-12">
                         <label>商品カテゴリー</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= collection_check_boxes(:product, :category_ids, Category.all, :id, :category_name) do |b| %>
                             <%= b.label { b.check_box + b.text } %>
                         <% end %>
@@ -86,10 +98,10 @@
 
                 <div class="col-xs-12">
                     <hr>
-                    <div class="col-md-2 col-xs-12">
-                        <label>商品説明</label>
+                    <div class="col-md-3 col-xs-12">
+                        <label>商品説明</label><span class="must">必須</span>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <%= f.text_area :product_detail, class: "col-xs-12 product_new_form" ,maxlength:300 %>
                     </div>
                 </div>
@@ -112,6 +124,7 @@
 
                     <%= link_to "キャンセル" ,products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
                     <%= f.submit "商品登録", class: "btn btn-primary col-xs-3 col-xs-offset-2" %>
+                    <% end %>
                 </div>
             <% end %>
         </div>

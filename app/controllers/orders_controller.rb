@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   	@order = Order.new
   end
 
+
 def pay
     @order = Order.new
     @order.get_point = params[:get_point]
@@ -33,12 +34,13 @@ def pay
       if @order.save
         @user = current_user
         product_carts = current_user.cart.product_carts
+            teika =0
             product_carts.each do |product_cart|
+              teika = teika + product_cart.product.price
               product_order = ProductOrder.new
               product_order.product_id = product_cart.product_id
               product_order.order_id = @order.id
               product_order.quantity = product_cart.quantity
-
               product_order.used_point = product_cart.cart.order_point
               # @user.point += @order.get_point
               product_order.save
@@ -47,7 +49,7 @@ def pay
 
       Payjp.api_key = 'sk_test_2eb64dfe4aa18b7db911e6e6'
       charge = Payjp::Charge.create(
-      :amount => 3500,
+      :amount => "#{teika - current_user.cart.order_point}",
       :card => params['payjp-token'],
       :currency => 'jpy',
        )
@@ -58,6 +60,7 @@ def pay
 
        SampleMailer.send_when_order(@order).deliver
       else
+        binding.pry
         redirect_to new_order_path
       end
 
@@ -111,6 +114,8 @@ end
 
 
   private
+
+
     def order_params
     params.require(:order).permit(:get_point,:used_point, :total_price, :zip, :state, :city, :street,:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
     end
@@ -122,5 +127,8 @@ end
     def user_params
        params.require(:user).permit(:point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
     end
+
+
+
 
 end

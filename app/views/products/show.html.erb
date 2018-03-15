@@ -35,7 +35,7 @@
           <li class="active"><a href="#sampleContentA" data-toggle="tab">商品詳細</a></li>
           <li><a href="#sampleContentB" data-toggle="tab">商品説明</a></li>
           <% if user_signed_in? %>
-          <li><a href="#sampleContentC" data-toggle="tab">コメント</a></li>
+          <li><a href="#sampleContentC" data-toggle="tab">コメント<%= @products.product_comments.count %></a></li>
           <li><a href="#sampleContentD" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i><%= @products.product_goods.count %></a></li>
            <% end %>
         </ul>
@@ -122,10 +122,6 @@
             <% end %>
             </ul>
           <% end %>
-                    <h5 class="comment-count">
-            <%= @products.product_comments.count %>件コメント
-          </h5>
-      
     </div>
 <!--コメント機能-->
   </div>
