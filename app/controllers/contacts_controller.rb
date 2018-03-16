@@ -5,12 +5,13 @@ class ContactsController < ApplicationController
       @contact = Contact.new(contact_params)
       session[:contact] = @contact
       session[:contact].save
-      redirect_to homes_path if @contact.invalid?
+      	if @contact.invalid? 
+     		 redirect_to homes_path,flash: {notice: "必須項目が入力されていません。"}
+ 		 end
   	end
 
 	def create
 	@contact = Contact.new(session[:contact])
-
 	 @contact.id = nil
 	 @contact.save
 	  SampleMailer.send_when_contact(@contact).deliver

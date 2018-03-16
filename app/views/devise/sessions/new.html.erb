@@ -260,16 +260,3 @@ path{
       </center>
     </div>
 
-
-  <div class="col-xs-8 col-xs-offset-2 sign_in_responsive">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email,class: "login_form text-center",Placeholder: "Email" , autofocus: true, autocomplete: "email" %>
-                      <%= f.password_field :password ,class: "login_form text-center",Placeholder: "Password", autocomplete: "off"  %>
-                    <div>
-                        <span style="width:48%; text-align:left;  display: inline-block;"><%= render "devise/shared/links" ,class: "shared_links" %></span>
-
-    <%= f.submit "Login" ,class: "btn btn-default" %>
-     <% end %>
-</div>
-</div>
-

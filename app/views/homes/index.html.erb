@@ -160,11 +160,22 @@ body > div {
             <div class="use_container_top">
                 <div class="row">
 
-                    <div class="col-xs-5" data-aos="fade-up">
+                  <div class="col-xs-7 use_responsive" data-aos="fade-left"  data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <h6 class=""><i class="icon fa fa-arrow-right"></i>1st step</h6>
+                        <h3 class=""><label>Create</label></h3>
+                        <h5 class="">オリジナルのコンテンツをRuby,Ruby on Rails,PHP,Python,HTML,CSS,jQuery,Java,JavaScriptの中から制作をしてください。</h5>
+                    </div>
+
+
+                    <div class="col-xs-5 use_pc" data-aos="fade-up">
                       <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image" %>
                     </div>
 
-                    <div class="col-xs-7" data-aos="fade-left"  data-aos-offset="300" data-aos-easing="ease-in-sine">
+                     <div class="col-xs-5 use_responsive" data-aos="fade-up">
+                      <%= image_tag 'code_image.jpg',class: "col-xs-12 use_image_responsive" %>
+                    </div>
+
+                    <div class="col-xs-7 use_pc" data-aos="fade-left"  data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <h6 class=""><i class="icon fa fa-arrow-right"></i>1st step</h6>
                         <h3 class=""><label>Create</label></h3>
                         <h5 class="">オリジナルのコンテンツをRuby,Ruby on Rails,PHP,Python,HTML,CSS,jQuery,Java,JavaScriptの中から制作をしてください。</h5>
@@ -185,8 +196,12 @@ body > div {
                         <h5 class="">コンテンツが作成完了したらコンテンツをGIFファイルで画面録画できるソフトで撮影しましょう。</h5>
                     </div>
 
-                    <div class="col-xs-5" data-aos="fade-up">
+                    <div class="col-xs-5 use_pc" data-aos="fade-up">
                         <%= image_tag 'photograph.jpg',class: "col-xs-12 use_image" %>
+                    </div>
+
+                    <div class="col-xs-5 use_responsive" data-aos="fade-up">
+                        <%= image_tag 'photograph.jpg',class: "col-xs-12 use_image_responsive" %>
                     </div>
                 </div>
             </div>
@@ -197,11 +212,26 @@ body > div {
             <div class="use_container">
                 <div class="row">
 
-                    <div class="col-xs-5" data-aos="fade-up">
+                    <div class="col-xs-7 use_responsive" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <h6 class=""><i class="icon fa fa-arrow-right"></i>3rd step</h6>
+                        <h3 class=""><label>Storage</label></h3>
+                        <h5 class="">作成したコンテンツをGoogleDriveにアップロードしましょう。
+                        Googleドライブのマイドライブの中の共有したいファイルやフォルダを選択して右クリック
+                        共有可能なリンクを取得をクリック
+                        共有のためのURLが作成されるので後ほど商品登録時に必要です。
+                        リンクを知っている全員が閲覧可に変更
+                        完了をクリック</h5>
+                    </div>
+
+                    <div class="col-xs-5 use_pc" data-aos="fade-up">
                         <%= image_tag 'Storage.jpg',class: "col-xs-12 use_image" %>
                     </div>
 
-                    <div class="col-xs-7" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <div class="col-xs-5 use_responsive" data-aos="fade-up">
+                        <%= image_tag 'Storage.jpg',class: "col-xs-12 use_image_responsive" %>
+                    </div>
+
+                    <div class="col-xs-7 use_pc" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <h6 class=""><i class="icon fa fa-arrow-right"></i>3rd step</h6>
                         <h3 class=""><label>Storage</label></h3>
                         <h5 class="">作成したコンテンツをGoogleDriveにアップロードしましょう。
@@ -230,10 +260,13 @@ body > div {
                         商品URLは先ほどGoogleドライブで生成されたURLです。</h5>
                     </div>
 
-                    <div class="col-xs-5" data-aos="fade-up">
+                    <div class="col-xs-5 use_pc" data-aos="fade-up">
                         <%= image_tag 'registration.jpg',class: "col-xs-12 use_image" %>
                     </div>
 
+                    <div class="col-xs-5 use_responsive" data-aos="fade-up">
+                        <%= image_tag 'registration.jpg',class: "col-xs-12 use_image_responsive" %>
+                    </div>
                 </div>
             </div>
 
@@ -323,10 +356,10 @@ body > div {
 </ul>
 </div>
 </div>
-<%= render "modal" %>
+<%#= render "modal" %>
 
 
-
+<%= render :partial => 'products/modal'%>
 
 
 <!--============================================= Q&A機能 =============================================-->
@@ -336,9 +369,25 @@ body > div {
 
 
 <div class="contact" id="contact">
+
+
+<% if @contact.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 textleft_contact">
             <h3 class="textleft"><i class="icon fa fa-envelope"></i>お問い合わせ</h3>
+                  <% if flash[:notice] %>
+        <label style="color:red;"><%= flash[:notice] %></label>
+      <% end %>
         </div>
         <br>
         <div class="row">
@@ -362,17 +411,17 @@ body > div {
                                 <div class="row">
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <span class="responsive">メールアドレス：</span><%=f.email_field :email , class: "col-xs-12 balloon"%><label class="responsive">メールアドレス</label>
+                                            <span class="responsive">メールアドレス：<label class="must">必須</label></span><%=f.email_field :email , class: "col-xs-12 balloon"%><label class="responsive">メールアドレス<label class="must">必須</label></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 form_text">
                                         <div class="">
-                                            <span class="responsive">電話番号：</span><%=f.telephone_field :phone , class: "col-xs-12 balloon" , maxlength:11%><label class="responsive">電話番号</label>
+                                            <span class="responsive">電話番号：<label class="must">必須</label></span><%=f.telephone_field :phone , class: "col-xs-12 balloon" , maxlength:11%><label class="responsive">電話番号<label class="must">必須</label></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="">
-                                    <label class="control-label">お問い合わせ</label>
+                                    <label class="control-label">お問い合わせ<label class="must_contact">必須</label></label>
                                     <%=f.text_field :message, class: "index_contact_form" , maxlength:140%>
                                 </div>
                                 <div class="row">

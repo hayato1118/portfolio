@@ -27,19 +27,22 @@
 				
 				<!--   Bタブ部分    -->
 				<div class="tab-pane active col-md-12" id="sampleContentB">
+    <% if flash[:notice] %>
+        <label style="color:red;"><%= flash[:notice] %></label>
+      <% end %>
 					<table class="table table-hover">
 						<tbody>
 							<% @mypage_comments.each do |message| %>
 							<tr>
-								<td class="comment_td col-xs-1">
+								<td class="comment_td col-xs-1 text-center">
 									<%= link_to user_path(message.to_user.id) do %>
-									<%= attachment_image_tag message.to_user, :profile_image, fallback: "no_image_top.jpg" ,class: "img-circle comment_image" %>
+									<%= attachment_image_tag message.to_user, :profile_image, fallback: "no_image_top.jpg" ,class: "img-circle comment_image" %><br><%= message.to_user.nickname %>
 										<% end %>
 									</td>
 								<!-- メッセージを送った人の情報もらった -->
 								<td class="comment_td col-xs-6"><%= message.comment %></td>
 								<!-- メッセージを送った人の情報もらった -->
-								<td class="comment_td col-xs-2"><%= message.to_user.nickname %></td>
+								<td class="comment_td col-xs-2"></td>
 								<td class="comment_td col-xs-2"><%= message.created_at.strftime("%m#{"月"}%d#{"日"}%R")  %></td>
 								<td class="comment_td col-xs-1">
 									<% if message.to_user_id == current_user.id %>
@@ -48,7 +51,7 @@
 								</td>
 							</tr>
 							<% end %>
-									<div class="col-sm-12 text-center">
+						<div class="col-sm-12 text-center">
 							<%= paginate @mypage_comments, class: "pagenate" %>
 						</div>
 							<%= form_for @mypage_comment, url:  mypage_comments_path , html: {method: "POST"} do |f| %>

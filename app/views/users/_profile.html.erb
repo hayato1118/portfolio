@@ -4,17 +4,27 @@
 　　　   <%= render 'stats' ,class: "text-center" %>
     <h3 class="my-3">登録情報</h3>
     <ul>
-      <li class="text-left">名前：<%= @user.last_name %><%= @user.first_name %></li>
-      <li class="text-left">ふりがな：<%= @user.last_name_kana %><%= @user.first_name_kana %></li>
       <li class="text-left">ユーザー名：<%= @user.nickname %></li>
-      <li class="text-left">電話番号：<%= @user.phone_number1 %><%= @user.phone_number2 %><%= @user.phone_number3 %></li>
-      <li class="text-left">メールアドレス：<%= @user.email %></li>
-      <li class="text-left">郵便番号：<%= @user.zip %></li>
-      <li class="text-left">住所：<%= @user.state %><%= @user.city %><%= @user.street %></li>
+      <% if @user == current_user || admin_signed_in?  %>
+          <li class="text-left">名前：<%= @user.last_name %><%= @user.first_name %></li>
+          <li class="text-left">ふりがな：<%= @user.last_name_kana %><%= @user.first_name_kana %></li>
+          <li class="text-left">電話番号：<%= @user.phone_number1 %><%= @user.phone_number2 %><%= @user.phone_number3 %></li>
+          <li class="text-left">メールアドレス：<%= @user.email %></li>
+          <li class="text-left">郵便番号：<%= @user.zip %></li>
+          <li class="text-left">住所：<%= @user.state %><%= @user.city %><%= @user.street %></li>
+          <li class="text-left">金融機関名:<%= @user.financial_institution_name %></li>
+          <li class="text-left">支店名:<%= @user.branch_name %></li>
+          <li class="text-left">預金種目:<%= @user.type_of_account %></li>
+          <li class="text-left">口座番号:<%= @user.account_number %></li>
+          <li class="text-left">口座名義:<%= @user.account_holder_name %></li>
+       <% end %>
 	  <li class="text-left">最終ログイン:<%= @user.current_sign_in_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
     </ul>
+
 
 	<% if @user == current_user || admin_signed_in? %>
 	<%= link_to "編集", edit_user_path, class: "btn btn-default col-xs-4 col-xs-offset-1" %>
 	<%= link_to "退会", user_path(@user), method: :delete, class: "btn btn-danger col-xs-4 col-xs-offset-1", data: { confirm: '退会時はユーザー情報は論理削除されて当サイトで1ヶ月の保管をさせていただいた後に完全削除をします。　承諾できますか?'} %>
 	<% end %>
+<br>
+<br>

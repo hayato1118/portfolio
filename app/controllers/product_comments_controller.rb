@@ -7,7 +7,7 @@ def create
     if comment.save
       redirect_to product_path(product)
     else
-      redirect_to product_path(product)
+      redirect_to product_path(product) ,flash: {notice: "コメントが入力されていません。"}
 	end
 end
 

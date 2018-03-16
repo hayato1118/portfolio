@@ -30,7 +30,7 @@
 				<div id="nav-drawer">
 					<input id="nav-input" type="checkbox" class="nav-unshown">
 					<label id="nav-open" for="nav-input" class="position_header">ユーザーページ</label>
-					<label id="nav-open2" for="nav-input" class="position_header nav-open_responsive">詳細</label>
+					<label id="nav-open2" for="nav-input" class="position_header nav-open_responsive">MENU</label>
 					<label class="nav-unshown" id="nav-close" for="nav-input"></label>
 					<div id="nav-content">
 						<!--サイドメニュー-->
@@ -118,7 +118,7 @@
 							<div class="col-xs-7 text-center text_header-right responsive">
 								<li class="">
 									<%=link_to root_path do %>
-									<%= image_tag 'logo.color.png',class: "col-xs-8 col-xs-offset-2 top_logo" %>
+									<%= image_tag 'logo.color.png',class: "col-xs-8 col-xs-offset-2 top_logo_responsive" %>
 									<% end %>
 								</li>
 							</div>
@@ -291,14 +291,14 @@
 				<div class="col-xs-12">
 			<hr>
 		</div>
-		<div class="col-md-8">
+		<div class="col-xs-8">
 			<ul>
 				<li>©️ 2018 HAYATO NAKAMURA </li>
 			</ul>
 		</div>
 
 
-		<div class="col-md-4 text-center">
+		<div class="col-xs-4 text-center">
 				<!-- ローカルホスト3000ではダメ -->
 <!-- デプロイ時に設定 -->
 <!-- https://developers.facebook.com/docs/plugins/share-button?locale=ja_JP# -->
@@ -321,6 +321,96 @@
 				<%= link_to "管理人", admins_users_path %>
 			</div>
 		</div>
+
+
+
+<!-- ========================================レスポンシブ============================================================== -->
+
+
+
+	<div class="col-xs-9 col-xs-offset-1 footer_responsive">
+		<hr>
+
+		<div class="col-xs-6">
+			<ul>
+				<h5>サイト説明</h5>
+				<li><i class="icon fa fa-info-circle"></i><%= link_to 'How To Use', homes_path(anchor: 'how_to_use'), class: 'text-center' %></li>
+				<li><i class="icon fa fa-question-circle"></i><%= link_to 'Q&A', homes_path(anchor: 'q_and_a'), class: 'text-center' %></li>
+				<li><i class="icon fa fa-envelope"></i><%= link_to 'Contact', homes_path(anchor: 'contact'), class: 'text-center' %></li>
+			</ul>
+		</div>
+
+		<div class="col-xs-6">
+		<%= image_tag 'logo.color.png',class: "col-xs-8 image_responsive" %>
+		</div>
+<div class="col-xs-12">
+<hr>
+</div>
+
+
+
+		<div class="col-xs-5">
+			<ul>
+				<h5>My Web Site Social Networking Service</h5>
+				<li><i class="icon fa fa-twitter-square"></i><%= link_to "Twitter" , "https://twitter.com/CodeCellars/" %></li>
+				<li><i class="icon fa fa-facebook-square"></i><%= link_to "Facebook" , "https://www.facebook.com/profile.php?id=100024524379559" %></li>
+				<li><i class="icon fa fa-instagram"></i><%= link_to "Instagram" , "https://www.instagram.com/code.cellars/" %></li>
+				<li><i class="icon fa fa-github-square"></i><%= link_to "GitHub" , "https://github.com/hayato1118/" %></li>
+			</ul>
+		</div>
+
+
+		<div class="col-xs-7">
+			<ul>
+				<div class="col-xs-6">
+					<h5 class="col-xs-12"><i class="icon fa fa-users"></i>会員人数</h5>
+					<h4 class="col-xs-12"><%=User.count(:id) %></h4>
+					<li class="col-xs-12">persons</li>
+				</div>
+				<div class="col-xs-6">
+					<h5 class="col-xs-12"><i class="icon fa fa-code"></i>アイテム数</h5>
+					<h4 class="col-xs-12"><%=Product.count(:id) %></h4>
+					<li class="col-xs-12">items</li>
+				</div>
+
+			</ul>
+		</div>
+
+
+
+
+
+
+		<div class="col-xs-12 text-center">
+				<!-- ローカルホスト3000ではダメ -->
+<!-- デプロイ時に設定 -->
+<!-- https://developers.facebook.com/docs/plugins/share-button?locale=ja_JP# -->
+<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Flocalhost%3A3000%2F&layout=button&size=large&mobile_iframe=true&width=75&height=28&appId" width="75" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="コードを簡単に購入できるウェブサイト" data-via="CodeCellars" data-hashtags="CodeCellars" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<div class="line-it-button" data-lang="ja" data-type="share-a" data-url="http://localhost:3000/" style="display: none;"></div>
+ <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+ <script type="text/javascript">LineIt.loadButton();</script>
+
+		<div class="col-xs-12">
+			<ul>
+				<li>©️ 2018 HAYATO NAKAMURA </li>
+			</ul>
+		</div>
+
+
+			</div>
+				<div class="col-xs-12 text-center">
+					<hr>
+				<%= link_to "管理人", admins_users_path %>
+			</div>
+		</div>
+
+
 </footer>
 </body>
 </html>

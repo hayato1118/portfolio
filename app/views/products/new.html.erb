@@ -9,7 +9,7 @@
             <h2 class="my-4 title-h3">新規商品登録</h2>
             <hr>
 
-<% if current_user.email.blank?  || current_user.last_name.blank? || current_user.last_name_kana.blank? || current_user.first_name.blank? || current_user.first_name_kana.blank? || current_user.state.blank? || current_user.city.blank? || current_user.street.blank? || current_user.zip.blank? || current_user.phone_number1.blank? || current_user.phone_number2.blank? || current_user.phone_number3.blank? %>
+<% if current_user.email.blank? || current_user.last_name.blank? || current_user.last_name_kana.blank? || current_user.first_name.blank? || current_user.first_name_kana.blank? || current_user.state.blank? || current_user.city.blank? || current_user.street.blank? || current_user.zip.blank? || current_user.phone_number1.blank? || current_user.phone_number2.blank? || current_user.phone_number3.blank? || current_user.financial_institution_name.blank? || current_user.branch_name.blank? || current_user.type_of_account.blank? || current_user.account_number.blank? || current_user.account_holder_name.blank? %>
 
     <div class="col-xs-12 text-center well well-lg">
       <h6>
@@ -22,11 +22,27 @@
 
     <div class="col-xs-12 text-center well well-lg">
       <h6>
-      <p>ユーザー情報の登録が完了していない場合、商品の登録をすることができません。</p>
       <p>オリジナルのコンテンツのみを登録することができます。</p>
       <p>上記のもの以外登録していた場合、削除することがありますのでご了承ください。</p>
       </h6>
     </div>
+
+
+
+<% if @product.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+
+
 
             <%= nested_form_for @product, url: {action: 'confirm'} do |f|  %>
                 <div class="col-xs-12">

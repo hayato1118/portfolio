@@ -304,7 +304,7 @@ body {
   font-weight: 400;
   display: inline-block;
   width:100%;
-  padding:20px 0px;
+  padding-bottom:40px;
   color:#F6F7FB;
 }
 
@@ -338,6 +338,7 @@ body {
 }
     #side_notice{
       /*padding-top:50px;*/
+    padding-top: 50px;
       border-top: 10px solid #00B4FF;
     }
 
@@ -350,11 +351,6 @@ body {
       border-top: 10px solid #00B4FF;
     }
 
-
-    .side_menu_list_point{
-      margin-bottom: 50px;
-      
-    }
 
 /*サイドメニュー内*/
 
@@ -638,10 +634,26 @@ body {
 span.must {
     background-color: red;
     color: #FFF;
-    padding: 2px;
-    margin-left: 10px;
+    padding:1px 3px;
+    margin-left:10px;
+      font-size:10px;
 }
 
+label.must{
+     background-color: red;
+    color: #FFF;
+    padding:0px 3px;
+    margin-left:10px;
+      font-size:10px;
+}
+
+.must_contact{
+       background-color: red;
+    color: #FFF;
+    padding:0px 3px;
+    margin-left:10px;
+    font-size:10px;
+}
 
 
 
@@ -663,18 +675,26 @@ a.side_menu_list.responsive_up {
     display: none;
 }
 
-.sign_up_responsive{
+
+
+.sold_responsive{
+   display:none;
+}
+
+.last_menu{
+  margin-bottom:100px;
+}
+
+.footer_responsive{
   display:none;
 }
 
-.sign_in_responsive{
+
+.use_responsive{
   display:none;
 }
 
 
-.password_responsive{
-  display:none;
-}
 
 /*//ここまで全体に対してのスタイリングCSS*/
 
@@ -1063,9 +1083,9 @@ width:100%;
 
 background-color:#F6F7FB;
 
-/*    #notice {
-        padding-top: 200px
-    }*/
+    #notice {
+        padding-top: 150px
+    }
 
 
 
@@ -1530,13 +1550,15 @@ color: #201B21;
   text-indent: 0;
   background: #efefef;
 
+
+/*飛び出し部分*/
   + label {
     color: #201B21;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    background: #00B4FF;
+    background: #d3d3d3;
     transform: translateY(-40px);
     &:after {
-      border-top: 4px solid #00B4FF;
+      border-top: 4px solid #d3d3d3;
     }
   }
 }
@@ -1642,11 +1664,19 @@ padding-bottom:100px;
 }
 
 
+
  .use_image {
     border-radius: 10%;
     height:200px;
     width:100%;
 }
+
+.use_image_responsive{
+     border-radius: 10%;
+    height:350px;
+    width:100%;
+}
+
 
 .use_container{
   padding-top:50px;
@@ -1903,7 +1933,12 @@ background-color:#F6F7FB;
 
 
 /* スマホ向けレイアウト */
-@media all and (max-width: 768px) {
+/*@media all and (max-width: 450px) {*/
+
+@media screen and (min-width: 0px) and (max-device-width: 450px) {
+
+
+
 
 .text_header-right .responsive {
   display:none;
@@ -1968,17 +2003,17 @@ img.attachment.product.image.product_show_image {
     display: block;
 }
 
-img.attachment.product.image.favorite_image {
-    height: 40vh;
-    width: 100%;
-}
+
+
+
+
 
 a.btn.btn-primary.text-center {
     display: none;
 }
 
 #nav-content {
-    max-width: 200px;
+    max-width: 300px;
 }
 
 .col-xs-12.list-hover-slide{
@@ -2007,6 +2042,7 @@ a.side_menu_sns {
 
 .col-xs-7.text-center.text_header-right.responsive {
     display: block;
+    margin-left: 130px;
 }
 
 #nav-open2 {
@@ -2032,7 +2068,7 @@ a.side_menu_list.responsive_up {
 
 
 a.text-center.css_change_responsive {
-    margin-left: -100px;
+    margin-left: -200px;
 }
 
 
@@ -2040,7 +2076,7 @@ a.text-center.css_change_responsive {
     margin-top: 50px;
     height: 50px;
     width: 150px;
-    margin-left: -80px;
+    margin-left: -70px;
 }
 
 .top_logo_responsive_login{
@@ -2050,26 +2086,46 @@ a.text-center.css_change_responsive {
 }
 
 
-center {
+
+
+.responsive_button{
     display: none;
 }
 
-.sign_up_responsive{
-  margin-top: 100px;
+.sold_responsive{
+    display:block;
+    }
+
+
+.slide_icon_image {
+    width: 100px;
+    height: 100px;
+}
+
+.image_responsive{
+    margin-top: 20px;
+}
+
+
+.footer_main {
+    display: none;
+}
+
+.footer_responsive{
   display:block;
 }
 
-.sign_in_responsive{
-    margin-top: 100px;
+
+.use_responsive{
+  
   display:block;
 }
 
-.password_responsive{
-    margin-top: 100px;
-    /*margin-left:-20px;*/
-  display:block;
-}
 
+
+.use_pc{
+  display:none;
+}
 
 }
 

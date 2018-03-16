@@ -13,24 +13,39 @@ class OrdersController < ApplicationController
 
 
 def pay
-    @order = Order.new
-    @order.get_point = params[:get_point]
-    @order.used_point = params[:used_point]
-    @order.zip = params[:zip]
-    @order.state = params[:state]
-    @order.city = params[:city]
-    @order.street = params[:street]
-    @order.user_id = params[:user_id]
-    @order.phone_number1 = params[:phone_number1]
-    @order.phone_number2 = params[:phone_number2]
-    @order.phone_number3 = params[:phone_number3]
-    @order.last_name = params[:last_name]
-    @order.last_name_kana = params[:last_name_kana]
-    @order.first_name = params[:first_name]
-    @order.first_name_kana = params[:first_name_kana]
-    @order.email = params[:email]
+    @order = Order.new(order_params)
+   #  get_point: params[:get_point],
+   # used_point: params[:used_point],
+   # zip: params[:zip],
+   # state: params[:state],
+   # city: params[:city],
+   # street: params[:street],
+   # user_id: current_user.id,
+   # phone_number1: params[:phone_number1],
+   # phone_number2: params[:phone_number2],
+   # phone_number3: params[:phone_number3],
+   # last_name: params[:last_name],
+   # last_name_kana: params[:last_name_kana],
+   # first_name: params[:first_name],
+   # first_name_kana: params[:first_name_kana],
+   # email: params[:email]
 
-    @order.user_id = current_user.id
+    # @order.get_point = params[:get_point]
+    # @order.used_point = params[:used_point]
+    # @order.zip = params[:zip]
+    # @order.state = params[:state]
+    # @order.city = params[:city]
+    # @order.street = params[:street]
+    # @order.phone_number1 = params[:phone_number1]
+    # @order.phone_number2 = params[:phone_number2]
+    # @order.phone_number3 = params[:phone_number3]
+    # @order.last_name = params[:last_name]
+    # @order.last_name_kana = params[:last_name_kana]
+    # @order.first_name = params[:first_name]
+    # @order.first_name_kana = params[:first_name_kana]
+    # @order.email = params[:email]
+
+    # @order.user_id = current_user.id
       if @order.save
         @user = current_user
         product_carts = current_user.cart.product_carts
@@ -60,8 +75,7 @@ def pay
 
        SampleMailer.send_when_order(@order).deliver
       else
-        binding.pry
-        redirect_to new_order_path
+        render 'new'
       end
 
 end
@@ -112,12 +126,27 @@ end
     @orders = Order.all.reverse_order
   end
 
-
   private
 
 
     def order_params
-    params.require(:order).permit(:get_point,:used_point, :total_price, :zip, :state, :city, :street,:admin_id,:user_id,:phone_number1,:phone_number2,:phone_number3,:last_name,:last_name_kana,:first_name,:first_name_kana,:email)
+    params.permit.merge(
+       get_point: params[:get_point],
+       used_point: params[:used_point],
+       zip: params[:zip],
+       state: params[:state],
+       city: params[:city],
+       street: params[:street],
+       user_id: current_user.id,
+       phone_number1: params[:phone_number1],
+       phone_number2: params[:phone_number2],
+       phone_number3: params[:phone_number3],
+       last_name: params[:last_name],
+       last_name_kana: params[:last_name_kana],
+       first_name: params[:first_name],
+       first_name_kana: params[:first_name_kana],
+       email: params[:email]
+   )
     end
 
     def product_order_params
@@ -125,7 +154,7 @@ end
     end
 
     def user_params
-       params.require(:user).permit(:point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
+       params.require(:user).permit(:financial_institution_name,:branch_name,:type_of_account,:account_number,:account_holder_name, :point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
     end
 
 

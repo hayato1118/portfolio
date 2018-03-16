@@ -2,11 +2,25 @@
 
 
 <div class="container">
+
+
+
+
 <ol class="stepBar">
 <li class="visited"><span>1</span><br>カート</li>
 <li class="visited"><span>2</span><br>注文内容</li>
 <li><span>3</span><br>注文完了</li>
 </ol>
+
+	<% if @order.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="col-md-12"> 
 	<h2 class="my-4 title-h3">購入確認画面
@@ -14,7 +28,6 @@
 	</h2>
 	<hr>
 </div>
-
 
 
 <ul class="nav nav-tabs">
@@ -71,6 +84,7 @@
 					<% current_user.cart.product_carts.each do |product_cart| %>
 					<% if product_cart.product.id != nil %>
 					<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_4fc1375fd8bbe84bfc6cefa2"></script>
+					<%#= submit_tag "購入", src: "https://checkout.pay.jp",type: "text/javascript", class: "payjp-button", data_key: "pk_test_4fc1375fd8bbe84bfc6cefa2" %>
 					<% end %>
 					<% end %>
 

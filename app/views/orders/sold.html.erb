@@ -90,9 +90,14 @@
 <!--===========================================responsive用===================================================================== -->
 
 
-<div class="container responsive">
-    <div class="col-xs-12"> 
-  <h2 class="my-4 title-h3">売上履歴</h2>
+
+
+
+
+
+<div class="container sold_responsive">
+    <div class="col-xs-12">
+        <h2 class="my-4 title-h3">売上履歴</h2>
     </div>
     <div class="row product_show">
     <% sum =0 %>
@@ -102,37 +107,45 @@
     <% if product_order.product.user_id == current_user.id || admin_signed_in? %>
             <% sum += product_order.product.price %>
             <% total_count += product_order.quantity %>
+
             <div class="col-xs-12">
                 <hr>
-                <div class="col-sm-12 col-md-4">
-                    <div class="col-sm-12">注文ID：<%= order.id %></div>
-                    <div class="col-sm-12"><%= attachment_image_tag product_order.product, :image ,class: "sold_image" %></div>
+                <div class="col-xs-12">
+                    <div class="col-xs-12">注文ID：<%= order.id %></div>
+                </div>
+
+                 <div class="col-xs-6">
+                    <div class="col-xs-12"><%= attachment_image_tag product_order.product, :image ,class: "sold_image" %></div>
                 </div>
 
 
-                <div class="col-md-4">
-                    <div class="col-sm-12">商品情報</div>
-                    <div class="col-sm-12"><strong>商品名：</strong><%= product_order.product.title %></div>
-                    <div class="col-sm-12"><strong>注文者：</strong>
+                <div class="col-xs-6">
+                    <div class="col-xs-12">商品情報</div>
+                    <div class="col-xs-12"><strong>商品名：</strong><%= product_order.product.title %></div>
+                     <div class="col-xs-12"><strong>注文者：</strong>
                     <%= link_to user_path(order.user.id) do %>
                     <%= order.user.nickname %><% end %></div>
-                </div>
-
-
-                <div class="col-md-4">
-                         <div class="col-sm-12"><strong>商品金額</strong><%= product_order.product.price %>円(税込)</div>
-                         <div class="col-sm-12"><strong>売上額</strong><%= product_order.product.price*0.95 %>円(税込)</div>
-                         <div class="col-sm-12"><strong>手数料</strong><%= product_order.product.price*0.05 %>円(税込)</div>
-                <% end %>
-                </div>
+                     <div class="col-xs-12"><strong>商品金額</strong><%= product_order.product.price %>円(税込)</div>
+                     <div class="col-xs-12"><strong>売上額</strong><%= product_order.product.price*0.95 %>円(税込)</div>
+                     <div class="col-xs-12"><strong>手数料</strong><%= product_order.product.price*0.05 %>円(税込)</div>
                  </div>
+            </div>
         <% end %>
          <% end %>
-    </div>
+         <% end %>
+ </div>
+<hr>
+         <div class="col-xs-10 col-xs-offset-1 order_info">
+            <hr>
+        <div class="col-xs-4 col-xs-offset-2">
+            数量：<h3 class="order_count order_price"><%= total_count %></h3>
+        </div>
+         <div class="col-xs-4 order_td">
+            合計売上額：<h3 class="order_price"><%= sum*0.95 %></h3>円（税込）
+              <hr>
+        </div>
+     </div>
 </div>
-
-
-
 
 
 

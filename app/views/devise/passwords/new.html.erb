@@ -193,8 +193,7 @@ path{
 <div class="main">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-
-    <div class="container_password">
+    <div class="container">
       <center>
         <div class="middle">
           <div id="login">
@@ -294,14 +293,3 @@ path{
   </div>
 </center>
 </div>
-
-<div class="col-xs-8 col-xs-offset-2 password_responsive">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.email_field :email,class: "login_form text-center",Placeholder: "Email" , autofocus: true, autocomplete: "email" %>
-  <div>
-  <span style="width:48%; text-align:left;  display: inline-block;"><%= render "devise/shared/links" ,class: "shared_links" %></span>
-  <%= f.submit "reset password" ,class: "btn btn-default" %>
-  <% end %>
-  </div>
-</div>
-

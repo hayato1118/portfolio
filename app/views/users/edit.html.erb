@@ -2,7 +2,7 @@
 
 
 <div class="container">
-    <div class="col-md-12"> 
+    <div class="col-xs-12"> 
         <h2 class="title-h3">ユーザー編集</h2>
         <hr>
     </div>
@@ -22,6 +22,11 @@
                 <li class="text-left">email:<%= current_user.email %></li>
                 <li class="text-left">郵便番号:<%= current_user.zip %></li>
                 <li class="text-left">住所:<%= current_user.state %><%= current_user.city %><%= current_user.street %></li>
+                <li class="text-left">金融機関名:<%= current_user.financial_institution_name %></li>
+                <li class="text-left">支店名:<%= current_user.branch_name %></li>
+                <li class="text-left">預金種目:<%= current_user.type_of_account %></li>
+                <li class="text-left">口座番号:<%= current_user.account_number %></li>
+                <li class="text-left">口座名義:<%= current_user.account_holder_name %></li>
             </ul>
         </div>
 
@@ -29,7 +34,8 @@
         <div class="col-md-9">
         <ul class="nav nav-tabs">
         <li class="active"><a href="#sampleContentA" data-toggle="tab">ユーザー情報</a></li>
-        <li><a href="#sampleContentB" data-toggle="tab">自己紹介</a></li>
+         <li><a href="#sampleContentB" data-toggle="tab">振込先口座</a></li>
+        <li><a href="#sampleContentC" data-toggle="tab">自己紹介</a></li>
         </ul>
 
             <div class="tab-content ">
@@ -55,16 +61,16 @@
                       <%=f.email_field :email, class: "balloon"%><label>email</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number1 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number1 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number2 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number2 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number3 , class: "balloon"%><label>電話番号</label>
+                      <%=f.telephone_field :phone_number3 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.number_field :zip, id: "zip" , class: "balloon"%><label>郵便番号</label>
+                      <%=f.number_field :zip , id: "zip" , class: "balloon" %><label>郵便番号</label>
                       </span><br>
                       <span class="form_design">
                       <%=f.text_field :state , id: "address" ,class: "balloon"%><label>都道府県</label>
@@ -91,11 +97,32 @@
                   </div>
                     <!--   Aタブ部分    -->
 
-                    <!--   Bタブ部分    -->
+                   <!--   Bタブ部分    -->
                   <div class="tab-pane col-md-12" id="sampleContentB">
-                      <%=f.text_area :introduction , class: "introduction_form" , maxlength:300 %>
+                      <span class="form_design">
+                      <%=f.text_field :financial_institution_name ,class: "balloon col-md-12" %><label>金融機関名</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :branch_name ,class: "balloon col-md-12" %><label>支店名</label>
+                      </span><br>
+                      <span class="form_design">
+                      <label>預金種目</label>
+                      <%= f.select :type_of_account, [["普通口座", "普通口座"], ["当座口座", "当座口座"], ["総合口座", "総合口座"]] ,class: "col-md-12"  %>
+                      </span><br>
+                       <span class="form_design">
+                      <%=f.number_field :account_number , class: "balloon col-md-12" %><label>口座番号</label>
+                      </span><br>
+                      <span class="form_design">
+                      <%=f.text_field :account_holder_name , class: "balloon col-md-12" %><label>口座名義</label>
+                      </span><br>
                   </div>
                     <!--   Bタブ部分    -->
+
+                    <!--   Cタブ部分    -->
+                  <div class="tab-pane col-md-12" id="sampleContentC">
+                      <%=f.text_area :introduction , class: "introduction_form" , maxlength:300 %>
+                  </div>
+                    <!--   Cタブ部分    -->
             </div>
         <% end %>
     </div>

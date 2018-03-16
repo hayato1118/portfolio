@@ -80,7 +80,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
   private
 
   def user_params
-    params.require(:user).permit(:point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
+    params.require(:user).permit(:financial_institution_name, :branch_name, :type_of_account, :account_number, :account_holder_name, :point, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:email,:profile_image,:introduction,:phone_number1,:phone_number2,:phone_number3,:state,:city,:street,:zip,:twitter_id ,:facebook_id ,:instagram_id)
   end
 
 

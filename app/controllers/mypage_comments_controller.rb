@@ -6,8 +6,11 @@ class MypageCommentsController < ApplicationController
 	    @mypage_comment.to_user_id = current_user.id
 	    # どのユーザーからもらったか？
 	    @mypage_comment.from_user_id = params[:mypage_comment][:from_user_id]
-        @mypage_comment.save
+        if @mypage_comment.save
         redirect_to user_path(@mypage_comment.from_user_id)
+	    else
+	   	redirect_to user_path(@mypage_comment.from_user_id) ,flash: {notice: "コメントが入力されていません。"}
+	    end
     end
 
 

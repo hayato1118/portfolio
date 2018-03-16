@@ -16,7 +16,7 @@ validates :phone_number3, presence: true, numericality: { only_integer: true }
 validates :state, presence: true
 validates :city, presence: true
 validates :street, presence: true
-validates :zip, presence: true, length: { is: 7 } , numericality: { only_integer: true }
+validates :zip, presence:true
 validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
 
