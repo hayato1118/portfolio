@@ -59,12 +59,12 @@
 								<table>
 									<tbody>
 										<tr>
-											<td>数量：<h3 class="order_td"><%= total_count %></h3></td>
+											<td class="order_td">数量：<h3 style="display: inline;"><%= total_count %></h3></td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
-							<td class="col-xs-2 order_td">合計金額：<h3 class="order_td"><%= sum %></h3>円（税込）</td>
+							<td class="col-xs-2 order_td">合計金額：<h3 class="order_td"  style="display: inline;"><%= sum %></h3>円（税込）</td>
 							<td class="col-xs-2">
 								<%= link_to "戻る", admins_orders_path, class: "btn btn-link btn-xs" %>
 								<%#= link_to "編集",  edit_admins_order_path(@order.id), class: "btn btn-link btn-xs" %>

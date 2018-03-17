@@ -1,8 +1,13 @@
 <div class="container">
 <div class="col-xs-12">
-<h2 class="title-h3 title-h3">商品名<small><%= @products.title %></small></h2>
 
-<!-- いいね機能 -->
+<div class="col-md-11">
+<h2 class="title-h3 title-h3 product_title_h2">
+  商品名<small><%= @products.title %></small></h2>
+</div>
+
+<div class="col-md-1">
+    <!-- いいね機能 -->
 <% if @products.user != current_user && user_signed_in?  %>
 <% if current_user.already_liked?(@products) %>
 <%= button_to '取り消し', product_product_good_path(@products), method: :delete, class: "not_hoshi" %>
@@ -18,6 +23,7 @@
 <% end %>
 <% end %>
 <!-- いいね機能 -->
+</div>
 </div>
 
 

@@ -6,18 +6,18 @@
 		<% @user.orders.each do |order| %>
 			<% order.product_orders.each do |product_order| %>
 		<hr>
-			<div class="col-xs-12">
+			<div class="col-md-12">
 				<table>
 					<tbody>
 					<tr>
-						<td class="col-xs-4">注文番号：<%= order.id %></td>
-						<td class="col-xs-3">商品情報</td>
-						<td class="col-xs-1">価格</td>
-						<td class="col-xs-2"></td>
+						<td class="col-md-4">注文番号：<%= order.id %></td>
+						<td class="col-md-4">商品情報</td>
+						<td class="col-md-2">価格</td>
+						<td class="col-md-2"></td>
 					</tr>
 					<tr>
-						<td class="col-xs-4"><%= attachment_image_tag product_order.product, :image ,class: "order_history_image" %></td>
-						<td class="col-xs-3">
+						<td class="col-md-4"><%= attachment_image_tag product_order.product, :image ,class: "order_history_image" %></td>
+						<td class="col-md-4">
 								<table>
 									<tbody>
 										<tr>
@@ -38,10 +38,15 @@
 									</tbody>
 								</table>
 						</td>
-						<td class="col-xs-1 user_td"価格><%= product_order.product.price %>円(税込)</td>
-						<td class="col-xs-2">
-							<%=link_to "商品詳細", product_path(product_order.product.id), class: "btn btn-sm btn-default col-xs-12 text-center" %>
-							<%= link_to "領収証", order_path(order) ,class: "btn btn-sm btn-default col-xs-12 text-center" %>
+						<td class="col-md-2 user_td">商品価格：<%= product_order.product.price %>円(税込)<br>
+							使用ポイント：<%= order.used_point %>ポイント<br>
+							購入金額：<%= product_order.product.price - order.used_point %>円(税込)<br>
+							<hr>
+							獲得ポイント：<%= order.get_point %>ポイント
+						</td>
+						<td class="col-md-2">
+							<%=link_to "商品詳細", product_path(product_order.product.id), class: "btn btn-sm btn-default col-md-12 text-center" %>
+							<%= link_to "領収証", order_path(order) ,class: "btn btn-sm btn-default col-md-12 text-center" %>
 						</td>
 					</tr>
 					</tbody>
@@ -85,7 +90,10 @@
 					<div class="col-xs-12"><strong>販売者：</strong><%= product_order.product.user.nickname %></div>
 					<div class="col-xs-12"><strong>商品URL：</strong><%= product_order.product.url %></div>
 					<div class="col-xs-12"><strong>送付先：</strong><%= product_order.order.email %></div>
-					<div class="col-xs-12"><strong>価格：</strong><%= product_order.product.price %>円(税込)</div>
+					<div class="col-xs-12"><strong>商品価格：</strong><%= product_order.product.price %>円(税込)</div>
+					<div class="col-xs-12"><strong>使用ポイント：</strong><%= order.used_point %>ポイント</div>
+					<div class="col-xs-12"><strong>購入金額：</strong><%= product_order.product.price - order.used_point %>円(税込)</div>
+					<div class="col-xs-12"><strong>獲得ポイント：</strong><%= order.get_point %>ポイント</div>
 					<div class="col-xs-12"><strong>商品購入日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></div>
                 </div>
                  </div>

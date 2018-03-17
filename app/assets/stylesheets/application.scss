@@ -21,6 +21,10 @@
 
 /*//ここから全部の共通CSS＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 
+
+.admin_name{
+  text-aligin:center;
+}
 .icon{
   padding-right:1%;
 }
@@ -657,12 +661,12 @@ label.must{
 
 
 
-.col-xs-7.text-center.text_header-right.responsive {
+.text-center.text_header-right.responsive {
     display: none;
 }
 
 
-.col-xs-5.text_header-left.text-center.responsive {
+.text_header-left.text-center.responsive {
     display: none;
 }
 
@@ -1028,21 +1032,21 @@ width:100%;
 .not_hoshi{
     display: inline-block;
     padding: 7px 20px;
-    border-radius: 25px;
     text-decoration: none;
     color: 000033;
+    margin-top:30px;
 }
 
 
 .hoshi{
     display: inline-block;
     padding: 7px 20px;
-    border-radius: 25px;
     text-decoration: none;
     color: #FFF;
     background-image: -webkit-linear-gradient(45deg, #ff8080 0%, #ff0000 100%);
     background-image: linear-gradient(45deg, #ff8080 0%, #ff0000 100%);
     transition: .4s;
+    margin-top:30px;
 }
 .hoshi:hover {
      background-image: -webkit-linear-gradient(45deg, #ff5555 0%, #ff0000 100%);
@@ -1060,6 +1064,10 @@ width:100%;
 .like_td{
   vertical-align: middle;
    border:none;
+}
+
+.product_title_h2{
+  margin-left:-30px;
 }
 
 
@@ -2085,7 +2093,11 @@ a.text-center.css_change_responsive {
     width: 150px;
 }
 
-
+.top_logo_show{
+        margin-top: 50px;
+    height: 50px;
+    width: 150px;
+}
 
 
 .responsive_button{
@@ -2104,6 +2116,7 @@ a.text-center.css_change_responsive {
 
 .image_responsive{
     margin-top: 20px;
+    margin-left: 40px;
 }
 
 
