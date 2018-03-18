@@ -7,8 +7,13 @@ class CreateProductOrders < ActiveRecord::Migration[5.1]
       t.integer :price
       t.integer :user_id
       t.string :title
-
+      t.integer :quantity
+      t.integer :used_point, default: 0
       t.timestamps
     end
   end
 end
+
+
+
+

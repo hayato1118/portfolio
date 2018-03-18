@@ -28,77 +28,39 @@ Category.create(category_name: 'JavaScript')
 #   s.password = "123456"
 # end
 
-
-# 30.times do |no|
-#  	 User.create(:id => "1+#{no}" ,:email => "hayato@yahoo.co.jp" ,:password => "123456" )
-# 	 Cart.create(:id => "1+#{no}",:user_id => "1+#{no}" )
-# end
-#     # User.create(:id => "10" ,:email => "hayato1@yahoo.co.jp" ,:password => "123456")
-#     # User.create(:id => "11" ,:email => "hayato2@yahoo.co.jp" ,:password => "123456")
-#     # User.create(:id => "12" ,:email => "hayato3@yahoo.co.jp" ,:password => "123456")
-#     # User.create(:id => "13" ,:email => "hayato4@yahoo.co.jp" ,:password => "123456")
-#     # User.create(:id => "14" ,:email => "hayato5@yahoo.co.jp" ,:password => "123456")
-
-# 30.times do |no|
-# 	Product.create(:id => "1+#{no}" ,:user_id => "" ,:price => "" ,:title => "" ,:url => "" ,:product_detail => "" )
-# 	Tag.create(:product_id => "1+#{no}" ,:tag_name => "")
-# 	6.times. do |i|
-# 	ProductCategory.create(:product_id => "1+#{no}" ,:category_id => "1" )
-# end
+Admin.create!(email: 'admin@gmail.com', password: '123456')
 
 
-# User.seed(:id,
-#   { :id => 1,
-#   	:email => "" ,
-#   	:nickname => "" ,
-#   	:last_name => "" ,
-#   	:last_name_kana => "" ,
-#   	:first_name => "" ,
-#   	:first_name_kana => "" ,
-#   	:profile_image_id => "" ,
-#   	:introduction => "" ,
-#   	:state => "" ,
-#   	:city => "" ,
-#   	:street => "" ,
-#   	:zip => "" ,
-#   	:phone_number1 => "" ,
-#   	:phone_number2 => "" ,
-#   	:phone_number3 => "" ,
-#   	:image_id
-#   	:twitter_id => "" ,
-#   	:facebook_id => "" ,
-#   	:instagram_id => "" ,
-#   	:deleted_at => "" ,
-#   	:financial_institution_name => "" ,
-#   	:branch_name => "" ,
-#   	:account_number => "" ,
-#   	:account_holder_name => "" ,
-#   }, { :id => 2,
-#   	:email => "" ,
-#   	:nickname => "" ,
-#   	:last_name => "" ,
-#   	:last_name_kana => "" ,
-#   	:first_name => "" ,
-#   	:first_name_kana => "" ,
-#   	:profile_image_id => "" ,
-#   	:introduction => "" ,
-#   	:state => "" ,
-#   	:city => "" ,
-#   	:street => "" ,
-#   	:zip => "" ,
-#   	:phone_number1 => "" ,
-#   	:phone_number2 => "" ,
-#   	:phone_number3 => "" ,
-#   	:image_id
-#   	:twitter_id => "" ,
-#   	:facebook_id => "" ,
-#   	:instagram_id => "" ,
-#   	:deleted_at => "" ,
-#   	:financial_institution_name => "" ,
-#   	:branch_name => "" ,
-#   	:account_number => "" ,
-#   	:account_holder_name => "" ,
-#   })
+
+30.times do |i|
+gimei = Gimei.name
+address = Gimei.address
+	User.create(:email => "sample#{1+i}@yahoo.co.jp",
+				:password => "123456",
+				:nickname => gimei.last.romaji ,
+				:last_name => gimei.last.kanji ,
+				:last_name_kana => gimei.last.hiragana ,
+				:first_name => gimei.first.kanji ,
+				:first_name_kana => gimei.first.hiragana ,
+				:introduction => "よろしくお願いします。" ,
+				:state => address.prefecture.kanji ,
+				:city => address.city.kanji ,
+				:street => address.town.kanji ,
+				:zip => "1111111" ,
+				:phone_number1 => "090" ,
+				:phone_number2 => "1234" ,
+				:phone_number3 => "1234" ,
+				:twitter_id => "" ,
+				:facebook_id => "" ,
+				:instagram_id => "" ,
+				:financial_institution_name => "CODE銀行" ,
+				:branch_name => "Rails支店" ,
+				:account_number => "123456" ,
+				:account_holder_name => gimei.katakana ,
+				)
+	 Cart.create(:user_id => "#{1+i}")
+end
+
 
 
 

@@ -34,6 +34,36 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       t.string :nickname
       t.string :name
+      t.string :last_name
+      t.string :last_name_kana
+      t.string :first_name
+      t.string :first_name_kana
+      t.string :profile_image_id
+      t.string :introduction
+      t.string :state
+      t.string :city
+      t.string :street
+      t.string :zip
+      t.string :phone_number1
+      t.string :phone_number2
+      t.string :phone_number3
+      t.string :image_id
+      t.string :twitter_id
+      t.string :facebook_id
+      t.string :instagram_id
+      t.string :financial_institution_name
+      t.string :branch_name
+      t.string :type_of_account, default: "普通口座"
+      t.string :account_holder_name
+      t.integer :account_number
+      t.integer :point, default: 0
+
+
+
+
+
+
+
       t.timestamps null: false
     end
 

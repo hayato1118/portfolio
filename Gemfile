@@ -12,13 +12,13 @@ gem "refile-mini_magick"
 gem 'kaminari'
 gem 'nested_form'
 gem 'impressionist'
-gem 'redis'
+#gem 'redis'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # gem 'omniauth-facebook'
 gem 'payjp'
 gem 'rails-i18n'
-
+gem 'gimei'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

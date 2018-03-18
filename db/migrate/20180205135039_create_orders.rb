@@ -10,8 +10,15 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :first_name_kana
       t.string :email
-
+      t.integer :admin_id
+      t.string :state
+      t.string :zip
+      t.string :city
+      t.string :street
+      t.integer :get_point, default: 0
+      t.integer :used_point, default: 0
       t.timestamps
     end
   end
 end
+
