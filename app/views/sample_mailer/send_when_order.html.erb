@@ -5,6 +5,10 @@
   <style type="text/css">
 
 
+ ul, li {
+  list-style:none;
+}
+
 
   </style>
 </head>
@@ -14,14 +18,20 @@
 
 <h4><%= @order.last_name %><%= @order.first_name %>様</h4>
 <li>この度はCODE CELLAR SELLERを利用頂きましてありがとうございます。</li>
-<li><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
+<% sum =0 %>
 <% @product_order.each do |product_order| %>
-<li>商品ID<%= product_order.product.id %></li>
-<li>商品名<%= product_order.product.title %></li>
-<li>商品値段<%= product_order.product.price %></li>
-<li>商品URL<%= product_order.product.url %></li>
+<hr>
+<% sum += product_order.product.price %>
+<li>商品ID：<%= product_order.product.id %></li>
+<li>商品名：<%= product_order.product.title %></li>
+<li>商品値段：<%= product_order.product.price %>円</li>
+<li>商品URL：<%= product_order.product.url %></li>
 <% end %>
+<hr>
+<li>使用ポイント：<%= @order.used_point %>ポイント</li>
+<li>獲得ポイント：<%= @order.get_point %>ポイント</li>
+<li>合計金額<%= sum - @order.used_point %>円</li>
 
-
+<li>CODE CELLAR SELLER 管理人　<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 </body>
 </html>

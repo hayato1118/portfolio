@@ -192,7 +192,7 @@ path{
 
 <div class="main">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+
     <div class="container">
       <center>
         <div class="middle">
@@ -291,5 +291,8 @@ path{
       <div class="clearfix"></div>
     </div>
   </div>
+</center>
+<center>
+  <%= devise_error_messages! %>
 </center>
 </div>

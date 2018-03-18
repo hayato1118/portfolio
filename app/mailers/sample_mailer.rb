@@ -14,6 +14,14 @@ class SampleMailer < ApplicationMailer
   		 subject: "購入完了のお知らせ。"
   end
 
+  def send_when_buy(order,product)
+    @order = order
+    @product = product
+    @product_order = @order.product_orders
+    mail to:    @product.user.email,
+    # mail to:    current_user.order.email,
+       subject: "登録された商品が購入されました。"
+  end
 
   def send_when_contact(contact)
     @contact = contact

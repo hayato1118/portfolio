@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta content="text/html; charset=UTF-8" />
+  <style type="text/css">
+
+ ul, li {
+  list-style:none;
+}
+
+  </style>
+</head>
+
+
+<body>
+
+<h4><%= @product.user.last_name %><%= @product.user.first_name %>様</h4>
+<li>おめでとうございます。</li>
+<li>CODE CELLAR SELLERで登録されました商品が購入されました。</li>
+<% sum =0 %>
+<% @product_order.each do |product_order| %>
+<% if product_order.product.user.email == @product.user.email %>
+<hr>
+<% sum += product_order.product.price %>
+<li>商品ID<%= product_order.product.id %></li>
+<li>商品名<%= product_order.product.title %></li>
+<li>商品値段<%= product_order.product.price %>円</li>
+<% end %>
+<% end %>
+<hr>
+<li>合計金額<%= sum %>円</li>
+
+<li>CODE CELLAR SELLER 管理人　<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
+</body>
+</html>
+

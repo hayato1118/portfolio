@@ -60,6 +60,7 @@ def pay
               # @user.point += @order.get_point
               product_order.save
               product_cart.destroy
+              @product = product_cart.product
             end
 
       Payjp.api_key = 'sk_test_2eb64dfe4aa18b7db911e6e6'
@@ -72,8 +73,9 @@ def pay
        @user.point = @user.point - @order.used_point + @order.get_point
        @user.update(point: @user.point)
        redirect_to order_complete_path(@order)
-
+       # @user = product_cart.product.user
        SampleMailer.send_when_order(@order).deliver
+       SampleMailer.send_when_buy(@order,@product).deliver
       else
         render 'new'
       end

@@ -3,7 +3,7 @@
 	<h2 class="my-4 title-h3">購入履歴</h2>
 </div>
 	<div class="row product_show">
-		<% @user.orders.each do |order| %>
+		<% current_user.orders.each do |order| %>
 			<% order.product_orders.each do |product_order| %>
 		<hr>
 			<div class="col-md-12">
@@ -71,7 +71,7 @@
     <h2 class="my-4 title-h3">購入履歴</h2>
     </div>
     <div class="row product_show">
- 		<% @user.orders.each do |order| %>
+ 		<% current_user.orders.each do |order| %>
 			<% order.product_orders.each do |product_order| %>
             <div class="col-xs-12">
                 <hr>
