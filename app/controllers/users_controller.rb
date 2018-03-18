@@ -32,7 +32,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
            # SampleMailer.send_when_update(current_user).deliver
            redirect_to user_path(@user.id)
         else
-           render :edit
+           render :edit,flash: {notice: "記入形式が異なるものがございます。"}
         end
 
   end

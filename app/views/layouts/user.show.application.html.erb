@@ -49,9 +49,9 @@
 
 							<!-- 登録のユーザー名 -->
 							<div class="col-xs-12 list-hover-slide">
-							      <div><%= link_to "Facebook", "https://www.facebook.com/#{current_user.facebook_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Twitter", "https://twitter.com/#{current_user.twitter_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Instagram", "https://www.instagram.com/#{current_user.instagram_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Facebook", "https://www.facebook.com/#{@user.facebook_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Twitter", "https://twitter.com/#{@user.twitter_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Instagram", "https://www.instagram.com/#{@user.instagram_id}", class: "side_menu_sns" %></div>
 							</div>
 
 							<!-- 登録のユーザー名 -->
@@ -81,9 +81,9 @@
 
 							<!-- 登録のユーザー名 -->
 							<div class="col-xs-12 list-hover-slide">
-							      <div><%= link_to "Facebook", "https://www.facebook.com/#{current_user.facebook_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Twitter", "https://twitter.com/#{current_user.twitter_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Instagram", "https://www.instagram.com/#{current_user.instagram_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Facebook", "https://www.facebook.com/#{@user.facebook_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Twitter", "https://twitter.com/#{@user.twitter_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "Instagram", "https://www.instagram.com/#{@user.instagram_id}", class: "side_menu_sns" %></div>
 							</div>
 
 							<div><%= link_to "ユーザーページ" , user_path(@user.id) , class: "side_menu_list" %></div>

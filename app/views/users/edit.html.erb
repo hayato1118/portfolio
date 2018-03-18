@@ -41,6 +41,9 @@
             <div class="tab-content ">
                 <!--   Aタブ部分    -->
                 <div class="tab-pane  active col-md-12" id="sampleContentA">
+                       <% if flash[:notice] %>
+                        <label style="color:red;"><%= flash[:notice] %></label>
+                      <% end %>
                   <%= form_for(@user) do |f| %>
                       <span class="form_design">
                       <%=f.text_field :last_name, id: "last_name" , class: "balloon"%><label>苗字</label>
@@ -61,13 +64,13 @@
                       <%=f.email_field :email, class: "balloon"%><label>email</label>
                       </span><br>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number1 , class: "balloon", maxlength:4 %><label>電話番号</label>
+                      <%=f.number_field :phone_number1 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number2 , class: "balloon", maxlength:4 %><label>電話番号</label>
+                      <%=f.number_field :phone_number2 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span>
                       <span class="form_design">
-                      <%=f.telephone_field :phone_number3 , class: "balloon", maxlength:4 %><label>電話番号</label>
+                      <%=f.number_field :phone_number3 , class: "balloon", maxlength:4 %><label>電話番号</label>
                       </span><br>
                       <span class="form_design">
                       <%=f.number_field :zip , id: "zip" , class: "balloon" %><label>郵便番号</label>
