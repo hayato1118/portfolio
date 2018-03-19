@@ -10,9 +10,16 @@ class CartsController < ApplicationController
 
 
 	 def update
+
 	 	@cart = Cart.find(params[:id])
 		@cart.update(cart_params)
-		if @cart.order_point <= current_user.point
+
+		teika =0
+        @cart.product_carts.each do |product_cart|
+        teika += product_cart.product.price
+    	end
+
+		if @cart.order_point <= current_user.point && teika >= @cart.order_point
 		redirect_to new_order_path
 		else
 		render 'show'
