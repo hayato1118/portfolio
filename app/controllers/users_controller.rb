@@ -72,9 +72,6 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
 
   def sale
       @user = User.find(params[:id])
-      if current_user.id != @user.id
-        redirect_to root_path and return
-       end
       @product = Product.new
       @products = @user.products.page(params[:page]).reverse_order
       render :layout => 'user.show.application'
