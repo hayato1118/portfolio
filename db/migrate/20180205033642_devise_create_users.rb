@@ -57,7 +57,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :account_holder_name
       t.integer :account_number
       t.integer :point, default: 0
-
+      t.datetime :deleted_at
 
 
 
