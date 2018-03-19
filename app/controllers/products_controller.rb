@@ -91,7 +91,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
   private
     def product_params
-      params.require(:product).permit(:user_id,:price,:image,:title,:url,:product_detail,:page_count,:admin_id,:like_count,:deleted_at,
+      params.require(:product).permit(:user_id,:price,:image,:title,:url,:product_detail,:page_count,:admin_id,:like_count,
         :tags_attributes => [:id, :tag_name, :product_id,  :_destroy],category_ids: [])
     end
 end

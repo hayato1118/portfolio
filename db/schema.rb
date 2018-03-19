@@ -199,7 +199,6 @@ ActiveRecord::Schema.define(version: 20180318075242) do
     t.datetime "updated_at", null: false
     t.integer "admin_id"
     t.integer "like_count"
-    t.datetime "deleted_at"
     t.integer "page_count"
   end
 
