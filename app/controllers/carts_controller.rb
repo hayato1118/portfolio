@@ -3,6 +3,9 @@ class CartsController < ApplicationController
  
 	  def show
 	      @cart = Cart.find(params[:id])
+	      if current_user.id != @cart.id
+	  	   	redirect_to root_path
+	  	   end
 	  end
 
 

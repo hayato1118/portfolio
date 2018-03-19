@@ -28,9 +28,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
   end
 
-
   def new
-  	   @product = Product.new
+       @product = Product.new
        @product.tags.build
   end
 
@@ -73,6 +72,9 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
   def edit
       @products = Product.find(params[:id])
+      if @products.user_id != current_user.id
+        redirect_to root_path
+      end
   end
 
   def update

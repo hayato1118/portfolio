@@ -21,6 +21,9 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
 
   def edit
     @user = User.find(params[:id])
+     if current_user.id != @user.id
+    redirect_to root_path
+   end
   end
 
 
@@ -61,11 +64,17 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
   def favorite
     @user = User.find(params[:id])
     @favorites = Favorite.where("user_id = ?", @user)
+   if current_user.id != @user.id
+    redirect_to root_path
+   end
   end
 
 
   def sale
       @user = User.find(params[:id])
+      if current_user.id != @user.id
+        redirect_to root_path and return
+       end
       @product = Product.new
       @products = @user.products.page(params[:page]).reverse_order
       render :layout => 'user.show.application'
@@ -73,6 +82,9 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
 
   def history
     @user = User.find(params[:id])
+   if current_user.id != @user.id
+    redirect_to root_path
+   end
     # binding.pry
     # @products = @user.products.page(params[:page]).reverse_order
   end
