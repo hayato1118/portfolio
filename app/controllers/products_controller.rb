@@ -36,13 +36,12 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
   def confirm
       @product = Product.new(product_params) # <=POSTされたパラメータを取得
       @product.user_id = current_user.id
-      # binding.pry
       @product.image_id = @product.image.id if params[:product][:image] != "{}"
       # if params[:product][:image] != "{}"
       #   @product.image_id = @product.image.id
       # end
       session[:product] = @product
-      # @product.save
+      # binding.pry
       if  @product.invalid? # <=バリデーションチェックNGなら戻す
       render :new
       else
