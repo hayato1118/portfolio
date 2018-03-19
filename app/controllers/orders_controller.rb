@@ -65,7 +65,7 @@ def pay
 
       Payjp.api_key = 'sk_test_2eb64dfe4aa18b7db911e6e6'
       charge = Payjp::Charge.create(
-      :amount => "#{teika - current_user.cart.order_point}",
+      :amount => "#{teika - current_user.cart.order_point + 50}",
       :card => params['payjp-token'],
       :currency => 'jpy',
        )
