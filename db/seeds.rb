@@ -61,8 +61,59 @@ address = Gimei.address
 	 Cart.create(:user_id => "#{1+i}")
 end
 
+gimei = Gimei.name
+address = Gimei.address
+	User.create(:email => "code.sample.user.1@gmail.com",
+				:password => "123456",
+				:nickname => gimei.last.romaji ,
+				:last_name => gimei.last.kanji ,
+				:last_name_kana => gimei.last.hiragana ,
+				:first_name => gimei.first.kanji ,
+				:first_name_kana => gimei.first.hiragana ,
+				:introduction => "よろしくお願いします。" ,
+				:state => address.prefecture.kanji ,
+				:city => address.city.kanji ,
+				:street => address.town.kanji ,
+				:zip => "1111111" ,
+				:phone_number1 => "090" ,
+				:phone_number2 => "1234" ,
+				:phone_number3 => "1234" ,
+				:twitter_id => "" ,
+				:facebook_id => "" ,
+				:instagram_id => "" ,
+				:financial_institution_name => "CODE銀行" ,
+				:branch_name => "Rails支店" ,
+				:account_number => "123456" ,
+				:account_holder_name => gimei.katakana ,
+				)
+	 Cart.create(:user_id => "31")
 
-
+gimei = Gimei.name
+address = Gimei.address
+	User.create(:email => "code.sample.user.2@gmail.com",
+				:password => "123456",
+				:nickname => gimei.last.romaji ,
+				:last_name => gimei.last.kanji ,
+				:last_name_kana => gimei.last.hiragana ,
+				:first_name => gimei.first.kanji ,
+				:first_name_kana => gimei.first.hiragana ,
+				:introduction => "よろしくお願いします。" ,
+				:state => address.prefecture.kanji ,
+				:city => address.city.kanji ,
+				:street => address.town.kanji ,
+				:zip => "1111111" ,
+				:phone_number1 => "090" ,
+				:phone_number2 => "1234" ,
+				:phone_number3 => "1234" ,
+				:twitter_id => "" ,
+				:facebook_id => "" ,
+				:instagram_id => "" ,
+				:financial_institution_name => "CODE銀行" ,
+				:branch_name => "Rails支店" ,
+				:account_number => "123456" ,
+				:account_holder_name => gimei.katakana ,
+				)
+	 Cart.create(:user_id => "32")
 
 
 

@@ -41,13 +41,21 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
       #   @product.image_id = @product.image.id
       # end
       session[:product] = @product
-      # binding.pry
+      binding.pry
+      session[:product].save
       if  @product.invalid? # <=バリデーションチェックNGなら戻す
       render :new
-      else
-      session[:product].save
       end
   end
+
+  # def confirm
+  #     @contact = Contact.new(contact_params)
+  #     session[:contact] = @contact
+  #     session[:contact].save
+  #       if @contact.invalid?
+  #        redirect_to homes_path,flash: {notice: "必須項目が入力されていません。"}
+  #       end
+  #   end
 
 
   def create
