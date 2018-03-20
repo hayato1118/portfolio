@@ -41,7 +41,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
       #   @product.image_id = @product.image.id
       # end
       session[:product] = @product
-      binding.pry
+      # binding.pry
       session[:product].save
       if  @product.invalid? # <=バリデーションチェックNGなら戻す
       render :new
