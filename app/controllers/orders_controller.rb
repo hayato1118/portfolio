@@ -7,8 +7,8 @@ class OrdersController < ApplicationController
      @sum =0
      @order.product_orders.each do |product_order|
      @sum += product_order.product.price
-     render :layout => 'order.show.application'
      end
+     render :layout => 'order.show.application'
   end
 
 

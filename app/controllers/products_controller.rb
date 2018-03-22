@@ -72,7 +72,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
   def update
         @product = Product.find(params[:id])
-        binding.pry
+        #binding.pry
         @product.update(product_params)
         redirect_to product_path(@product.id)
   end

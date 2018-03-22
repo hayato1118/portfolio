@@ -79,6 +79,14 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy ,:
 
   def history
     @user = User.find(params[:id])
+
+    @sum =0
+    current_user.orders.each do |order|
+    order.product_orders.each do |product_order|
+    @sum += product_order.product.price
+     end
+      end
+
    if current_user.id != @user.id
     redirect_to root_path
    end
