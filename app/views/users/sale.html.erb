@@ -35,7 +35,7 @@
                                     </tbody>
                                 </table>
                             </td>
-                            <td class="col-xs-1 user_td"><%= product.price %>円(税込)</td>
+                            <td class="col-xs-1 user_td"><%= number_to_currency(product.price,:locale => 'jp') %>(税込)</td>
                             <td class="col-xs-2">
                                 <%= link_to "詳細", product_path(product.id), class: "btn-sm btn btn-default col-xs-12 text-center" %>
                                  <% if product.user == current_user || admin_signed_in? %>
@@ -79,7 +79,7 @@
                     <% if product.user == current_user || admin_signed_in? %>
                     <div class="col-sm-12"><strong>商品URL：</strong><%= product.url %></div>
                     <% end %>
-                     <div class="col-xs-12"><strong>価格：</strong><%= product.price %>円(税込)</div>
+                     <div class="col-xs-12"><strong>価格：</strong><%= number_to_currency(product.price,:locale => 'jp') %>(税込)</div>
                     <div class="col-sm-12"><strong>商品登録日：</strong><%= product.created_at.strftime("%Y-%m-%d") %></div>
                     <div class="col-sm-12"><%= link_to "詳細", product_path(product.id), class: "btn btn-sm btn-default col-xs-6 text-center" %></div>
                                  <%# if product.user == current_user || admin_signed_in? %>

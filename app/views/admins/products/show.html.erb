@@ -20,7 +20,7 @@
 				<li class="text-left">販売者：<%= @products.user.last_name %><%= @products.user.first_name %></li>
 				<li class="text-left">ユーザー名：<%= @products.user.nickname %></li>
 				<li class="text-left">商品名：<%= @products.title %></li>
-				<li class="text-left">値段：<%= @products.price %></li>
+				<li class="text-left">値段：<%= number_to_currency(@products.price, :locale => 'jp') %></li>
 				<li class="text-left">商品URL：<%= @products.url %></li>
 				<li class="text-left">商品登録日:<%= @products.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 				<li class="text-left">商品説明：<%= @products.product_detail %></li>

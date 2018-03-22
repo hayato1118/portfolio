@@ -12,6 +12,14 @@
 <li><span>3</span><br>注文完了</li>
 </ol>
 
+  <div class="col-xs-12 text-center well well-lg">
+      <h6>
+      <p>個人情報はユーザー名を除き販売者さまに伝わることはありません。</p>
+      <p>入力された個人情報トラブル発生時にのみ、使用をさせていただきます。</p>
+      <p>個人情報につきましては管理者が厳重に保管していますのでご安心ください。</p>
+      </h6>
+</div>
+
 	<% if @order.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
     <ul>
@@ -65,19 +73,11 @@
 					<li><%= text_field_tag :state, '', id: "address" , :value => current_user.state,:placeholder => "都道府県名" %>
 					<%= text_field_tag :city, '', id: "address2" , :value => current_user.city,:placeholder => "市町村名" %>
 					<%= text_field_tag :street, '', id: "address3" , :value => current_user.street,:placeholder => "町名以下"  %></li>
-					
-
-					<% sum =0 %>
-					<% total_count = 0 %>
-					<% current_user.cart.product_carts.each do |product_cart| %>
-					<% sum = sum + product_cart.product.price %>
-					<% total_count += product_cart.quantity %>
-					<% end %>
 
 					<hr>
 					<li>使用ポイント：<%= number_field_tag :used_point, '', :value => current_user.cart.order_point,:readonly =>true , class: "point_form_submit text-right" %>ポイント</li>
 					
-					<li>獲得ポイント：<%= number_field_tag :get_point, '', :value => (sum - current_user.cart.order_point)*0.01 ,:readonly =>true , class: "point_form_submit text-right" %>ポイント</li>
+					<li>獲得ポイント：<%= number_field_tag :get_point, '', :value => ((@sum - current_user.cart.order_point)*0.01).to_i  ,:readonly =>true , class: "point_form_submit text-right" %>ポイント</li>
 
 					<hr>
 
@@ -158,17 +158,12 @@
 				<td>販売者</td>
 				<td>価格</td>
 			</tr>
-			<% sum =0 %>
-			<% total_count = 0 %>
 			<% current_user.cart.product_carts.each do |product_cart| %>
-			<%# binding.pry %>
-			<% sum = sum + product_cart.product.price %>
-			<% total_count += product_cart.quantity %>
 			<tr>
 				<td>商品ID:<%= product_cart.product.id   %></td>
 				<td><%= product_cart.product.title  %></td>
 				<td><%= product_cart.product.user.nickname %></td>
-				<td><%= product_cart.product.price %>円(税込)</td>
+				<td><%= number_to_currency(product_cart.product.price,:locale => 'jp') %>(税込)</td>
 			</tr>
 			<% end %>
 		</tbody>
@@ -185,7 +180,7 @@
 				
 				<td class="col-xs-3"></td>
 				<td class="col-xs-3">送付先：<span id="output"></span></td>
-				<td class="col-xs-3 order_td">合計金額：<h3 class="order_price"><%= sum - current_user.cart.order_point%></h3>円（税込）</td>
+				<td class="col-xs-3 order_td">合計金額：<h3 class="order_price"><%= number_to_currency(@sum - current_user.cart.order_point,:locale => 'jp') %></h3>（税込）</td>
 				<td class="col-xs-1">
 					<table>
 						<tbody>
@@ -194,7 +189,7 @@
 								<td clas="order_td">使用ポイント：<%= number_field_tag :used_point, '', :value => current_user.cart.order_point,:readonly =>true ,  class: "point_form" %>ポイント</td>
 							</tr>
 							<tr>
-								<td class="order_td">獲得ポイント：<%= number_field_tag :get_point, '', :value => (sum - current_user.cart.order_point)*0.01 ,:readonly =>true , class: "point_form"%>ポイント</td>
+								<td class="order_td">獲得ポイント：<%= number_field_tag :get_point, '', :value => ((@sum - current_user.cart.order_point)*0.01).to_i  ,:readonly =>true , class: "point_form"%>ポイント</td>
 							</tr>
 						</tbody>
 					</table>

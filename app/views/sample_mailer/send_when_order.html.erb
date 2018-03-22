@@ -24,13 +24,13 @@
 <% sum += product_order.product.price %>
 <li>商品ID：<%= product_order.product.id %></li>
 <li>商品名：<%= product_order.product.title %></li>
-<li>商品値段：<%= product_order.product.price %>円</li>
+<li>商品値段：<%= number_to_currency(product_order.product.price,:locale => 'jp') %></li>
 <li>商品URL：<%= product_order.product.url %></li>
 <% end %>
 <hr>
 <li>使用ポイント：<%= @order.used_point %>ポイント</li>
 <li>獲得ポイント：<%= @order.get_point %>ポイント</li>
-<li>合計金額<%= sum - @order.used_point %>円</li>
+<li>合計金額<%= number_to_currency(sum - @order.used_point,:locale => 'jp') %></li>
 
 <li>CODE CELLAR SELLER 管理人　<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 </body>

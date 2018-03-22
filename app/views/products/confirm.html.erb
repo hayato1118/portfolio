@@ -13,7 +13,9 @@
                         <label>商品イメージ</label>
                     </div>
                     <div class="col-md-10">
+                       <!-- 表示用 -->
                        <%= attachment_image_tag @product, :image ,class: "product_show_image" %>
+                       <!-- 送信用 -->
                        <%= f.hidden_field :image, value: f.object.image_attacher.data.to_json %>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                         <label>値段</label>
                     </div>
                     <div class="col-md-10 confirm_text">
-                       <%= @product.price %>円
+                       <%= number_to_currency(@product.price:locale => 'jp') %>
                     </div>
                 </div>
 

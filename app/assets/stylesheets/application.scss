@@ -700,6 +700,66 @@ a.side_menu_list.responsive_up {
 
 
 
+.share {
+  clear: both;
+}
+.share ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.share li a {
+  display: block;
+  text-align: center;
+  padding: 10px 5px;
+  color: #201B21;
+  font-size: 12px;
+  text-decoration: none;
+}
+.share li a:hover {
+  opacity: 0.8;
+}
+.share ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.share li {
+  float: left;
+  width: 33%;
+}
+
+.hatenaB:before {
+  content: 'B!';
+  font-style: normal;
+}
+
+
+a.share-tw {
+  border-bottom:5px solid #55acee;
+}
+a.share-fb {
+  border-bottom:5px solid #3b5998;
+}
+a.share-hb {
+  border-bottom:5px solid #00b833;
+}
+
+a.share-tw:hover {
+  border-top:5px solid #55acee;
+  border-bottom:none;
+}
+a.share-fb:hover {
+  border-top:5px solid #3b5998;
+  border-bottom:none;
+}
+a.share-hb:hover {
+  border-top:5px solid #00b833;
+  border-bottom:none;
+}
+
+
+
 /*//ここまで全体に対してのスタイリングCSS*/
 
 /*//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -2139,6 +2199,15 @@ a.text-center.css_change_responsive {
 .use_pc{
   display:none;
 }
+
+.share span {
+  display: inline-block;
+  text-indent: -9999px;
+}
+.share li a {
+  padding: 8px 10px;
+}
+
 
 }
 

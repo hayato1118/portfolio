@@ -71,7 +71,7 @@
                         <label>値段</label><span class="must">必須</span>
                     </div>
                     <div class="col-md-9">
-                        <%= f.number_field :price,min: 100,step: 100, class: "col-md-2 col-xs-3 product_new"%>円
+                        <%= f.number_field :price,min: 100,step: 100, class: "col-md-2 col-xs-3 product_new"%>
                     </div>
                 </div>
 
@@ -125,20 +125,6 @@
 
                 <div class="col-xs-12">
                     <hr>
-
-
-<!-- バリデーション関係 -->
-
-
-
-
-
-
-
-
-
-<!-- バリデーション関係 -->
-
                     <%= link_to "キャンセル" ,products_path, class: "btn btn-default col-xs-3 col-xs-offset-2" %>
                     <%= f.submit "商品登録", class: "btn btn-primary col-xs-3 col-xs-offset-2" %>
                     <% end %>

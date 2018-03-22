@@ -3,12 +3,22 @@ class OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
+
+     @sum =0
+     @order.product_orders.each do |product_order|
+     @sum += product_order.product.price
      render :layout => 'order.show.application'
+     end
   end
 
 
   def new
   	@order = Order.new
+
+    @sum =0
+    current_user.cart.product_carts.each do |product_cart|
+    @sum = @sum + product_cart.product.price
+    end
   end
 
 

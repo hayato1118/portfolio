@@ -45,7 +45,7 @@ has_many :product_operatingsystems
 
 
 validates :price, presence: true
-validates :image_id, presence: true
+validates :image, presence: true
 validates :title, presence: true
 validates :url, presence: true
 validates :product_detail, presence: true

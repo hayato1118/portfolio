@@ -24,11 +24,11 @@
 <% sum += product_order.product.price %>
 <li>商品ID<%= product_order.product.id %></li>
 <li>商品名<%= product_order.product.title %></li>
-<li>商品値段<%= product_order.product.price %>円</li>
+<li>商品値段<%= product_order.product.price %></li>
 <% end %>
 <% end %>
 <hr>
-<li>合計金額<%= sum %>円</li>
+<li>合計金額<%= number_to_currency(sum,:locale => 'jp') %></li>
 
 <li>CODE CELLAR SELLER 管理人　<%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></li>
 </body>

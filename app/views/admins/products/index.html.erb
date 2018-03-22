@@ -34,7 +34,7 @@
 						<td><%= product.user.last_name %><%= product.user.first_name %></td>
 						<td><%= product.user.nickname %></td>
 						<td><%= product.title %></td>
-						<td><%= product.price %>円</td>
+						<td><%= number_to_currency(product.price, :locale => 'jp') %></td>
 						<td><%= product.url %></td>
 						<td><%= link_to "詳細", admins_product_path(product.id), class: "btn btn-success" %></td>
 						<td><%= link_to "削除", admins_product_path(product.id), method: :delete, class: "btn btn-danger", data: { confirm: '本当に消しますか?'} %></td>

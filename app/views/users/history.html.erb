@@ -38,9 +38,9 @@
 									</tbody>
 								</table>
 						</td>
-						<td class="col-md-2 user_td">商品価格：<%= product_order.product.price %>円(税込)<br>
+						<td class="col-md-2 user_td">商品価格：<%= number_to_currency(product_order.product.price,:locale => 'jp') %>(税込)<br>
 							使用ポイント：<%= order.used_point %>ポイント<br>
-							購入金額：<%= product_order.product.price - order.used_point %>円(税込)<br>
+							購入金額：<%= number_to_currency(product_order.product.price - order.used_point,:locale => 'jp') %>(税込)<br>
 							<hr>
 							獲得ポイント：<%= order.get_point %>ポイント
 						</td>
@@ -90,9 +90,9 @@
 					<div class="col-xs-12"><strong>販売者：</strong><%= product_order.product.user.nickname %></div>
 					<div class="col-xs-12"><strong>商品URL：</strong><%= product_order.product.url %></div>
 					<div class="col-xs-12"><strong>送付先：</strong><%= product_order.order.email %></div>
-					<div class="col-xs-12"><strong>商品価格：</strong><%= product_order.product.price %>円(税込)</div>
+					<div class="col-xs-12"><strong>商品価格：</strong><%= number_to_currency(product_order.product.price,:locale => 'jp') %>(税込)</div>
 					<div class="col-xs-12"><strong>使用ポイント：</strong><%= order.used_point %>ポイント</div>
-					<div class="col-xs-12"><strong>購入金額：</strong><%= product_order.product.price - order.used_point %>円(税込)</div>
+					<div class="col-xs-12"><strong>購入金額：</strong><%= number_to_currency(product_order.product.price - order.used_point,:locale => 'jp') %>(税込)</div>
 					<div class="col-xs-12"><strong>獲得ポイント：</strong><%= order.get_point %>ポイント</div>
 					<div class="col-xs-12"><strong>商品購入日：</strong><%= order.created_at.strftime("%Y-%m-%d") %></div>
                 </div>

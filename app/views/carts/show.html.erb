@@ -10,11 +10,7 @@
 	<p>現在ショッピングカートには以下の商品が入っています。</p>
 	<hr>
 	<div class="col-xs-12">
-		<% teika =0 %>
-		<% total_count = 0 %>
 			<% @cart.product_carts.each do |product_cart| %>
-				<% teika += product_cart.product.price %>
-				<% total_count += product_cart.quantity %>
 				<div class="col-xs-12">
 					<table>
 						<tbody>
@@ -39,7 +35,7 @@
 									</table>
 								</td>
 								<td class="col-xs-1 total_cart_price"><%= product_cart.product.user.nickname %></td>
-								<td class="col-xs-2 total_cart_price"><%= product_cart.product.price %>円(税込)</td>
+								<td class="col-xs-2 total_cart_price"><%= number_to_currency(product_cart.product.price,:locale => 'jp') %>(税込)</td>
 								<td class="col-xs-2">
 									<%=link_to "詳細", product_path(product_cart.product.id), class: "btn-sm btn btn-default col-xs-12 text-center"%>
 									<%= link_to "削除", product_product_carts_path(product_cart.product_id, product_cart.id), method: :delete, class: "btn-sm btn-danger col-xs-12 text-center", data: { confirm: '本当に消しますか?'} %>
@@ -64,7 +60,7 @@
 							<table>
 								<tbody>
 									<tr>
-										<td class="total_cart_price">数量：<h3 class="cart_price"><%= total_count %></h3></td>
+										<td class="total_cart_price">数量：<h3 class="cart_price"><%= @total_count %></h3></td>
 									</tr>
 								</tbody>
 							</table>
@@ -73,7 +69,7 @@
 						<td class="col-xs-2 total_cart_price">
 							保有ポイント<%= @cart.user.point %><br>
 							利用ポイント<%= f.number_field :order_point , :value => 0 ,min:0 ,step: 100   %></td>
-						<td class="col-xs-2 total_cart_price">合計金額：<h3 class="cart_price"><%= teika %></h3>円（税込）</td>
+						<td class="col-xs-2 total_cart_price">合計金額：<h3 class="cart_price"><%=  number_to_currency(@teika , :locale => 'jp')%></h3>（税込）</td>
 					</tr>
 				</tbody>
 			</table>

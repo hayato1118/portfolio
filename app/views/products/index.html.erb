@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-xs-12 not_padding pull-right">
                     <%= product.updated_at.strftime("%Y-%m-%d") %>
-                    <div class="pull-right"><%= product.price %>円</div>
+                    <div class="pull-right"><%= number_to_currency(product.price, :locale => 'jp') %></div>
                 </div>
             </div>
 

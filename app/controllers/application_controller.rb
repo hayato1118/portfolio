@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
  :instagram_id])
     end
 
+
+
  # def configure_permitted_parameters
  #    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
  #    devise_parameter_sanitizer.permit(:sign_up, keys: [ :email, :profile_image_id, :mobile, :last_name,:last_name_kana,:first_name,:first_name_kana,:nickname,:nickname, :github_id,:phone_number1,:phone_number2,:phone_number3,:introduction])

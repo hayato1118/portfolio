@@ -17,7 +17,18 @@ layout 'admin.application'
 	def show
 		@orders = Order.all
 		@order = Order.find(params[:id])
-		
+
+@sum = 0
+@order.product_orders.each do |product_order|
+@sum += product_order.product.price
+end
+
+
+@total_count = 0
+@order.product_orders.each_with_index do |product_order,i|
+@total_count = i + 1
+end
+
 	end
 
 	def edit

@@ -31,16 +31,14 @@
 							<td>購入金額</td>
 							<td>購入日時</td>
 						</tr>
-							<% sum =0 %>
-					<% total_count = 0 %>
+
 					<% @order.product_orders.each do |product_order| %>
-					<% sum += product_order.product.price %>
 							<tr>
 								<td><%= @order.id %></td>
 								<td><%= product_order.product.id %></td>
 								<td><%= product_order.product.title %></td>
-								<td><%= @order.user.last_name %><%= @order.user.first_name %></td>
-								<td><%= product_order.product.price %>円(税込)</td>
+								<td><%= product_order.product.user.nickname %></td>
+								<td><%= number_to_currency(product_order.product.price,:locale => 'jp') %>(税込)</td>
 								<td><%= @order.created_at.strftime("%m#{"月"}%d#{"日"}%R") %></td>
 							</tr>
 						<% end %>
@@ -57,7 +55,7 @@
 					<tr>
 						<td class="col-xs-4"></td>
 						<td class="col-xs-3"></td>
-						<td class="col-xs-1 order_td"><label class="order_price order_td">宛名：</label><%= current_user.last_name %><%= current_user.first_name %></label>様<br><label class="order_price order_td">件名：</label>コード購入代金として<br><label class="order_price order_td">合計金額：</label><h3 style="display: inline;"><%= sum %></h3></label>円（税込）</td>
+						<td class="col-xs-1 order_td"><label class="order_price order_td">宛名：</label><%= current_user.last_name %><%= current_user.first_name %></label>様<br><label class="order_price order_td">件名：</label>コード購入代金として<br><label class="order_price order_td">合計金額：</label><h3 style="display: inline;"><%= number_to_currency(@sum,:locale => 'jp') %></h3></label>（税込）</td>
 						
 					</tr>
 				</tbody>

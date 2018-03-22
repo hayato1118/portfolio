@@ -58,6 +58,16 @@ ja:
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
 
 
+jp:
+  number:
+    currency:
+      format:
+        unit: "円"
+        format: "%n%u"
+        negative_format: "-%n%u"
+        precision: 0
+
+
 
   activerecord:
     attributes:
