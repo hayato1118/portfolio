@@ -2,6 +2,9 @@ class ProductsController < ApplicationController
 before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:confirm]}
 # attr_accessor :attr_image
 @@refile_image = []
+@@session_tag = []
+@@session_category = []
+
   def index
        #検索機能
        @products = Product.all.reverse_order
@@ -39,6 +42,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
       #   @product.image_id = @product.image.id
       # end
       session[:product] = @product
+      @@session_tag = session[:product].tags
+      @@session_category = session[:product].categories
       @@refile_image = session[:product].image
       if  @product.invalid?
         render :new
@@ -48,7 +53,10 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 
   def create
       @product = Product.new(session[:product])
+     
       @product.user_id = current_user.id
+      @product.tags = @@session_tag
+      @product.categories = @@session_category
        @product.image = @@refile_image
           if params[:back]
           render :new
@@ -56,6 +64,8 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
           session[:product] = nil
           redirect_to product_complete_path(@product)
           @@refile_image = []
+          @@session_tag = []
+          @@session_category = []
           else
           render :new
           end
