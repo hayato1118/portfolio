@@ -29,7 +29,7 @@
 			<% if user_signed_in? %>
 				<div id="nav-drawer">
 					<input id="nav-input" type="checkbox" class="nav-unshown">
-					<label id="nav-open" for="nav-input" class="position_header">ユーザーページ</label>
+<label id="nav-open" for="nav-input" class="position_header"><i class="glyphicon glyphicon-user"></i>ユーザーページ</label>
 					<label id="nav-open2" for="nav-input" class="position_header nav-open_responsive">MENU</label>
 					<label class="nav-unshown" id="nav-close" for="nav-input"></label>
 					<div id="nav-content">
@@ -50,11 +50,23 @@
 
 							<!-- 登録のユーザー名 -->
 							<div class="col-xs-12 list-hover-slide">
-							      <div><%= link_to "Facebook", "https://www.facebook.com/#{@products.user.facebook_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Twitter", "https://twitter.com/#{@products.user.twitter_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Instagram", "https://www.instagram.com/#{@products.user.instagram_id}", class: "side_menu_sns" %></div>
-							</div>
+							      <div><%= link_to "https://www.facebook.com/#{@products.user.facebook_id}", class: "side_menu_sns facebook" do %>
+							      	<i class="fa fa-facebook-f"></i><br>Facebook
+							      	 <% end %>
+							      </div>
 
+
+							      <div><%= link_to "https://twitter.com/#{@products.user.twitter_id}", class: "side_menu_sns" do %>
+							      	<i class="fa fa-twitter"></i><br>Twitter
+							      	 <% end %>
+							      </div>
+
+
+							      <div><%= link_to "https://www.instagram.com/#{@products.user.instagram_id}", class: "side_menu_sns" do %>
+							      	<i class="fa fa-instagram"></i><br>Instagram
+							      	<% end %>
+							      </div>
+							</div>
 
 
 							
@@ -86,10 +98,25 @@
 
 							<!-- 登録のユーザー名 -->
 							<div class="col-xs-12 list-hover-slide">
-							      <div><%= link_to "Facebook", "https://www.facebook.com/#{@products.user.facebook_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Twitter", "https://twitter.com/#{@products.user.twitter_id}", class: "side_menu_sns" %></div>
-							      <div><%= link_to "Instagram", "https://www.instagram.com/#{@products.user.instagram_id}", class: "side_menu_sns" %></div>
+							      <div><%= link_to "https://www.facebook.com/#{@products.user.facebook_id}", class: "side_menu_sns facebook" do %>
+							      	<i class="fa fa-facebook-f"></i><br>Facebook
+							      	 <% end %>
+							      </div>
+
+
+							      <div><%= link_to "https://twitter.com/#{@products.user.twitter_id}", class: "side_menu_sns" do %>
+							      	<i class="fa fa-twitter"></i><br>Twitter
+							      	 <% end %>
+							      </div>
+
+
+							      <div><%= link_to "https://www.instagram.com/#{@products.user.instagram_id}", class: "side_menu_sns" do %>
+							      	<i class="fa fa-instagram"></i><br>Instagram
+							      	<% end %>
+							      </div>
 							</div>
+
+
 							<div><%= link_to "ユーザーページ" , user_path(@products.user.id) , class: "side_menu_list" %></div>
 							<div><%= link_to "販売中商品" , user_sale_path(@products.user.id) , class: "side_menu_list" %></div>
 							<% end %>
@@ -112,22 +139,27 @@
 		</div>
 
 		<!--ログイン中のヘッダー-->
-		<% if user_signed_in? %>
-										<ul class="snip1226">
+	<% if user_signed_in? %>
+						<ul class="snip1226">
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<%= link_to "商品一覧", products_path ,class: "text-center css_change responsive"%>
+									<%= link_to products_path ,class: "text-center css_change responsive" do%>
+								<i class="fa fa-code"></i>商品一覧
+		<% end %>
 								</li>
 							</div>
+
+
 
 
 							<div class="col-xs-7 text-center text_header-right responsive">
 								<li class="">
 									<%=link_to root_path do %>
-									<%= image_tag 'logo.color.png',class: "col-xs-8 col-xs-offset-2 top_logo_show" %>
+									<%= image_tag 'logo.color.png',class: "col-xs-8 col-xs-offset-2 top_logo_responsive_login" %>
 									<% end %>
 								</li>
 							</div>
+
 
 
 							<div class="col-xs-4 text-center text_header-right">
@@ -140,14 +172,18 @@
 
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<%=link_to "カート", cart_path(current_user.cart.id) ,class: "text-center css_change responsive"%>
+									<%=link_to cart_path(current_user.cart.id) ,class: "text-center css_change responsive" do %>
+ <i class="glyphicon glyphicon-shopping-cart"></i>カート
+              <% end %>
 								</li>
 							</div>
 
 
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<%= link_to "ログアウト", destroy_user_session_path, :method => :delete ,class: "text-center css_change responsive" %>
+									<%= link_to destroy_user_session_path, :method => :delete ,class: "text-center css_change responsive"  do %>
+ <i class="glyphicon glyphicon-log-out"></i>ログアウト
+									         <% end %>
 								</li>
 							</div>
 						</ul>
@@ -166,7 +202,9 @@
 
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<%= link_to "商品一覧", products_path ,class: "text-center css_change" %>
+									<%= link_to products_path ,class: "text-center css_change" do%>
+								<i class="fa fa-code"></i>商品一覧
+<% end %>
 								</li>
 							</div>
 
@@ -190,7 +228,7 @@
 
 							<div class="col-xs-2 text-center text_header-right">
 								<li class="">
-									<button class="btn btn-link button-link css_change" id="modal-open" type="button">Signup|Login</button>
+									<button class="btn btn-link button-link css_change" id="modal-open" type="button">              <i class="glyphicon glyphicon-user"></i>Signup|Login</button>
 								</li>
 							</div>
 
@@ -201,6 +239,8 @@
 								</li>
 							</div>
 						</ul>
+
+
 		<% end %>
 	</div>
 </header>
