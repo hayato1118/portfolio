@@ -66,19 +66,21 @@ validates :product_detail, presence: true
 
  def self.search(search) #self.でクラスメソッドとしている
     if search #\ Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+
+
+      # if Product.search(params["%#{search}%"]).nil? == true
+      #   Product.search.nil? == true
+      #      Product.all
+      #      binding.pry
+      # else
+
       # Product.where(['price LIKE ?', "%#{search}%"])
       # .or Product.where(['title LIKE ?', "%#{search}%"])
       # .or Product.where(['product_detail LIKE ?', "%#{search}%"])
       # .or Product.where(['id LIKE ?', "%#{search}%"])
-
-
-
-# Product.joins(:tags).where(['tag_name LIKE ?', "%#{search}%"]).first.attributes
-
       relation = Product.joins(:tags)
       # relation
       # .merge(Tag.where(['tag_name LIKE ?', "%#{search}%"]))
-
       relations = relation.joins(:categories)
       relations
       .merge(Category.where(['category_name LIKE ?', "%#{search}%"]))
@@ -86,31 +88,11 @@ validates :product_detail, presence: true
       .or(relations.where(['price LIKE ?', "%#{search}%"]))
       .or(relations.where(['title LIKE ?', "%#{search}%"]))
       .or(relations.where(['product_detail LIKE ?', "%#{search}%"])).uniq
+
+
+
     else
       Product.all
-    end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end

@@ -6,10 +6,14 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 @@session_category = []
 
   def index
-       @products = Product.all.reverse_order
-       @product_paginate = Product.search(params[:search])
-       @product_paginates = Kaminari.paginate_array(@product_paginate).page(params[:page])
-       @good_rank = Product.find(ProductGood.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
+      @products = Product.all.reverse_order
+      if Product.search(params[:search]).presence == nil
+        @product_paginate = Product.all
+      else
+        @product_paginate = Product.search(params[:search])
+      end
+      @product_paginates = Kaminari.paginate_array(@product_paginate).page(params[:page])
+      @good_rank = Product.find(ProductGood.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
   end
 
 
