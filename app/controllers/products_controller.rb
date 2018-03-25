@@ -9,6 +9,7 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
       @products = Product.all.reverse_order
       if Product.search(params[:search]).presence == nil
         @product_paginate = Product.all
+        redirect_to products_path ,flash: {notice: "検索に一致する商品がありませんでした。"}
       else
         @product_paginate = Product.search(params[:search])
       end
