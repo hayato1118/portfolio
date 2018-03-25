@@ -22,12 +22,6 @@ Category.create(category_name: 'JavaScript')
 
 
 
-# Admin.seed_once do |s|
-#   s.id = 1
-#   s.email = "admin@gmail.com"
-#   s.password = "123456"
-# end
-
 Admin.create!(email: 'admin@gmail.com', password: '123456')
 
 

@@ -58,16 +58,59 @@ validates :product_detail, presence: true
   end
 
   def is_new
-    (2.days.ago..Time.current).cover?(Time.parse(self.created_at.to_s))
+    (3.days.ago..Time.current).cover?(Time.parse(self.created_at.to_s))
   end
+
+
 
 
  def self.search(search) #self.でクラスメソッドとしている
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      Product.where(['price LIKE ?', "%#{search}%"]).or Product.where(['title LIKE ?', "%#{search}%"]).or Product.where(['id LIKE ?', "%#{search}%"])
+    if search #\ Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      # Product.where(['price LIKE ?', "%#{search}%"])
+      # .or Product.where(['title LIKE ?', "%#{search}%"])
+      # .or Product.where(['product_detail LIKE ?', "%#{search}%"])
+      # .or Product.where(['id LIKE ?', "%#{search}%"])
+
+
+
+# Product.joins(:tags).where(['tag_name LIKE ?', "%#{search}%"]).first.attributes
+
+      relation = Product.joins(:tags)
+      # relation
+      # .merge(Tag.where(['tag_name LIKE ?', "%#{search}%"]))
+
+      relations = relation.joins(:categories)
+      relations
+      .merge(Category.where(['category_name LIKE ?', "%#{search}%"]))
+      .or(relations.where(['tag_name LIKE ?', "%#{search}%"]))
+      .or(relations.where(['price LIKE ?', "%#{search}%"]))
+      .or(relations.where(['title LIKE ?', "%#{search}%"]))
+      .or(relations.where(['product_detail LIKE ?', "%#{search}%"])).uniq
     else
-      Product.all #全て表示。
+      Product.all
     end
   end
-
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

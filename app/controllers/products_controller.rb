@@ -6,9 +6,9 @@ before_action :authenticate_user!,{only: [:new,:create,:edit,:update,:destroy,:c
 @@session_category = []
 
   def index
-       #検索機能
        @products = Product.all.reverse_order
-       @product_paginate = Product.page(params[:page]).search(params[:search])
+       @product_paginate = Product.search(params[:search])
+       @product_paginates = Kaminari.paginate_array(@product_paginate).page(params[:page])
        @good_rank = Product.find(ProductGood.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
   end
 

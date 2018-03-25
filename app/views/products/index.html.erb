@@ -38,7 +38,7 @@
 </div>
 
 <div class="haba">
-    <% @product_paginate.each do |product| %>
+    <% @product_paginates.each do |product| %>
         <div class="col-xs-6 col-md-4 col-lg-3 haba_all elements">
             <div class="haba_image">
                 <%= attachment_image_tag product, :image , class: "product_image" %>
@@ -75,7 +75,8 @@
     <% end %>
 </div>
 <div class="col-sm-12 text-center">
-    <%= paginate @product_paginate, class: "pagenate" %>
+    <%# binding.pry %>
+    <%= paginate @product_paginates, class: "pagenate" %>
 </div>
 
 <!--下部分-->
